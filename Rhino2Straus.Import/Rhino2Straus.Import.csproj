@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Rhino2Straus.Core/Rhino2Straus.Core.csproj" />
+    <ProjectReference Include="../Rhino2Straus.Api/Rhino2Straus.Api.csproj" />
+    <PackageReference Include="RhinoCommon" Version="$(RhinoVersion)" />
+  </ItemGroup>
+</Project>

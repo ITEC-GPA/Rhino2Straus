@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><EnableDynamicLoading>true</EnableDynamicLoading><UseWindowsForms>true</UseWindowsForms><TargetExt>.gha</TargetExt></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Rhino2Straus.Core/Rhino2Straus.Core.csproj" />
+    <ProjectReference Include="../Rhino2Straus.Import/Rhino2Straus.Import.csproj" />
+    <ProjectReference Include="../Rhino2Straus.Grasshopper.Types/Rhino2Straus.Grasshopper.Types.csproj" />
+    <ProjectReference Include="../GrasshopperHelper/GrasshopperHelper.csproj" />
+    <PackageReference Include="Grasshopper" Version="$(RhinoVersion)" />
+    <PackageReference Include="RhinoCommon" Version="$(RhinoVersion)" />
+  </ItemGroup>
+</Project>

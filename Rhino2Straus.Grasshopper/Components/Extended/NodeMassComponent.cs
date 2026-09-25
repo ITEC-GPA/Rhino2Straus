@@ -1,0 +1,89 @@
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using Grasshopper;
+
+using Grasshopper.Kernel;
+
+using Grasshopper.Kernel.Data;
+
+using Grasshopper.Kernel.Types;
+
+using Rhino;
+
+using Rhino.Geometry;
+
+using Rhino2Straus.Core.Attributes;
+
+using Rhino2Straus.Core.Cases;
+
+using Rhino2Straus.Core.Elements;
+
+using Rhino2Straus.Core.ElementProperties;
+
+using Rhino2Straus.Core.Helper;
+
+using Rhino2Straus.Core.Loads;
+
+using Rhino2Straus.Core.Models;
+
+using Rhino2Straus.Core.Settings;
+
+using Rhino2Straus.Grasshopper.Datatype;
+
+using Rhino2Straus.Import;
+
+using St7API;
+
+
+
+namespace Rhino2Straus.Grasshopper.Components.Extended;
+
+
+
+public sealed class NodeMassComponent : SafeComponent
+
+{
+
+    public NodeMassComponent() : base("Node Mass", "Node Mass", "Node Mass", "Rhino2Straus", "04-Attributes") { }
+
+    public override Guid ComponentGuid => new Guid("8f4d6c08-3184-5533-9d70-25633c9e3b9e");
+
+    protected override void RegisterInputParams(GH_InputParamManager p)
+
+    {
+
+        p.AddGenericParameter("Node", "Node", "Node", GH_ParamAccess.item);
+
+        p.AddVectorParameter("Translation", "Translation", "XYZ masses in tonnes", GH_ParamAccess.item);
+
+        p.AddVectorParameter("Rotation", "Rotation", "XYZ inertias in tonne·length²", GH_ParamAccess.item);
+
+    }
+
+    protected override void RegisterOutputParams(GH_OutputParamManager p)
+
+    {
+
+        p.AddGenericParameter("Node", "Node", "Node", GH_ParamAccess.item);
+
+    }
+
+    protected override void Solve(IGH_DataAccess da)
+
+    {
+
+
+
+        var n=new NodeElementModel(Item<GH_NodeElement>(da,0).Value); var t=Item<Vector3d>(da,1); var r=Item<Vector3d>(da,2);
+
+        if (!t.IsValid || !r.IsValid || new[]{t.X,t.Y,t.Z,r.X,r.Y,r.Z}.Any(x=>x<0)) throw new ArgumentException("Values must be finite and nonnegative.");
+
+        n.TranslationMass=t; n.RotationMass=r; da.SetData(0,new GH_NodeElement(n));
+
+    }
+
+}

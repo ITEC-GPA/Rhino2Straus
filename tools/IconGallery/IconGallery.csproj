@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><UseWindowsForms>true</UseWindowsForms><DisableWinExeOutputInference>true</DisableWinExeOutputInference></PropertyGroup>
+  <ItemGroup><Compile Include="../../Rhino2Straus.Grasshopper/ComponentIcons.cs" Link="ComponentIcons.cs" /></ItemGroup>
+</Project>
