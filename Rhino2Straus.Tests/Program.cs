@@ -190,6 +190,24 @@ Test("Invalid and unconstrained master-slave settings are rejected",()=>{
 });
 Test("Generic centroids remain distinct for section offsets",()=>{var a=new FrameSectionModel(section);var b=new FrameSectionModel(section){Centroid=new Point2d(1,2)};Assert(!a.Equals(b));});
 
+
+Test("Preview switches are independent and master-off hides every category",()=>{
+    var display=new PreviewSettings{Layers=PreviewLayer.All};foreach(var layer in Enum.GetValues<PreviewLayer>().Where(v=>v is not PreviewLayer.All and not PreviewLayer.None))Assert(display.Shows(layer));
+    Assert(!(display with{Enabled=false}).Shows(PreviewLayer.Loads));Assert(!(display with{Layers=display.Layers&~PreviewLayer.Sections}).Shows(PreviewLayer.Sections));Assert((display with{Layers=PreviewLayer.Loads}).Shows(PreviewLayer.Loads));
+});
+Test("Invalid display scales and transparency fail without rendering",()=>{
+    Throws(()=>new PreviewSettings{SymbolScale=0}.Validate());Throws(()=>new PreviewSettings{LoadScale=double.NaN}.Validate());Throws(()=>new PreviewSettings{Transparency=1.1}.Validate());
+});
+Test("Beam interval conversion preserves full-span and partial linear loads",()=>{
+    var load=new FrameLoadStrausModel{LoadSchema=FrameLoadStrausModel.LoadSchemas.Uniform,A=0,B=1,PA=5};
+    var native=BeamLoadDistribution.NativeValues(load);Near(native[4],0);Near(native[5],0);Near(BeamLoadDistribution.Knots(load)[1].Position,1);
+    load.LoadSchema=FrameLoadStrausModel.LoadSchemas.Keystone;load.A=.2;load.B=.7;load.PB=10;native=BeamLoadDistribution.NativeValues(load);Near(native[4],.2);Near(native[5],.3);Near(BeamLoadDistribution.Knots(load)[1].Value,10);
+});
+Test("Three-point and trapezoidal load diagrams retain native endpoint values",()=>{
+    var load=new FrameLoadStrausModel{LoadSchema=FrameLoadStrausModel.LoadSchemas.TriangularEnds_Keystone,A=.2,B=.8,P1=1,PA=3,PB=4,P2=2};
+    var points=BeamLoadDistribution.Knots(load);Assert(points.Select(p=>p.Position).SequenceEqual(new[]{0d,.2,.8,1}));Assert(points.Select(p=>p.Value).SequenceEqual(new[]{1d,3,4,2}));Near(BeamLoadDistribution.NativeValues(load)[5],.8);
+    load.LoadSchema=FrameLoadStrausModel.LoadSchemas.Triangular;Assert(BeamLoadDistribution.Knots(load).Count==3);
+});
 if (args.Contains("--native"))
 {
     string folder = Path.Combine(Path.GetTempPath(), "Rhino2Straus-tests-" + Guid.NewGuid().ToString("N"));

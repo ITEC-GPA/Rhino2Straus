@@ -22,6 +22,8 @@ public static class ModelFingerprint
         {
             var stack = new HashSet<object>(ReferenceEqualityComparer.Instance);
             json.WriteStartArray();
+            // Export contract v2: beam load B is a Model end position, converted per native schema.
+            json.WriteStringValue("Rhino2Straus.input.v2");
             foreach (var item in new object[] { model.ModelUnits, model.SelfWeight,
                 model.NodeElements.Values.OrderBy(x => x.Id), model.FrameElements.Values.OrderBy(x => x.Id), model.AreaElements.Values.OrderBy(x => x.Id),
                 model.SolidElements.Values.OrderBy(x => x.Id), model.LinkElements.Values.OrderBy(x => x.Id), model.Materials.Values.OrderBy(x => x.Id),

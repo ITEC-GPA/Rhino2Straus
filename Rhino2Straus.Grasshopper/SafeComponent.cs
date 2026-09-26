@@ -5,6 +5,15 @@ namespace Rhino2Straus.Grasshopper;
 
 public abstract class SafeComponent : GH_Component
 {
+    public override Rhino.Geometry.BoundingBox ClippingBox=>Datatype.PreviewPolicy.ComponentVisible(this)?base.ClippingBox:Rhino.Geometry.BoundingBox.Empty;
+    public override void DrawViewportWires(IGH_PreviewArgs args)
+    {
+        if(Datatype.PreviewPolicy.ComponentVisible(this))base.DrawViewportWires(args);
+    }
+    public override void DrawViewportMeshes(IGH_PreviewArgs args)
+    {
+        if(Datatype.PreviewPolicy.ComponentVisible(this))base.DrawViewportMeshes(args);
+    }
     protected override System.Drawing.Bitmap Icon => ComponentIcons.Get(Name, SubCategory);
     protected SafeComponent(string name, string nickname, string description, string category, string subcategory)
         : base(name, nickname, description, category, subcategory) { }

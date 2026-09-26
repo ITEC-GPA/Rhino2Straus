@@ -1,4 +1,12 @@
 using System;
+using Rhino2Straus.Core.Settings;
+using Rhino2Straus.Core.Loads;
+using Rhino2Straus.Core.Cases;
+using Rhino2Straus.Core.Attributes;
+using Rhino2Straus.Grasshopper.Datatype;
+using System.Drawing;
+using System.Windows.Forms;
+using GH_IO.Serialization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -15,9 +23,11 @@ using Grasshopper.Kernel.Parameters;
 
 internal static class Program
 {
+    private static bool previewGallery;
     [STAThread] static int Main(string[] args)
     {
-        RhinoInside.Resolver.Initialize(args.Length>0?args[0]:@"C:\Program Files\Rhino 8\System");
+        previewGallery=args.Contains("--preview-gallery");
+        RhinoInside.Resolver.Initialize(args.FirstOrDefault(a=>!a.StartsWith("--"))??@"C:\Program Files\Rhino 8\System");
         return StartRhino();
     }
     [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]
@@ -81,6 +91,44 @@ internal static class Program
         var insertionModel=new ModelModel();insertionModel.BuildModel(inputFrames:new(){new(new(0,0,0),new(1,0,0),new FramePropertyModel("Insertion",MaterialModel.S355,insertionSection),0,Vector3d.Zero)});
         var insertionHash=ModelFingerprint.Compute(insertionModel);insertionModel.FrameElements.Values.Single().FrameSection.Breps[0].Scale(2);
         Check(insertionHash!=ModelFingerprint.Compute(insertionModel),"Profile-derived insertion changes invalidate results");
+
+        var displayCase=new LoadCaseModel("Display A",LoadCaseModel.LoadCaseTypes.USER,"");
+        var otherDisplayCase=new LoadCaseModel("Display B",LoadCaseModel.LoadCaseTypes.USER,"");
+        var displayStart=new NodeElementModel(0,0,0){Support=new NodeSupportModel(true,false,true,false,true,false),TranslationSpring=new(1,0,0),RotationSpring=new(0,2,0),TranslationMass=new(0,0,3)};
+        displayStart.PrescribedDisplacement[2]=.01;
+        displayStart.NodalLoadList.Add(new NodalLoadModel(displayCase,0,0,-10,0,5,0));
+        displayStart.Temperatures.Add(new NodeTemperatureModel{LoadCase=displayCase,Temperature=20});
+        var displayBeam=new FrameElementModel(displayStart,new(4,0,0),new FramePropertyModel("Preview beam",MaterialModel.S355,section),0,new Vector3d(.2,.1,0));
+        displayBeam.EndReleases[5]=true;
+        displayBeam.FrameLoadList.Add(new FramePointLoadModel{LoadCase=displayCase,Position=.25,Value=new(2,0,0),CoordinateSystem=CoordinateSystemModel.Local});
+        displayBeam.FrameLoadList.Add(new FrameLoadStrausModel(otherDisplayCase,FrameLoadStrausModel.FrameLoadTypes.Force,FrameLoadStrausModel.LoadDirections.Z,false,.2,-2,.8,-4,FrameLoadStrausModel.LoadSchemas.Keystone,CoordinateSystemModel.Global));
+        displayBeam.FrameLoadList.Add(new FrameTemperatureGradientModel{LoadCase=displayCase,Gradient1=2,Gradient2=3});
+        displayBeam.FrameLoadList.Add(new FramePreloadModel{LoadCase=displayCase,Value=7});
+        var displayPlate=new AreaElementModel(new(){new(0,2,0),new(2,2,0),new(2,4,0),new(0,4,0)},new AreaPropertyModel("Preview plate",MaterialModel.S355,new AreaThicknessModel("t",.2),AreaPropertyModel.PlatePropertyType.PlateShell));
+        displayPlate.AreaLoadList.Add(new AreaPressureLoadModel(displayCase,4));displayPlate.AreaLoadList.Add(new AreaEdgePressureModel{LoadCase=displayCase,Edge=1,Value=3});
+        displayPlate.AreaLoadList.Add(new AreaTemperatureGradientModel{LoadCase=displayCase,Gradient=2});displayPlate.AreaLoadList.Add(new AreaPreloadModel{LoadCase=displayCase,Value=new(1,2,3)});
+        var displaySolid=new SolidElementModel{Material=MaterialModel.S355,Nodes=new(){new(5,2,0),new(6,2,0),new(5,3,0),new(5,2,1)}};
+        displaySolid.Pressures.Add(new(displayCase,1,4));
+        var displayModel=new ModelModel();displayModel.BuildModel(inputFrames:new(){displayBeam},inputAreas:new(){displayPlate},inputSolids:new(){displaySolid},inputLinks:new(){new(new(4,0,0),new(5,2,0),new(LinkPropertyModel.LinkPropertyTypes.RIGID))});
+        var displayHash=ModelFingerprint.Compute(displayModel);var allDisplay=new PreviewSettings{Layers=PreviewLayer.All,SymbolScale=.4,LoadScale=.15};
+        var marks=new ModelAnnotations(displayModel,allDisplay).Marks;
+        Check(marks.Any(m=>m.Symbol==PreviewSymbol.Moment)&&marks.Any(m=>m.Symbol==PreviewSymbol.Arrow),"Load preview includes moments and forces");
+        foreach(var layer in new[]{PreviewLayer.Supports,PreviewLayer.Releases,PreviewLayer.Springs,PreviewLayer.Masses,PreviewLayer.Prescribed,PreviewLayer.Offsets,PreviewLayer.Axes,PreviewLayer.Properties})Check(marks.Any(m=>m.Layer==layer),"Attribute preview "+layer);
+        Check(marks.Any(m=>m.Text.StartsWith("T="))&&marks.Any(m=>m.Text.StartsWith("dT1="))&&marks.Any(m=>m.Text.StartsWith("pre-tension=")),"Thermal and preload annotations");
+        var localPoint=marks.Single(m=>m.Owner=="B1"&&m.Text.StartsWith("F="));
+        displayBeam.GetLocalAxes(true,out _,out var displayAxis2,out var displayAxis1,out _);
+        Check(localPoint.Vector*displayAxis1>1.999&&localPoint.Point.DistanceTo(new Point3d(1,0,0)+displayAxis1*.2+displayAxis2*.1)<1e-8,"Beam point loads use local axes, relative position and physical offset");
+        Check(marks.Where(m=>m.Owner=="P1"&&m.Text.Contains("(-z face)")).All(m=>m.Vector.Z>0&&Math.Abs(m.Point.Z+.1)<1e-8),"Positive plate normal pressure points inward from minus-z face");
+        Check(marks.Where(m=>m.Owner=="P1"&&m.Text.StartsWith("edge 1")).All(m=>m.Vector.Y<0),"Positive plate edge pressure points away from plate");
+        var solidPressure=marks.Single(m=>m.Owner=="S1"&&m.Layer==PreviewLayer.Loads);Check(solidPressure.Vector.Z>0,"Native tetrahedron face 1 pressure points into solid");
+        var filtered=new ModelAnnotations(displayModel,allDisplay,new[]{"Display B"});Check(filtered.Marks.Where(m=>m.CaseName!=null).All(m=>m.CaseName=="Display B")&&filtered.Marks.Any(m=>m.Layer==PreviewLayer.Supports),"Case filter hides other loads and preserves attributes");
+        var hiddenLoads=new ModelAnnotations(displayModel,allDisplay with{Layers=allDisplay.Layers&~PreviewLayer.Loads});Check(hiddenLoads.Marks.All(m=>m.Layer!=PreviewLayer.Loads),"Loads can be disabled independently");
+        var invisible=new ModelPreview(displayModel,allDisplay with{Enabled=false});Check(!invisible.Bounds.IsValid&&invisible.Annotations.Marks.Count==0&&invisible.Beams.Count==0,"Master-off removes geometry, attributes and bounds");
+        var noSections=new ModelPreview(displayModel,allDisplay with{Layers=allDisplay.Layers&~PreviewLayer.Sections});Check(noSections.Beams.Count==0&&noSections.Lines.Count>0&&Math.Abs(noSections.Plates[0].GetBoundingBox(true).Diagonal.Z)<1e-8,"Sections off preserves beam axes and plate midsurfaces");
+        var displayScene=new ModelPreview(displayModel,allDisplay);
+        if(previewGallery)PreviewGallery.Save(displayModel,"docs/preview-gallery.png");
+        Check(displayScene.Bounds.Contains(marks.First(m=>m.Symbol==PreviewSymbol.Arrow).Point)&&ModelFingerprint.Compute(displayModel)==displayHash,"Preview bounds include symbols without changing analysis identity");
+        bool unknownCase=false;try{new ModelAnnotations(displayModel,allDisplay,new[]{"missing"});}catch(ArgumentException){unknownCase=true;}Check(unknownCase,"Unknown preview load case fails explicitly");
         Console.WriteLine($"{passed} geometry checks passed.");
         var directory=new DirectoryInfo(Environment.CurrentDirectory);
         while(directory!=null&&!File.Exists(Path.Combine(directory.FullName,"Rhino2Straus.sln")))
@@ -152,6 +200,45 @@ internal static class Program
             ((Param_Point)c.Params.Input[1]).PersistentData.Append(new GH_Point(new Point3d(1,0,0)));
         });
         Check(defaultLink.Params.Output[0].VolatileData.AllData(true).First().ScriptVariable() is LinkElementModel dl&&dl.LinkProperty.Type==LinkPropertyModel.LinkPropertyTypes.RIGID,"Link element defaults to a rigid connection");
+
+        var displaySettingsComponent=SolveDefaults("DisplaySettingsComponent");
+        var displayManager=SolveDefaults("PreviewModelComponent",c=>{
+            ((Param_GenericObject)c.Params.Input[0]).PersistentData.Append(new GH_Model(displayModel));
+            c.Params.Input[8].AddSource(displaySettingsComponent.Params.Output[0]);
+        });
+        var managedDocument=displayManager.OnPingDocument();
+        Check(!PreviewPolicy.AutomaticVisible(managedDocument),"Display manager suppresses automatic plugin previews");
+        using(var isolatedDocument=new GH_Document())Check(PreviewPolicy.AutomaticVisible(isolatedDocument),"Display manager ownership is document-scoped");
+        var sampleResult=(GH_Component)Activator.CreateInstance(assembly.GetTypes().Single(t=>t.Name=="ModelDeformedGeometryComponent"));managedDocument.AddObject(sampleResult,false);
+        Check(!PreviewPolicy.ComponentVisible(sampleResult),"Results category is hidden by default");
+        var resultInput=(Param_Boolean)displaySettingsComponent.Params.Input.Single(p=>p.Name=="Results");resultInput.PersistentData.Clear();resultInput.PersistentData.Append(new GH_Boolean(true));
+        resultInput.ExpireSolution(false);displaySettingsComponent.ExpireSolution(false);displaySettingsComponent.CollectData();displaySettingsComponent.ComputeData();
+        displayManager.ExpireSolution(false);displayManager.CollectData();displayManager.ComputeData();
+        Check(PreviewPolicy.ComponentVisible(sampleResult),"Results category enables result geometry components");
+        displayManager.Hidden=true;
+        Check(!PreviewPolicy.ComponentVisible(sampleResult)&&!PreviewPolicy.AutomaticVisible(managedDocument),"Hiding manager hides results and keeps automatic previews suppressed");
+        displayManager.Hidden=false;
+        var enabledInput=(Param_Boolean)displayManager.Params.Input[7];enabledInput.PersistentData.Clear();enabledInput.PersistentData.Append(new GH_Boolean(false));
+        enabledInput.ExpireSolution(false);displayManager.ExpireSolution(false);displayManager.CollectData();displayManager.ComputeData();
+        Check(displayManager.Params.Output[0].VolatileData.AllData(true).OfType<GH_String>().Single().Value.Contains("OFF")&&!PreviewPolicy.AutomaticVisible(managedDocument),"Turning manager off keeps upstream previews suppressed");
+        Check(!PreviewPolicy.ComponentVisible(sampleResult),"Master-off also hides result geometry components");
+        var menu=new ContextMenuStrip();
+        var append=displayManager.GetType().GetMethod("AppendAdditionalComponentMenuItems",BindingFlags.NonPublic|BindingFlags.Instance);append.Invoke(displayManager,new object[]{menu});
+        Check(menu.Items.Cast<ToolStripItem>().Any(item=>item.Text=="About Rhino2Straus")&&menu.Items.Cast<ToolStripItem>().Any(item=>item.Text=="Guide / helper"),"Manager exposes About and Guide menus");
+        displayManager.Params.Input[8].RemoveAllSources();
+        enabledInput.PersistentData.Clear();enabledInput.PersistentData.Append(new GH_Boolean(true));enabledInput.ExpireSolution(false);
+        displayManager.ExpireSolution(false);displayManager.CollectData();displayManager.ComputeData();
+        using(var categoryMenu=new ContextMenuStrip())
+        {
+            append.Invoke(displayManager,new object[]{categoryMenu});
+            var categories=categoryMenu.Items.OfType<ToolStripMenuItem>().Single(item=>item.Text.StartsWith("Visibility categories"));
+            categories.DropDownItems.OfType<ToolStripMenuItem>().Single(item=>item.Text=="Sections").PerformClick();
+            displayManager.CollectData();displayManager.ComputeData();
+            var effective=(PreviewSettings)displayManager.Params.Output[2].VolatileData.AllData(true).First().ScriptVariable();
+            Check(!effective.Shows(PreviewLayer.Sections),"Category menu updates the unwired legacy Sections input");
+        }
+        managedDocument.RemoveObject(displayManager,false);Check(PreviewPolicy.AutomaticVisible(managedDocument)&&PreviewPolicy.ComponentVisible(sampleResult),"Removing manager restores automatic previews without changing hidden flags");
+        menu.Dispose();
         Console.WriteLine($"{passed} geometry and Grasshopper data checks passed.");
         foreach(var document in documents)document.Dispose();
     }

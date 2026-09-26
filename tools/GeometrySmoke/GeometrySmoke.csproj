@@ -2,6 +2,7 @@
   <PropertyGroup><OutputType>Exe</OutputType><UseWindowsForms>true</UseWindowsForms><CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies></PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../../Rhino2Straus.Core/Rhino2Straus.Core.csproj" />
+    <ProjectReference Include="../../Rhino2Straus.Grasshopper.Types/Rhino2Straus.Grasshopper.Types.csproj" />
     <PackageReference Include="Rhino.Inside" Version="8.0.7-beta" />
     <PackageReference Include="RhinoCommon" Version="$(RhinoVersion)" ExcludeAssets="runtime" />
     <PackageReference Include="Grasshopper" Version="$(RhinoVersion)" ExcludeAssets="runtime" />

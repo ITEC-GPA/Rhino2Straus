@@ -2,7 +2,7 @@
 
 Componenti **Rhino 8 / Grasshopper per Straus7 R3, Windows x64**. Il progetto è dedicato esclusivamente a Straus7: modellazione, attributi, modello FEM unificato, preview, esportazione `.st7`, analisi e lettura dei risultati.
 
-**162 componenti**, con icone a 24 px, più le icone della libreria e del parametro Group. [Sezioni R31, link e default](docs/SECTIONS-LINKS.md) · [Catalogo completo](docs/COMPONENTS.md) · [Copertura API e limiti](docs/API-COVERAGE.md) · [Verifiche](docs/VALIDATION.md) · [Model, solver e risultati](docs/MODEL-RESULTS.md).
+**163 componenti**, con icone a 24 px, più le icone della libreria e del parametro Group. [Preview e impostazioni](docs/PREVIEW.md) · [Sezioni R31, link e default](docs/SECTIONS-LINKS.md) · [Catalogo completo](docs/COMPONENTS.md) · [Copertura API e limiti](docs/API-COVERAGE.md) · [Verifiche](docs/VALIDATION.md) · [Model, solver e risultati](docs/MODEL-RESULTS.md).
 
 ## Impostazione del modello
 
@@ -27,7 +27,9 @@ flowchart LR
 
 Gli attributi modificano copie degli elementi. `Build Model` salda i nodi entro la tolleranza, unifica i riferimenti e raccoglie proprietà, casi e combinazioni. Accetta anche altri Model. `Merge Straus Models` restituisce sempre un solo Model; `Renumber` permette di unire parti create indipendentemente. Con `Renumber=false`, gli stessi ID di elemento devono avere geometria e proprietà compatibili: i carichi si sommano come contributi e i gruppi si uniscono. Gli input restano invariati. Non collegare due volte lo stesso contributo di carico.
 
-`Preview Straus Model` mostra sezioni estruse, spessori, offset, nodi, vincoli, etichette e assi. `Model Physical Geometry` restituisce anche Brep/mesh Rhino. La preview del Model è disponibile direttamente sui parametri generici. Per evitare sovrapposizioni, disabilitare la preview del componente Build quando si usa il componente Preview dedicato.
+`Rhino2Straus Display Manager` mostra sezioni estruse, spessori, offset, carichi, vincoli, svincoli, molle, masse, spostamenti imposti, proprietà e assi. Collegare il Model assemblato e usare **Enabled** per spegnere tutte le preview gestite; **Display Settings** controlla le singole categorie, i risultati, le scale, l'ombreggiatura e la trasparenza. Il gestore sopprime automaticamente le anteprime del plugin a monte, senza cambiarne i flag Hidden. Il tasto destro offre **About**, **Guide / helper** e controlli di visibilità. `Model Physical Geometry` restituisce anche Brep/mesh Rhino. [Guida completa e limiti](docs/PREVIEW.md).
+
+Nella **0.4** è corretta anche la conversione delle posizioni dei carichi distribuiti trave nei parametri nativi Straus7. Rigenerare esportazioni e risultati prodotti con versioni precedenti; il fingerprint distingue il nuovo contratto di export.
 
 `Run Model Cases and Combinations` esporta e risolve i casi/combinazioni selezionati e restituisce **lo stesso tipo Model, con risultati immutabili incorporati**. Sono disponibili anche i solver Model per frequenze naturali, buckling e statica non lineare. Gli strumenti di allineamento lavorano sugli assi locali di travi/piastre; i lettori Model coprono nodi, travi, piastre, solidi e link. `Model Verification Data` espone geometrie, proprietà, materiali, unità, sezioni native e risultati per il verificatore futuro. [Flusso e contratto dati](docs/MODEL-RESULTS.md).
 
@@ -62,6 +64,7 @@ Le funzioni native richiedono una licenza API funzionante. Il codice compila e i
 dotnet build Rhino2Straus.sln -c Release
 dotnet run --project Rhino2Straus.Tests -c Release
 dotnet run --project tools/GeometrySmoke -c Release
+dotnet run --project tools/GeometrySmoke -c Release -- --preview-gallery
 dotnet run --project Rhino2Straus.Tests -c Release -- --native --solve
 python tools/import_straus_sdk.py
 python tools/catalogue.py

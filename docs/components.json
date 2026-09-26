@@ -967,8 +967,14 @@
   },
   {
     "Class": "PreviewModelComponent",
-    "Name": "Preview Straus Model",
+    "Name": "Rhino2Straus Display Manager",
     "Category": "13-Preview",
     "File": "Rhino2Straus.Grasshopper/Components/Extended/PreviewModelComponent.cs"
+  },
+  {
+    "Class": "DisplaySettingsComponent",
+    "Name": "Rhino2Straus Display Settings",
+    "Category": "13-Preview",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/DisplaySettingsComponent.cs"
   }
 ]

@@ -482,9 +482,9 @@ namespace Rhino2Straus.Core.Helper
                                             distrFPId.Add(lc, loadId);
                                         }
                                         if (dl.LoadType == FrameLoadStrausModel.FrameLoadTypes.Force)
-                                            HandleError(St7.St7SetBeamDistributedForcePrincipal6ID(modelId, beamNumber, dir, lc, type, loadId, new[] { dl.PA, dl.PB, dl.P1, dl.P2, dl.A, dl.B }));
+                                            HandleError(St7.St7SetBeamDistributedForcePrincipal6ID(modelId, beamNumber, dir, lc, type, loadId, BeamLoadDistribution.NativeValues(dl)));
                                         else
-                                            HandleError(St7.St7SetBeamDistributedMomentPrincipal6ID(modelId, beamNumber, dir, lc, type, loadId, new[] { dl.PA, dl.PB, dl.P1, dl.P2, dl.A, dl.B }));
+                                            HandleError(St7.St7SetBeamDistributedMomentPrincipal6ID(modelId, beamNumber, dir, lc, type, loadId, BeamLoadDistribution.NativeValues(dl)));
                                     }
                                     else
                                     {
@@ -522,7 +522,7 @@ namespace Rhino2Straus.Core.Helper
                                                 projectFlag = St7.btTrue;
                                                 break;
                                         }
-                                        double[] values = new[] { dl.PA, dl.PB, dl.P1, dl.P2, dl.A, dl.B };
+                                        double[] values = BeamLoadDistribution.NativeValues(dl);
                                         if (dl.Direction == FrameLoadStrausModel.LoadDirections.Gravity ||
                                             dl.Direction == FrameLoadStrausModel.LoadDirections.Gravity_Projected)
                                         {

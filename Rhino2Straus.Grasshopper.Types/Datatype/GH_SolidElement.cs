@@ -16,7 +16,7 @@ public sealed class GH_SolidElement : GH_Goo<SolidElementModel>, IGH_PreviewData
     public override string TypeDescription => "Straus7 linear solid element";
     public override string ToString() => Value==null?"Null Solid":$"Solid {Value.Id}: {Value.Nodes.Count} nodes, {Value.Material?.Name}";
     public override IGH_Goo Duplicate() => Value==null?new GH_SolidElement():new GH_SolidElement(Value);
-    public BoundingBox ClippingBox => Value==null?BoundingBox.Empty:new BoundingBox(Value.Nodes.Select(n=>n.Position));
-    public void DrawViewportWires(GH_PreviewWireArgs args) { if(IsValid)args.Pipeline.DrawMeshWires(Value.ToMesh(),args.Color); }
-    public void DrawViewportMeshes(GH_PreviewMeshArgs args) { if(IsValid)args.Pipeline.DrawMeshShaded(Value.ToMesh(),args.Material); }
+    public BoundingBox ClippingBox => Value==null||!PreviewPolicy.AutomaticVisible()?BoundingBox.Empty:new BoundingBox(Value.Nodes.Select(n=>n.Position));
+    public void DrawViewportWires(GH_PreviewWireArgs args) { if(IsValid&&PreviewPolicy.AutomaticVisible())args.Pipeline.DrawMeshWires(Value.ToMesh(),args.Color); }
+    public void DrawViewportMeshes(GH_PreviewMeshArgs args) { if(IsValid&&PreviewPolicy.AutomaticVisible())args.Pipeline.DrawMeshShaded(Value.ToMesh(),args.Material); }
 }

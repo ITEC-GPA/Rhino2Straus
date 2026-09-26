@@ -53,4 +53,4 @@ I lettori `Model Link Node Displacement` e `Model Link Node Reaction` distinguon
 
 Dimensioni e spessori dei profili, materiale campione, selettori delle librerie, nomi di casi/proprietà/gruppi, fattori, carichi nulli, direzioni di riferimento, numeri di entità native, unità e opzioni hanno default dove il significato è determinabile. Geometrie, oggetti FEM da modificare, file e nomi di casi da selezionare in un modello esistente restano input espliciti. `Run` e `Overwrite` restano disattivati di default.
 
-Tutti i **162 componenti** hanno un'icona 24×24 generata da codice; altre due icone coprono libreria e parametro Group. I 164 PNG sono in `Rhino2Straus.Grasshopper/Assets/Icons`; la [tavola completa](icons.png) è rigenerabile con `tools/IconGallery`. Generazione e uso delle icone non richiedono Straus7 né la licenza API.
+Tutti i **163 componenti** hanno un'icona 24×24 generata da codice; altre due icone coprono libreria e parametro Group. I 165 PNG sono in `Rhino2Straus.Grasshopper/Assets/Icons`; la [tavola completa](icons.png) è rigenerabile con `tools/IconGallery`. Generazione e uso delle icone non richiedono Straus7 né la licenza API.

@@ -17,7 +17,7 @@ namespace Rhino2Straus.Grasshopper.Datatype
 
         public override string TypeDescription => "Link";
 
-        BoundingBox IGH_PreviewData.ClippingBox => Boundingbox;
+        BoundingBox IGH_PreviewData.ClippingBox => PreviewPolicy.AutomaticVisible()?Boundingbox:BoundingBox.Empty;
 
         public override BoundingBox Boundingbox
         {
@@ -59,11 +59,13 @@ namespace Rhino2Straus.Grasshopper.Datatype
 
         void IGH_PreviewData.DrawViewportWires(GH_PreviewWireArgs args)
         {
+            if(!PreviewPolicy.AutomaticVisible())return;
             Value.DrawWireframe(args.Pipeline, args.Viewport, args.Color);
         }
 
         void IGH_PreviewData.DrawViewportMeshes(GH_PreviewMeshArgs args)
         {
+            if(!PreviewPolicy.AutomaticVisible())return;
 
         }
 

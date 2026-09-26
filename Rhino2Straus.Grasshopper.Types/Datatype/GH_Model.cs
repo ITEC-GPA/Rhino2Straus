@@ -14,7 +14,7 @@ public class GH_Model : GH_Goo<ModelModel>, IGH_PreviewData
     public override string TypeDescription => "One assembled Straus7 model with geometry, properties, attributes, loads and optional immutable analysis results";
     public override IGH_Goo Duplicate() => Value == null ? new GH_Model() : new GH_Model(new ModelModel(Value));
     public override string ToString() => Value == null ? "Empty Straus7 model" : $"Straus7: {Value.NodeElements.Count} nodes, {Value.FrameElements.Count} beams, {Value.AreaElements.Count} plates, {Value.SolidElements.Count} solids, {Value.LinkElements.Count} links" + (Value.Results == null ? "" : $"; {Value.Results.Cases.Count} result cases");
-    public BoundingBox ClippingBox => Preview.Bounds;
-    public void DrawViewportWires(GH_PreviewWireArgs args) => Preview.DrawWires(args.Pipeline,args.Color);
-    public void DrawViewportMeshes(GH_PreviewMeshArgs args) => Preview.DrawMeshes(args.Pipeline,args.Material);
+    public BoundingBox ClippingBox => PreviewPolicy.AutomaticVisible()?Preview.Bounds:BoundingBox.Empty;
+    public void DrawViewportWires(GH_PreviewWireArgs args) {if(PreviewPolicy.AutomaticVisible())Preview.DrawWires(args.Pipeline,args.Color);}
+    public void DrawViewportMeshes(GH_PreviewMeshArgs args) {if(PreviewPolicy.AutomaticVisible())Preview.DrawMeshes(args.Pipeline,args.Material);}
 }

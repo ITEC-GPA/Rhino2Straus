@@ -23,6 +23,7 @@ public abstract class NativeSectionComponent : SafeComponent
     {
         p.AddGenericParameter("Section","Section","Connect to a beam property; native definition survives Build and Merge",GH_ParamAccess.item);
         p.AddBrepParameter("Profile","Profile","Discretised native profile in centroidal XY, in model length units",GH_ParamAccess.list);
+        ((IGH_PreviewObject)p[1]).Hidden=true; // Section Goo supplies the same preview; keep the explicit geometry socket available.
     }
     protected override void Solve(IGH_DataAccess da)
     {

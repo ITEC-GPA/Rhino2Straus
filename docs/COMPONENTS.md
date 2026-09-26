@@ -1,6 +1,6 @@
 # Catalogo componenti
 
-162 componenti Grasshopper, tutti con icona. Il parametro persistente Group e la libreria hanno icone aggiuntive.
+163 componenti Grasshopper, tutti con icona. Il parametro persistente Group e la libreria hanno icone aggiuntive.
 
 Il percorso è sempre elementi/attributi → Build Model o Merge Straus Models → un solo Model → Preview/Run → Model con risultati → estrazione/deformata/dati per il verificatore.
 
@@ -167,6 +167,7 @@ Il percorso è sempre elementi/attributi → Build Model o Merge Straus Models �
 | 12-Results | [Solid Stress](../Rhino2Straus.Grasshopper/Components/Extended/SolidStressResultsComponent.cs) |
 | 12-Results | [Straus Result Cases](../Rhino2Straus.Grasshopper/Components/Extended/StrausResultCasesComponent.cs) |
 | 13-Preview | [Model Physical Geometry](../Rhino2Straus.Grasshopper/Components/Extended/ModelGeometryComponent.cs) |
-| 13-Preview | [Preview Straus Model](../Rhino2Straus.Grasshopper/Components/Extended/PreviewModelComponent.cs) |
+| 13-Preview | [Rhino2Straus Display Manager](../Rhino2Straus.Grasshopper/Components/Extended/PreviewModelComponent.cs) |
+| 13-Preview | [Rhino2Straus Display Settings](../Rhino2Straus.Grasshopper/Components/Extended/DisplaySettingsComponent.cs) |
 
 ![Icone](icons.png)
