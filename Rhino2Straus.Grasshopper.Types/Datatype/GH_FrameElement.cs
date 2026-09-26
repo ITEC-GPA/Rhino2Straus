@@ -94,30 +94,15 @@ namespace Rhino2Straus.Grasshopper.Datatype
 
         public override bool CastTo<Q>(out Q target)
         {
+            target=default;
+            if(Value==null)return false;
             if (typeof(Q) == typeof(GH_Curve))
             {
                 LineCurve pline = new LineCurve(Value.NodeStart.Position, Value.NodeEnd.Position);
                 target = (Q)(object)new GH_Curve(pline);
                 return true;
             }
-            else if (typeof(Q) == typeof(GH_Brep))
-            {
-                if (Value.Breps == null || Value.Breps.Count == 0) Value.BuildBreps();
-                if (Value.Breps == null || Value.Breps.Count == 0)
-                {
-                    target = default(Q);
-                    return false;
-                }
-                if (Value.Breps.Count == 1)
-                {
-                    Brep brep = Value.Breps[0].DuplicateBrep();
-                    target = (Q)(object)new GH_Brep(brep);
-                    return true;
-                }
-            }
-
-            target = default(Q);
-            return false;
+            return BrepCast.Try(()=>ModelBrepGeometry.Beam(Value),out target);
         }
 
         #endregion

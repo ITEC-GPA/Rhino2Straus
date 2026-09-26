@@ -15,6 +15,28 @@ Il gestore disegna geometrie, sezioni e spessori fisici, carichi e attributi. **
 
 Un input `Settings` collegato ha precedenza sui precedenti input Solid/Labels/Axes/Supports/scales e sui menu di categoria. L'interruttore Enabled del gestore resta sempre efficace.
 
+## Brep e bake solido
+
+Dalla versione **0.4.1**, il Display Manager e **Model Physical Geometry** espongono **Breps** e **Brep issues**, mantenendo inalterato l'ordine delle uscite precedenti.
+
+1. Collegare il Model assemblato al gestore.
+2. Collegare **Breps** a un parametro Brep Grasshopper per operazioni geometriche o un bake selettivo.
+3. Per il bake completo, usare **Bake** nel menu del Display Manager o di Model Physical Geometry e scegliere layer/attributi nella finestra standard Grasshopper.
+
+Il bake dal componente crea soltanto i Brep fisici chiusi, senza duplicare linee, mesh, simboli di carico o annotazioni. Non avviene automaticamente al ricalcolo. Supporta Undo e, se Rhino rifiuta un oggetto, rimuove gli oggetti appena creati da quella singola operazione.
+
+- **Travi:** estrusioni chiuse del profilo, con orientamento, inserimento e offset; i vuoti dei profili tubolari restano vuoti. Le sezioni composte producono più solidi, conservando tutte le parti.
+- **Piastre:** Brep chiusi ottenuti dalla geometria con spessore membranale e somma degli offset di elemento e proprietà.
+- **Solidi FEM:** Tet4, Wedge6 ed Hexa8 convertiti in Brep chiusi dalla loro pelle geometrica.
+
+L'albero usa i percorsi **{tipo; ID del Model}**, con tipo `0=trave`, `1=piastra`, `2=solido`; ogni ramo contiene tutte le parti di quell'elemento. Tipo, ID e indice della parte sono conservati nei user string `Rhino2Straus.ElementType`, `Rhino2Straus.ElementId`, `Rhino2Straus.PartIndex`, sulla geometria e sugli attributi degli oggetti creati dal bake del componente. Le coordinate coincidono con la preview, senza conversione implicita delle unità.
+
+L'uscita Breps e il bake sono **indipendenti dalla visibilità**, inclusi Enabled e Sections: spegnere la preview non elimina la geometria disponibile. L'uscita ha la propria preview disattivata per evitare sovrapposizioni; un parametro Brep a valle usa invece i normali controlli di Grasshopper.
+
+Anche i singoli elementi trave, piastra e solido possono essere collegati direttamente a un parametro Brep. Il cast singolo è disponibile quando l'elemento produce un solo volume; per sezioni composte e Model interi usare l'uscita Breps, così nessuna parte viene persa. La conversione produce nuove geometrie e non modifica il Model o i suoi risultati.
+
+**Brep issues** elenca gli elementi esclusi: profilo assente, spessore nullo oppure geometria che non forma un solido chiuso valido. Non viene inventata una sezione per le travi generiche. Nodi, link e simboli non hanno un volume fisico definito e non sono inclusi. I solidi rimangono separati per elemento; eventuali unioni booleane sono operazioni successive dell'utente.
+
 ## About e guida
 
 Con il tasto destro sul gestore sono disponibili:

@@ -29,7 +29,7 @@ public sealed class SolidElementModel : ElementModel
     // Face triangulation is for geometric preview only; load face IDs use the native API convention.
     public Mesh ToMesh()
     {
-        var mesh=new Mesh();foreach(var n in Nodes)mesh.Vertices.Add(n.Position);
+        var mesh=new Mesh();mesh.Vertices.UseDoublePrecisionVertices=true;foreach(var n in Nodes)mesh.Vertices.Add(n.Position);
         foreach(var f in Faces(Nodes.Count))if(f.Length==3)mesh.Faces.AddFace(f[0],f[1],f[2]);else mesh.Faces.AddFace(f[0],f[1],f[2],f[3]);
         mesh.Normals.ComputeNormals();mesh.Compact();return mesh;
     }

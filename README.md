@@ -31,6 +31,8 @@ Gli attributi modificano copie degli elementi. `Build Model` salda i nodi entro 
 
 Nella **0.4** è corretta anche la conversione delle posizioni dei carichi distribuiti trave nei parametri nativi Straus7. Rigenerare esportazioni e risultati prodotti con versioni precedenti; il fingerprint distingue il nuovo contratto di export.
 
+La **0.4.1** aggiunge l'uscita **Breps** al Display Manager e a Model Physical Geometry: volumi chiusi di travi, piastre con spessore e solidi FEM, con offset e vuoti delle sezioni. Collegarla a un parametro Brep oppure usare **Bake** dal menu del componente per creare solidi Rhino. Il bake funziona anche con preview spenta e conserva gli ID degli elementi. [Cast, bake e geometrie non convertibili](docs/PREVIEW.md#brep-e-bake-solido).
+
 `Run Model Cases and Combinations` esporta e risolve i casi/combinazioni selezionati e restituisce **lo stesso tipo Model, con risultati immutabili incorporati**. Sono disponibili anche i solver Model per frequenze naturali, buckling e statica non lineare. Gli strumenti di allineamento lavorano sugli assi locali di travi/piastre; i lettori Model coprono nodi, travi, piastre, solidi e link. `Model Verification Data` espone geometrie, proprietà, materiali, unità, sezioni native e risultati per il verificatore futuro. [Flusso e contratto dati](docs/MODEL-RESULTS.md).
 
 ## Installazione

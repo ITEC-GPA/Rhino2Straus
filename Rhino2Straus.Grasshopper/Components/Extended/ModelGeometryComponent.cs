@@ -23,8 +23,12 @@ namespace Rhino2Straus.Grasshopper.Components.Extended;
 
 public sealed class ModelGeometryComponent : SafeComponent
 {
-    public ModelGeometryComponent() : base("Model Physical Geometry", "Model Physical Geometry", "Model Physical Geometry", "Rhino2Straus", "13-Preview") { }
+    public ModelGeometryComponent() : base("Model Physical Geometry", "Model Physical Geometry", "Physical beam, plate and solid geometry with sections, offsets and thickness. Breps output contains closed volumes for Rhino bake.", "Rhino2Straus", "13-Preview") { }
     public override Guid ComponentGuid => new Guid("e42dd5d1-840b-5ce6-96dd-49ba371fdc07");
+    public override bool IsBakeCapable=>Params.Output[4].VolatileDataCount>0;
+    public override void BakeGeometry(RhinoDoc doc,List<Guid> ids)=>BakeGeometry(doc,null,ids);
+    public override void BakeGeometry(RhinoDoc doc,Rhino.DocObjects.ObjectAttributes attributes,List<Guid> ids)
+        =>PhysicalBrepOutput.Bake(this,doc,attributes,ids);
     protected override void RegisterInputParams(GH_InputParamManager p)
     {
         p.AddGenericParameter("Model", "Model", "Model", GH_ParamAccess.item);
@@ -35,10 +39,16 @@ public sealed class ModelGeometryComponent : SafeComponent
         p.AddMeshParameter("Plate solids", "Plate solids", "Plate solids", GH_ParamAccess.list);
         p.AddLineParameter("Centerlines", "Centerlines", "Centerlines", GH_ParamAccess.list);
         p.AddMeshParameter("Solids","Solids","Solid element skins",GH_ParamAccess.list);
+        p.AddBrepParameter("Breps","Breps",PhysicalBrepOutput.Description,GH_ParamAccess.tree);
+        ((IGH_PreviewObject)p[4]).Hidden=true; // Existing outputs already provide this component's preview.
+        p.AddTextParameter("Brep issues","Issues","Elements omitted from the closed Brep output and why",GH_ParamAccess.list);
     }
     protected override void Solve(IGH_DataAccess da)
     {
 
-        var p=new ModelPreview(Item<GH_Model>(da,0).Value);da.SetDataList(0,p.Beams);da.SetDataList(1,p.Plates);da.SetDataList(2,p.Lines);da.SetDataList(3,p.Solids);
+        var model=Item<GH_Model>(da,0).Value;
+        var p=new ModelPreview(model);da.SetDataList(0,p.Beams);da.SetDataList(1,p.Plates);da.SetDataList(2,p.Lines);da.SetDataList(3,p.Solids);
+        var breps=new ModelBrepGeometry(model);da.SetDataTree(4,PhysicalBrepOutput.Tree(breps));da.SetDataList(5,breps.Issues);
+        foreach(var issue in breps.Issues)AddRuntimeMessage(GH_RuntimeMessageLevel.Warning,issue);
     }
 }

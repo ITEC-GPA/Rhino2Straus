@@ -17,6 +17,7 @@ La copertura riguarda il flusso FEM strutturale fondamentale. Il binding contien
 | Analisi | Statica lineare con selezione casi/combinazioni e dipendenze, frequenze naturali, buckling lineare, non lineare statica non staged; flusso file oppure Model → Model con risultati |
 | Risultati | Model.Results immutabile: casi, nodi, travi, piastre, solidi, link, tensioni/deformazioni e azioni, proprietà native di sezione, frequenze/partecipazione, fattori di buckling, estremi con caso/posizione, provenienza e rilevamento risultati obsoleti |
 | Preview | Display Manager sul Model assemblato: geometria, sezioni/spessori fisici, carichi, offset, assi, etichette, proprietà, vincoli, svincoli, molle, masse, spostamenti imposti; interruttori per categoria e risultati, filtro casi, trasparenza, About e guida. Deformata e diagrammi trave nei componenti risultati |
+| Brep e bake | Cast dei singoli elementi e albero dei Brep fisici chiusi dal Model; travi anche cave/composte, piastre con spessore, Tet4/Wedge6/Hexa8. Bake dal menu Grasshopper con attributi, ID e Undo; indipendente dalla preview e dalle API Straus7 |
 
 [Gestione della preview](PREVIEW.md). [Sezioni R31, link, riferimenti SDK e default](SECTIONS-LINKS.md). [Flusso operativo e contratto per il verificatore](MODEL-RESULTS.md). Gli strumenti di allineamento coprono direzione, punto, piano di riferimento e Model assemblato.
 

@@ -95,6 +95,8 @@ namespace Rhino2Straus.Grasshopper.Datatype
 
         public override bool CastTo<Q>(out Q target)
         {
+            target=default;
+            if(Value==null)return false;
             if (typeof(Q) == typeof(GH_Curve))
             {
                 PolylineCurve pline = new PolylineCurve(Value.NodeList.Select(i => i.Position));
@@ -102,15 +104,7 @@ namespace Rhino2Straus.Grasshopper.Datatype
                 target = (Q)(object)new GH_Curve(pline);
                 return true;
             }
-            else if (typeof(Q) == typeof(GH_Brep))
-            {
-                if(Value.Brep==null)Value.BuildBrep();
-                target = (Q)(object)new GH_Brep(Value.Brep);
-                return true;
-            }
-
-            target = default(Q);
-            return false;
+            return BrepCast.Try(()=>new[]{ModelBrepGeometry.Plate(Value)},out target);
         }
 
         #endregion

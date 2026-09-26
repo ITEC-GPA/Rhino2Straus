@@ -129,6 +129,7 @@ internal static class Program
         if(previewGallery)PreviewGallery.Save(displayModel,"docs/preview-gallery.png");
         Check(displayScene.Bounds.Contains(marks.First(m=>m.Symbol==PreviewSymbol.Arrow).Point)&&ModelFingerprint.Compute(displayModel)==displayHash,"Preview bounds include symbols without changing analysis identity");
         bool unknownCase=false;try{new ModelAnnotations(displayModel,allDisplay,new[]{"missing"});}catch(ArgumentException){unknownCase=true;}Check(unknownCase,"Unknown preview load case fails explicitly");
+        BrepSmoke.Geometry(Check,plate,displayModel);
         Console.WriteLine($"{passed} geometry checks passed.");
         var directory=new DirectoryInfo(Environment.CurrentDirectory);
         while(directory!=null&&!File.Exists(Path.Combine(directory.FullName,"Rhino2Straus.sln")))
@@ -222,6 +223,10 @@ internal static class Program
         enabledInput.ExpireSolution(false);displayManager.ExpireSolution(false);displayManager.CollectData();displayManager.ComputeData();
         Check(displayManager.Params.Output[0].VolatileData.AllData(true).OfType<GH_String>().Single().Value.Contains("OFF")&&!PreviewPolicy.AutomaticVisible(managedDocument),"Turning manager off keeps upstream previews suppressed");
         Check(!PreviewPolicy.ComponentVisible(sampleResult),"Master-off also hides result geometry components");
+        BrepSmoke.Grasshopper(Check,displayManager,displayModel);
+        var physicalGeometry=SolveDefaults("ModelGeometryComponent",c=>((Param_GenericObject)c.Params.Input[0]).PersistentData.Append(new GH_Model(displayModel)));
+        Check(physicalGeometry.Params.Output[0].VolatileDataCount==1&&physicalGeometry.Params.Output[1].VolatileDataCount==1&&physicalGeometry.Params.Output[3].VolatileDataCount==1&&physicalGeometry.Params.Output[4].VolatileDataCount==3,"Physical Geometry retains its legacy outputs and adds the complete Brep tree");
+        BrepSmoke.Bake(Check,physicalGeometry);
         var menu=new ContextMenuStrip();
         var append=displayManager.GetType().GetMethod("AppendAdditionalComponentMenuItems",BindingFlags.NonPublic|BindingFlags.Instance);append.Invoke(displayManager,new object[]{menu});
         Check(menu.Items.Cast<ToolStripItem>().Any(item=>item.Text=="About Rhino2Straus")&&menu.Items.Cast<ToolStripItem>().Any(item=>item.Text=="Guide / helper"),"Manager exposes About and Guide menus");

@@ -9,6 +9,7 @@ using Grasshopper.Kernel.Parameters;
 using Grasshopper.Kernel.Types;
 using Rhino.Display;
 using Rhino.Geometry;
+using Rhino2Straus.Core.Helper;
 using Rhino2Straus.Core.Settings;
 using Rhino2Straus.Grasshopper.Datatype;
 
@@ -23,6 +24,10 @@ public sealed class PreviewModelComponent : SafeComponent, IPreviewController
     public PreviewModelComponent():base("Rhino2Straus Display Manager","Rhino2Straus","Central preview controller: sections, loads and attributes. Right-click for visibility categories, About and Guide. Keeps the analysis Model unchanged.","Rhino2Straus","13-Preview") { }
     public override Guid ComponentGuid=>new("5b506764-d527-4b1c-81da-910a202b9603");
     public override bool IsPreviewCapable=>true;
+    public override bool IsBakeCapable=>Params.Output[4].VolatileDataCount>0;
+    public override void BakeGeometry(Rhino.RhinoDoc doc,List<Guid> ids)=>BakeGeometry(doc,null,ids);
+    public override void BakeGeometry(Rhino.RhinoDoc doc,Rhino.DocObjects.ObjectAttributes attributes,List<Guid> ids)
+        =>PhysicalBrepOutput.Bake(this,doc,attributes,ids);
     public override BoundingBox ClippingBox=>preview?.Bounds??BoundingBox.Empty;
     public bool ManagesDocumentPreview=>manageAutomatic&&(Params.Input[0].SourceCount>0||Params.Input[0].VolatileDataCount>0);
     public bool AllowsResultPreview=>!Hidden&&!Locked&&preview?.Settings.Shows(PreviewLayer.Results)==true;
@@ -47,6 +52,9 @@ public sealed class PreviewModelComponent : SafeComponent, IPreviewController
         p.AddTextParameter("Available cases","Cases","Names accepted by the case filter",GH_ParamAccess.list);
         p.AddGenericParameter("Settings","Settings","Effective display-only settings",GH_ParamAccess.item);
         p.AddTextParameter("Legend","Legend","Symbol and color guide",GH_ParamAccess.list);
+        p.AddBrepParameter("Breps","Breps",PhysicalBrepOutput.Description,GH_ParamAccess.tree);
+        ((IGH_PreviewObject)p[4]).Hidden=true; // The manager draws the scene; geometry remains available for casting/baking.
+        p.AddTextParameter("Brep issues","Issues","Elements omitted from the closed Brep output and why",GH_ParamAccess.list);
     }
     protected override void BeforeSolveInstance(){preview=null;base.BeforeSolveInstance();}
     protected override void Solve(IGH_DataAccess da)
@@ -66,6 +74,9 @@ public sealed class PreviewModelComponent : SafeComponent, IPreviewController
         da.SetData(0,$"Rhino2Straus: {(settings.Enabled?"ON":"OFF")}; {preview.Annotations.Marks.Count} symbols; automatic previews {(manageAutomatic?"managed":"independent")}");
         da.SetDataList(1,model.Value.LoadCases.Keys);da.SetData(2,settings);
         da.SetDataList(3,new[]{"Geometry: chosen color. Loads: orange. Attributes: magenta.","Axes: 1 red / 2 green / 3 blue. Curved arrows: right-hand moments.","Support triangles: fixed translation; circles at support: fixed rotation. Rings: beam releases.","Zigzags: springs; circles on stems: masses. Diamonds/text: temperature or preload.","Arrows show direction; scale is visual and capped. Labels retain applied values and units."});
+        var breps=new ModelBrepGeometry(model.Value);
+        da.SetDataTree(4,PhysicalBrepOutput.Tree(breps));da.SetDataList(5,breps.Issues);
+        foreach(var issue in breps.Issues)AddRuntimeMessage(GH_RuntimeMessageLevel.Warning,issue);
     }
     public override void DrawViewportWires(IGH_PreviewArgs args)
     {if(!Hidden&&!Locked&&preview!=null)preview.DrawWires(args.Display,Attributes.Selected?Color.LimeGreen:color);}
@@ -95,7 +106,7 @@ public sealed class PreviewModelComponent : SafeComponent, IPreviewController
             },true,visible);
         }
         Menu_AppendItem(menu,"About Rhino2Straus",(_,_)=>MessageBox.Show("Rhino2Straus "+GetType().Assembly.GetName().Version+"\nRhino 8 / Grasshopper → Straus7 R3.\nOne unified Model for geometry, properties, loads, analysis and results.\n\nDisplay Manager controls geometry, sections, loads and attributes without changing the analysis model.\nPreview and icons do not require access to Straus7.","Rhino2Straus | About",MessageBoxButtons.OK,MessageBoxIcon.Information));
-        Menu_AppendItem(menu,"Guide / helper",(_,_)=>MessageBox.Show("1. Connect Build Model or Merge Straus Models to Model.\n2. Use Enabled to turn the complete managed preview off.\n3. Connect Display Settings for per-category switches, shading, transparency and scales. A connected Settings input has priority over menu categories and legacy display inputs.\n4. Filter exact Load case names from Available cases; empty means all input cases, not combinations.\n5. Sections include offsets; generic sections need a supplied profile.\n\nManage previews suppresses other Rhino2Straus previews in this document without changing their Hidden flags. Remove the manager or set Manage previews=false to restore them. Hiding the manager keeps its automatic previews suppressed.\nOther plugins and Rhino geometry are independent. Use the Results category to enable the preview of result diagrams and deformed geometry components.\n\nArrows are scaled symbols, not solver results. See the Legend output and docs/PREVIEW.md.","Rhino2Straus | Guide",MessageBoxButtons.OK,MessageBoxIcon.Information));
+        Menu_AppendItem(menu,"Guide / helper",(_,_)=>MessageBox.Show("1. Connect Build Model or Merge Straus Models to Model.\n2. Use Enabled to turn the complete managed preview off.\n3. Connect Display Settings for per-category switches, shading, transparency and scales. A connected Settings input has priority over menu categories and legacy display inputs.\n4. Filter exact Load case names from Available cases; empty means all input cases, not combinations.\n5. Sections include offsets; generic sections need a supplied profile.\n6. Connect Breps to a Brep parameter, or use the component Bake menu to create closed Rhino solids. Brep issues lists excluded elements; bake works with display OFF.\n\nManage previews suppresses other Rhino2Straus previews in this document without changing their Hidden flags. Remove the manager or set Manage previews=false to restore them. Hiding the manager keeps its automatic previews suppressed.\nOther plugins and Rhino geometry are independent. Use the Results category to enable the preview of result diagrams and deformed geometry components.\n\nArrows are scaled symbols, not solver results. See the Legend output and docs/PREVIEW.md.","Rhino2Straus | Guide",MessageBoxButtons.OK,MessageBoxIcon.Information));
     }
     public override bool Write(GH_IWriter writer)
     {writer.SetBoolean("DisplayEnabled",menuEnabled);writer.SetInt32("DisplayLayers",(int)menuLayers);return base.Write(writer);}

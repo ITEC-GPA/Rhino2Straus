@@ -19,14 +19,19 @@ public static class PreviewGeometry
         var shift = principal1 * offset.X + principal2 * offset.Y;
         foreach (var profile in beam.FrameSection.Breps)
         {
-            var face = profile.DuplicateBrep();
+            using var face = profile.DuplicateBrep();
             face.Transform(transform); face.Translate(shift);
-            var path = new LineCurve(beam.NodeStart.Position + shift, beam.NodeEnd.Position + shift);
-            var solid = face.Faces[0].CreateExtrusion(path, true);
-            if (solid != null)
+            using var path = new LineCurve(beam.NodeStart.Position + shift, beam.NodeEnd.Position + shift);
+            foreach(var sectionFace in face.Faces)
             {
-                if(solid.SolidOrientation==BrepSolidOrientation.Inward)solid.Flip();
-                result.Add(solid);
+                // Rhino's cap operation must receive an isolated face for multipart profiles.
+                using var singleFace=sectionFace.DuplicateFace(false);
+                var solid = singleFace.Faces[0].CreateExtrusion(path, true);
+                if (solid != null)
+                {
+                    if(solid.SolidOrientation==BrepSolidOrientation.Inward)solid.Flip();
+                    result.Add(solid);
+                }
             }
         }
         return result;
@@ -35,6 +40,7 @@ public static class PreviewGeometry
     public static Mesh Plate(AreaElementModel plate, bool thickness = true)
     {
         var mesh = new Mesh();
+        mesh.Vertices.UseDoublePrecisionVertices=true;
         if (plate.NodeList == null || (plate.NodeList.Count != 3 && plate.NodeList.Count != 4)) return mesh;
         plate.GetLocalAxes(out _, out _, out var normal);
         double offset = plate.Offset + (plate.AreaThickness?.Offset ?? 0);
