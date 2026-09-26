@@ -7,10 +7,10 @@ La copertura riguarda il flusso FEM strutturale fondamentale. Il binding contien
 | Sessioni e file | Caricamento DLL x64, sessioni serializzate e chiuse, errori API, export atomico, import geometrico |
 | Modello | Unità, saldatura nodi, ID, raccolta casi/proprietà, merge di Model, validazione |
 | Nodi | Coordinate, vincoli 6 DOF, spostamenti imposti, forze/momenti, molle, masse, temperatura |
-| Travi | Beam/Truss/Cable, sezioni rettangolari/circolari/tubolari/I/T/L/C/RHS, generiche e BXS, angolo, offset, inserimento, svincoli agli estremi |
+| Travi | Beam/Truss/Cable, sezioni tutte le tipologie standard R31, sei famiglie BGL, generiche numeriche e BXS, angolo, offset, inserimento, svincoli agli estremi |
 | Piastre | Tri3/Quad4, spessore membranale/flessionale, offset, angolo; PlateShell/Membrane/ShearPanel/PlaneStress/PlaneStrain/Axisymmetric/LoadPatch |
 | Solidi | Tet4/Wedge6/Hexa8, materiale isotropo, pressione normale per faccia; preview chiusa |
-| Collegamenti | Link rigidi XYZ; connection beam con 6 rigidezze globali |
+| Collegamenti | Rigidi XYZ/XY/YZ/ZX, pinned, master-slave, simmetria settoriale; connection beam con 6 rigidezze globali |
 | Materiali | Isotropi elastici, librerie acciaio/calcestruzzo, proprietà termiche e smorzamento |
 | Carichi | Nodi, distribuiti e concentrati trave, pressioni locali/globali/bordo piastra, gradienti termici, pretensioni/predeformazioni, peso proprio, combinazioni LSA |
 | Organizzazione | Gruppi gerarchici, filtri, decompose e informazioni su oggetti |
@@ -18,13 +18,13 @@ La copertura riguarda il flusso FEM strutturale fondamentale. Il binding contien
 | Risultati | Model.Results immutabile: casi, nodi, travi, piastre, solidi, link, tensioni/deformazioni e azioni, proprietà native di sezione, frequenze/partecipazione, fattori di buckling, estremi con caso/posizione, provenienza e rilevamento risultati obsoleti |
 | Preview | Modello assemblato, sezioni/spessori fisici, offset, assi, etichette, vincoli, geometria decomposta, deformata e diagrammi trave |
 
-[Flusso operativo e contratto per il verificatore](MODEL-RESULTS.md). Gli strumenti di allineamento coprono direzione, punto, piano di riferimento e Model assemblato.
+[Sezioni R31, link, riferimenti SDK e default](SECTIONS-LINKS.md). [Flusso operativo e contratto per il verificatore](MODEL-RESULTS.md). Gli strumenti di allineamento coprono direzione, punto, piano di riferimento e Model assemblato.
 
 ## Limiti espliciti
 
 - Import `.st7` di **geometria e identificativi**: non è un roundtrip completo di proprietà, vincoli e carichi. Gli elementi quadratici non vengono convertiti in elementi lineari in modo implicito.
 - La preview offline delle sezioni standard calcola area e inerzie geometriche. J e aree di taglio vengono calcolati da Straus7 durante l'export; per leggerli prima si può usare una sezione BXS. La sezione generica può ricevere un profilo XY destinato alla preview, con rigidezze esplicitamente fornite.
-- I tipi standard C e RHS dell'API richiedono flange simmetriche. Gli input asimmetrici non vengono esportati come una sezione differente: usare BXS oppure proprietà generiche calibrate. Anche i raccordi delle sezioni I richiedono BXS.
+- I tipi standard C e RHS dell'API richiedono flange simmetriche. Gli input asimmetrici non vengono esportati come una sezione differente: usare BXS oppure proprietà generiche calibrate. Per i raccordi sono disponibili i componenti BGL oppure BXS.
 - Un solo freedom case, numero 1. Le molle, gli spostamenti imposti e i link fanno riferimento a questo caso. Coordinate dei vincoli e delle connection globali; UCS arbitrari non esposti.
 - La saldatura per tolleranza unisce i nodi coincidenti: collegamenti a lunghezza zero con nodi volutamente duplicati non sono supportati in Build Model.
 - Una sola definizione di peso proprio per Model. I Model con definizioni incompatibili non si uniscono automaticamente.

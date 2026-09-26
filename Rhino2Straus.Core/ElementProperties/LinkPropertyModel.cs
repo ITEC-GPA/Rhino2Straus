@@ -9,9 +9,14 @@ namespace Rhino2Straus.Core.ElementProperties
         {
             RIGID,
             GEN,
+            PINNED,
+            MASTER_SLAVE,
+            SECTOR_SYMMETRY,
         }
 
         public LinkPropertyTypes Type { get; set; }
+        public LinkConstraintOptions Options { get; set; } = new();
+        public bool IsNativeLink => Type != LinkPropertyTypes.GEN;
 
         public double Kx { get; set; }
 
@@ -49,6 +54,7 @@ namespace Rhino2Straus.Core.ElementProperties
             : base(framePropertyModel.Id, framePropertyModel.Name)
         {
             Type = framePropertyModel.Type;
+            Options = framePropertyModel.Options.Copy();
             Kx = framePropertyModel.Kx;
             Ky = framePropertyModel.Ky;
             Kz = framePropertyModel.Kz;

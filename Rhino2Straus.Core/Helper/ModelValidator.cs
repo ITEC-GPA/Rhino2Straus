@@ -62,6 +62,12 @@ public static class ModelValidator
             if (beam.FrameSection != null) Error(beam.FrameSection.SectionArea <= 0 || Bad(beam.FrameSection.SectionArea), $"Beam {beam.Id}: section area must be positive.");
             if(beam.FrameSection is { } section)
             {
+                if(section.NativeDefinition is { } native)
+                {
+                    try { native.Validate(); } catch(Exception error) { v.Errors.Add($"Beam {beam.Id}: {error.Message}"); }
+                    Error(native.LengthUnit!=model.ModelUnits.LengthUnit,$"Beam {beam.Id}: native section has different length units; regenerate it using model units.");
+                    Error(section.BxsData!=null,$"Beam {beam.Id}: native and BXS section definitions are mutually exclusive.");
+                }
                 Error(section.SectionGeometryType==FrameSectionModel.SectionGeometryTypes.B&&section.Dimension4!=section.Dimension5,$"Beam {beam.Id}: Straus7 standard RHS requires equal top/bottom thickness. Use a BXS or calibrated generic section for asymmetric RHS.");
                 Error(section.SectionGeometryType==FrameSectionModel.SectionGeometryTypes.C&&(section.Dimension2!=section.Dimension5||section.Dimension4!=section.Dimension6),$"Beam {beam.Id}: Straus7 standard channel requires equal flanges. Use a BXS or calibrated generic section for asymmetric channels.");
                 Error(section.SectionGeometryType==FrameSectionModel.SectionGeometryTypes.H&&section.Dimension7!=0,$"Beam {beam.Id}: fillet radius requires a BXS section; standard API I-sections use sharp corners.");
@@ -125,6 +131,12 @@ public static class ModelValidator
         {
             Error(link.LinkProperty == null || !Enum.IsDefined(link.LinkProperty.Type), $"Link {link.Id}: missing or invalid property.");
             var p=link.LinkProperty;
+            if(p!=null)
+            {
+                try { p.Options.Validate(); } catch(Exception error) { v.Errors.Add($"Link {link.Id}: {error.Message}"); }
+                Error(p.Type==LinkPropertyModel.LinkPropertyTypes.MASTER_SLAVE&&p.Options.Dofs?.All(x=>x==0)==true,$"Link {link.Id}: master-slave has no constrained DoF.");
+                if(p.Type==LinkPropertyModel.LinkPropertyTypes.GEN&&new[]{p.Kx,p.Ky,p.Kz,p.Rx,p.Ry,p.Rz}.All(x=>x==0)) v.Warnings.Add($"Link {link.Id}: elastic connection has zero stiffness in every DoF.");
+            }
             if(p!=null)Error(new[]{p.Kx,p.Ky,p.Kz,p.Rx,p.Ry,p.Rz}.Any(x=>Bad(x)||x<0), $"Link {link.Id}: stiffness must be finite and nonnegative.");
             Error(link.NodeStart==null||link.NodeEnd==null||ReferenceEquals(link.NodeStart,link.NodeEnd),$"Link {link.Id}: needs two distinct model nodes.");
         }

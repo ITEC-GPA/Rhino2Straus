@@ -28,8 +28,8 @@ public sealed class NodeSpringComponent : SafeComponent
     protected override void RegisterInputParams(GH_InputParamManager p)
     {
         p.AddGenericParameter("Node", "Node", "Node", GH_ParamAccess.item);
-        p.AddVectorParameter("Translation", "Translation", "XYZ stiffnesses in force/length", GH_ParamAccess.item);
-        p.AddVectorParameter("Rotation", "Rotation", "XYZ rotational stiffnesses in moment/radian", GH_ParamAccess.item);
+        p.AddVectorParameter("Translation", "Translation", "XYZ stiffnesses in force/length", GH_ParamAccess.item, Vector3d.Zero);
+        p.AddVectorParameter("Rotation", "Rotation", "XYZ rotational stiffnesses in moment/radian", GH_ParamAccess.item, Vector3d.Zero);
     }
     protected override void RegisterOutputParams(GH_OutputParamManager p)
     {

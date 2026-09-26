@@ -19,12 +19,12 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.ElementProperties
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
             pManager.AddTextParameter("Name", "Name", "Name", GH_ParamAccess.item, "");
-            pManager.AddNumberParameter("Height", "Height", "Height", GH_ParamAccess.item);
-            pManager.AddNumberParameter("Width top flange", "Width top flange", "Width top flange", GH_ParamAccess.item);
-            pManager.AddNumberParameter("Thickness top flange", "Thickness top flange", "Thickness top flange", GH_ParamAccess.item);
-            pManager.AddNumberParameter("Width bottom flange", "Width bottom flange", "Width bottom flange", GH_ParamAccess.item);
-            pManager.AddNumberParameter("Thickness bottom flange", "Thickness", "Thickness", GH_ParamAccess.item);
-            pManager.AddNumberParameter("Thickness web", "Thickness web", "Thickness web", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Height", "Height", "Height", GH_ParamAccess.item, 0.3);
+            pManager.AddNumberParameter("Width top flange", "Width top flange", "Width top flange", GH_ParamAccess.item, 0.2);
+            pManager.AddNumberParameter("Thickness top flange", "Thickness top flange", "Thickness top flange", GH_ParamAccess.item, 0.01);
+            pManager.AddNumberParameter("Width bottom flange", "Width bottom flange", "Width bottom flange", GH_ParamAccess.item, 0.2);
+            pManager.AddNumberParameter("Thickness bottom flange", "Thickness", "Thickness", GH_ParamAccess.item, 0.01);
+            pManager.AddNumberParameter("Thickness web", "Thickness web", "Thickness web", GH_ParamAccess.item, 0.01);
             pManager.AddNumberParameter("Radius inner", "Radius inner", "Radius inner", GH_ParamAccess.item, 0.0);
         }
 

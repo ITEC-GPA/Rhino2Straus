@@ -17,7 +17,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Attributes
 
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
-            pManager.AddIntegerParameter("Type", "Type", "Rigid/Elastic", GH_ParamAccess.item, 5);
+            pManager.AddIntegerParameter("Type", "Type", "0=Rigid, 1=Elastic connection, 2=Pinned, 3=Master-slave, 4=Sector symmetry", GH_ParamAccess.item, 0);
             foreach (LinkPropertyModel.LinkPropertyTypes v in Enum.GetValues(typeof(LinkPropertyModel.LinkPropertyTypes)))
                 ((Param_Integer)pManager[pManager.ParamCount - 1]).AddNamedValue(v.GetDescription(), (int)v);
             pManager.AddNumberParameter("Kx", "Kx", "Kx", GH_ParamAccess.item, 0);
@@ -26,6 +26,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Attributes
             pManager.AddNumberParameter("Rx", "Rx", "Rx", GH_ParamAccess.item, 0);
             pManager.AddNumberParameter("Ry", "Ry", "Ry", GH_ParamAccess.item, 0);
             pManager.AddNumberParameter("Rz", "Rz", "Rz", GH_ParamAccess.item, 0);
+            pManager.AddGenericParameter("Options","Options","Link Constraint Options, optional; all axes global XYZ",GH_ParamAccess.item);pManager[7].Optional=true;
         }
 
         protected override void RegisterOutputParams(GH_OutputParamManager pManager)
@@ -49,6 +50,9 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Attributes
             if (DA.GetData(1, ref dx) && DA.GetData(2, ref dy) && DA.GetData(3, ref dz) && DA.GetData(4, ref mx) && DA.GetData(5, ref my) && DA.GetData(6, ref mz))
             {
                 LinkPropertyModel linkProperty = new LinkPropertyModel((LinkPropertyModel.LinkPropertyTypes)type, dx, dy, dz, mx, my, mz);
+                if(!Enum.IsDefined(linkProperty.Type))throw new ArgumentException("Unsupported link type.");
+                foreach(double stiffness in new[]{dx,dy,dz,mx,my,mz})if(!double.IsFinite(stiffness)||stiffness<0)throw new ArgumentException("Link stiffness must be finite and nonnegative.");
+                LinkConstraintOptions options=null;DA.GetData(7,ref options);linkProperty.Options=(options??new()).Copy();linkProperty.Options.Validate();
                 DA.SetData(0, new GH_LinkProperty(linkProperty));
             }
         }

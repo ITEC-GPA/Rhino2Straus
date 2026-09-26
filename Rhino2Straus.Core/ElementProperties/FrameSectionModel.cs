@@ -73,6 +73,7 @@ namespace Rhino2Straus.Core.ElementProperties
         public double CompositeData5 { get; set; }
 
         public byte[] BxsData { get; set; }
+        public NativeSectionDefinition NativeDefinition { get; set; }
         public Rhino2Straus.Core.Settings.ModelUnitsModel.LengthUnitTypes BxsLengthUnit { get; set; }
         public double SectionArea { get; set; }
         public double Ixx { get; set; }
@@ -128,6 +129,7 @@ namespace Rhino2Straus.Core.ElementProperties
         {
             BxsData=framePropertyModel.BxsData==null?null:(byte[])framePropertyModel.BxsData.Clone();BxsLengthUnit=framePropertyModel.BxsLengthUnit;
             Type = framePropertyModel.Type;
+            NativeDefinition = framePropertyModel.NativeDefinition?.Copy();
             SectionGeometryType = framePropertyModel.SectionGeometryType;
             Offset = framePropertyModel.Offset;
             Dimension1 = framePropertyModel.Dimension1;
@@ -158,7 +160,7 @@ namespace Rhino2Straus.Core.ElementProperties
             CompositeData5 = framePropertyModel.CompositeData5;
             Angle = framePropertyModel.Angle;
             Centroid = framePropertyModel.Centroid;
-            Breps = framePropertyModel.Breps;
+            Breps = framePropertyModel.Breps?.Select(b => b.DuplicateBrep()).ToList();
         }
 
         public override bool Equals(object obj)
@@ -171,6 +173,8 @@ namespace Rhino2Straus.Core.ElementProperties
             return !(other is null) &&
                    base.Equals(other) &&
                    Name == other.Name &&
+                   Equals(NativeDefinition, other.NativeDefinition) &&
+                   Centroid == other.Centroid &&
                    SectionGeometryType == other.SectionGeometryType &&
                    Type == other.Type &&
                    Offset == other.Offset &&
@@ -219,6 +223,22 @@ namespace Rhino2Straus.Core.ElementProperties
 
         public void CreateShapesAndCalculate()
         {
+            if(Type==Types.DBUSER && SectionGeometryType!=SectionGeometryTypes.Generic)
+            {
+                var dims=new[]{Dimension1,Dimension2,Dimension3,Dimension4,Dimension5,Dimension6,Dimension7};
+                if(dims.Any(x=>!double.IsFinite(x)||x<0)||Dimension1<=0)throw new ArgumentException("Section dimensions must be finite and nonnegative, with positive overall dimensions.");
+                bool valid=SectionGeometryType switch
+                {
+                    SectionGeometryTypes.SR=>true,
+                    SectionGeometryTypes.P=>Dimension2>0 && 2*Dimension2<Dimension1,
+                    SectionGeometryTypes.SB=>Dimension2>0,
+                    SectionGeometryTypes.B=>Dimension3>0&&Dimension4>0&&Dimension5>0&&Dimension1>Dimension4+Dimension5&&Dimension2>2*Dimension3,
+                    SectionGeometryTypes.H or SectionGeometryTypes.C=>Dimension3>0&&Dimension4>0&&Dimension6>0&&Dimension1>Dimension4+Dimension6&&Dimension2>Dimension3&&Dimension5>Dimension3,
+                    SectionGeometryTypes.L or SectionGeometryTypes.T=>Dimension3>0&&Dimension4>0&&Dimension1>Dimension4&&Dimension2>Dimension3,
+                    _=>false
+                };
+                if(!valid)throw new ArgumentException("Invalid section dimensions: thicknesses must be positive and leave an open interior between flanges/webs.");
+            }
             List<Brep> main_surfaces = new List<Brep>();
             double tol = Math.Max(1e-10,Math.Max(Math.Abs(Dimension1),Math.Abs(Dimension2))*1e-8);
 

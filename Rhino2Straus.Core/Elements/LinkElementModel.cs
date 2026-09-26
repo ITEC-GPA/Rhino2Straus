@@ -28,9 +28,9 @@ namespace Rhino2Straus.Core.Elements
         public LinkElementModel(LinkElementModel linkElementModel)
             : base(linkElementModel)
         {
-            NodeStart = linkElementModel.NodeStart;
-            NodeEnd = linkElementModel.NodeEnd;
-            LinkProperty = linkElementModel.LinkProperty;
+            NodeStart = linkElementModel.NodeStart == null ? null : new NodeElementModel(linkElementModel.NodeStart);
+            NodeEnd = linkElementModel.NodeEnd == null ? null : new NodeElementModel(linkElementModel.NodeEnd);
+            LinkProperty = linkElementModel.LinkProperty == null ? null : new LinkPropertyModel(linkElementModel.LinkProperty);
         }
 
         public void DrawWireframe(DisplayPipeline display, RhinoViewport viewport, Color color)

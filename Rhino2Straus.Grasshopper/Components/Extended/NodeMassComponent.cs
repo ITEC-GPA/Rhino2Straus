@@ -58,9 +58,9 @@ public sealed class NodeMassComponent : SafeComponent
 
         p.AddGenericParameter("Node", "Node", "Node", GH_ParamAccess.item);
 
-        p.AddVectorParameter("Translation", "Translation", "XYZ masses in tonnes", GH_ParamAccess.item);
+        p.AddVectorParameter("Translation", "Translation", "XYZ masses in tonnes", GH_ParamAccess.item, Vector3d.Zero);
 
-        p.AddVectorParameter("Rotation", "Rotation", "XYZ inertias in tonne·length²", GH_ParamAccess.item);
+        p.AddVectorParameter("Rotation", "Rotation", "XYZ inertias in tonne·length²", GH_ParamAccess.item, Vector3d.Zero);
 
     }
 

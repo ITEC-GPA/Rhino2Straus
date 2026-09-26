@@ -32,8 +32,8 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Loads
             Param_Integer dir_param = (Param_Integer)pManager[5];
             dir_param.AddNamedValue("Local", 0);
             dir_param.AddNamedValue("Global", 1);
-            pManager.AddNumberParameter("Load at start", "Load at start", "Load at start", GH_ParamAccess.item);
-            pManager.AddNumberParameter("Load at end", "Load at end", "Load at end", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Load at start", "Load at start", "Load at start", GH_ParamAccess.item, 0.0);
+            pManager.AddNumberParameter("Load at end", "Load at end", "Load at end", GH_ParamAccess.item, 0.0);
             pManager.AddNumberParameter("Location relative start", "Location relative start", "Location relative start", GH_ParamAccess.item, 0.0);
             pManager.AddNumberParameter("Location relative end", "Location relative end", "Location relative end", GH_ParamAccess.item, 1.0);
         }

@@ -28,7 +28,7 @@ public sealed class AlignPlateToPlaneComponent : SafeComponent
     protected override void RegisterInputParams(GH_InputParamManager p)
     {
         p.AddGenericParameter("Plate", "Plate", "Plate", GH_ParamAccess.item);
-        p.AddPlaneParameter("Reference", "Reference", "Reference", GH_ParamAccess.item);
+        p.AddPlaneParameter("Reference", "Reference", "Reference", GH_ParamAccess.item, Plane.WorldXY);
         p.AddIntegerParameter("Axis", "Axis", "Axis", GH_ParamAccess.item, 1);
     }
     protected override void RegisterOutputParams(GH_OutputParamManager p)

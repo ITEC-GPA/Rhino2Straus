@@ -18,15 +18,15 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.ElementProperties
 
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("Name", "Name", "Name", GH_ParamAccess.item, "");
-            pManager.AddNumberParameter("Area", "A", "Cross-sectional area in model length squared", GH_ParamAccess.item, 0.0);
-            pManager.AddNumberParameter("I11", "I11", "Principal second moment, model length to the fourth", GH_ParamAccess.item, 0.0);
-            pManager.AddNumberParameter("I22", "I22", "Principal second moment, model length to the fourth", GH_ParamAccess.item, 0.0);
-            pManager.AddNumberParameter("J", "J", "Torsion constant, model length to the fourth", GH_ParamAccess.item, 0.0);
+            pManager.AddTextParameter("Name", "Name", "Name", GH_ParamAccess.item, "Generic");
+            pManager.AddNumberParameter("Area", "A", "Cross-sectional area in model length squared", GH_ParamAccess.item, 0.01);
+            pManager.AddNumberParameter("I11", "I11", "Principal second moment, model length to the fourth", GH_ParamAccess.item, 8.333333333333334e-6);
+            pManager.AddNumberParameter("I22", "I22", "Principal second moment, model length to the fourth", GH_ParamAccess.item, 8.333333333333334e-6);
+            pManager.AddNumberParameter("J", "J", "Torsion constant, model length to the fourth", GH_ParamAccess.item, 1.406e-5);
             pManager.AddNumberParameter("Shear L1", "Shear L1", "Shear L1", GH_ParamAccess.item, 0.0);
             pManager.AddNumberParameter("Shear L2", "Shear L2", "Shear L2", GH_ParamAccess.item, 0.0);
-            pManager.AddNumberParameter("Shear A1", "Shear A1", "Shear A1", GH_ParamAccess.item, 0.0);
-            pManager.AddNumberParameter("Shear A2", "Shear A2", "Shear A2", GH_ParamAccess.item, 0.0);
+            pManager.AddNumberParameter("Shear A1", "Shear A1", "Shear A1", GH_ParamAccess.item, 0.008333333333333333);
+            pManager.AddNumberParameter("Shear A2", "Shear A2", "Shear A2", GH_ParamAccess.item, 0.008333333333333333);
             pManager.AddNumberParameter("Centroid x", "Centroid x", "Centroid x", GH_ParamAccess.item, 0.0);
             pManager.AddNumberParameter("Centroid y", "Centroid y", "Centroid y", GH_ParamAccess.item, 0.0);
             pManager.AddNumberParameter("Angle", "Angle", "Principal axis 1 angle in radians relative to section X", GH_ParamAccess.item, 0.0);
@@ -56,6 +56,10 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.ElementProperties
             if (DA.GetData(0, ref name) && DA.GetData(1, ref area) && DA.GetData(2, ref j11) && DA.GetData(3, ref j22) && DA.GetData(4, ref J) && DA.GetData(5, ref shearL1) && DA.GetData(6, ref shearL2)
                 && DA.GetData(7, ref shearA1) && DA.GetData(8, ref shearA2) && DA.GetData(9, ref centroidX) && DA.GetData(10, ref CentroidY) && DA.GetData(11, ref angle))
             {
+                foreach(double value in new[]{area,j11,j22,J,shearL1,shearL2,shearA1,shearA2,centroidX,CentroidY,angle})
+                    if(!double.IsFinite(value))throw new ArgumentException("Generic section data must be finite.");
+                if(area<=0||j11<0||j22<0||J<0||shearL1<0||shearL2<0||shearA1<0||shearA2<0)
+                    throw new ArgumentException("Area must be positive; inertia, torsion and shear values nonnegative.");
                 FrameSectionModel frameProperty = new FrameSectionModel(name, FrameSectionModel.SectionGeometryTypes.Generic, FrameSectionModel.Types.DBUSER, FrameSectionModel.OffsetTypes.CC)
                 {
                     SectionArea = area,

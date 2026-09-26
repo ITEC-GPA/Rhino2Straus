@@ -148,6 +148,48 @@ Test("Load case graph is canonical and copy retains IDs with mixed automatic nod
 });
 Test("Integrated nonstatic solver options validate before export",()=>{Throws(()=>ModelAnalysisService.RunModal(Cantilever(),"unused.st7",false,0));Throws(()=>ModelAnalysisService.RunNonlinear(Cantilever(),"unused.st7",false,"Missing"));Throws(()=>ModelAnalysisService.RunNonlinear(Cantilever(),"unused.st7",false,"Tip load",10001));});
 
+
+Test("Every added shape has a valid complete R31 parameter array",()=>{
+    Assert(NativeSectionCatalog.All.Count==15&&NativeSectionCatalog.All.Count(s=>s.IsBgl)==6);
+    foreach(var spec in NativeSectionCatalog.All){var d=new NativeSectionDefinition{IsBgl=spec.IsBgl,Shape=spec.Shape,Dimensions=spec.DefaultDimensions()};d.Validate();Assert(spec.Parameters.Select(p=>p.Index).Distinct().Count()==spec.Parameters.Length);}
+});
+Test("Native section copies isolate dimensions, units and meshing options",()=>{
+    var a=new FrameSectionModel(section){NativeDefinition=new(){IsBgl=true,Shape=St7.bgISection,Dimensions=NativeSectionCatalog.BglI.DefaultDimensions()}};
+    var b=new FrameSectionModel(a);b.NativeDefinition.Dimensions[12]=8;b.NativeDefinition.Options.Divisions=40;
+    Near(a.NativeDefinition.Dimensions[12],0);Assert(a.NativeDefinition.Options.Divisions==24&&!a.Equals(b));
+});
+Test("Native section metadata survives Model copy and affects result identity",()=>{
+    var m=Cantilever();var sec=m.FrameElements.Values.Single().FrameSection;sec.NativeDefinition=new(){Shape=St7.bsCruciform,Dimensions=NativeSectionCatalog.Cruciform.DefaultDimensions()};
+    var c=new ModelModel(m);var copied=c.FrameElements.Values.Single().FrameSection.NativeDefinition;
+    Assert(copied.Shape==St7.bsCruciform);var hash=ModelFingerprint.Compute(c);copied.Dimensions[0]*=2;Assert(hash!=ModelFingerprint.Compute(c));Near(sec.NativeDefinition.Dimensions[0],.2);
+});
+Test("Native section unit mismatch is rejected before export",()=>{
+    var m=Cantilever();m.FrameElements.Values.Single().FrameSection.NativeDefinition=new(){Shape=St7.bsCruciform,Dimensions=NativeSectionCatalog.Cruciform.DefaultDimensions(),LengthUnit=ModelUnitsModel.LengthUnitTypes.MM};
+    Assert(ModelValidator.Validate(m).Errors.Any(e=>e.Contains("different length units")));
+});
+Test("Native section invalid shape, array and options fail without API",()=>{
+    Throws(()=>new NativeSectionDefinition{Shape=St7.bsBXSSection,Dimensions=new double[6]}.Validate());
+    Throws(()=>new NativeSectionDefinition{Shape=St7.bsCruciform,Dimensions=new[]{double.NaN,1d,0,1,1,0}}.Validate());
+    Throws(()=>new NativeSectionOptions{Divisions=0}.Validate());Throws(()=>new NativeSectionOptions{CircularDivisions=7}.Validate());
+});
+Test("All five link types retain options and canonical nodes in one Model",()=>{
+    var links=Enum.GetValues<LinkPropertyModel.LinkPropertyTypes>().Select(t=>new LinkElementModel(new(0,0,0),new(1,0,0),new(t,100,200,300,10,20,30))).ToList();
+    var m=new ModelModel();m.BuildModel(inputLinks:links);Assert(m.LinkElements.Count==5&&m.NodeElements.Count==2&&ModelValidator.Validate(m).IsValid);
+    var copy=new ModelModel(m);foreach(var link in copy.LinkElements.Values){Assert(ReferenceEquals(link.NodeStart,copy.NodeElements[link.NodeStart.Id]));Assert(ReferenceEquals(link.NodeEnd,copy.NodeElements[link.NodeEnd.Id]));}
+    var p=copy.LinkElements.Values.Single(x=>x.LinkProperty.Type==LinkPropertyModel.LinkPropertyTypes.MASTER_SLAVE).LinkProperty;
+    p.Options.Dofs[0]=-1;Assert(m.LinkElements.Values.All(x=>x.LinkProperty.Options.Dofs[0]==1));
+});
+Test("Link clone and result identity include constraint options",()=>{
+    var link=new LinkElementModel(new(0,0,0),new(1,0,0),new(LinkPropertyModel.LinkPropertyTypes.RIGID));var clone=new LinkElementModel(link);clone.LinkProperty.Options.RigidPlane=2;
+    Assert(link.LinkProperty.Options.RigidPlane==0);var m=new ModelModel();m.BuildModel(inputLinks:new(){link});var hash=ModelFingerprint.Compute(m);m.LinkElements.Values.Single().LinkProperty.Options.RigidPlane=1;Assert(hash!=ModelFingerprint.Compute(m));
+});
+Test("Invalid and unconstrained master-slave settings are rejected",()=>{
+    Throws(()=>new LinkConstraintOptions{RigidPlane=4}.Validate());Throws(()=>new LinkConstraintOptions{Dofs=new[]{1,1,1}}.Validate());Throws(()=>new LinkConstraintOptions{SymmetryAxis=0}.Validate());
+    var m=new ModelModel();m.BuildModel(inputLinks:new(){new(new(0,0,0),new(1,0,0),new(LinkPropertyModel.LinkPropertyTypes.MASTER_SLAVE){Options=new(){Dofs=new int[6]}})});
+    Assert(ModelValidator.Validate(m).Errors.Any(e=>e.Contains("no constrained DoF")));
+});
+Test("Generic centroids remain distinct for section offsets",()=>{var a=new FrameSectionModel(section);var b=new FrameSectionModel(section){Centroid=new Point2d(1,2)};Assert(!a.Equals(b));});
+
 if (args.Contains("--native"))
 {
     string folder = Path.Combine(Path.GetTempPath(), "Rhino2Straus-tests-" + Guid.NewGuid().ToString("N"));

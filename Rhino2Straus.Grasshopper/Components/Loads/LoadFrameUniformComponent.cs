@@ -32,7 +32,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Loads
             Param_Integer dir_param = (Param_Integer)pManager[5];
             dir_param.AddNamedValue("Local", 0);
             dir_param.AddNamedValue("Global", 1);
-            pManager.AddNumberParameter("Load", "Load", "Load", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Load", "Load", "Load", GH_ParamAccess.item, 0.0);
         }
 
         protected override void RegisterOutputParams(GH_OutputParamManager pManager)

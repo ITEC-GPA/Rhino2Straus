@@ -30,7 +30,7 @@ public sealed class BeamForcesComponent : SafeComponent
         p.AddTextParameter("Model path", "Model path", "Existing .st7 model path", GH_ParamAccess.item);
         p.AddTextParameter("Result path", "Result path", "Existing .LSA or compatible Straus7 result file", GH_ParamAccess.item);
         p.AddIntegerParameter("Case", "Case", "Result case number starting at 1", GH_ParamAccess.item, 1);
-        p.AddIntegerParameter("Beam number", "Beam number", "Beam number", GH_ParamAccess.item);
+        p.AddIntegerParameter("Beam number", "Beam number", "Beam number", GH_ParamAccess.item, 1);
         p.AddIntegerParameter("Stations", "Stations", "Minimum station count, 2..100", GH_ParamAccess.item, 11);
     }
     protected override void RegisterOutputParams(GH_OutputParamManager p)

@@ -28,7 +28,7 @@ public sealed class AlignBeamAxisComponent : SafeComponent
     protected override void RegisterInputParams(GH_InputParamManager p)
     {
         p.AddGenericParameter("Beam", "Beam", "Beam", GH_ParamAccess.item);
-        p.AddVectorParameter("Direction", "Direction", "Desired direction projected into the transverse beam plane / plate plane", GH_ParamAccess.item);
+        p.AddVectorParameter("Direction", "Direction", "Desired direction projected into the transverse beam plane / plate plane", GH_ParamAccess.item, Vector3d.ZAxis);
         p.AddIntegerParameter("Axis", "Axis", "Axis 1 or 2", GH_ParamAccess.item, 1);
         p.AddBooleanParameter("Principal", "Principal", "True: principal section axes; false: geometric section axes", GH_ParamAccess.item, true);
     }

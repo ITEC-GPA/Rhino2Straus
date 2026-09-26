@@ -28,8 +28,8 @@ public sealed class BxsSectionComponent : SafeComponent
     protected override void RegisterInputParams(GH_InputParamManager p)
     {
         p.AddTextParameter("BXS file", "BXS file", "BXS file", GH_ParamAccess.item);
-        p.AddTextParameter("Name", "Name", "Name", GH_ParamAccess.item);
-        p.AddGenericParameter("Units", "Units", "Units", GH_ParamAccess.item);
+        p.AddTextParameter("Name", "Name", "Name", GH_ParamAccess.item, "BXS");
+        p.AddGenericParameter("Units", "Units", "Model units; defaults to kN, m, C", GH_ParamAccess.item);p[2].Optional=true;
     }
     protected override void RegisterOutputParams(GH_OutputParamManager p)
     {
@@ -38,6 +38,7 @@ public sealed class BxsSectionComponent : SafeComponent
     protected override void Solve(IGH_DataAccess da)
     {
 
-        da.SetData(0,new GH_FrameSection(BxsSections.Read(Item<string>(da,0),Item<string>(da,1),Item<GH_Units>(da,2).Value)));
+        GH_Units units=null;da.GetData(2,ref units);
+        da.SetData(0,new GH_FrameSection(BxsSections.Read(Item<string>(da,0),Item<string>(da,1),units?.Value??new ModelUnitsModel())));
     }
 }

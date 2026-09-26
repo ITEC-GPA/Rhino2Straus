@@ -60,7 +60,7 @@ public sealed class GlobalPressureComponent : SafeComponent
 
         p.AddGenericParameter("Load case", "Load case", "Load case", GH_ParamAccess.item);
 
-        p.AddVectorParameter("Pressure", "Pressure", "Global XYZ pressure, force/length²", GH_ParamAccess.item);
+        p.AddVectorParameter("Pressure", "Pressure", "Global XYZ pressure, force/length²", GH_ParamAccess.item, Vector3d.Zero);
 
         p.AddBooleanParameter("Top face", "Top face", "Top face", GH_ParamAccess.item, true);
 

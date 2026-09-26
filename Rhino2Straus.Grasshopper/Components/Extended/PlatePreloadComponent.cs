@@ -29,7 +29,7 @@ public sealed class PlatePreloadComponent : SafeComponent
     {
         p.AddGenericParameter("Plate", "Plate", "Plate", GH_ParamAccess.item);
         p.AddGenericParameter("Load case", "Load case", "Load case", GH_ParamAccess.item);
-        p.AddVectorParameter("Values", "Values", "Local XX, YY, XY stress (kPa) or dimensionless strain", GH_ParamAccess.item);
+        p.AddVectorParameter("Values", "Values", "Local XX, YY, XY stress (kPa) or dimensionless strain", GH_ParamAccess.item, Vector3d.Zero);
         p.AddBooleanParameter("Strain", "Strain", "Strain", GH_ParamAccess.item, false);
     }
     protected override void RegisterOutputParams(GH_OutputParamManager p)

@@ -18,7 +18,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Cases
 
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("Name", "Name", "Name", GH_ParamAccess.item);
+            pManager.AddTextParameter("Name", "Name", "Name", GH_ParamAccess.item, "COMB1");
             pManager.AddGenericParameter("Load factor", "Load factor", "Load factor", GH_ParamAccess.list);
             pManager.AddIntegerParameter("Type", "Type", "Type", GH_ParamAccess.item, 0);
             foreach (LoadCombinationModel.LoadCombinationTypes v in Enum.GetValues(typeof(LoadCombinationModel.LoadCombinationTypes)))

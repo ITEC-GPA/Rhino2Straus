@@ -30,7 +30,7 @@ public sealed class PlateStressResultsComponent : SafeComponent
         p.AddTextParameter("Model path", "Model path", "Existing .st7 model path", GH_ParamAccess.item);
         p.AddTextParameter("Result path", "Result path", "Existing .LSA or compatible Straus7 result file", GH_ParamAccess.item);
         p.AddIntegerParameter("Case", "Case", "Result case number starting at 1", GH_ParamAccess.item, 1);
-        p.AddIntegerParameter("Plate number", "Plate number", "Plate number", GH_ParamAccess.item);
+        p.AddIntegerParameter("Plate number", "Plate number", "Plate number", GH_ParamAccess.item, 1);
         p.AddIntegerParameter("Surface", "Surface", "0=midplane, 1=bottom (-Z), 2=top (+Z)", GH_ParamAccess.item, 0);
         p.AddIntegerParameter("Sample", "Sample", "0=centroid, 1=Gauss, 2=nodes unaveraged, 3=average all, 4=average same", GH_ParamAccess.item, 0);
     }

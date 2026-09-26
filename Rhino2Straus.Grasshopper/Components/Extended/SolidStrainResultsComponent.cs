@@ -30,7 +30,7 @@ public sealed class SolidStrainResultsComponent : SafeComponent
         p.AddTextParameter("Model path", "Model path", "Model path", GH_ParamAccess.item);
         p.AddTextParameter("Result path", "Result path", "Result path", GH_ParamAccess.item);
         p.AddIntegerParameter("Case", "Case", "Case", GH_ParamAccess.item, 1);
-        p.AddIntegerParameter("Solid number", "Solid number", "Solid number", GH_ParamAccess.item);
+        p.AddIntegerParameter("Solid number", "Solid number", "Solid number", GH_ParamAccess.item, 1);
         p.AddIntegerParameter("Sample", "Sample", "0=centroid, 1=Gauss, 2=nodes unaveraged, 3=nodes all, 4=nodes same property", GH_ParamAccess.item, 0);
         p.AddBooleanParameter("Combined", "Combined", "False: global XX YY ZZ XY YZ ZX. True: native principal/equivalent measures", GH_ParamAccess.item, false);
     }

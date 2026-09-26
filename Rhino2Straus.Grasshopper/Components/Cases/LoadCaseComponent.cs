@@ -15,7 +15,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Cases
 
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("Name", "Name", "Name", GH_ParamAccess.item);
+            pManager.AddTextParameter("Name", "Name", "Name", GH_ParamAccess.item, "LC1");
             pManager.AddBooleanParameter("Gravity NSM", "NSM", "Apply gravity to non-structural mass", GH_ParamAccess.item, false);
         }
 

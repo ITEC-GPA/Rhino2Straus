@@ -41,16 +41,28 @@ public static class ComponentIcons
         else if (n.Contains("run") || n.Contains("solver")) { g.DrawEllipse(ink,3,3,18,18);g.FillPolygon(solid,new[]{new PointF(9,7),new PointF(17,12),new PointF(9,17)}); }
         else if (n.Contains("validate")) { g.DrawRectangle(ink,3,3,16,18);g.DrawLines(highlight,new[]{new PointF(7,12),new PointF(11,16),new PointF(21,5)}); }
         else if (result || n.Contains("deformed") || n.Contains("envelope")) { Line(3,2,3,20);Line(3,20,22,20);g.DrawLines(highlight,new[]{new PointF(4,16),new PointF(8,12),new PointF(12,15),new PointF(17,5),new PointF(21,8)}); }
+        else if (n.Contains("options")) { for(int y=5;y<=19;y+=7){Line(3,y,21,y);g.FillRectangle(solid,y==12?6:14,y-2,4,4);} }
+        else if (n.Contains("rigid") && n.Contains("link")) { g.DrawLine(highlight,3,10,21,10);g.DrawLine(highlight,3,14,21,14);Dot(3,12);Dot(21,12); }
+        else if (n.Contains("pinned") && n.Contains("link")) { Line(3,12,9,12);Line(15,12,21,12);g.DrawEllipse(highlight,9,9,6,6);Dot(3,12);Dot(21,12); }
+        else if (n.Contains("masterslave")) { Dot(4,12);Dot(20,12);Arrow(8,8,17,8);Arrow(17,16,8,16); }
+        else if (n.Contains("sectorsymmetry")) { g.DrawArc(highlight,3,3,18,18,190,140);Line(12,12,3,7);Line(12,12,20,5);Dot(3,7);Dot(20,5); }
         else if (n.Contains("spring") || n.Contains("link")) { g.DrawLines(ink,new[]{new PointF(2,12),new PointF(5,12),new PointF(7,6),new PointF(10,18),new PointF(13,6),new PointF(16,18),new PointF(18,12),new PointF(22,12)});Dot(2,12);Dot(22,12); }
         else if (n.Contains("support") || n.Contains("restraint") || n.Contains("prescribed")) { g.DrawPolygon(ink,new[]{new PointF(12,6),new PointF(5,17),new PointF(19,17)});Line(3,20,21,20);Dot(12,5); }
         else if (n.Contains("release")) { Line(2,16,10,12);Line(14,10,22,6);g.DrawEllipse(highlight,9,8,6,6); }
         else if (section)
         {
-            string shape=n.Contains("circle")?"O":n.Contains("pipe")?"P":n.Contains("box")?"B":n.Contains("channel")?"C":n.Contains("angle")?"L":n.Contains("tee")?"T":n.Contains("rect")?"R":n.Contains("generic")?"G":"I";
+            string shape=n.Contains("circle")?"O":n.Contains("pipe")?"P":n.Contains("box")||n.Contains("rectangular hollow")?"B":n.Contains("channel")?"C":n.Contains("angle")?"L":n.Contains("tee")?"T":n.Contains("rect")?"R":n.Contains("generic")?"G":"I";
             using var bar=new Pen(accent,3.5f);
-            if(shape=="O"||shape=="P") {g.FillEllipse(fill,4,4,16,16);g.DrawEllipse(bar,4,4,16,16);if(shape=="P")g.DrawEllipse(ink,8,8,8,8);}
+            if(n.Contains("triangle")) {g.DrawPolygon(bar,new[]{new PointF(4,4),new PointF(20,4),new PointF(12,21)});if(n.Contains("hollow"))g.DrawPolygon(ink,new[]{new PointF(8,7),new PointF(16,7),new PointF(12,15)});}
+            else if(n.Contains("trapezoid")) {g.DrawPolygon(bar,new[]{new PointF(3,4),new PointF(21,4),new PointF(17,20),new PointF(7,20)});if(n.Contains("hollow"))g.DrawPolygon(ink,new[]{new PointF(7,8),new PointF(17,8),new PointF(15,16),new PointF(9,16)});}
+            else if(n.Contains("cruciform")) {g.DrawLine(bar,12,3,12,21);g.DrawLine(bar,3,12,21,12);}
+            else if(n.EndsWith(" z")) {g.DrawLines(bar,new[]{new PointF(3,4),new PointF(12,4),new PointF(12,20),new PointF(21,20)});}
+            else if(n.Contains("top hat")) {g.DrawLines(bar,new[]{new PointF(2,20),new PointF(6,20),new PointF(6,5),new PointF(18,5),new PointF(18,20),new PointF(22,20)});}
+            else if(n.Contains("bulb")) {g.DrawLine(bar,7,3,7,20);g.FillEllipse(solid,7,13,12,8);}
+            else if(n.Contains("generic")||n.Contains("bxs")) {g.DrawPolygon(bar,new[]{new PointF(4,4),new PointF(18,3),new PointF(21,11),new PointF(12,10),new PointF(14,21),new PointF(4,19)});}
+            else if(shape=="O"||shape=="P") {g.FillEllipse(fill,4,4,16,16);g.DrawEllipse(bar,4,4,16,16);if(shape=="P")g.DrawEllipse(ink,8,8,8,8);}
             else if(shape=="R"||shape=="B"){g.FillRectangle(fill,5,3,14,18);g.DrawRectangle(bar,5,3,14,18);if(shape=="B")g.DrawRectangle(ink,9,7,6,10);}
-            else {if(shape!="L")g.DrawLine(bar,5,4,19,4);g.DrawLine(bar,shape is "C" or "L"?5:12,4,shape is "C" or "L"?5:12,20);if(shape!="T")g.DrawLine(bar,5,20,19,20);}
+            else {if(shape!="L")g.DrawLine(bar,5,4,19,4);g.DrawLine(bar,shape is "C" or "L"?5:12,4,shape is "C" or "L"?5:12,20);if(shape!="T")g.DrawLine(bar,5,20,19,20);if(n.Contains("lipped")){g.DrawLine(bar,19,4,19,8);if(shape=="T")g.DrawLine(bar,5,4,5,8);else g.DrawLine(bar,19,16,19,20);}}
         }
         else if (load || n.Contains("temperature") || n.Contains("preload")) { if(n.Contains("plate")||n.Contains("area"))Plate();else Line(2,18,22,18);Arrow(6,3,6,13);Arrow(12,3,12,13);Arrow(18,3,18,13); }
         else if (n.Contains("plate") || n.Contains("area") || n.Contains("mesh") || n.Contains("thickness")) Plate();

@@ -1,0 +1,33 @@
+{
+  "edition": "Straus7 R31",
+  "files": [
+    {
+      "path": "API Includes/Visual C#/St7API.cs",
+      "bytes": 479627,
+      "sha256": "d73e82524a3286a28ba62e6a4285e99b03a881547c7cf8170c95e2adae793147"
+    },
+    {
+      "path": "API Includes/Grasshopper/St7API_DotNet.dll",
+      "bytes": 285184,
+      "sha256": "79798a80f0aa3fdcf1761df571130ddb61074f67e5da1f2de46351ef366a8b08"
+    },
+    {
+      "path": "API Includes/Readme.txt",
+      "bytes": 8912,
+      "sha256": "766343c9bebf221368687f71e23ffe0baaf56e51201ef294a864cc7ffa26740a"
+    },
+    {
+      "path": "Documentation/Straus7 R3 API Manual.pdf",
+      "bytes": 4210665,
+      "sha256": "11ea3bdf12d53105c04d1d9fa26843ad922d673dea90c983bb22efe0a94e3474"
+    },
+    {
+      "path": "Documentation/Straus7 R24 to R3 API Conversion Guide.pdf",
+      "bytes": 428556,
+      "sha256": "6ad540fa17c9e56be13e712815a4460ca46cd0cb12b475d246bc43262875ab40"
+    }
+  ],
+  "vendor_declarations": 5741,
+  "missing_or_changed": [],
+  "extra": []
+}

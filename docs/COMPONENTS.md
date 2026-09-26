@@ -1,6 +1,6 @@
 # Catalogo componenti
 
-140 componenti Grasshopper, tutti con icona. Il parametro persistente Group e la libreria hanno icone aggiuntive.
+162 componenti Grasshopper, tutti con icona. Il parametro persistente Group e la libreria hanno icone aggiuntive.
 
 Il percorso è sempre elementi/attributi → Build Model o Merge Straus Models → un solo Model → Preview/Run → Model con risultati → estrazione/deformata/dati per il verificatore.
 
@@ -15,8 +15,24 @@ Il percorso è sempre elementi/attributi → Build Model o Merge Straus Models �
 | 02-Properties | [Assign Beam Property](../Rhino2Straus.Grasshopper/Components/Extended/BeamAssignPropertyComponent.cs) |
 | 02-Properties | [Assign Plate Property](../Rhino2Straus.Grasshopper/Components/Extended/PlateAssignPropertyComponent.cs) |
 | 02-Properties | [Beam Behaviour](../Rhino2Straus.Grasshopper/Components/Extended/BeamBehaviourComponent.cs) |
+| 02-Properties | [Beam Section BGL Angle](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglAngleComponent.cs) |
+| 02-Properties | [Beam Section BGL Bulb Flat](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglBulbComponent.cs) |
+| 02-Properties | [Beam Section BGL Channel](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglChannelComponent.cs) |
+| 02-Properties | [Beam Section BGL I](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglIComponent.cs) |
+| 02-Properties | [Beam Section BGL Rectangular Hollow](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglRhsComponent.cs) |
+| 02-Properties | [Beam Section BGL Tee](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglTeeComponent.cs) |
 | 02-Properties | [Beam Section BXS](../Rhino2Straus.Grasshopper/Components/Extended/BxsSectionComponent.cs) |
+| 02-Properties | [Beam Section Cruciform](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionCruciformComponent.cs) |
+| 02-Properties | [Beam Section Hollow Trapezoid](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTrapezoidHollowComponent.cs) |
+| 02-Properties | [Beam Section Hollow Triangle](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTriangleHollowComponent.cs) |
 | 02-Properties | [Beam Section Insertion](../Rhino2Straus.Grasshopper/Components/Extended/SectionInsertionComponent.cs) |
+| 02-Properties | [Beam Section Lipped Channel](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionLipChannelComponent.cs) |
+| 02-Properties | [Beam Section Lipped Tee](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTeeLippedComponent.cs) |
+| 02-Properties | [Beam Section Solid Trapezoid](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTrapezoidSolidComponent.cs) |
+| 02-Properties | [Beam Section Solid Triangle](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTriangleSolidComponent.cs) |
+| 02-Properties | [Beam Section Top Hat Channel](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTopHatComponent.cs) |
+| 02-Properties | [Beam Section Z](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionZComponent.cs) |
+| 02-Properties | [Elastic Link Property](../Rhino2Straus.Grasshopper/Components/Extended/ElasticLinkPropertyComponent.cs) |
 | 02-Properties | [Frame Property](../Rhino2Straus.Grasshopper/Components/ElementProperties/FramePropertyComponent.cs) |
 | 02-Properties | [Frame Section Angle](../Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionAngleComponent.cs) |
 | 02-Properties | [Frame Section Generic](../Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionGenericComponent.cs) |
@@ -27,6 +43,12 @@ Il percorso è sempre elementi/attributi → Build Model o Merge Straus Models �
 | 02-Properties | [Frame Section solid circle](../Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionCircleComponent.cs) |
 | 02-Properties | [Frame Section solid rectangular](../Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionRectangularComponent.cs) |
 | 02-Properties | [Frame Section tee](../Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionTeeComponent.cs) |
+| 02-Properties | [Link Constraint Options](../Rhino2Straus.Grasshopper/Components/Extended/LinkConstraintOptionsComponent.cs) |
+| 02-Properties | [MasterSlave Link Property](../Rhino2Straus.Grasshopper/Components/Extended/MasterSlaveLinkPropertyComponent.cs) |
+| 02-Properties | [Native Section Options](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionOptionsComponent.cs) |
+| 02-Properties | [Pinned Link Property](../Rhino2Straus.Grasshopper/Components/Extended/PinnedLinkPropertyComponent.cs) |
+| 02-Properties | [Rigid Link Property](../Rhino2Straus.Grasshopper/Components/Extended/RigidLinkPropertyComponent.cs) |
+| 02-Properties | [SectorSymmetry Link Property](../Rhino2Straus.Grasshopper/Components/Extended/SectorSymmetryLinkPropertyComponent.cs) |
 | 03-Elements | [Area element](../Rhino2Straus.Grasshopper/Components/Elements/AreaElementComponent.cs) |
 | 03-Elements | [Frame element](../Rhino2Straus.Grasshopper/Components/Elements/FrameElementComponent.cs) |
 | 03-Elements | [Link element](../Rhino2Straus.Grasshopper/Components/Elements/LinkElementComponent.cs) |

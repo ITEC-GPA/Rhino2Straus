@@ -11,7 +11,7 @@ using Rhino2Straus.Core.Attributes;
 
 namespace Rhino2Straus.Core.Models;
 
-/// <summary>Identity of the analysis input graph. Display Breps and derived caches are excluded.</summary>
+/// <summary>Identity of the analysis input graph. Display Breps are excluded, but their effective insertion offsets are included.</summary>
 public static class ModelFingerprint
 {
     public static string Compute(ModelModel model)
@@ -53,6 +53,10 @@ public static class ModelFingerprint
             else
             {
                 json.WriteStartObject(); json.WriteString("$type", type.FullName);
+                if(value is Rhino2Straus.Core.Elements.FrameElementModel beam)
+                {
+                    json.WritePropertyName("$effectiveOffset");Write(json,beam.GetEffectiveOffset(),stack);
+                }
                 foreach (var property in type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
                     .Where(p => p.CanRead && p.CanWrite && p.GetIndexParameters().Length == 0)
                     .OrderBy(p => p.Name, StringComparer.Ordinal))

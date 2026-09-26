@@ -31,7 +31,7 @@ public sealed class LoadAreaUniformComponent : SafeComponent
         p.AddGenericParameter("Load case", "Load case", "Load case", GH_ParamAccess.item);
         p.AddIntegerParameter("Direction", "Direction", "0=L1, 1=L2, 2=normal +Z, 3=GX, 4=GY, 5=GZ", GH_ParamAccess.item, 5);
         p.AddBooleanParameter("Projected", "Projected", "Projected", GH_ParamAccess.item, false);
-        p.AddNumberParameter("Load", "Load", "Force per model length squared", GH_ParamAccess.item);
+        p.AddNumberParameter("Load", "Load", "Force per model length squared", GH_ParamAccess.item, 0.0);
     }
     protected override void RegisterOutputParams(GH_OutputParamManager p)
     {

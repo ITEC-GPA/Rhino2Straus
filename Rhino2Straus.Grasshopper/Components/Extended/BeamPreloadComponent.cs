@@ -29,7 +29,7 @@ public sealed class BeamPreloadComponent : SafeComponent
     {
         p.AddGenericParameter("Beam", "Beam", "Beam", GH_ParamAccess.item);
         p.AddGenericParameter("Load case", "Load case", "Load case", GH_ParamAccess.item);
-        p.AddNumberParameter("Value", "Value", "Pretension force, or dimensionless prestrain", GH_ParamAccess.item);
+        p.AddNumberParameter("Value", "Value", "Pretension force, or dimensionless prestrain", GH_ParamAccess.item, 0.0);
         p.AddBooleanParameter("Strain", "Strain", "Strain", GH_ParamAccess.item, false);
     }
     protected override void RegisterOutputParams(GH_OutputParamManager p)

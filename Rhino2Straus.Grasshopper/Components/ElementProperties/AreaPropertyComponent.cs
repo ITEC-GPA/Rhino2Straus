@@ -18,7 +18,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.ElementProperties
 
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("Name", "Name", "Name", GH_ParamAccess.item);
+            pManager.AddTextParameter("Name", "Name", "Name", GH_ParamAccess.item, "Plate");
             pManager.AddGenericParameter("Section", "Section", "Section", GH_ParamAccess.item);
             pManager.AddGenericParameter("Material", "Material", "Material", GH_ParamAccess.item);
             pManager.AddIntegerParameter("Type","Type","Native Straus7 plate property type",GH_ParamAccess.item,0);

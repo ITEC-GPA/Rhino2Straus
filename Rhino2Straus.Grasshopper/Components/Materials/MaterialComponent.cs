@@ -36,21 +36,21 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Materials
 
         {
 
-            pManager.AddTextParameter("Name", "Name", "Name", GH_ParamAccess.item);
+            pManager.AddTextParameter("Name", "Name", "Name", GH_ParamAccess.item, "Steel");
 
-            pManager.AddIntegerParameter("Type", "Type", "Steel or Concrete", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Type", "Type", "Steel or Concrete", GH_ParamAccess.item, 0);
 
             foreach (MaterialModel.MaterialTypes v in Enum.GetValues(typeof(MaterialModel.MaterialTypes)))
 
                 ((Param_Integer)pManager[pManager.ParamCount - 1]).AddNamedValue(v.GetDescription(), (int)v);
 
-            pManager.AddNumberParameter("Modulus elasticity", "Modulus elasticity", "Young modulus in kPa", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Modulus elasticity", "Modulus elasticity", "Young modulus in kPa", GH_ParamAccess.item, 2.1e8);
 
             pManager.AddNumberParameter("Poisson ratio", "Poisson ratio", "Poisson ratio", GH_ParamAccess.item, 0.3);
 
             pManager.AddNumberParameter("Thermal coefficent", "Thermal coefficent", "Thermal coefficent", GH_ParamAccess.item, 1.17E-05);
 
-            pManager.AddNumberParameter("Density", "Density", "Mass density in tonne/m³", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Density", "Density", "Mass density in tonne/m³", GH_ParamAccess.item, 7.849);
 
             pManager.AddNumberParameter("Damping ratio", "Damping", "Dimensionless damping ratio", GH_ParamAccess.item, 0.02);
 

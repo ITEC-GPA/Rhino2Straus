@@ -2,7 +2,7 @@
 
 Componenti **Rhino 8 / Grasshopper per Straus7 R3, Windows x64**. Il progetto è dedicato esclusivamente a Straus7: modellazione, attributi, modello FEM unificato, preview, esportazione `.st7`, analisi e lettura dei risultati.
 
-**140 componenti**, con icone a 24 px, più le icone della libreria e del parametro Group. [Catalogo completo](docs/COMPONENTS.md) · [Copertura API e limiti](docs/API-COVERAGE.md) · [Verifiche](docs/VALIDATION.md) · [Model, solver e risultati](docs/MODEL-RESULTS.md).
+**162 componenti**, con icone a 24 px, più le icone della libreria e del parametro Group. [Sezioni R31, link e default](docs/SECTIONS-LINKS.md) · [Catalogo completo](docs/COMPONENTS.md) · [Copertura API e limiti](docs/API-COVERAGE.md) · [Verifiche](docs/VALIDATION.md) · [Model, solver e risultati](docs/MODEL-RESULTS.md).
 
 ## Impostazione del modello
 
@@ -63,6 +63,7 @@ dotnet build Rhino2Straus.sln -c Release
 dotnet run --project Rhino2Straus.Tests -c Release
 dotnet run --project tools/GeometrySmoke -c Release
 dotnet run --project Rhino2Straus.Tests -c Release -- --native --solve
+python tools/import_straus_sdk.py
 python tools/catalogue.py
 dotnet run --project tools/IconGallery -c Release -- .
 ```

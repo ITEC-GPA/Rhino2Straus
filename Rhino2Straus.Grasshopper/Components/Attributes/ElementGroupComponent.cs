@@ -15,7 +15,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Attributes
 
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("Group Name", "Group Name", "Group Name", GH_ParamAccess.item);
+            pManager.AddTextParameter("Group Name", "Group Name", "Group Name", GH_ParamAccess.item, "Group");
             pManager.AddGenericParameter("Group Parent", "Group Parent", "Group Parent", GH_ParamAccess.item);
             pManager[pManager.ParamCount-1].Optional = true;
         }

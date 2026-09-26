@@ -103,9 +103,9 @@ internal static class AdvancedExport
         int number = 1, connection = 0;
         foreach (var link in model.LinkElements.Values)
         {
-            if (link.LinkProperty.Type == LinkPropertyModel.LinkPropertyTypes.RIGID)
+            if (link.LinkProperty.IsNativeLink)
             {
-                Check(St7.St7SetRigidLink(id, number, 1, St7.rlPlaneXYZ, new[] { 2, nodes[link.NodeStart], nodes[link.NodeEnd] }));
+                NativeLinks.Write(id,number,link.LinkProperty,nodes[link.NodeStart],nodes[link.NodeEnd]);
                   if (link.Groups.Count > 0) Check(St7.St7SetEntityGroup(id, St7.tyLINK, number, groups[link.Groups[0]]));
                 Check(St7.St7SetLinkID(id, number++, link.Id));
             }

@@ -1,4 +1,5 @@
 using System;
+using Rhino2Straus.Core.Helper;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -228,15 +229,15 @@ public static class ModelAnalysisService
             }
             foreach (var link in model.LinkElements.Values)
             {
-                bool isRigid = link.LinkProperty.Type == LinkPropertyModel.LinkPropertyTypes.RIGID;
+                bool isNativeLink = link.LinkProperty.IsNativeLink;
                 int n = native[(ResultEntity.Link, link.Id)];
                 foreach (bool reaction in new[] { false, true })
                 {
                     var q = reaction ? ResultQuantity.NodeReaction : ResultQuantity.NodeDisplacement;
                     Capture(ResultEntity.Link, link.Id, q, 0, () => {
-                        if (!isRigid) return Beam(n, link.Id, ResultEntity.Link, q, reaction ? St7.rtBeamNodeReact : St7.rtBeamDisp, St7.stBeamGlobal, reaction ? Reactions : Displacements);
+                        if (!isNativeLink) return Beam(n, link.Id, ResultEntity.Link, q, reaction ? St7.rtBeamNodeReact : St7.rtBeamDisp, St7.stBeamGlobal, reaction ? Reactions : Displacements);
                         int rows = 0, cols = 0; var data = new double[1024];
-                        Check(St7.St7GetLinkResultArray(id, reaction ? St7.rtLinkNodeReact : St7.rtLinkNodeDisp, 1, n, c, ref rows, ref cols, data, data.Length), "Read rigid link " + q);
+                        Check(St7.St7GetLinkResultArray(id, reaction ? St7.rtLinkNodeReact : St7.rtLinkNodeDisp, 1, n, c, ref rows, ref cols, data, data.Length), "Read native link " + q);
                         return Make(c, ResultEntity.Link, link.Id, n, q, 0, "Global XYZ", "Link node index", reaction ? Reactions : Displacements, Enumerable.Range(0, rows).Select(x => (double)x), data, rows, cols);
                     });
                 }
@@ -276,9 +277,9 @@ public static class ModelAnalysisService
             if (label != node.Id || Math.Abs(xyz[0] - node.X) > tolerance || Math.Abs(xyz[1] - node.Y) > tolerance || Math.Abs(xyz[2] - node.Z) > tolerance)
                 throw new InvalidDataException("Native node mapping differs from Model.");
         }
-        foreach (var pair in new[] { (St7.tyBEAM, model.FrameElements.Count + model.LinkElements.Values.Count(x => x.LinkProperty.Type != LinkPropertyModel.LinkPropertyTypes.RIGID)),
+        foreach (var pair in new[] { (St7.tyBEAM, model.FrameElements.Count + model.LinkElements.Values.Count(x => !x.LinkProperty.IsNativeLink)),
             (St7.tyPLATE, model.AreaElements.Count), (St7.tyBRICK, model.SolidElements.Count),
-            (St7.tyLINK, model.LinkElements.Values.Count(x => x.LinkProperty.Type == LinkPropertyModel.LinkPropertyTypes.RIGID)) })
+            (St7.tyLINK, model.LinkElements.Values.Count(x => x.LinkProperty.IsNativeLink)) })
         {
             count = 0; Check(St7.St7GetTotal(id, pair.Item1, ref count), "Read element count");
             if (count != pair.Item2) throw new InvalidDataException("Native element count differs from Model.");
@@ -296,8 +297,8 @@ public static class ModelAnalysisService
                 {
                     if (entity == ResultEntity.Beam) { label -= model.FrameElements.Values.Select(x => x.Id).DefaultIfEmpty(0).Max(); entity = ResultEntity.Link; }
                     if (entity != ResultEntity.Link || !model.LinkElements.TryGetValue(label, out var link)) throw new InvalidDataException("Unknown native element ID.");
-                    bool rigid = link.LinkProperty.Type == LinkPropertyModel.LinkPropertyTypes.RIGID;
-                    if (rigid != (pair.Item1 == St7.tyLINK)) throw new InvalidDataException("Link type differs from native file.");
+                    bool nativeLink = link.LinkProperty.IsNativeLink;
+                    if (nativeLink != (pair.Item1 == St7.tyLINK)) throw new InvalidDataException("Link type differs from native file.");
                     nodes = new[] { link.NodeStart, link.NodeEnd };
                 }
                 if (!mapping.TryAdd((entity, label), n)) throw new InvalidDataException("Duplicate native element ID.");
@@ -309,10 +310,7 @@ public static class ModelAnalysisService
                 }
                 else
                 {
-                    int ucs = 0, plane = 0; var connection = new int[3];
-                    Check(St7.St7GetRigidLink(id, n, ref ucs, ref plane, connection), "Read rigid link connectivity");
-                    if (connection[0] != 2 || ucs != 1 || plane != St7.rlPlaneXYZ || !connection.Skip(1).SequenceEqual(nodes.Select(x => mapping[(ResultEntity.Node, x.Id)])))
-                        throw new InvalidDataException("Native rigid link differs from Model.");
+                    NativeLinks.ValidateFile(id,n,model.LinkElements[label].LinkProperty,mapping[(ResultEntity.Node,nodes[0].Id)],mapping[(ResultEntity.Node,nodes[1].Id)]);
                 }
             }
         }

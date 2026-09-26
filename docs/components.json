@@ -54,16 +54,112 @@
     "File": "Rhino2Straus.Grasshopper/Components/Extended/BeamBehaviourComponent.cs"
   },
   {
+    "Class": "NativeSectionBglAngleComponent",
+    "Name": "Beam Section BGL Angle",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglAngleComponent.cs"
+  },
+  {
+    "Class": "NativeSectionBglBulbComponent",
+    "Name": "Beam Section BGL Bulb Flat",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglBulbComponent.cs"
+  },
+  {
+    "Class": "NativeSectionBglChannelComponent",
+    "Name": "Beam Section BGL Channel",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglChannelComponent.cs"
+  },
+  {
+    "Class": "NativeSectionBglIComponent",
+    "Name": "Beam Section BGL I",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglIComponent.cs"
+  },
+  {
+    "Class": "NativeSectionBglRhsComponent",
+    "Name": "Beam Section BGL Rectangular Hollow",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglRhsComponent.cs"
+  },
+  {
+    "Class": "NativeSectionBglTeeComponent",
+    "Name": "Beam Section BGL Tee",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglTeeComponent.cs"
+  },
+  {
     "Class": "BxsSectionComponent",
     "Name": "Beam Section BXS",
     "Category": "02-Properties",
     "File": "Rhino2Straus.Grasshopper/Components/Extended/BxsSectionComponent.cs"
   },
   {
+    "Class": "NativeSectionCruciformComponent",
+    "Name": "Beam Section Cruciform",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionCruciformComponent.cs"
+  },
+  {
+    "Class": "NativeSectionTrapezoidHollowComponent",
+    "Name": "Beam Section Hollow Trapezoid",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTrapezoidHollowComponent.cs"
+  },
+  {
+    "Class": "NativeSectionTriangleHollowComponent",
+    "Name": "Beam Section Hollow Triangle",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTriangleHollowComponent.cs"
+  },
+  {
     "Class": "SectionInsertionComponent",
     "Name": "Beam Section Insertion",
     "Category": "02-Properties",
     "File": "Rhino2Straus.Grasshopper/Components/Extended/SectionInsertionComponent.cs"
+  },
+  {
+    "Class": "NativeSectionLipChannelComponent",
+    "Name": "Beam Section Lipped Channel",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionLipChannelComponent.cs"
+  },
+  {
+    "Class": "NativeSectionTeeLippedComponent",
+    "Name": "Beam Section Lipped Tee",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTeeLippedComponent.cs"
+  },
+  {
+    "Class": "NativeSectionTrapezoidSolidComponent",
+    "Name": "Beam Section Solid Trapezoid",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTrapezoidSolidComponent.cs"
+  },
+  {
+    "Class": "NativeSectionTriangleSolidComponent",
+    "Name": "Beam Section Solid Triangle",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTriangleSolidComponent.cs"
+  },
+  {
+    "Class": "NativeSectionTopHatComponent",
+    "Name": "Beam Section Top Hat Channel",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTopHatComponent.cs"
+  },
+  {
+    "Class": "NativeSectionZComponent",
+    "Name": "Beam Section Z",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionZComponent.cs"
+  },
+  {
+    "Class": "ElasticLinkPropertyComponent",
+    "Name": "Elastic Link Property",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/ElasticLinkPropertyComponent.cs"
   },
   {
     "Class": "FramePropertyComponent",
@@ -124,6 +220,42 @@
     "Name": "Frame Section tee",
     "Category": "02-Properties",
     "File": "Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionTeeComponent.cs"
+  },
+  {
+    "Class": "LinkConstraintOptionsComponent",
+    "Name": "Link Constraint Options",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/LinkConstraintOptionsComponent.cs"
+  },
+  {
+    "Class": "MasterSlaveLinkPropertyComponent",
+    "Name": "MasterSlave Link Property",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/MasterSlaveLinkPropertyComponent.cs"
+  },
+  {
+    "Class": "NativeSectionOptionsComponent",
+    "Name": "Native Section Options",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionOptionsComponent.cs"
+  },
+  {
+    "Class": "PinnedLinkPropertyComponent",
+    "Name": "Pinned Link Property",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/PinnedLinkPropertyComponent.cs"
+  },
+  {
+    "Class": "RigidLinkPropertyComponent",
+    "Name": "Rigid Link Property",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/RigidLinkPropertyComponent.cs"
+  },
+  {
+    "Class": "SectorSymmetryLinkPropertyComponent",
+    "Name": "SectorSymmetry Link Property",
+    "Category": "02-Properties",
+    "File": "Rhino2Straus.Grasshopper/Components/Extended/SectorSymmetryLinkPropertyComponent.cs"
   },
   {
     "Class": "AreaElementComponent",

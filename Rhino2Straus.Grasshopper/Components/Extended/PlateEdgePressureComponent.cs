@@ -29,8 +29,8 @@ public sealed class PlateEdgePressureComponent : SafeComponent
     {
         p.AddGenericParameter("Plate", "Plate", "Plate", GH_ParamAccess.item);
         p.AddGenericParameter("Load case", "Load case", "Load case", GH_ParamAccess.item);
-        p.AddIntegerParameter("Edge", "Edge", "Edge number, starting at 1", GH_ParamAccess.item);
-        p.AddNumberParameter("Pressure", "Pressure", "Normal pressure applied to the plate edge", GH_ParamAccess.item);
+        p.AddIntegerParameter("Edge", "Edge", "Edge number, starting at 1", GH_ParamAccess.item, 1);
+        p.AddNumberParameter("Pressure", "Pressure", "Normal pressure applied to the plate edge", GH_ParamAccess.item, 0.0);
     }
     protected override void RegisterOutputParams(GH_OutputParamManager p)
     {

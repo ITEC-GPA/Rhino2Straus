@@ -16,7 +16,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Cases
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
             pManager.AddGenericParameter("Load case", "Load case", "Load case", GH_ParamAccess.item);
-            pManager.AddNumberParameter("Factor", "Factor", "Factor", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Factor", "Factor", "Factor", GH_ParamAccess.item, 1.0);
         }
 
         protected override void RegisterOutputParams(GH_OutputParamManager pManager)

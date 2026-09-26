@@ -30,7 +30,7 @@ public sealed class SolidPressureComponent : SafeComponent
         p.AddGenericParameter("Solid", "Solid", "Solid", GH_ParamAccess.item);
         p.AddGenericParameter("Load case", "Load case", "Load case", GH_ParamAccess.item);
         p.AddIntegerParameter("Face", "Face", "Native Straus7 face number; see API local brick coordinates", GH_ParamAccess.item, 1);
-        p.AddNumberParameter("Pressure", "Pressure", "Positive pressure acts into the element", GH_ParamAccess.item);
+        p.AddNumberParameter("Pressure", "Pressure", "Positive pressure acts into the element", GH_ParamAccess.item, 0.0);
     }
     protected override void RegisterOutputParams(GH_OutputParamManager p)
     {

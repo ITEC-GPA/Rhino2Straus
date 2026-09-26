@@ -29,7 +29,7 @@ public sealed class NodeTemperatureComponent : SafeComponent
     {
         p.AddGenericParameter("Node", "Node", "Node", GH_ParamAccess.item);
         p.AddGenericParameter("Load case", "Load case", "Load case", GH_ParamAccess.item);
-        p.AddNumberParameter("Temperature", "Temperature", "Temperature in model C/F units", GH_ParamAccess.item);
+        p.AddNumberParameter("Temperature", "Temperature", "Temperature in model C/F units", GH_ParamAccess.item, 0.0);
     }
     protected override void RegisterOutputParams(GH_OutputParamManager p)
     {

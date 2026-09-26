@@ -51,7 +51,7 @@ internal static class Program
         var bounds=mesh.GetBoundingBox(true);Check(Math.Abs(bounds.Min.Z-.6)<1e-6&&Math.Abs(bounds.Max.Z-.8)<1e-6,"Plate element and property offsets are combined");
         foreach(var shape in new[]{FrameSectionModel.SectionGeometryTypes.SR,FrameSectionModel.SectionGeometryTypes.P,FrameSectionModel.SectionGeometryTypes.B,FrameSectionModel.SectionGeometryTypes.H,FrameSectionModel.SectionGeometryTypes.T,FrameSectionModel.SectionGeometryTypes.C,FrameSectionModel.SectionGeometryTypes.L})
         {
-            var profile=new FrameSectionModel(shape.ToString(),shape,FrameSectionModel.Types.DBUSER,FrameSectionModel.OffsetTypes.CC,.4,.2,.02,.03,.2,.03);
+            var profile=new FrameSectionModel(shape.ToString(),shape,FrameSectionModel.Types.DBUSER,FrameSectionModel.OffsetTypes.CC,.4,shape==FrameSectionModel.SectionGeometryTypes.P?.02:.2,.02,.03,.2,.03);
             Check(profile.SectionArea>0&&profile.Breps?.Count>0,$"{shape} section geometry");
             Check(Math.Abs(profile.I11*profile.I22-(profile.Ixx*profile.Iyy-profile.Ixy*profile.Ixy))<1e-12,$"{shape} principal section inertia");
         }
@@ -72,6 +72,15 @@ internal static class Program
         rejected=false;try{ElementAlignment.Beam(b,Vector3d.XAxis);}catch(ArgumentException){rejected=true;}Check(rejected,"Parallel beam alignment direction is rejected");
         var geometric=new FrameSectionModel(section){Angle=.3};var geometricBeam=new FrameElementModel(new(0,0,0),new(2,0,0),new FramePropertyModel("R",MaterialModel.S355,geometric),0,Vector3d.Zero);
         var geometricAligned=ElementAlignment.Beam(geometricBeam,Vector3d.ZAxis,1,false);geometricAligned.GetLocalAxes(false,out _,out _,out var localX,out _);Check(localX.Z>.999999,"Geometric section alignment accounts for principal section angle");
+
+        var duplicate=new FrameSectionModel(section);duplicate.Breps[0].Translate(5,0,0);
+        Check(Math.Abs(section.Breps[0].GetBoundingBox(true).Center.X)<1e-9,"Section preview copies do not mutate the original");
+        bool invalid=false;try{new FrameSectionModel("bad pipe",FrameSectionModel.SectionGeometryTypes.P,FrameSectionModel.Types.DBUSER,FrameSectionModel.OffsetTypes.CC,.1,.1);}catch(ArgumentException){invalid=true;}
+        Check(invalid,"Invalid pipe thickness is rejected before geometry construction");
+        var insertionSection=new FrameSectionModel(section){Offset=FrameSectionModel.OffsetTypes.LT};
+        var insertionModel=new ModelModel();insertionModel.BuildModel(inputFrames:new(){new(new(0,0,0),new(1,0,0),new FramePropertyModel("Insertion",MaterialModel.S355,insertionSection),0,Vector3d.Zero)});
+        var insertionHash=ModelFingerprint.Compute(insertionModel);insertionModel.FrameElements.Values.Single().FrameSection.Breps[0].Scale(2);
+        Check(insertionHash!=ModelFingerprint.Compute(insertionModel),"Profile-derived insertion changes invalidate results");
         Console.WriteLine($"{passed} geometry checks passed.");
         var directory=new DirectoryInfo(Environment.CurrentDirectory);
         while(directory!=null&&!File.Exists(Path.Combine(directory.FullName,"Rhino2Straus.sln")))
@@ -124,6 +133,25 @@ internal static class Program
         var displacements=Solve("ModelNodeDisplacementComponent");Check(displacements.Params.Output[0].VolatileDataCount==12,"Grasshopper nodal result trees retain six components per node");
         var verification=Solve("ModelVerificationDataComponent");Check(verification.Params.Output[3].VolatileDataCount==3,"Grasshopper verification data joins elements and result tables");
         var deformed=Solve("ModelDeformedGeometryComponent");Check(deformed.Params.Output[0].VolatileDataCount==2&&deformed.Params.Output[1].VolatileDataCount==1,"Grasshopper deformed geometry uses Model results");
+
+        GH_Component SolveDefaults(string className,Action<GH_Component> setup=null)
+        {
+            var component=(GH_Component)Activator.CreateInstance(assembly.GetTypes().Single(t=>t.Name==className));
+            var document=new GH_Document();documents.Add(document);document.AddObject(component,false);setup?.Invoke(component);
+            component.CollectData();component.ComputeData();
+            Check(component.RuntimeMessages(GH_RuntimeMessageLevel.Error).Count==0&&component.Params.Output[0].VolatileDataCount>0,"Grasshopper defaults solve "+className);
+            return component;
+        }
+        foreach(string className in new[]{"FrameSectionAngleComponent","FrameSectionBoxComponent","FrameSectionChannelComponent","FrameSectionCircleComponent","FrameSectionIComponent","FrameSectionPipeComponent","FrameSectionRectangularComponent","FrameSectionTeeComponent","FrameSectionGenericComponent","MaterialComponent","DatabaseSteelMaterialComponent","DatabaseConcreteMaterialComponent","LoadCaseComponent","AreaThicknessComponent","LinkPropertyComponent","NativeSectionOptionsComponent","RigidLinkPropertyComponent","PinnedLinkPropertyComponent","MasterSlaveLinkPropertyComponent","SectorSymmetryLinkPropertyComponent","ElasticLinkPropertyComponent","LinkConstraintOptionsComponent"})SolveDefaults(className);
+        var constraintOptions=SolveDefaults("LinkConstraintOptionsComponent",c=>{var input=(Param_Integer)c.Params.Input[2];input.PersistentData.Clear();input.PersistentData.Append(new GH_Integer(-1));});
+        var master=SolveDefaults("MasterSlaveLinkPropertyComponent",c=>c.Params.Input[0].AddSource(constraintOptions.Params.Output[0]));
+        var property=master.Params.Output[0].VolatileData.AllData(true).First().ScriptVariable();
+        Check(property is LinkPropertyModel lp&&lp.Options.Dofs[0]==-1,"Link options travel through actual Grasshopper connections");
+        var defaultLink=SolveDefaults("LinkElementComponent",c=>{
+            ((Param_Point)c.Params.Input[0]).PersistentData.Append(new GH_Point(Point3d.Origin));
+            ((Param_Point)c.Params.Input[1]).PersistentData.Append(new GH_Point(new Point3d(1,0,0)));
+        });
+        Check(defaultLink.Params.Output[0].VolatileData.AllData(true).First().ScriptVariable() is LinkElementModel dl&&dl.LinkProperty.Type==LinkPropertyModel.LinkPropertyTypes.RIGID,"Link element defaults to a rigid connection");
         Console.WriteLine($"{passed} geometry and Grasshopper data checks passed.");
         foreach(var document in documents)document.Dispose();
     }

@@ -28,7 +28,7 @@ public sealed class AlignModelAxesComponent : SafeComponent
     protected override void RegisterInputParams(GH_InputParamManager p)
     {
         p.AddGenericParameter("Model", "Model", "Model", GH_ParamAccess.item);
-        p.AddVectorParameter("Direction", "Direction", "Direction", GH_ParamAccess.item);
+        p.AddVectorParameter("Direction", "Direction", "Direction", GH_ParamAccess.item, Vector3d.XAxis);
         p.AddBooleanParameter("Beams", "Beams", "Beams", GH_ParamAccess.item, true);
         p.AddBooleanParameter("Plates", "Plates", "Plates", GH_ParamAccess.item, false);
         p.AddIntegerParameter("Axis", "Axis", "Axis", GH_ParamAccess.item, 1);

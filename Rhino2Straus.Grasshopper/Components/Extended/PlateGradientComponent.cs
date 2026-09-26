@@ -29,7 +29,7 @@ public sealed class PlateGradientComponent : SafeComponent
     {
         p.AddGenericParameter("Plate", "Plate", "Plate", GH_ParamAccess.item);
         p.AddGenericParameter("Load case", "Load case", "Load case", GH_ParamAccess.item);
-        p.AddNumberParameter("Gradient", "Gradient", "Temperature difference per model length through thickness", GH_ParamAccess.item);
+        p.AddNumberParameter("Gradient", "Gradient", "Temperature difference per model length through thickness", GH_ParamAccess.item, 0.0);
     }
     protected override void RegisterOutputParams(GH_OutputParamManager p)
     {

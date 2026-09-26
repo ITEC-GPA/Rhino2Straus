@@ -29,7 +29,7 @@ public sealed class BeamPointForceComponent : SafeComponent
     {
         p.AddGenericParameter("Beam", "Beam", "Beam", GH_ParamAccess.item);
         p.AddGenericParameter("Load case", "Load case", "Load case", GH_ParamAccess.item);
-        p.AddVectorParameter("Value", "Value", "XYZ global or principal 1,2,3 components", GH_ParamAccess.item);
+        p.AddVectorParameter("Value", "Value", "XYZ global or principal 1,2,3 components", GH_ParamAccess.item, Vector3d.Zero);
         p.AddNumberParameter("Position", "Position", "Relative distance from end 1, 0..1", GH_ParamAccess.item, 0.5);
         p.AddBooleanParameter("Global", "Global", "Global", GH_ParamAccess.item, true);
     }

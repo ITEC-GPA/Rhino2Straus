@@ -35,7 +35,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Materials
 
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
-            int i = pManager.AddIntegerParameter("Type", "T", "The property type", GH_ParamAccess.item);
+            int i = pManager.AddIntegerParameter("Type", "T", "The property type", GH_ParamAccess.item, 4);
             Param_Integer mtParam = pManager[i] as Param_Integer;
             foreach (KeyValuePair<int, string> v in _concreteList)
                 mtParam.AddNamedValue(v.Value, v.Key);

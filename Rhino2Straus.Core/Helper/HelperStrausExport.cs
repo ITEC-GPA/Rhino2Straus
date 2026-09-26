@@ -161,7 +161,8 @@ namespace Rhino2Straus.Core.Helper
                         }
                     }
 
-                    if(bp.Section.BxsData!=null) BxsSections.Assign(modelId,id,bp.Section.BxsData);
+                    if(bp.Section.NativeDefinition!=null) NativeSections.Assign(modelId,id,bp.Section.NativeDefinition);
+                    else if(bp.Section.BxsData!=null) BxsSections.Assign(modelId,id,bp.Section.BxsData);
                     else if (bp.SectionGeometryType == FrameSectionModel.SectionGeometryTypes.Generic)
                     {
                         int[] ints = new int[1];
@@ -200,7 +201,9 @@ namespace Rhino2Straus.Core.Helper
 
                     HandleError(St7.St7UpdateElementPropertyData(modelId, St7.ptBEAMPROP, id));
 
-                    if (bp.SectionGeometryType != FrameSectionModel.SectionGeometryTypes.Generic)
+                    if (bp.Section.NativeDefinition is { } nativeDefinition)
+                        HandleError(St7.St7CalculateBeamSectionProperties(modelId,id,(byte)(nativeDefinition.Options.IncludeShear ? St7.btTrue : St7.btFalse)));
+                    else if (bp.SectionGeometryType != FrameSectionModel.SectionGeometryTypes.Generic)
                         HandleError(St7.St7CalculateBeamSectionProperties(modelId, id, St7.btTrue));
 
                     beamProperties.Add(bp.Name, id++);
