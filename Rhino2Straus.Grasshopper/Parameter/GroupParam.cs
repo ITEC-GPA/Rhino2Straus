@@ -11,9 +11,9 @@ namespace Rhino2Straus.Grasshopper.Straus.Parameters
 {
     public class GroupParam : GH_PersistentParam<GH_ElementGroup>
     {
-        protected override System.Drawing.Bitmap Icon => ComponentIcons.Get("Group", "00-Parameter");
+        protected override System.Drawing.Bitmap Icon => ComponentIcons.Get("Group", ComponentTopics.Model);
         public GroupParam()
-            : base("Group", "G", "Contains a collection of groups", Core.Helper.Constants.CATEGORY_RHINO2STRAUS, Core.Helper.Constants.SUBCATEGORY_PARAMETERS)
+            : base("Group", "G", "Contains a collection of groups", ComponentTopics.Tab, ComponentTopics.Model)
         {
 
         }

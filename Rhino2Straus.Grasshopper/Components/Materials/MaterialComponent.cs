@@ -24,7 +24,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Materials
 
         public MaterialComponent()
 
-            : base("Material", "Material", "Material", Core.Helper.Constants.CATEGORY_RHINO2STRAUS, Core.Helper.Constants.SUBCATEGORY_MATERIALS)
+            : base("Material", "Material", "Material", ComponentTopics.Tab, ComponentTopics.Materials)
 
         {
 

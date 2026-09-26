@@ -2,7 +2,9 @@
 
 Componenti **Rhino 8 / Grasshopper per Straus7 R3, Windows x64**. Il progetto è dedicato esclusivamente a Straus7: modellazione, attributi, modello FEM unificato, preview, esportazione `.st7`, analisi e lettura dei risultati.
 
-**163 componenti**, con icone a 24 px, più le icone della libreria e del parametro Group. [Preview e impostazioni](docs/PREVIEW.md) · [Sezioni R31, link e default](docs/SECTIONS-LINKS.md) · [Catalogo completo](docs/COMPONENTS.md) · [Copertura API e limiti](docs/API-COVERAGE.md) · [Verifiche](docs/VALIDATION.md) · [Model, solver e risultati](docs/MODEL-RESULTS.md).
+**163 componenti in 17 pannelli per argomento** nella tab **Rhino2Straus**, con icone a 24 px, più le icone della libreria e del parametro Group. [Mappa dei pannelli](docs/TOPICS.md) · [Catalogo per argomento](docs/COMPONENTS.md) · [Preview e impostazioni](docs/PREVIEW.md) · [Sezioni R31, link e default](docs/SECTIONS-LINKS.md) · [Copertura API e limiti](docs/API-COVERAGE.md) · [Verifiche](docs/VALIDATION.md) · [Model, solver e risultati](docs/MODEL-RESULTS.md).
+
+La **0.4.2** separa Materiali, Sezioni, Proprietà, Elementi, Vincoli e link, Assi e offset, Casi e combo, Carichi, Modello, File Straus, Analisi e Preview/bake. I risultati hanno cinque pannelli dedicati: Model, nodi/link, travi, piastre e solidi. Cartelle sorgenti, catalogo e atlante delle icone seguono la stessa suddivisione. I GUID e i collegamenti dei componenti restano invariati. Dopo l'installazione riavviare Rhino/Grasshopper per aggiornare la tab.
 
 ## Impostazione del modello
 

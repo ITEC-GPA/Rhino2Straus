@@ -144,15 +144,21 @@ internal static class Program
             string candidate=Path.Combine(pluginFolder,name.Name+".dll");return File.Exists(candidate)?context.LoadFromAssemblyPath(candidate):null;
         };
         var assembly=Assembly.LoadFrom(plugin);var ids=new System.Collections.Generic.HashSet<Guid>();int count=0;
+        using var topicCatalogue=System.Text.Json.JsonDocument.Parse(File.ReadAllText(Path.Combine(directory.FullName,"docs","components.json")));
+        var registrations=topicCatalogue.RootElement.EnumerateArray().ToDictionary(item=>item.GetProperty("Class").GetString());
         foreach(var type in assembly.GetTypes().Where(t=>!t.IsAbstract&&typeof(GH_Component).IsAssignableFrom(t)))
         {
             var component=(GH_Component)Activator.CreateInstance(type);
+            if(!registrations.TryGetValue(type.Name,out var registration)||component.Category!="Rhino2Straus"||component.SubCategory!=registration.GetProperty("Category").GetString()||component.ComponentGuid!=Guid.Parse(registration.GetProperty("Guid").GetString()))throw new Exception("Ribbon/catalogue mismatch: "+type.Name);
             if(!ids.Add(component.ComponentGuid))throw new Exception("Duplicate GUID: "+component.Name);
             if(component.Icon_24x24==null||component.Icon_24x24.Width!=24||component.Icon_24x24.Height!=24)throw new Exception("Missing icon: "+component.Name);
             if(component.Params.Output.Count==0)throw new Exception("Missing output: "+component.Name);
             count++;
         }
-        Console.WriteLine($"{count} Grasshopper components constructed: GUIDs, icons and registered outputs valid.");
+        if(count!=registrations.Count)throw new Exception("Catalogue component count differs from runtime.");
+        var groupParameter=(IGH_Param)Activator.CreateInstance(assembly.GetTypes().Single(t=>t.Name=="GroupParam"));
+        if(groupParameter.Category!="Rhino2Straus"||groupParameter.SubCategory!=Rhino2Straus.Grasshopper.ComponentTopics.Model)throw new Exception("Group parameter ribbon topic mismatch.");
+        Console.WriteLine($"{count} Grasshopper components constructed: GUIDs, icons, outputs and ribbon topics valid; Group is in Model.");
         var model=new ModelModel();model.BuildModel(inputFrames:new(){new FrameElementModel(new(0,0,0),new(2,0,0),new FramePropertyModel("R",MaterialModel.S355,section),0,Vector3d.Zero)});
         var records=new System.Collections.Generic.List<ElementResult>();
         records.Add(new(1,ResultEntity.Beam,1,1,ResultQuantity.Force,0,"Principal 1,2,3","Distance",new[]{"V1","M1","V2","M2","N","T"},new[]{0d,2},new[]{new[]{10d,20,30,40,50,60},new[]{-10d,-20,-30,-40,-50,-60}}));

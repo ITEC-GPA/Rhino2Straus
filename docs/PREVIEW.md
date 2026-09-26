@@ -1,6 +1,6 @@
 # Rhino2Straus Display Manager
 
-Collegare **un solo Model**, proveniente da Build Model o Merge Straus Models, al componente nella categoria **13-Preview**. Il componente aggiorna il precedente `Preview Straus Model`, conservandone GUID e primi sette input.
+Collegare **un solo Model**, proveniente da Build Model o Merge Straus Models, al componente nel pannello **17-Preview e bake** della tab Rhino2Straus. Il componente aggiorna il precedente `Preview Straus Model`, conservandone GUID e primi sette input. [Mappa dei pannelli](TOPICS.md).
 
 Il gestore disegna geometrie, sezioni e spessori fisici, carichi e attributi. **Enabled=false** spegne la sua preview e quelle automatiche del plugin che gestisce. Le impostazioni non cambiano il Model, i carichi, i risultati o i file Straus7.
 
@@ -11,7 +11,7 @@ Il gestore disegna geometrie, sezioni e spessori fisici, carichi e attributi. **
 - `Symbol scale` controlla la dimensione dei simboli e degli assi, in unità del Model. `Load scale` moltiplica le lunghezze delle frecce; per leggibilità sono limitate a sei dimensioni di simbolo. I momenti sono archi orientati con la regola della mano destra. Le etichette conservano i valori applicati: le dimensioni dei simboli non rappresentano un risultato di calcolo.
 - `Load cases` accetta nomi esatti, disponibili all'uscita `Available cases`. Vuoto mostra tutti i casi di input. Non somma combinazioni; le etichette riportano il caso di appartenenza. Il filtro non elimina i vincoli o gli altri attributi.
 - `Values` controlla testi e unità dei simboli; `Labels` gli ID; `Properties` nomi di materiali, sezioni/proprietà, spessori e tipo/opzioni dei link. Le categorie possono essere abilitate separatamente per ridurre la sovrapposizione.
-- `Results` abilita la preview dei componenti della categoria 12-Results, per esempio deformate e diagrammi. Non avvia analisi né calcola automaticamente questi risultati. Il master OFF li nasconde insieme alle altre preview gestite.
+- `Results` abilita la preview dei componenti di tutti i pannelli dei risultati (Model, nodi/link, travi, piastre e solidi), per esempio deformate e diagrammi. Non avvia analisi né calcola automaticamente questi risultati. Il master OFF li nasconde insieme alle altre preview gestite.
 
 Un input `Settings` collegato ha precedenza sui precedenti input Solid/Labels/Axes/Supports/scales e sui menu di categoria. L'interruttore Enabled del gestore resta sempre efficace.
 

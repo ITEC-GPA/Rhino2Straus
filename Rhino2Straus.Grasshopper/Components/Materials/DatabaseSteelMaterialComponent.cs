@@ -19,7 +19,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Materials
         };
 
         public DatabaseSteelMaterialComponent()
-            : base("Database Steel", "Database Steel", "Database Steel", Constants.CATEGORY_RHINO2STRAUS, Constants.SUBCATEGORY_MATERIALS)
+            : base("Database Steel", "Database Steel", "Database Steel", ComponentTopics.Tab, ComponentTopics.Materials)
         {
         }
 

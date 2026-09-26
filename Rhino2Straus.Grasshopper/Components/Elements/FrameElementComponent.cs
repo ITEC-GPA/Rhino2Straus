@@ -13,7 +13,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Elements
     public class FrameElementComponent : SafeComponent
     {
         public FrameElementComponent()
-            : base("Frame element", "Frame element", "Frame element", Core.Helper.Constants.CATEGORY_RHINO2STRAUS, Core.Helper.Constants.SUBCATEGORY_ELEMENTS)
+            : base("Frame element", "Frame element", "Frame element", ComponentTopics.Tab, ComponentTopics.Elements)
         {
         }
 

@@ -2,979 +2,1305 @@
   {
     "Class": "DatabaseConcreteMaterialComponent",
     "Name": "Database Concrete",
-    "Category": "01-Materials",
+    "Category": "01-Materiali",
+    "Topic": "Materials",
+    "Guid": "221bab35-3cec-4d40-b75e-0c7dce2c7d11",
     "File": "Rhino2Straus.Grasshopper/Components/Materials/DatabaseConcreteMaterialComponent.cs"
   },
   {
     "Class": "DatabaseSteelMaterialComponent",
     "Name": "Database Steel",
-    "Category": "01-Materials",
+    "Category": "01-Materiali",
+    "Topic": "Materials",
+    "Guid": "73672cff-9268-4de0-b752-1bafafb4d1b5",
     "File": "Rhino2Straus.Grasshopper/Components/Materials/DatabaseSteelMaterialComponent.cs"
+  },
+  {
+    "Class": "MaterialInfoComponent",
+    "Name": "Deconstruct Material",
+    "Category": "01-Materiali",
+    "Topic": "Materials",
+    "Guid": "e1fef21a-c3c1-5759-a878-b4193a285068",
+    "File": "Rhino2Straus.Grasshopper/Components/Materials/MaterialInfoComponent.cs"
   },
   {
     "Class": "MaterialComponent",
     "Name": "Material",
-    "Category": "01-Materials",
+    "Category": "01-Materiali",
+    "Topic": "Materials",
+    "Guid": "1f804995-873c-44a5-b4b2-59e9f6966592",
     "File": "Rhino2Straus.Grasshopper/Components/Materials/MaterialComponent.cs"
   },
   {
     "Class": "MaterialStrengthsComponent",
     "Name": "Material Design Strengths",
-    "Category": "01-Materials",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/MaterialStrengthsComponent.cs"
-  },
-  {
-    "Class": "AreaPropertyComponent",
-    "Name": "Area Property",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/ElementProperties/AreaPropertyComponent.cs"
-  },
-  {
-    "Class": "AreaThicknessComponent",
-    "Name": "Area thickness",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/ElementProperties/AreaThicknessComponent.cs"
-  },
-  {
-    "Class": "BeamAssignPropertyComponent",
-    "Name": "Assign Beam Property",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/BeamAssignPropertyComponent.cs"
-  },
-  {
-    "Class": "PlateAssignPropertyComponent",
-    "Name": "Assign Plate Property",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/PlateAssignPropertyComponent.cs"
-  },
-  {
-    "Class": "BeamBehaviourComponent",
-    "Name": "Beam Behaviour",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/BeamBehaviourComponent.cs"
+    "Category": "01-Materiali",
+    "Topic": "Materials",
+    "Guid": "fbdbae77-965a-5701-87dc-d68e416113cd",
+    "File": "Rhino2Straus.Grasshopper/Components/Materials/MaterialStrengthsComponent.cs"
   },
   {
     "Class": "NativeSectionBglAngleComponent",
     "Name": "Beam Section BGL Angle",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglAngleComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "455515b3-0e31-5e4f-a1dd-a27c3f8fa04e",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/NativeSectionBglAngleComponent.cs"
   },
   {
     "Class": "NativeSectionBglBulbComponent",
     "Name": "Beam Section BGL Bulb Flat",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglBulbComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "e117d60a-bbe3-51bd-82f0-b85ce92e03e2",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/NativeSectionBglBulbComponent.cs"
   },
   {
     "Class": "NativeSectionBglChannelComponent",
     "Name": "Beam Section BGL Channel",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglChannelComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "b6801221-ddec-5fc6-94e3-5370138aac62",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/NativeSectionBglChannelComponent.cs"
   },
   {
     "Class": "NativeSectionBglIComponent",
     "Name": "Beam Section BGL I",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglIComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "f7da393f-3d86-5786-9b60-f2f08194d311",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/NativeSectionBglIComponent.cs"
   },
   {
     "Class": "NativeSectionBglRhsComponent",
     "Name": "Beam Section BGL Rectangular Hollow",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglRhsComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "d6759ff7-bad4-5ea0-8869-e9212d7f5f05",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/NativeSectionBglRhsComponent.cs"
   },
   {
     "Class": "NativeSectionBglTeeComponent",
     "Name": "Beam Section BGL Tee",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglTeeComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "6eac3294-a943-5b5c-ac4f-3fa30a6ec4c3",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/NativeSectionBglTeeComponent.cs"
   },
   {
     "Class": "BxsSectionComponent",
     "Name": "Beam Section BXS",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/BxsSectionComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "bebd7cde-7e95-5906-8d99-0ccf0485ed67",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/BxsSectionComponent.cs"
   },
   {
     "Class": "NativeSectionCruciformComponent",
     "Name": "Beam Section Cruciform",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionCruciformComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "230c9c08-9528-5192-95f6-cd59b8e99739",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/NativeSectionCruciformComponent.cs"
   },
   {
     "Class": "NativeSectionTrapezoidHollowComponent",
     "Name": "Beam Section Hollow Trapezoid",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTrapezoidHollowComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "64ac1c35-8cc9-5d7d-80f6-e5b98ee3aed1",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/NativeSectionTrapezoidHollowComponent.cs"
   },
   {
     "Class": "NativeSectionTriangleHollowComponent",
     "Name": "Beam Section Hollow Triangle",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTriangleHollowComponent.cs"
-  },
-  {
-    "Class": "SectionInsertionComponent",
-    "Name": "Beam Section Insertion",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/SectionInsertionComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "8e594d6b-8d5b-501f-aa04-f1036f6e6290",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/NativeSectionTriangleHollowComponent.cs"
   },
   {
     "Class": "NativeSectionLipChannelComponent",
     "Name": "Beam Section Lipped Channel",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionLipChannelComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "958d7da9-62f4-5092-bdf9-d13830e7e8de",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/NativeSectionLipChannelComponent.cs"
   },
   {
     "Class": "NativeSectionTeeLippedComponent",
     "Name": "Beam Section Lipped Tee",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTeeLippedComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "1763f0dd-5511-5577-ae38-3c589bf1da8d",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/NativeSectionTeeLippedComponent.cs"
   },
   {
     "Class": "NativeSectionTrapezoidSolidComponent",
     "Name": "Beam Section Solid Trapezoid",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTrapezoidSolidComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "e2e9a83d-cea5-530f-b61c-42e74e3c3786",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/NativeSectionTrapezoidSolidComponent.cs"
   },
   {
     "Class": "NativeSectionTriangleSolidComponent",
     "Name": "Beam Section Solid Triangle",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTriangleSolidComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "c4db48f8-5cb3-550a-a5cf-baccd9a4dcff",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/NativeSectionTriangleSolidComponent.cs"
   },
   {
     "Class": "NativeSectionTopHatComponent",
     "Name": "Beam Section Top Hat Channel",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTopHatComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "15cc7e31-05d2-5bae-8fa6-720715a8e414",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/NativeSectionTopHatComponent.cs"
   },
   {
     "Class": "NativeSectionZComponent",
     "Name": "Beam Section Z",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionZComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "a0566710-47bb-5fd4-b554-63cf96721db5",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/NativeSectionZComponent.cs"
   },
   {
-    "Class": "ElasticLinkPropertyComponent",
-    "Name": "Elastic Link Property",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ElasticLinkPropertyComponent.cs"
-  },
-  {
-    "Class": "FramePropertyComponent",
-    "Name": "Frame Property",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/ElementProperties/FramePropertyComponent.cs"
+    "Class": "SectionInfoComponent",
+    "Name": "Deconstruct Beam Section",
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "23a8b06f-3908-5f71-8fd7-06a6d8833adb",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/SectionInfoComponent.cs"
   },
   {
     "Class": "FrameSectionAngleComponent",
     "Name": "Frame Section Angle",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionAngleComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "96a3255f-e896-4403-915f-a846f156643b",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/FrameSectionAngleComponent.cs"
   },
   {
     "Class": "FrameSectionGenericComponent",
     "Name": "Frame Section Generic",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionGenericComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "204d7ecc-d676-4b29-b2b2-8fa330afdf84",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/FrameSectionGenericComponent.cs"
   },
   {
     "Class": "FrameSectionIComponent",
     "Name": "Frame Section I",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionIComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "2f0d4018-30a7-405d-a7d9-f32242a98ea0",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/FrameSectionIComponent.cs"
   },
   {
     "Class": "FrameSectionBoxComponent",
     "Name": "Frame Section box",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionBoxComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "693c6939-1888-40c1-af94-dc5f2c20009f",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/FrameSectionBoxComponent.cs"
   },
   {
     "Class": "FrameSectionChannelComponent",
     "Name": "Frame Section channel",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionChannelComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "2615abe4-fea4-4fad-9693-89174d6e3347",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/FrameSectionChannelComponent.cs"
   },
   {
     "Class": "FrameSectionPipeComponent",
     "Name": "Frame Section pipe",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionPipeComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "dc51835d-9673-4fed-948b-2ec5eb66deaf",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/FrameSectionPipeComponent.cs"
   },
   {
     "Class": "FrameSectionCircleComponent",
     "Name": "Frame Section solid circle",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionCircleComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "15921df4-b33b-440c-9b8c-605f27e6f926",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/FrameSectionCircleComponent.cs"
   },
   {
     "Class": "FrameSectionRectangularComponent",
     "Name": "Frame Section solid rectangular",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionRectangularComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "c2eec84d-a85b-4596-b79f-44b8bad510bf",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/FrameSectionRectangularComponent.cs"
   },
   {
     "Class": "FrameSectionTeeComponent",
     "Name": "Frame Section tee",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionTeeComponent.cs"
-  },
-  {
-    "Class": "LinkConstraintOptionsComponent",
-    "Name": "Link Constraint Options",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/LinkConstraintOptionsComponent.cs"
-  },
-  {
-    "Class": "MasterSlaveLinkPropertyComponent",
-    "Name": "MasterSlave Link Property",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/MasterSlaveLinkPropertyComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "39510213-ea4b-43d9-8e48-5c2861f8b102",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/FrameSectionTeeComponent.cs"
   },
   {
     "Class": "NativeSectionOptionsComponent",
     "Name": "Native Section Options",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NativeSectionOptionsComponent.cs"
+    "Category": "02-Sezioni",
+    "Topic": "Sections",
+    "Guid": "32b4f973-ae10-59e5-9663-bb2f623b873a",
+    "File": "Rhino2Straus.Grasshopper/Components/Sections/NativeSectionOptionsComponent.cs"
   },
   {
-    "Class": "PinnedLinkPropertyComponent",
-    "Name": "Pinned Link Property",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/PinnedLinkPropertyComponent.cs"
+    "Class": "AreaPropertyComponent",
+    "Name": "Area Property",
+    "Category": "03-Proprietà",
+    "Topic": "Properties",
+    "Guid": "3edcae0b-6f75-48b9-94b2-538d8e714262",
+    "File": "Rhino2Straus.Grasshopper/Components/Properties/AreaPropertyComponent.cs"
   },
   {
-    "Class": "RigidLinkPropertyComponent",
-    "Name": "Rigid Link Property",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/RigidLinkPropertyComponent.cs"
+    "Class": "AreaThicknessComponent",
+    "Name": "Area thickness",
+    "Category": "03-Proprietà",
+    "Topic": "Properties",
+    "Guid": "fe66f2e0-1381-4c73-a206-f9f7e46346bc",
+    "File": "Rhino2Straus.Grasshopper/Components/Properties/AreaThicknessComponent.cs"
   },
   {
-    "Class": "SectorSymmetryLinkPropertyComponent",
-    "Name": "SectorSymmetry Link Property",
-    "Category": "02-Properties",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/SectorSymmetryLinkPropertyComponent.cs"
+    "Class": "BeamAssignPropertyComponent",
+    "Name": "Assign Beam Property",
+    "Category": "03-Proprietà",
+    "Topic": "Properties",
+    "Guid": "0386c1ed-b47b-5e21-87b0-1ed59b3cd1d7",
+    "File": "Rhino2Straus.Grasshopper/Components/Properties/BeamAssignPropertyComponent.cs"
+  },
+  {
+    "Class": "PlateAssignPropertyComponent",
+    "Name": "Assign Plate Property",
+    "Category": "03-Proprietà",
+    "Topic": "Properties",
+    "Guid": "79e2c5d0-60e2-5d1c-9b66-24c057f12411",
+    "File": "Rhino2Straus.Grasshopper/Components/Properties/PlateAssignPropertyComponent.cs"
+  },
+  {
+    "Class": "BeamBehaviourComponent",
+    "Name": "Beam Behaviour",
+    "Category": "03-Proprietà",
+    "Topic": "Properties",
+    "Guid": "a4e2d42d-21ca-596e-a98d-47396bfbae2a",
+    "File": "Rhino2Straus.Grasshopper/Components/Properties/BeamBehaviourComponent.cs"
+  },
+  {
+    "Class": "FramePropertyComponent",
+    "Name": "Frame Property",
+    "Category": "03-Proprietà",
+    "Topic": "Properties",
+    "Guid": "7e49f69a-f7d7-446f-8fd0-76b9b4263890",
+    "File": "Rhino2Straus.Grasshopper/Components/Properties/FramePropertyComponent.cs"
   },
   {
     "Class": "AreaElementComponent",
     "Name": "Area element",
-    "Category": "03-Elements",
+    "Category": "04-Elementi",
+    "Topic": "Elements",
+    "Guid": "98982095-f828-4deb-a0fc-e18a5949b5e7",
     "File": "Rhino2Straus.Grasshopper/Components/Elements/AreaElementComponent.cs"
+  },
+  {
+    "Class": "BeamInfoComponent",
+    "Name": "Deconstruct Beam",
+    "Category": "04-Elementi",
+    "Topic": "Elements",
+    "Guid": "eeb0768a-bd84-55cb-8395-0a917bde674a",
+    "File": "Rhino2Straus.Grasshopper/Components/Elements/BeamInfoComponent.cs"
+  },
+  {
+    "Class": "NodeInfoComponent",
+    "Name": "Deconstruct Node",
+    "Category": "04-Elementi",
+    "Topic": "Elements",
+    "Guid": "d48c8008-78bb-5413-8fcc-d7dcf512d44d",
+    "File": "Rhino2Straus.Grasshopper/Components/Elements/NodeInfoComponent.cs"
+  },
+  {
+    "Class": "PlateInfoComponent",
+    "Name": "Deconstruct Plate",
+    "Category": "04-Elementi",
+    "Topic": "Elements",
+    "Guid": "47168338-0607-5929-a84c-8ae5b71e87d0",
+    "File": "Rhino2Straus.Grasshopper/Components/Elements/PlateInfoComponent.cs"
   },
   {
     "Class": "FrameElementComponent",
     "Name": "Frame element",
-    "Category": "03-Elements",
+    "Category": "04-Elementi",
+    "Topic": "Elements",
+    "Guid": "07d14640-7b14-4515-ad1d-99f508fa19d3",
     "File": "Rhino2Straus.Grasshopper/Components/Elements/FrameElementComponent.cs"
-  },
-  {
-    "Class": "LinkElementComponent",
-    "Name": "Link element",
-    "Category": "03-Elements",
-    "File": "Rhino2Straus.Grasshopper/Components/Elements/LinkElementComponent.cs"
   },
   {
     "Class": "MeshPlatesComponent",
     "Name": "Mesh to Plates",
-    "Category": "03-Elements",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/MeshPlatesComponent.cs"
+    "Category": "04-Elementi",
+    "Topic": "Elements",
+    "Guid": "24b5c060-c59b-536b-bad7-5ea1bba7a24e",
+    "File": "Rhino2Straus.Grasshopper/Components/Elements/MeshPlatesComponent.cs"
   },
   {
     "Class": "NodeElementComponent",
     "Name": "Node Element",
-    "Category": "03-Elements",
+    "Category": "04-Elementi",
+    "Topic": "Elements",
+    "Guid": "1ea612a7-69e3-4993-8970-1efcb142fbe9",
     "File": "Rhino2Straus.Grasshopper/Components/Elements/NodeElementComponent.cs"
   },
   {
     "Class": "PolylineBeamsComponent",
     "Name": "Polyline to Beams",
-    "Category": "03-Elements",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/PolylineBeamsComponent.cs"
+    "Category": "04-Elementi",
+    "Topic": "Elements",
+    "Guid": "48953e07-25f6-5e5e-aa5a-60b94abd8f08",
+    "File": "Rhino2Straus.Grasshopper/Components/Elements/PolylineBeamsComponent.cs"
   },
   {
     "Class": "SolidElementComponent",
     "Name": "Solid Element",
-    "Category": "03-Elements",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/SolidElementComponent.cs"
+    "Category": "04-Elementi",
+    "Topic": "Elements",
+    "Guid": "f7fcbe06-f2a8-549b-9872-e14da102ec5b",
+    "File": "Rhino2Straus.Grasshopper/Components/Elements/SolidElementComponent.cs"
+  },
+  {
+    "Class": "SolidInfoComponent",
+    "Name": "Solid Info",
+    "Category": "04-Elementi",
+    "Topic": "Elements",
+    "Guid": "f2ea193f-a0d6-5827-bbc9-f5846a4744d2",
+    "File": "Rhino2Straus.Grasshopper/Components/Elements/SolidInfoComponent.cs"
   },
   {
     "Class": "BeamReleasesComponent",
     "Name": "Beam End Releases",
-    "Category": "04-Attributes",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/BeamReleasesComponent.cs"
+    "Category": "05-Vincoli e link",
+    "Topic": "ConstraintsLinks",
+    "Guid": "3a5844a8-705f-51ec-99fd-7bfb7d7e7752",
+    "File": "Rhino2Straus.Grasshopper/Components/ConstraintsLinks/BeamReleasesComponent.cs"
   },
   {
-    "Class": "BeamOffsetComponent",
-    "Name": "Beam Offset and Orientation",
-    "Category": "04-Attributes",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/BeamOffsetComponent.cs"
+    "Class": "ElasticLinkPropertyComponent",
+    "Name": "Elastic Link Property",
+    "Category": "05-Vincoli e link",
+    "Topic": "ConstraintsLinks",
+    "Guid": "7f392dfa-6c41-514b-8bc1-81963ad79528",
+    "File": "Rhino2Straus.Grasshopper/Components/ConstraintsLinks/ElasticLinkPropertyComponent.cs"
   },
   {
-    "Class": "ElementGroupComponent",
-    "Name": "Element Group",
-    "Category": "04-Attributes",
-    "File": "Rhino2Straus.Grasshopper/Components/Attributes/ElementGroupComponent.cs"
+    "Class": "LinkConstraintOptionsComponent",
+    "Name": "Link Constraint Options",
+    "Category": "05-Vincoli e link",
+    "Topic": "ConstraintsLinks",
+    "Guid": "b609d6ce-7865-5077-bff4-f3fb8ad39478",
+    "File": "Rhino2Straus.Grasshopper/Components/ConstraintsLinks/LinkConstraintOptionsComponent.cs"
   },
   {
     "Class": "LinkPropertyComponent",
     "Name": "Link Type",
-    "Category": "04-Attributes",
-    "File": "Rhino2Straus.Grasshopper/Components/ElementProperties/LinkPropertyComponent.cs"
+    "Category": "05-Vincoli e link",
+    "Topic": "ConstraintsLinks",
+    "Guid": "68b40983-74b8-43fa-91f1-4ed76e73a0e2",
+    "File": "Rhino2Straus.Grasshopper/Components/ConstraintsLinks/LinkPropertyComponent.cs"
+  },
+  {
+    "Class": "LinkElementComponent",
+    "Name": "Link element",
+    "Category": "05-Vincoli e link",
+    "Topic": "ConstraintsLinks",
+    "Guid": "56b5da2b-0d9f-488c-96bf-2a6e50027414",
+    "File": "Rhino2Straus.Grasshopper/Components/ConstraintsLinks/LinkElementComponent.cs"
+  },
+  {
+    "Class": "MasterSlaveLinkPropertyComponent",
+    "Name": "MasterSlave Link Property",
+    "Category": "05-Vincoli e link",
+    "Topic": "ConstraintsLinks",
+    "Guid": "5110325c-9b48-5412-8960-150ea6700ce6",
+    "File": "Rhino2Straus.Grasshopper/Components/ConstraintsLinks/MasterSlaveLinkPropertyComponent.cs"
   },
   {
     "Class": "NodeMassComponent",
     "Name": "Node Mass",
-    "Category": "04-Attributes",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NodeMassComponent.cs"
+    "Category": "05-Vincoli e link",
+    "Topic": "ConstraintsLinks",
+    "Guid": "8f4d6c08-3184-5533-9d70-25633c9e3b9e",
+    "File": "Rhino2Straus.Grasshopper/Components/ConstraintsLinks/NodeMassComponent.cs"
   },
   {
     "Class": "PrescribedDisplacementComponent",
     "Name": "Node Prescribed Displacement",
-    "Category": "04-Attributes",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/PrescribedDisplacementComponent.cs"
+    "Category": "05-Vincoli e link",
+    "Topic": "ConstraintsLinks",
+    "Guid": "c1f82608-ecdc-5f6d-84b8-b840b880bff2",
+    "File": "Rhino2Straus.Grasshopper/Components/ConstraintsLinks/PrescribedDisplacementComponent.cs"
   },
   {
     "Class": "NodeSpringComponent",
     "Name": "Node Springs",
-    "Category": "04-Attributes",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NodeSpringComponent.cs"
+    "Category": "05-Vincoli e link",
+    "Topic": "ConstraintsLinks",
+    "Guid": "55f8ebd6-db14-53d5-ada3-45d2fe35e99e",
+    "File": "Rhino2Straus.Grasshopper/Components/ConstraintsLinks/NodeSpringComponent.cs"
   },
   {
-    "Class": "PlateOffsetComponent",
-    "Name": "Plate Offset and Orientation",
-    "Category": "04-Attributes",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/PlateOffsetComponent.cs"
+    "Class": "PinnedLinkPropertyComponent",
+    "Name": "Pinned Link Property",
+    "Category": "05-Vincoli e link",
+    "Topic": "ConstraintsLinks",
+    "Guid": "5330401b-325b-562d-8883-54128f1c7759",
+    "File": "Rhino2Straus.Grasshopper/Components/ConstraintsLinks/PinnedLinkPropertyComponent.cs"
+  },
+  {
+    "Class": "RigidLinkPropertyComponent",
+    "Name": "Rigid Link Property",
+    "Category": "05-Vincoli e link",
+    "Topic": "ConstraintsLinks",
+    "Guid": "5bb78743-9277-50a6-9bb6-a7403a73a347",
+    "File": "Rhino2Straus.Grasshopper/Components/ConstraintsLinks/RigidLinkPropertyComponent.cs"
+  },
+  {
+    "Class": "SectorSymmetryLinkPropertyComponent",
+    "Name": "SectorSymmetry Link Property",
+    "Category": "05-Vincoli e link",
+    "Topic": "ConstraintsLinks",
+    "Guid": "a475b0d6-9df7-59fd-a41b-04dc2645be93",
+    "File": "Rhino2Straus.Grasshopper/Components/ConstraintsLinks/SectorSymmetryLinkPropertyComponent.cs"
   },
   {
     "Class": "NodeSupportComponent",
     "Name": "Support",
-    "Category": "04-Attributes",
-    "File": "Rhino2Straus.Grasshopper/Components/Attributes/NodeSupportComponent.cs"
+    "Category": "05-Vincoli e link",
+    "Topic": "ConstraintsLinks",
+    "Guid": "3ed0cf37-cc66-4e44-97ed-e6c77b11b662",
+    "File": "Rhino2Straus.Grasshopper/Components/ConstraintsLinks/NodeSupportComponent.cs"
   },
   {
     "Class": "AlignBeamToPointComponent",
     "Name": "Align Beam Axis To Point",
-    "Category": "04-Geometry",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/AlignBeamToPointComponent.cs"
+    "Category": "06-Assi e offset",
+    "Topic": "AxesOffsets",
+    "Guid": "2a57a7de-dd8b-5a04-a77f-d1b3e1ca318e",
+    "File": "Rhino2Straus.Grasshopper/Components/AxesOffsets/AlignBeamToPointComponent.cs"
   },
   {
     "Class": "AlignBeamAxisComponent",
     "Name": "Align Beam Local Axis",
-    "Category": "04-Geometry",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/AlignBeamAxisComponent.cs"
+    "Category": "06-Assi e offset",
+    "Topic": "AxesOffsets",
+    "Guid": "ae20ccaf-f1e3-599e-bcc2-18e479bcb81f",
+    "File": "Rhino2Straus.Grasshopper/Components/AxesOffsets/AlignBeamAxisComponent.cs"
+  },
+  {
+    "Class": "AlignModelAxesComponent",
+    "Name": "Align Model Local Axes",
+    "Category": "06-Assi e offset",
+    "Topic": "AxesOffsets",
+    "Guid": "306b1f1f-3675-588d-9dcb-7095fa5859b9",
+    "File": "Rhino2Straus.Grasshopper/Components/AxesOffsets/AlignModelAxesComponent.cs"
   },
   {
     "Class": "AlignPlateToPlaneComponent",
     "Name": "Align Plate Axis To Plane",
-    "Category": "04-Geometry",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/AlignPlateToPlaneComponent.cs"
+    "Category": "06-Assi e offset",
+    "Topic": "AxesOffsets",
+    "Guid": "75aa6043-c636-5975-be82-92bbe028458d",
+    "File": "Rhino2Straus.Grasshopper/Components/AxesOffsets/AlignPlateToPlaneComponent.cs"
   },
   {
     "Class": "AlignPlateAxisComponent",
     "Name": "Align Plate Local Axis",
-    "Category": "04-Geometry",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/AlignPlateAxisComponent.cs"
+    "Category": "06-Assi e offset",
+    "Topic": "AxesOffsets",
+    "Guid": "653d49e0-25b6-54f5-ab7f-e7c959f09e58",
+    "File": "Rhino2Straus.Grasshopper/Components/AxesOffsets/AlignPlateAxisComponent.cs"
+  },
+  {
+    "Class": "BeamAxesComponent",
+    "Name": "Beam Local Axes",
+    "Category": "06-Assi e offset",
+    "Topic": "AxesOffsets",
+    "Guid": "426c4ddb-78f2-585a-8061-a4a3df13cbcb",
+    "File": "Rhino2Straus.Grasshopper/Components/AxesOffsets/BeamAxesComponent.cs"
+  },
+  {
+    "Class": "BeamOffsetComponent",
+    "Name": "Beam Offset and Orientation",
+    "Category": "06-Assi e offset",
+    "Topic": "AxesOffsets",
+    "Guid": "9a95f5ee-81a4-579c-931f-92ef81279dfc",
+    "File": "Rhino2Straus.Grasshopper/Components/AxesOffsets/BeamOffsetComponent.cs"
+  },
+  {
+    "Class": "SectionInsertionComponent",
+    "Name": "Beam Section Insertion",
+    "Category": "06-Assi e offset",
+    "Topic": "AxesOffsets",
+    "Guid": "8ca1855c-ccad-5a3e-860f-bb6e90bc3290",
+    "File": "Rhino2Straus.Grasshopper/Components/AxesOffsets/SectionInsertionComponent.cs"
+  },
+  {
+    "Class": "PlateAxesComponent",
+    "Name": "Plate Local Axes",
+    "Category": "06-Assi e offset",
+    "Topic": "AxesOffsets",
+    "Guid": "d36c6a2f-6ebd-5458-af04-e4bd82902d89",
+    "File": "Rhino2Straus.Grasshopper/Components/AxesOffsets/PlateAxesComponent.cs"
+  },
+  {
+    "Class": "PlateOffsetComponent",
+    "Name": "Plate Offset and Orientation",
+    "Category": "06-Assi e offset",
+    "Topic": "AxesOffsets",
+    "Guid": "1bfc9052-c962-57e8-a6a9-ddf02109a1e8",
+    "File": "Rhino2Straus.Grasshopper/Components/AxesOffsets/PlateOffsetComponent.cs"
   },
   {
     "Class": "LoadCaseComponent",
     "Name": "Load case",
-    "Category": "05-Cases",
+    "Category": "07-Casi e combo",
+    "Topic": "Cases",
+    "Guid": "65f6274a-354a-4965-a40e-73af273912fc",
     "File": "Rhino2Straus.Grasshopper/Components/Cases/LoadCaseComponent.cs"
   },
   {
     "Class": "LoadCombinationComponent",
     "Name": "Load combination",
-    "Category": "05-Cases",
+    "Category": "07-Casi e combo",
+    "Topic": "Cases",
+    "Guid": "1d5fa4d6-2bd8-4be9-978f-877280069ae6",
     "File": "Rhino2Straus.Grasshopper/Components/Cases/LoadCombinationComponent.cs"
   },
   {
     "Class": "LoadFactorComponent",
     "Name": "Load factor",
-    "Category": "05-Cases",
+    "Category": "07-Casi e combo",
+    "Topic": "Cases",
+    "Guid": "15f097b1-56a3-4aca-aff8-c9291d9fabb4",
     "File": "Rhino2Straus.Grasshopper/Components/Cases/LoadFactorComponent.cs"
-  },
-  {
-    "Class": "SelfWeightComponent",
-    "Name": "Self Weight",
-    "Category": "05-Cases",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/SelfWeightComponent.cs"
   },
   {
     "Class": "LoadAreaUniformComponent",
     "Name": "Area Load Uniform",
-    "Category": "06-Loads",
+    "Category": "08-Carichi",
+    "Topic": "Loads",
+    "Guid": "5ce9edca-2f7d-4b4d-902a-d31986b8a6c7",
     "File": "Rhino2Straus.Grasshopper/Components/Loads/LoadAreaUniformComponent.cs"
   },
   {
     "Class": "BeamPointForceComponent",
     "Name": "Beam Point Force",
-    "Category": "06-Loads",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/BeamPointForceComponent.cs"
+    "Category": "08-Carichi",
+    "Topic": "Loads",
+    "Guid": "6557d511-938c-590d-8630-fefa669804f0",
+    "File": "Rhino2Straus.Grasshopper/Components/Loads/BeamPointForceComponent.cs"
   },
   {
     "Class": "BeamPointMomentComponent",
     "Name": "Beam Point Moment",
-    "Category": "06-Loads",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/BeamPointMomentComponent.cs"
+    "Category": "08-Carichi",
+    "Topic": "Loads",
+    "Guid": "1d43c201-7b84-5c60-bb78-74341ceb8419",
+    "File": "Rhino2Straus.Grasshopper/Components/Loads/BeamPointMomentComponent.cs"
   },
   {
     "Class": "BeamPreloadComponent",
     "Name": "Beam Preload",
-    "Category": "06-Loads",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/BeamPreloadComponent.cs"
+    "Category": "08-Carichi",
+    "Topic": "Loads",
+    "Guid": "c4cfee95-8df4-58ce-b6e9-e1a068bde057",
+    "File": "Rhino2Straus.Grasshopper/Components/Loads/BeamPreloadComponent.cs"
   },
   {
     "Class": "BeamGradientComponent",
     "Name": "Beam Temperature Gradient",
-    "Category": "06-Loads",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/BeamGradientComponent.cs"
+    "Category": "08-Carichi",
+    "Topic": "Loads",
+    "Guid": "1066a017-d9eb-5713-ba1f-a670614db109",
+    "File": "Rhino2Straus.Grasshopper/Components/Loads/BeamGradientComponent.cs"
   },
   {
     "Class": "LoadFrameNonUniComponent",
     "Name": "Load frame non-uniform",
-    "Category": "06-Loads",
+    "Category": "08-Carichi",
+    "Topic": "Loads",
+    "Guid": "cd36a3ea-5037-45a7-953f-0fc70d639e58",
     "File": "Rhino2Straus.Grasshopper/Components/Loads/LoadFrameNonUniComponent.cs"
   },
   {
     "Class": "LoadFrameUniformComponent",
     "Name": "Load frame uniform",
-    "Category": "06-Loads",
+    "Category": "08-Carichi",
+    "Topic": "Loads",
+    "Guid": "14bc0e1d-50ed-4a42-989f-08776a80d468",
     "File": "Rhino2Straus.Grasshopper/Components/Loads/LoadFrameUniformComponent.cs"
   },
   {
     "Class": "LoadNodalComponent",
     "Name": "Load nodal",
-    "Category": "06-Loads",
+    "Category": "08-Carichi",
+    "Topic": "Loads",
+    "Guid": "cf708797-8d98-4bbe-a746-11baf38ea456",
     "File": "Rhino2Straus.Grasshopper/Components/Loads/LoadNodalComponent.cs"
   },
   {
     "Class": "NodeTemperatureComponent",
     "Name": "Node Temperature",
-    "Category": "06-Loads",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NodeTemperatureComponent.cs"
+    "Category": "08-Carichi",
+    "Topic": "Loads",
+    "Guid": "90f7fcd1-e989-5bfa-9174-a1550a179dbe",
+    "File": "Rhino2Straus.Grasshopper/Components/Loads/NodeTemperatureComponent.cs"
   },
   {
     "Class": "PlateEdgePressureComponent",
     "Name": "Plate Edge Pressure",
-    "Category": "06-Loads",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/PlateEdgePressureComponent.cs"
+    "Category": "08-Carichi",
+    "Topic": "Loads",
+    "Guid": "b1d1120f-e6da-55b6-93de-a828586c8be3",
+    "File": "Rhino2Straus.Grasshopper/Components/Loads/PlateEdgePressureComponent.cs"
   },
   {
     "Class": "GlobalPressureComponent",
     "Name": "Plate Global Pressure",
-    "Category": "06-Loads",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/GlobalPressureComponent.cs"
+    "Category": "08-Carichi",
+    "Topic": "Loads",
+    "Guid": "a94608dd-cbf9-5588-a5dd-e09c157e9bbe",
+    "File": "Rhino2Straus.Grasshopper/Components/Loads/GlobalPressureComponent.cs"
   },
   {
     "Class": "PlatePreloadComponent",
     "Name": "Plate Preload",
-    "Category": "06-Loads",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/PlatePreloadComponent.cs"
+    "Category": "08-Carichi",
+    "Topic": "Loads",
+    "Guid": "91b858a9-5fe4-5bd6-b131-942b90582b49",
+    "File": "Rhino2Straus.Grasshopper/Components/Loads/PlatePreloadComponent.cs"
   },
   {
     "Class": "PlateGradientComponent",
     "Name": "Plate Temperature Gradient",
-    "Category": "06-Loads",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/PlateGradientComponent.cs"
+    "Category": "08-Carichi",
+    "Topic": "Loads",
+    "Guid": "26ddc3f2-abc4-5f63-962d-fa612cfaf6b5",
+    "File": "Rhino2Straus.Grasshopper/Components/Loads/PlateGradientComponent.cs"
+  },
+  {
+    "Class": "SelfWeightComponent",
+    "Name": "Self Weight",
+    "Category": "08-Carichi",
+    "Topic": "Loads",
+    "Guid": "183c07fe-c460-5163-a09b-df12543e3037",
+    "File": "Rhino2Straus.Grasshopper/Components/Loads/SelfWeightComponent.cs"
   },
   {
     "Class": "SolidPressureComponent",
     "Name": "Solid Face Pressure",
-    "Category": "06-Loads",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/SolidPressureComponent.cs"
-  },
-  {
-    "Class": "AlignModelAxesComponent",
-    "Name": "Align Model Local Axes",
-    "Category": "07-Model",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/AlignModelAxesComponent.cs"
+    "Category": "08-Carichi",
+    "Topic": "Loads",
+    "Guid": "14f3a8cb-c2ce-5620-aebc-0f30f777a749",
+    "File": "Rhino2Straus.Grasshopper/Components/Loads/SolidPressureComponent.cs"
   },
   {
     "Class": "AreaFilterComponent",
     "Name": "Area Filter",
-    "Category": "07-Model",
-    "File": "Rhino2Straus.Grasshopper/Components/Tools/AreaFilterComponent.cs"
+    "Category": "09-Modello",
+    "Topic": "Model",
+    "Guid": "58bbf0d8-9ace-4a27-b67f-0bf5e9bec547",
+    "File": "Rhino2Straus.Grasshopper/Components/Model/AreaFilterComponent.cs"
   },
   {
     "Class": "BuildModelComponent",
     "Name": "Build Model",
-    "Category": "07-Model",
-    "File": "Rhino2Straus.Grasshopper/Components/Models/BuildModelComponent.cs"
-  },
-  {
-    "Class": "ClearModelResultsComponent",
-    "Name": "Clear Model Results",
-    "Category": "07-Model",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ClearModelResultsComponent.cs"
+    "Category": "09-Modello",
+    "Topic": "Model",
+    "Guid": "e95664b0-8ee6-4db9-a001-517e57bdab93",
+    "File": "Rhino2Straus.Grasshopper/Components/Model/BuildModelComponent.cs"
   },
   {
     "Class": "DecomposeModelComponent",
     "Name": "Decompose Model",
-    "Category": "07-Model",
-    "File": "Rhino2Straus.Grasshopper/Components/Models/DecomposeModelComponent.cs"
+    "Category": "09-Modello",
+    "Topic": "Model",
+    "Guid": "db47b5d0-3d45-48a6-82f4-cea65426e9a6",
+    "File": "Rhino2Straus.Grasshopper/Components/Model/DecomposeModelComponent.cs"
+  },
+  {
+    "Class": "ElementGroupComponent",
+    "Name": "Element Group",
+    "Category": "09-Modello",
+    "Topic": "Model",
+    "Guid": "ad161a62-810b-4367-8979-e0e7725abb36",
+    "File": "Rhino2Straus.Grasshopper/Components/Model/ElementGroupComponent.cs"
   },
   {
     "Class": "FrameFilterComponent",
     "Name": "Frame Filter",
-    "Category": "07-Model",
-    "File": "Rhino2Straus.Grasshopper/Components/Tools/FrameFilterComponent.cs"
+    "Category": "09-Modello",
+    "Topic": "Model",
+    "Guid": "38a772ad-451e-4af6-bead-52f530028b8b",
+    "File": "Rhino2Straus.Grasshopper/Components/Model/FrameFilterComponent.cs"
   },
   {
     "Class": "MergeModelsComponent",
     "Name": "Merge Straus Models",
-    "Category": "07-Model",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/MergeModelsComponent.cs"
+    "Category": "09-Modello",
+    "Topic": "Model",
+    "Guid": "356a6055-5867-5789-bdd1-c4e1d16e4a2a",
+    "File": "Rhino2Straus.Grasshopper/Components/Model/MergeModelsComponent.cs"
   },
   {
     "Class": "ModelSummaryComponent",
     "Name": "Model Summary",
-    "Category": "07-Model",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelSummaryComponent.cs"
+    "Category": "09-Modello",
+    "Topic": "Model",
+    "Guid": "53689eef-1768-56b4-ad15-d4b22653b7ef",
+    "File": "Rhino2Straus.Grasshopper/Components/Model/ModelSummaryComponent.cs"
   },
   {
     "Class": "ModelUnitsComponent",
     "Name": "Model Units",
-    "Category": "07-Model",
-    "File": "Rhino2Straus.Grasshopper/Components/Models/ModelUnitsComponent.cs"
+    "Category": "09-Modello",
+    "Topic": "Model",
+    "Guid": "952b53b7-42f8-413d-a9b1-9faacdfa4c80",
+    "File": "Rhino2Straus.Grasshopper/Components/Model/ModelUnitsComponent.cs"
   },
   {
     "Class": "NodeFilterComponent",
     "Name": "Node Filter",
-    "Category": "07-Model",
-    "File": "Rhino2Straus.Grasshopper/Components/Tools/NodeFilterComponent.cs"
+    "Category": "09-Modello",
+    "Topic": "Model",
+    "Guid": "be7ac363-0cc9-4bed-8720-06af29ef7ef3",
+    "File": "Rhino2Straus.Grasshopper/Components/Model/NodeFilterComponent.cs"
   },
   {
     "Class": "ValidateModelComponent",
     "Name": "Validate Straus Model",
-    "Category": "07-Model",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ValidateModelComponent.cs"
-  },
-  {
-    "Class": "StrausR3ExportComponent",
-    "Name": "Straus7 R3 Export",
-    "Category": "08-Export",
-    "File": "Rhino2Straus.Grasshopper/Components/Export/StrausR3ExportComponent.cs"
-  },
-  {
-    "Class": "BeamAxesComponent",
-    "Name": "Beam Local Axes",
-    "Category": "09-Tools",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/BeamAxesComponent.cs"
-  },
-  {
-    "Class": "BeamInfoComponent",
-    "Name": "Deconstruct Beam",
-    "Category": "09-Tools",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/BeamInfoComponent.cs"
-  },
-  {
-    "Class": "SectionInfoComponent",
-    "Name": "Deconstruct Beam Section",
-    "Category": "09-Tools",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/SectionInfoComponent.cs"
-  },
-  {
-    "Class": "MaterialInfoComponent",
-    "Name": "Deconstruct Material",
-    "Category": "09-Tools",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/MaterialInfoComponent.cs"
-  },
-  {
-    "Class": "NodeInfoComponent",
-    "Name": "Deconstruct Node",
-    "Category": "09-Tools",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NodeInfoComponent.cs"
-  },
-  {
-    "Class": "PlateInfoComponent",
-    "Name": "Deconstruct Plate",
-    "Category": "09-Tools",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/PlateInfoComponent.cs"
-  },
-  {
-    "Class": "PlateAxesComponent",
-    "Name": "Plate Local Axes",
-    "Category": "09-Tools",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/PlateAxesComponent.cs"
-  },
-  {
-    "Class": "SolidInfoComponent",
-    "Name": "Solid Info",
-    "Category": "09-Tools",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/SolidInfoComponent.cs"
+    "Category": "09-Modello",
+    "Topic": "Model",
+    "Guid": "595409be-4738-594a-b57d-39bc2437d0a6",
+    "File": "Rhino2Straus.Grasshopper/Components/Model/ValidateModelComponent.cs"
   },
   {
     "Class": "BakeStrausGeometryComponent",
     "Name": "Bake Straus Geometry",
-    "Category": "10-Import",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/BakeStrausGeometryComponent.cs"
+    "Category": "10-File Straus",
+    "Topic": "Files",
+    "Guid": "1fa3c129-3308-46c8-a529-67d87502956c",
+    "File": "Rhino2Straus.Grasshopper/Components/Files/BakeStrausGeometryComponent.cs"
   },
   {
     "Class": "ReadStrausGeometryComponent",
     "Name": "Read Straus Geometry",
-    "Category": "10-Import",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ReadStrausGeometryComponent.cs"
+    "Category": "10-File Straus",
+    "Topic": "Files",
+    "Guid": "7cfff3d7-4b55-51be-83a2-0edce3eb3ad0",
+    "File": "Rhino2Straus.Grasshopper/Components/Files/ReadStrausGeometryComponent.cs"
+  },
+  {
+    "Class": "StrausR3ExportComponent",
+    "Name": "Straus7 R3 Export",
+    "Category": "10-File Straus",
+    "Topic": "Files",
+    "Guid": "11ccef5e-40d7-4b18-b768-81111781b452",
+    "File": "Rhino2Straus.Grasshopper/Components/Files/StrausR3ExportComponent.cs"
   },
   {
     "Class": "RunLinearBucklingComponent",
     "Name": "Run Linear Buckling",
-    "Category": "11-Analysis",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/RunLinearBucklingComponent.cs"
+    "Category": "11-Analisi",
+    "Topic": "Analysis",
+    "Guid": "913420ec-f794-5996-b036-c5608b34c6ff",
+    "File": "Rhino2Straus.Grasshopper/Components/Analysis/RunLinearBucklingComponent.cs"
   },
   {
     "Class": "RunLinearStaticComponent",
     "Name": "Run Linear Static",
-    "Category": "11-Analysis",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/RunLinearStaticComponent.cs"
+    "Category": "11-Analisi",
+    "Topic": "Analysis",
+    "Guid": "d210a91e-8e0e-5b67-ac0c-68ca3a8e2aa4",
+    "File": "Rhino2Straus.Grasshopper/Components/Analysis/RunLinearStaticComponent.cs"
   },
   {
     "Class": "RunModelCasesComponent",
     "Name": "Run Model Cases and Combinations",
-    "Category": "11-Analysis",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/RunModelCasesComponent.cs"
+    "Category": "11-Analisi",
+    "Topic": "Analysis",
+    "Guid": "4a573019-35cb-55d7-8580-99ad7613003b",
+    "File": "Rhino2Straus.Grasshopper/Components/Analysis/RunModelCasesComponent.cs"
   },
   {
     "Class": "RunModelBucklingComponent",
     "Name": "Run Model Linear Buckling",
-    "Category": "11-Analysis",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/RunModelBucklingComponent.cs"
+    "Category": "11-Analisi",
+    "Topic": "Analysis",
+    "Guid": "323cda05-f8cf-506e-bba6-af56a2d89dde",
+    "File": "Rhino2Straus.Grasshopper/Components/Analysis/RunModelBucklingComponent.cs"
   },
   {
     "Class": "RunModelModalComponent",
     "Name": "Run Model Natural Frequencies",
-    "Category": "11-Analysis",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/RunModelModalComponent.cs"
+    "Category": "11-Analisi",
+    "Topic": "Analysis",
+    "Guid": "7fdd9a12-3599-58dc-a1e5-7a49d58bcd53",
+    "File": "Rhino2Straus.Grasshopper/Components/Analysis/RunModelModalComponent.cs"
   },
   {
     "Class": "RunModelNonlinearComponent",
     "Name": "Run Model Nonlinear Static",
-    "Category": "11-Analysis",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/RunModelNonlinearComponent.cs"
+    "Category": "11-Analisi",
+    "Topic": "Analysis",
+    "Guid": "2ca4d9c4-10f2-5eaa-8cf3-70ea1a7bde38",
+    "File": "Rhino2Straus.Grasshopper/Components/Analysis/RunModelNonlinearComponent.cs"
   },
   {
     "Class": "RunNaturalFrequencyComponent",
     "Name": "Run Natural Frequency",
-    "Category": "11-Analysis",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/RunNaturalFrequencyComponent.cs"
+    "Category": "11-Analisi",
+    "Topic": "Analysis",
+    "Guid": "69592316-e47a-57a8-b85d-09bc68563540",
+    "File": "Rhino2Straus.Grasshopper/Components/Analysis/RunNaturalFrequencyComponent.cs"
   },
   {
     "Class": "RunNonlinearStaticComponent",
     "Name": "Run Nonlinear Static",
-    "Category": "11-Analysis",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/RunNonlinearStaticComponent.cs"
-  },
-  {
-    "Class": "BeamDisplacementResultsComponent",
-    "Name": "Beam Displacements",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/BeamDisplacementResultsComponent.cs"
-  },
-  {
-    "Class": "BeamForcesComponent",
-    "Name": "Beam Forces",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/BeamForcesComponent.cs"
-  },
-  {
-    "Class": "BeamStressComponent",
-    "Name": "Beam Stress",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/BeamStressComponent.cs"
+    "Category": "11-Analisi",
+    "Topic": "Analysis",
+    "Guid": "410900f3-b729-5c92-9ac8-68f2241a1a07",
+    "File": "Rhino2Straus.Grasshopper/Components/Analysis/RunNonlinearStaticComponent.cs"
   },
   {
     "Class": "BucklingFactorsComponent",
     "Name": "Buckling Factors",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/BucklingFactorsComponent.cs"
+    "Category": "12-Ris. modello",
+    "Topic": "ResultsModel",
+    "Guid": "2fddf0be-6282-52ae-aa36-5fc5a6e5fe51",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsModel/BucklingFactorsComponent.cs"
+  },
+  {
+    "Class": "ClearModelResultsComponent",
+    "Name": "Clear Model Results",
+    "Category": "12-Ris. modello",
+    "Topic": "ResultsModel",
+    "Guid": "a1bf7fee-60e3-5015-80a8-edaa147b0d24",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsModel/ClearModelResultsComponent.cs"
   },
   {
     "Class": "DecomposeNativeSectionComponent",
     "Name": "Decompose Native Beam Section",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/DecomposeNativeSectionComponent.cs"
+    "Category": "12-Ris. modello",
+    "Topic": "ResultsModel",
+    "Guid": "a776af15-2871-57ea-8e57-007888c511c1",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsModel/DecomposeNativeSectionComponent.cs"
   },
   {
     "Class": "DecomposeResultRecordComponent",
     "Name": "Decompose Result Record",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/DecomposeResultRecordComponent.cs"
-  },
-  {
-    "Class": "DeformedNodesComponent",
-    "Name": "Deformed Nodes",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/DeformedNodesComponent.cs"
+    "Category": "12-Ris. modello",
+    "Topic": "ResultsModel",
+    "Guid": "6f6e9a49-8187-5e36-a12e-2a5ac04ac815",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsModel/DecomposeResultRecordComponent.cs"
   },
   {
     "Class": "ModalResultsComponent",
     "Name": "Modal Frequencies",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModalResultsComponent.cs"
-  },
-  {
-    "Class": "ModelBeamActionsComponent",
-    "Name": "Model Beam Actions N V T M",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelBeamActionsComponent.cs"
-  },
-  {
-    "Class": "ModelBeamDisplacementComponent",
-    "Name": "Model Beam Displacement",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelBeamDisplacementComponent.cs"
-  },
-  {
-    "Class": "ModelBeamForceComponent",
-    "Name": "Model Beam Force",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelBeamForceComponent.cs"
-  },
-  {
-    "Class": "ModelBeamDiagramComponent",
-    "Name": "Model Beam Force Diagram",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelBeamDiagramComponent.cs"
-  },
-  {
-    "Class": "ModelBeamNodeReactionComponent",
-    "Name": "Model Beam Node Reaction",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelBeamNodeReactionComponent.cs"
-  },
-  {
-    "Class": "ModelBeamStrainComponent",
-    "Name": "Model Beam Strain",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelBeamStrainComponent.cs"
-  },
-  {
-    "Class": "ModelBeamStressComponent",
-    "Name": "Model Beam Stress",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelBeamStressComponent.cs"
-  },
-  {
-    "Class": "ModelBeamTotalStrainComponent",
-    "Name": "Model Beam Total Strain",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelBeamTotalStrainComponent.cs"
+    "Category": "12-Ris. modello",
+    "Topic": "ResultsModel",
+    "Guid": "dc77f972-0b6f-5cdc-9edd-579c8c641ad9",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsModel/ModalResultsComponent.cs"
   },
   {
     "Class": "ModelDeformedGeometryComponent",
     "Name": "Model Deformed Geometry",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelDeformedGeometryComponent.cs"
-  },
-  {
-    "Class": "ModelLinkNodeDisplacementComponent",
-    "Name": "Model Link Node Displacement",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelLinkNodeDisplacementComponent.cs"
-  },
-  {
-    "Class": "ModelLinkNodeReactionComponent",
-    "Name": "Model Link Node Reaction",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelLinkNodeReactionComponent.cs"
+    "Category": "12-Ris. modello",
+    "Topic": "ResultsModel",
+    "Guid": "483b39d4-e09b-550a-9ce7-2007051badc9",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsModel/ModelDeformedGeometryComponent.cs"
   },
   {
     "Class": "ModelModalMetadataComponent",
     "Name": "Model Modal and Buckling Data",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelModalMetadataComponent.cs"
+    "Category": "12-Ris. modello",
+    "Topic": "ResultsModel",
+    "Guid": "73d59caf-4da7-5dbe-8303-8ce80638ee45",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsModel/ModelModalMetadataComponent.cs"
   },
   {
     "Class": "ModelNativeSectionsComponent",
     "Name": "Model Native Beam Sections",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelNativeSectionsComponent.cs"
-  },
-  {
-    "Class": "ModelNodeDisplacementComponent",
-    "Name": "Model Node Displacement",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelNodeDisplacementComponent.cs"
-  },
-  {
-    "Class": "ModelNodeReactionComponent",
-    "Name": "Model Node Reaction",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelNodeReactionComponent.cs"
-  },
-  {
-    "Class": "ModelPlateCurvatureComponent",
-    "Name": "Model Plate Curvature",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelPlateCurvatureComponent.cs"
-  },
-  {
-    "Class": "ModelPlateForceComponent",
-    "Name": "Model Plate Force",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelPlateForceComponent.cs"
-  },
-  {
-    "Class": "ModelPlateMomentComponent",
-    "Name": "Model Plate Moment",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelPlateMomentComponent.cs"
-  },
-  {
-    "Class": "ModelPlateNodeDisplacementComponent",
-    "Name": "Model Plate Node Displacement",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelPlateNodeDisplacementComponent.cs"
-  },
-  {
-    "Class": "ModelPlateNodeReactionComponent",
-    "Name": "Model Plate Node Reaction",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelPlateNodeReactionComponent.cs"
-  },
-  {
-    "Class": "ModelPlateStrainComponent",
-    "Name": "Model Plate Strain",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelPlateStrainComponent.cs"
-  },
-  {
-    "Class": "ModelPlateStressComponent",
-    "Name": "Model Plate Stress",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelPlateStressComponent.cs"
-  },
-  {
-    "Class": "ModelPlateTotalStrainComponent",
-    "Name": "Model Plate Total Strain",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelPlateTotalStrainComponent.cs"
+    "Category": "12-Ris. modello",
+    "Topic": "ResultsModel",
+    "Guid": "7f3518af-a64c-5b6a-a415-76c132b64168",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsModel/ModelNativeSectionsComponent.cs"
   },
   {
     "Class": "ModelResultCasesComponent",
     "Name": "Model Result Cases",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelResultCasesComponent.cs"
+    "Category": "12-Ris. modello",
+    "Topic": "ResultsModel",
+    "Guid": "11b2087e-d038-52db-9a57-3a662d981647",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsModel/ModelResultCasesComponent.cs"
   },
   {
     "Class": "ModelResultEnvelopeComponent",
     "Name": "Model Result Extrema",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelResultEnvelopeComponent.cs"
-  },
-  {
-    "Class": "ModelSolidNodeDisplacementComponent",
-    "Name": "Model Solid Node Displacement",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelSolidNodeDisplacementComponent.cs"
-  },
-  {
-    "Class": "ModelSolidNodeReactionComponent",
-    "Name": "Model Solid Node Reaction",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelSolidNodeReactionComponent.cs"
-  },
-  {
-    "Class": "ModelSolidStrainComponent",
-    "Name": "Model Solid Strain",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelSolidStrainComponent.cs"
-  },
-  {
-    "Class": "ModelSolidStressComponent",
-    "Name": "Model Solid Stress",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelSolidStressComponent.cs"
-  },
-  {
-    "Class": "ModelSolidTotalStrainComponent",
-    "Name": "Model Solid Total Strain",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelSolidTotalStrainComponent.cs"
+    "Category": "12-Ris. modello",
+    "Topic": "ResultsModel",
+    "Guid": "eb9d1d5d-f494-5774-a677-3173ee4a1bca",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsModel/ModelResultEnvelopeComponent.cs"
   },
   {
     "Class": "ModelVerificationDataComponent",
     "Name": "Model Verification Data",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelVerificationDataComponent.cs"
-  },
-  {
-    "Class": "NodeDisplacementsComponent",
-    "Name": "Node Displacements",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NodeDisplacementsComponent.cs"
-  },
-  {
-    "Class": "NodeReactionsComponent",
-    "Name": "Node Reactions",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/NodeReactionsComponent.cs"
-  },
-  {
-    "Class": "PlateForceResultsComponent",
-    "Name": "Plate Forces",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/PlateForceResultsComponent.cs"
-  },
-  {
-    "Class": "PlateMomentResultsComponent",
-    "Name": "Plate Moments",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/PlateMomentResultsComponent.cs"
-  },
-  {
-    "Class": "PlateStressResultsComponent",
-    "Name": "Plate Stress",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/PlateStressResultsComponent.cs"
+    "Category": "12-Ris. modello",
+    "Topic": "ResultsModel",
+    "Guid": "5273ffd9-0efd-5489-8f62-f8ac21c33eb2",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsModel/ModelVerificationDataComponent.cs"
   },
   {
     "Class": "ReadResultsIntoModelComponent",
     "Name": "Read Results Into Model",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ReadResultsIntoModelComponent.cs"
+    "Category": "12-Ris. modello",
+    "Topic": "ResultsModel",
+    "Guid": "ea7fe876-9b0c-5339-a2e4-4bb6c4acfad3",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsModel/ReadResultsIntoModelComponent.cs"
   },
   {
     "Class": "ResultEnvelopeComponent",
     "Name": "Result Envelope",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ResultEnvelopeComponent.cs"
-  },
-  {
-    "Class": "SolidStrainResultsComponent",
-    "Name": "Solid Strain",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/SolidStrainResultsComponent.cs"
-  },
-  {
-    "Class": "SolidStressResultsComponent",
-    "Name": "Solid Stress",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/SolidStressResultsComponent.cs"
+    "Category": "12-Ris. modello",
+    "Topic": "ResultsModel",
+    "Guid": "d2806b8c-e9e0-5843-b52b-997a2155f056",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsModel/ResultEnvelopeComponent.cs"
   },
   {
     "Class": "StrausResultCasesComponent",
     "Name": "Straus Result Cases",
-    "Category": "12-Results",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/StrausResultCasesComponent.cs"
+    "Category": "12-Ris. modello",
+    "Topic": "ResultsModel",
+    "Guid": "d0e739f8-93bd-5995-87cf-e2ede60eadc3",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsModel/StrausResultCasesComponent.cs"
+  },
+  {
+    "Class": "DeformedNodesComponent",
+    "Name": "Deformed Nodes",
+    "Category": "13-Ris. nodi",
+    "Topic": "ResultsNodes",
+    "Guid": "c804f4d9-8a14-572a-b976-66c40a5793fc",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsNodes/DeformedNodesComponent.cs"
+  },
+  {
+    "Class": "ModelLinkNodeDisplacementComponent",
+    "Name": "Model Link Node Displacement",
+    "Category": "13-Ris. nodi",
+    "Topic": "ResultsNodes",
+    "Guid": "3fecb1ad-063e-58a6-a8eb-9c13d39ab2e5",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsNodes/ModelLinkNodeDisplacementComponent.cs"
+  },
+  {
+    "Class": "ModelLinkNodeReactionComponent",
+    "Name": "Model Link Node Reaction",
+    "Category": "13-Ris. nodi",
+    "Topic": "ResultsNodes",
+    "Guid": "722872ab-03e2-5ecc-a949-b4675d5e2fcb",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsNodes/ModelLinkNodeReactionComponent.cs"
+  },
+  {
+    "Class": "ModelNodeDisplacementComponent",
+    "Name": "Model Node Displacement",
+    "Category": "13-Ris. nodi",
+    "Topic": "ResultsNodes",
+    "Guid": "e02eb162-b26b-5caf-b173-16d6ba7b2077",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsNodes/ModelNodeDisplacementComponent.cs"
+  },
+  {
+    "Class": "ModelNodeReactionComponent",
+    "Name": "Model Node Reaction",
+    "Category": "13-Ris. nodi",
+    "Topic": "ResultsNodes",
+    "Guid": "b7778228-ba02-5ad8-8c57-57b8d8c5c817",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsNodes/ModelNodeReactionComponent.cs"
+  },
+  {
+    "Class": "NodeDisplacementsComponent",
+    "Name": "Node Displacements",
+    "Category": "13-Ris. nodi",
+    "Topic": "ResultsNodes",
+    "Guid": "79c9a914-6e69-51ae-b22c-8e9845a6b8d2",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsNodes/NodeDisplacementsComponent.cs"
+  },
+  {
+    "Class": "NodeReactionsComponent",
+    "Name": "Node Reactions",
+    "Category": "13-Ris. nodi",
+    "Topic": "ResultsNodes",
+    "Guid": "1c4c28dd-ca27-5495-af23-b4495914f76b",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsNodes/NodeReactionsComponent.cs"
+  },
+  {
+    "Class": "BeamDisplacementResultsComponent",
+    "Name": "Beam Displacements",
+    "Category": "14-Ris. travi",
+    "Topic": "ResultsBeams",
+    "Guid": "ea9c5153-c71b-5a9d-9cd8-2dee24da8b46",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsBeams/BeamDisplacementResultsComponent.cs"
+  },
+  {
+    "Class": "BeamForcesComponent",
+    "Name": "Beam Forces",
+    "Category": "14-Ris. travi",
+    "Topic": "ResultsBeams",
+    "Guid": "9d88e678-cb9c-5dd5-8a8d-844bba34db88",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsBeams/BeamForcesComponent.cs"
+  },
+  {
+    "Class": "BeamStressComponent",
+    "Name": "Beam Stress",
+    "Category": "14-Ris. travi",
+    "Topic": "ResultsBeams",
+    "Guid": "df60b41c-d2cb-54f0-879f-078032d25ddd",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsBeams/BeamStressComponent.cs"
+  },
+  {
+    "Class": "ModelBeamActionsComponent",
+    "Name": "Model Beam Actions N V T M",
+    "Category": "14-Ris. travi",
+    "Topic": "ResultsBeams",
+    "Guid": "dc675280-e907-5e4e-8fe1-fcdeff747e66",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsBeams/ModelBeamActionsComponent.cs"
+  },
+  {
+    "Class": "ModelBeamDisplacementComponent",
+    "Name": "Model Beam Displacement",
+    "Category": "14-Ris. travi",
+    "Topic": "ResultsBeams",
+    "Guid": "789fb212-def4-52ca-82fb-81e1497342b8",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsBeams/ModelBeamDisplacementComponent.cs"
+  },
+  {
+    "Class": "ModelBeamForceComponent",
+    "Name": "Model Beam Force",
+    "Category": "14-Ris. travi",
+    "Topic": "ResultsBeams",
+    "Guid": "5e6d7f78-c7fd-57cf-877c-d58490e2c919",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsBeams/ModelBeamForceComponent.cs"
+  },
+  {
+    "Class": "ModelBeamDiagramComponent",
+    "Name": "Model Beam Force Diagram",
+    "Category": "14-Ris. travi",
+    "Topic": "ResultsBeams",
+    "Guid": "98ea7e29-bea7-5aa2-8dec-f05e46c51cd8",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsBeams/ModelBeamDiagramComponent.cs"
+  },
+  {
+    "Class": "ModelBeamNodeReactionComponent",
+    "Name": "Model Beam Node Reaction",
+    "Category": "14-Ris. travi",
+    "Topic": "ResultsBeams",
+    "Guid": "2c0754a2-1c3f-5364-a5bf-56e8301e6dd4",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsBeams/ModelBeamNodeReactionComponent.cs"
+  },
+  {
+    "Class": "ModelBeamStrainComponent",
+    "Name": "Model Beam Strain",
+    "Category": "14-Ris. travi",
+    "Topic": "ResultsBeams",
+    "Guid": "86462ae2-2ee9-5991-8944-0043c2d2aeaf",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsBeams/ModelBeamStrainComponent.cs"
+  },
+  {
+    "Class": "ModelBeamStressComponent",
+    "Name": "Model Beam Stress",
+    "Category": "14-Ris. travi",
+    "Topic": "ResultsBeams",
+    "Guid": "ee4e4458-580c-57b9-9581-d009ecd12b3a",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsBeams/ModelBeamStressComponent.cs"
+  },
+  {
+    "Class": "ModelBeamTotalStrainComponent",
+    "Name": "Model Beam Total Strain",
+    "Category": "14-Ris. travi",
+    "Topic": "ResultsBeams",
+    "Guid": "cb75258c-e163-5b47-8eda-962b91c92c61",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsBeams/ModelBeamTotalStrainComponent.cs"
+  },
+  {
+    "Class": "ModelPlateCurvatureComponent",
+    "Name": "Model Plate Curvature",
+    "Category": "15-Ris. piastre",
+    "Topic": "ResultsPlates",
+    "Guid": "bbdefa85-ed70-53b7-9213-bf565882004c",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsPlates/ModelPlateCurvatureComponent.cs"
+  },
+  {
+    "Class": "ModelPlateForceComponent",
+    "Name": "Model Plate Force",
+    "Category": "15-Ris. piastre",
+    "Topic": "ResultsPlates",
+    "Guid": "a961dfae-9eda-5f5a-b7c4-15e780fa7d1d",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsPlates/ModelPlateForceComponent.cs"
+  },
+  {
+    "Class": "ModelPlateMomentComponent",
+    "Name": "Model Plate Moment",
+    "Category": "15-Ris. piastre",
+    "Topic": "ResultsPlates",
+    "Guid": "c368540b-b1a6-5b98-81e0-3b5acf6ceb3d",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsPlates/ModelPlateMomentComponent.cs"
+  },
+  {
+    "Class": "ModelPlateNodeDisplacementComponent",
+    "Name": "Model Plate Node Displacement",
+    "Category": "15-Ris. piastre",
+    "Topic": "ResultsPlates",
+    "Guid": "63150db1-e56a-5e42-8444-3b0ac0fdcd2c",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsPlates/ModelPlateNodeDisplacementComponent.cs"
+  },
+  {
+    "Class": "ModelPlateNodeReactionComponent",
+    "Name": "Model Plate Node Reaction",
+    "Category": "15-Ris. piastre",
+    "Topic": "ResultsPlates",
+    "Guid": "fed0f934-7bb2-5eab-8124-0f0c6d056fcb",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsPlates/ModelPlateNodeReactionComponent.cs"
+  },
+  {
+    "Class": "ModelPlateStrainComponent",
+    "Name": "Model Plate Strain",
+    "Category": "15-Ris. piastre",
+    "Topic": "ResultsPlates",
+    "Guid": "c7a20253-9b4e-534a-a5ea-ef507749e193",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsPlates/ModelPlateStrainComponent.cs"
+  },
+  {
+    "Class": "ModelPlateStressComponent",
+    "Name": "Model Plate Stress",
+    "Category": "15-Ris. piastre",
+    "Topic": "ResultsPlates",
+    "Guid": "7c9c3788-4013-5d71-927a-5a5f5130c2e2",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsPlates/ModelPlateStressComponent.cs"
+  },
+  {
+    "Class": "ModelPlateTotalStrainComponent",
+    "Name": "Model Plate Total Strain",
+    "Category": "15-Ris. piastre",
+    "Topic": "ResultsPlates",
+    "Guid": "0f11fe2e-3d27-58e1-8d12-9e3c70437bdd",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsPlates/ModelPlateTotalStrainComponent.cs"
+  },
+  {
+    "Class": "PlateForceResultsComponent",
+    "Name": "Plate Forces",
+    "Category": "15-Ris. piastre",
+    "Topic": "ResultsPlates",
+    "Guid": "9ec2813e-741d-51ed-9766-f54246937c02",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsPlates/PlateForceResultsComponent.cs"
+  },
+  {
+    "Class": "PlateMomentResultsComponent",
+    "Name": "Plate Moments",
+    "Category": "15-Ris. piastre",
+    "Topic": "ResultsPlates",
+    "Guid": "7b4fe87b-63e1-5669-8638-bb3f32bc00e4",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsPlates/PlateMomentResultsComponent.cs"
+  },
+  {
+    "Class": "PlateStressResultsComponent",
+    "Name": "Plate Stress",
+    "Category": "15-Ris. piastre",
+    "Topic": "ResultsPlates",
+    "Guid": "a092c871-ddfb-5a64-b859-2a4ee447cb97",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsPlates/PlateStressResultsComponent.cs"
+  },
+  {
+    "Class": "ModelSolidNodeDisplacementComponent",
+    "Name": "Model Solid Node Displacement",
+    "Category": "16-Ris. solidi",
+    "Topic": "ResultsSolids",
+    "Guid": "9a1e0257-5661-5af3-9c87-db934d15f5f3",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsSolids/ModelSolidNodeDisplacementComponent.cs"
+  },
+  {
+    "Class": "ModelSolidNodeReactionComponent",
+    "Name": "Model Solid Node Reaction",
+    "Category": "16-Ris. solidi",
+    "Topic": "ResultsSolids",
+    "Guid": "2b655aad-d85b-5e11-9933-9727d5d82d81",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsSolids/ModelSolidNodeReactionComponent.cs"
+  },
+  {
+    "Class": "ModelSolidStrainComponent",
+    "Name": "Model Solid Strain",
+    "Category": "16-Ris. solidi",
+    "Topic": "ResultsSolids",
+    "Guid": "081f53dc-26ae-564d-8f2f-8a2c09fe5fb5",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsSolids/ModelSolidStrainComponent.cs"
+  },
+  {
+    "Class": "ModelSolidStressComponent",
+    "Name": "Model Solid Stress",
+    "Category": "16-Ris. solidi",
+    "Topic": "ResultsSolids",
+    "Guid": "6ea9d327-e5c2-5fcc-b3e7-600059eed65f",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsSolids/ModelSolidStressComponent.cs"
+  },
+  {
+    "Class": "ModelSolidTotalStrainComponent",
+    "Name": "Model Solid Total Strain",
+    "Category": "16-Ris. solidi",
+    "Topic": "ResultsSolids",
+    "Guid": "57785a2e-5a5e-59e2-9783-28e4e3ea3b6f",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsSolids/ModelSolidTotalStrainComponent.cs"
+  },
+  {
+    "Class": "SolidStrainResultsComponent",
+    "Name": "Solid Strain",
+    "Category": "16-Ris. solidi",
+    "Topic": "ResultsSolids",
+    "Guid": "ff170307-4a7f-5ad5-ae8d-03b517314c26",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsSolids/SolidStrainResultsComponent.cs"
+  },
+  {
+    "Class": "SolidStressResultsComponent",
+    "Name": "Solid Stress",
+    "Category": "16-Ris. solidi",
+    "Topic": "ResultsSolids",
+    "Guid": "b39872cb-0580-5494-9275-47a5c1478cb0",
+    "File": "Rhino2Straus.Grasshopper/Components/ResultsSolids/SolidStressResultsComponent.cs"
   },
   {
     "Class": "ModelGeometryComponent",
     "Name": "Model Physical Geometry",
-    "Category": "13-Preview",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/ModelGeometryComponent.cs"
+    "Category": "17-Preview e bake",
+    "Topic": "Preview",
+    "Guid": "e42dd5d1-840b-5ce6-96dd-49ba371fdc07",
+    "File": "Rhino2Straus.Grasshopper/Components/Preview/ModelGeometryComponent.cs"
   },
   {
     "Class": "PreviewModelComponent",
     "Name": "Rhino2Straus Display Manager",
-    "Category": "13-Preview",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/PreviewModelComponent.cs"
+    "Category": "17-Preview e bake",
+    "Topic": "Preview",
+    "Guid": "5b506764-d527-4b1c-81da-910a202b9603",
+    "File": "Rhino2Straus.Grasshopper/Components/Preview/PreviewModelComponent.cs"
   },
   {
     "Class": "DisplaySettingsComponent",
     "Name": "Rhino2Straus Display Settings",
-    "Category": "13-Preview",
-    "File": "Rhino2Straus.Grasshopper/Components/Extended/DisplaySettingsComponent.cs"
+    "Category": "17-Preview e bake",
+    "Topic": "Preview",
+    "Guid": "aa5719cc-51c8-55ba-b181-86e95c723238",
+    "File": "Rhino2Straus.Grasshopper/Components/Preview/DisplaySettingsComponent.cs"
   }
 ]

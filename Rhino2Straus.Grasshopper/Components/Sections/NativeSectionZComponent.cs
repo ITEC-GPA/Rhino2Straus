@@ -1,0 +1,9 @@
+using System;
+using Rhino2Straus.Core.ElementProperties;
+namespace Rhino2Straus.Grasshopper.Components.Extended;
+public sealed class NativeSectionZComponent : NativeSectionComponent
+{
+    public NativeSectionZComponent() : base("Beam Section Z", "Z", "Native Straus7 R31 section, stiffness and discretised profile preview. Requires an API licence. Default dimensions use metres; connect model Units when different.", ComponentTopics.Tab, ComponentTopics.Sections) { }
+    public override Guid ComponentGuid => new Guid("a0566710-47bb-5fd4-b554-63cf96721db5");
+    protected override NativeSectionSpec Specification => NativeSectionCatalog.Z;
+}

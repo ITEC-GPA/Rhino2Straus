@@ -9,7 +9,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Cases
     public class LoadCaseComponent : SafeComponent
     {
         public LoadCaseComponent()
-            : base("Load case", "Load case", "Load case", Core.Helper.Constants.CATEGORY_RHINO2STRAUS, Core.Helper.Constants.SUBCATEGORY_CASES)
+            : base("Load case", "Load case", "Load case", ComponentTopics.Tab, ComponentTopics.Cases)
         {
         }
 

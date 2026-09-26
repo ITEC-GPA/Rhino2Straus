@@ -13,7 +13,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Loads
     public class LoadFrameNonUniComponent : SafeComponent
     {
         public LoadFrameNonUniComponent()
-            : base("Load frame non-uniform", "Load frame non-uniform", "Load frame non-uniform", Core.Helper.Constants.CATEGORY_RHINO2STRAUS, Core.Helper.Constants.SUBCATEGORY_LOADS)
+            : base("Load frame non-uniform", "Load frame non-uniform", "Load frame non-uniform", ComponentTopics.Tab, ComponentTopics.Loads)
         {
         }
 

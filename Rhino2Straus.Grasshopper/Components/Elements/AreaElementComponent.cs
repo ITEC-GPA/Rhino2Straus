@@ -15,7 +15,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Elements
     {
 
         public AreaElementComponent()
-            : base("Area element", "Area element", "Area element", Core.Helper.Constants.CATEGORY_RHINO2STRAUS, Core.Helper.Constants.SUBCATEGORY_ELEMENTS)
+            : base("Area element", "Area element", "Area element", ComponentTopics.Tab, ComponentTopics.Elements)
         {
         }
 

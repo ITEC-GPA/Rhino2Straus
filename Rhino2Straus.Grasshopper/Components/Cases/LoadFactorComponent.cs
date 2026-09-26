@@ -9,7 +9,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Cases
     public class LoadFactorComponent : SafeComponent
     {
         public LoadFactorComponent()
-            : base("Load factor", "Load factor", "Load factor", Core.Helper.Constants.CATEGORY_RHINO2STRAUS, Core.Helper.Constants.SUBCATEGORY_CASES)
+            : base("Load factor", "Load factor", "Load factor", ComponentTopics.Tab, ComponentTopics.Cases)
         {
         }
 

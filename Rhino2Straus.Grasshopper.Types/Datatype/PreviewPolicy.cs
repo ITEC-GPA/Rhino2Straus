@@ -13,7 +13,7 @@ public static class PreviewPolicy
         var document=component.OnPingDocument()??Instances.ActiveCanvas?.Document;
         if(document==null)return true;
         if(AutomaticVisible(document))return true;
-        return component.SubCategory=="12-Results"&&document.Objects.OfType<IPreviewController>().Any(c=>c.ManagesDocumentPreview&&c.AllowsResultPreview);
+        return ComponentTopics.IsResult(component.SubCategory)&&document.Objects.OfType<IPreviewController>().Any(c=>c.ManagesDocumentPreview&&c.AllowsResultPreview);
     }
     public static bool AutomaticVisible(GH_Document document=null)
     {

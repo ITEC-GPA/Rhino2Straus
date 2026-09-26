@@ -14,7 +14,7 @@ public static class ComponentIcons
     private static Bitmap Draw(string name, string category)
     {
         string n = name.ToLowerInvariant(), c = category.ToLowerInvariant();
-        bool load = c.Contains("load"), result = c.Contains("result"), section = n.Contains("section");
+        bool load = category==ComponentTopics.Loads||c.Contains("load"), result = ComponentTopics.IsResult(category)||c.Contains("result"), section = n.Contains("section");
         Color accent = load ? Color.FromArgb(229, 114, 48) : result ? Color.FromArgb(153, 107, 202)
             : c.Contains("material") || section ? Color.FromArgb(72, 160, 131) : Color.FromArgb(44, 155, 194);
         var bitmap = new Bitmap(24, 24);

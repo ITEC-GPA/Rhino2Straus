@@ -23,7 +23,7 @@ namespace Rhino2Straus.Grasshopper.Components.Extended;
 
 public sealed class LoadAreaUniformComponent : SafeComponent
 {
-    public LoadAreaUniformComponent() : base("Area Load Uniform", "Area Load Uniform", "Area Load Uniform", "Rhino2Straus", "06-Loads") { }
+    public LoadAreaUniformComponent() : base("Area Load Uniform", "Area Load Uniform", "Area Load Uniform", ComponentTopics.Tab, ComponentTopics.Loads) { }
     public override Guid ComponentGuid => new Guid("5ce9edca-2f7d-4b4d-902a-d31986b8a6c7");
     protected override void RegisterInputParams(GH_InputParamManager p)
     {

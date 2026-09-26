@@ -10,7 +10,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Loads
     public class LoadNodalComponent : SafeComponent
     {
         public LoadNodalComponent()
-            : base("Load nodal", "Load nodal", "Load nodal", Core.Helper.Constants.CATEGORY_RHINO2STRAUS, Core.Helper.Constants.SUBCATEGORY_LOADS)
+            : base("Load nodal", "Load nodal", "Load nodal", ComponentTopics.Tab, ComponentTopics.Loads)
         {
         }
 

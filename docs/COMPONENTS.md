@@ -1,173 +1,293 @@
 # Catalogo componenti
 
-163 componenti Grasshopper, tutti con icona. Il parametro persistente Group e la libreria hanno icone aggiuntive.
+163 componenti Grasshopper in **17 pannelli per argomento**, tutti nella tab **Rhino2Straus** e tutti con icona. Il parametro persistente Group e la libreria hanno icone aggiuntive.
 
-Il percorso è sempre elementi/attributi → Build Model o Merge Straus Models → un solo Model → Preview/Run → Model con risultati → estrazione/deformata/dati per il verificatore.
+[Organizzazione della tab e mappa degli argomenti](TOPICS.md).
 
-| Categoria | Componente |
-|---|---|
-| 01-Materials | [Database Concrete](../Rhino2Straus.Grasshopper/Components/Materials/DatabaseConcreteMaterialComponent.cs) |
-| 01-Materials | [Database Steel](../Rhino2Straus.Grasshopper/Components/Materials/DatabaseSteelMaterialComponent.cs) |
-| 01-Materials | [Material](../Rhino2Straus.Grasshopper/Components/Materials/MaterialComponent.cs) |
-| 01-Materials | [Material Design Strengths](../Rhino2Straus.Grasshopper/Components/Extended/MaterialStrengthsComponent.cs) |
-| 02-Properties | [Area Property](../Rhino2Straus.Grasshopper/Components/ElementProperties/AreaPropertyComponent.cs) |
-| 02-Properties | [Area thickness](../Rhino2Straus.Grasshopper/Components/ElementProperties/AreaThicknessComponent.cs) |
-| 02-Properties | [Assign Beam Property](../Rhino2Straus.Grasshopper/Components/Extended/BeamAssignPropertyComponent.cs) |
-| 02-Properties | [Assign Plate Property](../Rhino2Straus.Grasshopper/Components/Extended/PlateAssignPropertyComponent.cs) |
-| 02-Properties | [Beam Behaviour](../Rhino2Straus.Grasshopper/Components/Extended/BeamBehaviourComponent.cs) |
-| 02-Properties | [Beam Section BGL Angle](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglAngleComponent.cs) |
-| 02-Properties | [Beam Section BGL Bulb Flat](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglBulbComponent.cs) |
-| 02-Properties | [Beam Section BGL Channel](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglChannelComponent.cs) |
-| 02-Properties | [Beam Section BGL I](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglIComponent.cs) |
-| 02-Properties | [Beam Section BGL Rectangular Hollow](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglRhsComponent.cs) |
-| 02-Properties | [Beam Section BGL Tee](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionBglTeeComponent.cs) |
-| 02-Properties | [Beam Section BXS](../Rhino2Straus.Grasshopper/Components/Extended/BxsSectionComponent.cs) |
-| 02-Properties | [Beam Section Cruciform](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionCruciformComponent.cs) |
-| 02-Properties | [Beam Section Hollow Trapezoid](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTrapezoidHollowComponent.cs) |
-| 02-Properties | [Beam Section Hollow Triangle](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTriangleHollowComponent.cs) |
-| 02-Properties | [Beam Section Insertion](../Rhino2Straus.Grasshopper/Components/Extended/SectionInsertionComponent.cs) |
-| 02-Properties | [Beam Section Lipped Channel](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionLipChannelComponent.cs) |
-| 02-Properties | [Beam Section Lipped Tee](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTeeLippedComponent.cs) |
-| 02-Properties | [Beam Section Solid Trapezoid](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTrapezoidSolidComponent.cs) |
-| 02-Properties | [Beam Section Solid Triangle](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTriangleSolidComponent.cs) |
-| 02-Properties | [Beam Section Top Hat Channel](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionTopHatComponent.cs) |
-| 02-Properties | [Beam Section Z](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionZComponent.cs) |
-| 02-Properties | [Elastic Link Property](../Rhino2Straus.Grasshopper/Components/Extended/ElasticLinkPropertyComponent.cs) |
-| 02-Properties | [Frame Property](../Rhino2Straus.Grasshopper/Components/ElementProperties/FramePropertyComponent.cs) |
-| 02-Properties | [Frame Section Angle](../Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionAngleComponent.cs) |
-| 02-Properties | [Frame Section Generic](../Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionGenericComponent.cs) |
-| 02-Properties | [Frame Section I](../Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionIComponent.cs) |
-| 02-Properties | [Frame Section box](../Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionBoxComponent.cs) |
-| 02-Properties | [Frame Section channel](../Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionChannelComponent.cs) |
-| 02-Properties | [Frame Section pipe](../Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionPipeComponent.cs) |
-| 02-Properties | [Frame Section solid circle](../Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionCircleComponent.cs) |
-| 02-Properties | [Frame Section solid rectangular](../Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionRectangularComponent.cs) |
-| 02-Properties | [Frame Section tee](../Rhino2Straus.Grasshopper/Components/ElementProperties/FrameSectionTeeComponent.cs) |
-| 02-Properties | [Link Constraint Options](../Rhino2Straus.Grasshopper/Components/Extended/LinkConstraintOptionsComponent.cs) |
-| 02-Properties | [MasterSlave Link Property](../Rhino2Straus.Grasshopper/Components/Extended/MasterSlaveLinkPropertyComponent.cs) |
-| 02-Properties | [Native Section Options](../Rhino2Straus.Grasshopper/Components/Extended/NativeSectionOptionsComponent.cs) |
-| 02-Properties | [Pinned Link Property](../Rhino2Straus.Grasshopper/Components/Extended/PinnedLinkPropertyComponent.cs) |
-| 02-Properties | [Rigid Link Property](../Rhino2Straus.Grasshopper/Components/Extended/RigidLinkPropertyComponent.cs) |
-| 02-Properties | [SectorSymmetry Link Property](../Rhino2Straus.Grasshopper/Components/Extended/SectorSymmetryLinkPropertyComponent.cs) |
-| 03-Elements | [Area element](../Rhino2Straus.Grasshopper/Components/Elements/AreaElementComponent.cs) |
-| 03-Elements | [Frame element](../Rhino2Straus.Grasshopper/Components/Elements/FrameElementComponent.cs) |
-| 03-Elements | [Link element](../Rhino2Straus.Grasshopper/Components/Elements/LinkElementComponent.cs) |
-| 03-Elements | [Mesh to Plates](../Rhino2Straus.Grasshopper/Components/Extended/MeshPlatesComponent.cs) |
-| 03-Elements | [Node Element](../Rhino2Straus.Grasshopper/Components/Elements/NodeElementComponent.cs) |
-| 03-Elements | [Polyline to Beams](../Rhino2Straus.Grasshopper/Components/Extended/PolylineBeamsComponent.cs) |
-| 03-Elements | [Solid Element](../Rhino2Straus.Grasshopper/Components/Extended/SolidElementComponent.cs) |
-| 04-Attributes | [Beam End Releases](../Rhino2Straus.Grasshopper/Components/Extended/BeamReleasesComponent.cs) |
-| 04-Attributes | [Beam Offset and Orientation](../Rhino2Straus.Grasshopper/Components/Extended/BeamOffsetComponent.cs) |
-| 04-Attributes | [Element Group](../Rhino2Straus.Grasshopper/Components/Attributes/ElementGroupComponent.cs) |
-| 04-Attributes | [Link Type](../Rhino2Straus.Grasshopper/Components/ElementProperties/LinkPropertyComponent.cs) |
-| 04-Attributes | [Node Mass](../Rhino2Straus.Grasshopper/Components/Extended/NodeMassComponent.cs) |
-| 04-Attributes | [Node Prescribed Displacement](../Rhino2Straus.Grasshopper/Components/Extended/PrescribedDisplacementComponent.cs) |
-| 04-Attributes | [Node Springs](../Rhino2Straus.Grasshopper/Components/Extended/NodeSpringComponent.cs) |
-| 04-Attributes | [Plate Offset and Orientation](../Rhino2Straus.Grasshopper/Components/Extended/PlateOffsetComponent.cs) |
-| 04-Attributes | [Support](../Rhino2Straus.Grasshopper/Components/Attributes/NodeSupportComponent.cs) |
-| 04-Geometry | [Align Beam Axis To Point](../Rhino2Straus.Grasshopper/Components/Extended/AlignBeamToPointComponent.cs) |
-| 04-Geometry | [Align Beam Local Axis](../Rhino2Straus.Grasshopper/Components/Extended/AlignBeamAxisComponent.cs) |
-| 04-Geometry | [Align Plate Axis To Plane](../Rhino2Straus.Grasshopper/Components/Extended/AlignPlateToPlaneComponent.cs) |
-| 04-Geometry | [Align Plate Local Axis](../Rhino2Straus.Grasshopper/Components/Extended/AlignPlateAxisComponent.cs) |
-| 05-Cases | [Load case](../Rhino2Straus.Grasshopper/Components/Cases/LoadCaseComponent.cs) |
-| 05-Cases | [Load combination](../Rhino2Straus.Grasshopper/Components/Cases/LoadCombinationComponent.cs) |
-| 05-Cases | [Load factor](../Rhino2Straus.Grasshopper/Components/Cases/LoadFactorComponent.cs) |
-| 05-Cases | [Self Weight](../Rhino2Straus.Grasshopper/Components/Extended/SelfWeightComponent.cs) |
-| 06-Loads | [Area Load Uniform](../Rhino2Straus.Grasshopper/Components/Loads/LoadAreaUniformComponent.cs) |
-| 06-Loads | [Beam Point Force](../Rhino2Straus.Grasshopper/Components/Extended/BeamPointForceComponent.cs) |
-| 06-Loads | [Beam Point Moment](../Rhino2Straus.Grasshopper/Components/Extended/BeamPointMomentComponent.cs) |
-| 06-Loads | [Beam Preload](../Rhino2Straus.Grasshopper/Components/Extended/BeamPreloadComponent.cs) |
-| 06-Loads | [Beam Temperature Gradient](../Rhino2Straus.Grasshopper/Components/Extended/BeamGradientComponent.cs) |
-| 06-Loads | [Load frame non-uniform](../Rhino2Straus.Grasshopper/Components/Loads/LoadFrameNonUniComponent.cs) |
-| 06-Loads | [Load frame uniform](../Rhino2Straus.Grasshopper/Components/Loads/LoadFrameUniformComponent.cs) |
-| 06-Loads | [Load nodal](../Rhino2Straus.Grasshopper/Components/Loads/LoadNodalComponent.cs) |
-| 06-Loads | [Node Temperature](../Rhino2Straus.Grasshopper/Components/Extended/NodeTemperatureComponent.cs) |
-| 06-Loads | [Plate Edge Pressure](../Rhino2Straus.Grasshopper/Components/Extended/PlateEdgePressureComponent.cs) |
-| 06-Loads | [Plate Global Pressure](../Rhino2Straus.Grasshopper/Components/Extended/GlobalPressureComponent.cs) |
-| 06-Loads | [Plate Preload](../Rhino2Straus.Grasshopper/Components/Extended/PlatePreloadComponent.cs) |
-| 06-Loads | [Plate Temperature Gradient](../Rhino2Straus.Grasshopper/Components/Extended/PlateGradientComponent.cs) |
-| 06-Loads | [Solid Face Pressure](../Rhino2Straus.Grasshopper/Components/Extended/SolidPressureComponent.cs) |
-| 07-Model | [Align Model Local Axes](../Rhino2Straus.Grasshopper/Components/Extended/AlignModelAxesComponent.cs) |
-| 07-Model | [Area Filter](../Rhino2Straus.Grasshopper/Components/Tools/AreaFilterComponent.cs) |
-| 07-Model | [Build Model](../Rhino2Straus.Grasshopper/Components/Models/BuildModelComponent.cs) |
-| 07-Model | [Clear Model Results](../Rhino2Straus.Grasshopper/Components/Extended/ClearModelResultsComponent.cs) |
-| 07-Model | [Decompose Model](../Rhino2Straus.Grasshopper/Components/Models/DecomposeModelComponent.cs) |
-| 07-Model | [Frame Filter](../Rhino2Straus.Grasshopper/Components/Tools/FrameFilterComponent.cs) |
-| 07-Model | [Merge Straus Models](../Rhino2Straus.Grasshopper/Components/Extended/MergeModelsComponent.cs) |
-| 07-Model | [Model Summary](../Rhino2Straus.Grasshopper/Components/Extended/ModelSummaryComponent.cs) |
-| 07-Model | [Model Units](../Rhino2Straus.Grasshopper/Components/Models/ModelUnitsComponent.cs) |
-| 07-Model | [Node Filter](../Rhino2Straus.Grasshopper/Components/Tools/NodeFilterComponent.cs) |
-| 07-Model | [Validate Straus Model](../Rhino2Straus.Grasshopper/Components/Extended/ValidateModelComponent.cs) |
-| 08-Export | [Straus7 R3 Export](../Rhino2Straus.Grasshopper/Components/Export/StrausR3ExportComponent.cs) |
-| 09-Tools | [Beam Local Axes](../Rhino2Straus.Grasshopper/Components/Extended/BeamAxesComponent.cs) |
-| 09-Tools | [Deconstruct Beam](../Rhino2Straus.Grasshopper/Components/Extended/BeamInfoComponent.cs) |
-| 09-Tools | [Deconstruct Beam Section](../Rhino2Straus.Grasshopper/Components/Extended/SectionInfoComponent.cs) |
-| 09-Tools | [Deconstruct Material](../Rhino2Straus.Grasshopper/Components/Extended/MaterialInfoComponent.cs) |
-| 09-Tools | [Deconstruct Node](../Rhino2Straus.Grasshopper/Components/Extended/NodeInfoComponent.cs) |
-| 09-Tools | [Deconstruct Plate](../Rhino2Straus.Grasshopper/Components/Extended/PlateInfoComponent.cs) |
-| 09-Tools | [Plate Local Axes](../Rhino2Straus.Grasshopper/Components/Extended/PlateAxesComponent.cs) |
-| 09-Tools | [Solid Info](../Rhino2Straus.Grasshopper/Components/Extended/SolidInfoComponent.cs) |
-| 10-Import | [Bake Straus Geometry](../Rhino2Straus.Grasshopper/Components/Extended/BakeStrausGeometryComponent.cs) |
-| 10-Import | [Read Straus Geometry](../Rhino2Straus.Grasshopper/Components/Extended/ReadStrausGeometryComponent.cs) |
-| 11-Analysis | [Run Linear Buckling](../Rhino2Straus.Grasshopper/Components/Extended/RunLinearBucklingComponent.cs) |
-| 11-Analysis | [Run Linear Static](../Rhino2Straus.Grasshopper/Components/Extended/RunLinearStaticComponent.cs) |
-| 11-Analysis | [Run Model Cases and Combinations](../Rhino2Straus.Grasshopper/Components/Extended/RunModelCasesComponent.cs) |
-| 11-Analysis | [Run Model Linear Buckling](../Rhino2Straus.Grasshopper/Components/Extended/RunModelBucklingComponent.cs) |
-| 11-Analysis | [Run Model Natural Frequencies](../Rhino2Straus.Grasshopper/Components/Extended/RunModelModalComponent.cs) |
-| 11-Analysis | [Run Model Nonlinear Static](../Rhino2Straus.Grasshopper/Components/Extended/RunModelNonlinearComponent.cs) |
-| 11-Analysis | [Run Natural Frequency](../Rhino2Straus.Grasshopper/Components/Extended/RunNaturalFrequencyComponent.cs) |
-| 11-Analysis | [Run Nonlinear Static](../Rhino2Straus.Grasshopper/Components/Extended/RunNonlinearStaticComponent.cs) |
-| 12-Results | [Beam Displacements](../Rhino2Straus.Grasshopper/Components/Extended/BeamDisplacementResultsComponent.cs) |
-| 12-Results | [Beam Forces](../Rhino2Straus.Grasshopper/Components/Extended/BeamForcesComponent.cs) |
-| 12-Results | [Beam Stress](../Rhino2Straus.Grasshopper/Components/Extended/BeamStressComponent.cs) |
-| 12-Results | [Buckling Factors](../Rhino2Straus.Grasshopper/Components/Extended/BucklingFactorsComponent.cs) |
-| 12-Results | [Decompose Native Beam Section](../Rhino2Straus.Grasshopper/Components/Extended/DecomposeNativeSectionComponent.cs) |
-| 12-Results | [Decompose Result Record](../Rhino2Straus.Grasshopper/Components/Extended/DecomposeResultRecordComponent.cs) |
-| 12-Results | [Deformed Nodes](../Rhino2Straus.Grasshopper/Components/Extended/DeformedNodesComponent.cs) |
-| 12-Results | [Modal Frequencies](../Rhino2Straus.Grasshopper/Components/Extended/ModalResultsComponent.cs) |
-| 12-Results | [Model Beam Actions N V T M](../Rhino2Straus.Grasshopper/Components/Extended/ModelBeamActionsComponent.cs) |
-| 12-Results | [Model Beam Displacement](../Rhino2Straus.Grasshopper/Components/Extended/ModelBeamDisplacementComponent.cs) |
-| 12-Results | [Model Beam Force](../Rhino2Straus.Grasshopper/Components/Extended/ModelBeamForceComponent.cs) |
-| 12-Results | [Model Beam Force Diagram](../Rhino2Straus.Grasshopper/Components/Extended/ModelBeamDiagramComponent.cs) |
-| 12-Results | [Model Beam Node Reaction](../Rhino2Straus.Grasshopper/Components/Extended/ModelBeamNodeReactionComponent.cs) |
-| 12-Results | [Model Beam Strain](../Rhino2Straus.Grasshopper/Components/Extended/ModelBeamStrainComponent.cs) |
-| 12-Results | [Model Beam Stress](../Rhino2Straus.Grasshopper/Components/Extended/ModelBeamStressComponent.cs) |
-| 12-Results | [Model Beam Total Strain](../Rhino2Straus.Grasshopper/Components/Extended/ModelBeamTotalStrainComponent.cs) |
-| 12-Results | [Model Deformed Geometry](../Rhino2Straus.Grasshopper/Components/Extended/ModelDeformedGeometryComponent.cs) |
-| 12-Results | [Model Link Node Displacement](../Rhino2Straus.Grasshopper/Components/Extended/ModelLinkNodeDisplacementComponent.cs) |
-| 12-Results | [Model Link Node Reaction](../Rhino2Straus.Grasshopper/Components/Extended/ModelLinkNodeReactionComponent.cs) |
-| 12-Results | [Model Modal and Buckling Data](../Rhino2Straus.Grasshopper/Components/Extended/ModelModalMetadataComponent.cs) |
-| 12-Results | [Model Native Beam Sections](../Rhino2Straus.Grasshopper/Components/Extended/ModelNativeSectionsComponent.cs) |
-| 12-Results | [Model Node Displacement](../Rhino2Straus.Grasshopper/Components/Extended/ModelNodeDisplacementComponent.cs) |
-| 12-Results | [Model Node Reaction](../Rhino2Straus.Grasshopper/Components/Extended/ModelNodeReactionComponent.cs) |
-| 12-Results | [Model Plate Curvature](../Rhino2Straus.Grasshopper/Components/Extended/ModelPlateCurvatureComponent.cs) |
-| 12-Results | [Model Plate Force](../Rhino2Straus.Grasshopper/Components/Extended/ModelPlateForceComponent.cs) |
-| 12-Results | [Model Plate Moment](../Rhino2Straus.Grasshopper/Components/Extended/ModelPlateMomentComponent.cs) |
-| 12-Results | [Model Plate Node Displacement](../Rhino2Straus.Grasshopper/Components/Extended/ModelPlateNodeDisplacementComponent.cs) |
-| 12-Results | [Model Plate Node Reaction](../Rhino2Straus.Grasshopper/Components/Extended/ModelPlateNodeReactionComponent.cs) |
-| 12-Results | [Model Plate Strain](../Rhino2Straus.Grasshopper/Components/Extended/ModelPlateStrainComponent.cs) |
-| 12-Results | [Model Plate Stress](../Rhino2Straus.Grasshopper/Components/Extended/ModelPlateStressComponent.cs) |
-| 12-Results | [Model Plate Total Strain](../Rhino2Straus.Grasshopper/Components/Extended/ModelPlateTotalStrainComponent.cs) |
-| 12-Results | [Model Result Cases](../Rhino2Straus.Grasshopper/Components/Extended/ModelResultCasesComponent.cs) |
-| 12-Results | [Model Result Extrema](../Rhino2Straus.Grasshopper/Components/Extended/ModelResultEnvelopeComponent.cs) |
-| 12-Results | [Model Solid Node Displacement](../Rhino2Straus.Grasshopper/Components/Extended/ModelSolidNodeDisplacementComponent.cs) |
-| 12-Results | [Model Solid Node Reaction](../Rhino2Straus.Grasshopper/Components/Extended/ModelSolidNodeReactionComponent.cs) |
-| 12-Results | [Model Solid Strain](../Rhino2Straus.Grasshopper/Components/Extended/ModelSolidStrainComponent.cs) |
-| 12-Results | [Model Solid Stress](../Rhino2Straus.Grasshopper/Components/Extended/ModelSolidStressComponent.cs) |
-| 12-Results | [Model Solid Total Strain](../Rhino2Straus.Grasshopper/Components/Extended/ModelSolidTotalStrainComponent.cs) |
-| 12-Results | [Model Verification Data](../Rhino2Straus.Grasshopper/Components/Extended/ModelVerificationDataComponent.cs) |
-| 12-Results | [Node Displacements](../Rhino2Straus.Grasshopper/Components/Extended/NodeDisplacementsComponent.cs) |
-| 12-Results | [Node Reactions](../Rhino2Straus.Grasshopper/Components/Extended/NodeReactionsComponent.cs) |
-| 12-Results | [Plate Forces](../Rhino2Straus.Grasshopper/Components/Extended/PlateForceResultsComponent.cs) |
-| 12-Results | [Plate Moments](../Rhino2Straus.Grasshopper/Components/Extended/PlateMomentResultsComponent.cs) |
-| 12-Results | [Plate Stress](../Rhino2Straus.Grasshopper/Components/Extended/PlateStressResultsComponent.cs) |
-| 12-Results | [Read Results Into Model](../Rhino2Straus.Grasshopper/Components/Extended/ReadResultsIntoModelComponent.cs) |
-| 12-Results | [Result Envelope](../Rhino2Straus.Grasshopper/Components/Extended/ResultEnvelopeComponent.cs) |
-| 12-Results | [Solid Strain](../Rhino2Straus.Grasshopper/Components/Extended/SolidStrainResultsComponent.cs) |
-| 12-Results | [Solid Stress](../Rhino2Straus.Grasshopper/Components/Extended/SolidStressResultsComponent.cs) |
-| 12-Results | [Straus Result Cases](../Rhino2Straus.Grasshopper/Components/Extended/StrausResultCasesComponent.cs) |
-| 13-Preview | [Model Physical Geometry](../Rhino2Straus.Grasshopper/Components/Extended/ModelGeometryComponent.cs) |
-| 13-Preview | [Rhino2Straus Display Manager](../Rhino2Straus.Grasshopper/Components/Extended/PreviewModelComponent.cs) |
-| 13-Preview | [Rhino2Straus Display Settings](../Rhino2Straus.Grasshopper/Components/Extended/DisplaySettingsComponent.cs) |
+Il percorso resta elementi/attributi → Build Model o Merge Straus Models → un solo Model → Preview/Run → Model con risultati → estrazione/deformata/dati per il verificatore.
 
-![Icone](icons.png)
+## 01-Materiali
+
+Materiali, librerie, resistenze e lettura delle proprietà del materiale. **5 componenti.**
+
+| Componente |
+|---|
+| [Database Concrete](../Rhino2Straus.Grasshopper/Components/Materials/DatabaseConcreteMaterialComponent.cs) |
+| [Database Steel](../Rhino2Straus.Grasshopper/Components/Materials/DatabaseSteelMaterialComponent.cs) |
+| [Deconstruct Material](../Rhino2Straus.Grasshopper/Components/Materials/MaterialInfoComponent.cs) |
+| [Material](../Rhino2Straus.Grasshopper/Components/Materials/MaterialComponent.cs) |
+| [Material Design Strengths](../Rhino2Straus.Grasshopper/Components/Materials/MaterialStrengthsComponent.cs) |
+
+## 02-Sezioni
+
+Sezioni standard, generiche, BXS e BGL; opzioni native e decomposizione del profilo. **27 componenti.**
+
+| Componente |
+|---|
+| [Beam Section BGL Angle](../Rhino2Straus.Grasshopper/Components/Sections/NativeSectionBglAngleComponent.cs) |
+| [Beam Section BGL Bulb Flat](../Rhino2Straus.Grasshopper/Components/Sections/NativeSectionBglBulbComponent.cs) |
+| [Beam Section BGL Channel](../Rhino2Straus.Grasshopper/Components/Sections/NativeSectionBglChannelComponent.cs) |
+| [Beam Section BGL I](../Rhino2Straus.Grasshopper/Components/Sections/NativeSectionBglIComponent.cs) |
+| [Beam Section BGL Rectangular Hollow](../Rhino2Straus.Grasshopper/Components/Sections/NativeSectionBglRhsComponent.cs) |
+| [Beam Section BGL Tee](../Rhino2Straus.Grasshopper/Components/Sections/NativeSectionBglTeeComponent.cs) |
+| [Beam Section BXS](../Rhino2Straus.Grasshopper/Components/Sections/BxsSectionComponent.cs) |
+| [Beam Section Cruciform](../Rhino2Straus.Grasshopper/Components/Sections/NativeSectionCruciformComponent.cs) |
+| [Beam Section Hollow Trapezoid](../Rhino2Straus.Grasshopper/Components/Sections/NativeSectionTrapezoidHollowComponent.cs) |
+| [Beam Section Hollow Triangle](../Rhino2Straus.Grasshopper/Components/Sections/NativeSectionTriangleHollowComponent.cs) |
+| [Beam Section Lipped Channel](../Rhino2Straus.Grasshopper/Components/Sections/NativeSectionLipChannelComponent.cs) |
+| [Beam Section Lipped Tee](../Rhino2Straus.Grasshopper/Components/Sections/NativeSectionTeeLippedComponent.cs) |
+| [Beam Section Solid Trapezoid](../Rhino2Straus.Grasshopper/Components/Sections/NativeSectionTrapezoidSolidComponent.cs) |
+| [Beam Section Solid Triangle](../Rhino2Straus.Grasshopper/Components/Sections/NativeSectionTriangleSolidComponent.cs) |
+| [Beam Section Top Hat Channel](../Rhino2Straus.Grasshopper/Components/Sections/NativeSectionTopHatComponent.cs) |
+| [Beam Section Z](../Rhino2Straus.Grasshopper/Components/Sections/NativeSectionZComponent.cs) |
+| [Deconstruct Beam Section](../Rhino2Straus.Grasshopper/Components/Sections/SectionInfoComponent.cs) |
+| [Frame Section Angle](../Rhino2Straus.Grasshopper/Components/Sections/FrameSectionAngleComponent.cs) |
+| [Frame Section Generic](../Rhino2Straus.Grasshopper/Components/Sections/FrameSectionGenericComponent.cs) |
+| [Frame Section I](../Rhino2Straus.Grasshopper/Components/Sections/FrameSectionIComponent.cs) |
+| [Frame Section box](../Rhino2Straus.Grasshopper/Components/Sections/FrameSectionBoxComponent.cs) |
+| [Frame Section channel](../Rhino2Straus.Grasshopper/Components/Sections/FrameSectionChannelComponent.cs) |
+| [Frame Section pipe](../Rhino2Straus.Grasshopper/Components/Sections/FrameSectionPipeComponent.cs) |
+| [Frame Section solid circle](../Rhino2Straus.Grasshopper/Components/Sections/FrameSectionCircleComponent.cs) |
+| [Frame Section solid rectangular](../Rhino2Straus.Grasshopper/Components/Sections/FrameSectionRectangularComponent.cs) |
+| [Frame Section tee](../Rhino2Straus.Grasshopper/Components/Sections/FrameSectionTeeComponent.cs) |
+| [Native Section Options](../Rhino2Straus.Grasshopper/Components/Sections/NativeSectionOptionsComponent.cs) |
+
+## 03-Proprietà
+
+Proprietà di travi e piastre, spessori, comportamento e assegnazione agli elementi. **6 componenti.**
+
+| Componente |
+|---|
+| [Area Property](../Rhino2Straus.Grasshopper/Components/Properties/AreaPropertyComponent.cs) |
+| [Area thickness](../Rhino2Straus.Grasshopper/Components/Properties/AreaThicknessComponent.cs) |
+| [Assign Beam Property](../Rhino2Straus.Grasshopper/Components/Properties/BeamAssignPropertyComponent.cs) |
+| [Assign Plate Property](../Rhino2Straus.Grasshopper/Components/Properties/PlateAssignPropertyComponent.cs) |
+| [Beam Behaviour](../Rhino2Straus.Grasshopper/Components/Properties/BeamBehaviourComponent.cs) |
+| [Frame Property](../Rhino2Straus.Grasshopper/Components/Properties/FramePropertyComponent.cs) |
+
+## 04-Elementi
+
+Creazione di nodi, travi, piastre e solidi; conversione delle geometrie e decomposizione degli elementi. **10 componenti.**
+
+| Componente |
+|---|
+| [Area element](../Rhino2Straus.Grasshopper/Components/Elements/AreaElementComponent.cs) |
+| [Deconstruct Beam](../Rhino2Straus.Grasshopper/Components/Elements/BeamInfoComponent.cs) |
+| [Deconstruct Node](../Rhino2Straus.Grasshopper/Components/Elements/NodeInfoComponent.cs) |
+| [Deconstruct Plate](../Rhino2Straus.Grasshopper/Components/Elements/PlateInfoComponent.cs) |
+| [Frame element](../Rhino2Straus.Grasshopper/Components/Elements/FrameElementComponent.cs) |
+| [Mesh to Plates](../Rhino2Straus.Grasshopper/Components/Elements/MeshPlatesComponent.cs) |
+| [Node Element](../Rhino2Straus.Grasshopper/Components/Elements/NodeElementComponent.cs) |
+| [Polyline to Beams](../Rhino2Straus.Grasshopper/Components/Elements/PolylineBeamsComponent.cs) |
+| [Solid Element](../Rhino2Straus.Grasshopper/Components/Elements/SolidElementComponent.cs) |
+| [Solid Info](../Rhino2Straus.Grasshopper/Components/Elements/SolidInfoComponent.cs) |
+
+## 05-Vincoli e link
+
+Vincoli, svincoli, molle, masse, spostamenti imposti e creazione/proprietà dei link. **13 componenti.**
+
+| Componente |
+|---|
+| [Beam End Releases](../Rhino2Straus.Grasshopper/Components/ConstraintsLinks/BeamReleasesComponent.cs) |
+| [Elastic Link Property](../Rhino2Straus.Grasshopper/Components/ConstraintsLinks/ElasticLinkPropertyComponent.cs) |
+| [Link Constraint Options](../Rhino2Straus.Grasshopper/Components/ConstraintsLinks/LinkConstraintOptionsComponent.cs) |
+| [Link Type](../Rhino2Straus.Grasshopper/Components/ConstraintsLinks/LinkPropertyComponent.cs) |
+| [Link element](../Rhino2Straus.Grasshopper/Components/ConstraintsLinks/LinkElementComponent.cs) |
+| [MasterSlave Link Property](../Rhino2Straus.Grasshopper/Components/ConstraintsLinks/MasterSlaveLinkPropertyComponent.cs) |
+| [Node Mass](../Rhino2Straus.Grasshopper/Components/ConstraintsLinks/NodeMassComponent.cs) |
+| [Node Prescribed Displacement](../Rhino2Straus.Grasshopper/Components/ConstraintsLinks/PrescribedDisplacementComponent.cs) |
+| [Node Springs](../Rhino2Straus.Grasshopper/Components/ConstraintsLinks/NodeSpringComponent.cs) |
+| [Pinned Link Property](../Rhino2Straus.Grasshopper/Components/ConstraintsLinks/PinnedLinkPropertyComponent.cs) |
+| [Rigid Link Property](../Rhino2Straus.Grasshopper/Components/ConstraintsLinks/RigidLinkPropertyComponent.cs) |
+| [SectorSymmetry Link Property](../Rhino2Straus.Grasshopper/Components/ConstraintsLinks/SectorSymmetryLinkPropertyComponent.cs) |
+| [Support](../Rhino2Straus.Grasshopper/Components/ConstraintsLinks/NodeSupportComponent.cs) |
+
+## 06-Assi e offset
+
+Assi locali, allineamenti, orientamento, offset e inserimento delle sezioni. **10 componenti.**
+
+| Componente |
+|---|
+| [Align Beam Axis To Point](../Rhino2Straus.Grasshopper/Components/AxesOffsets/AlignBeamToPointComponent.cs) |
+| [Align Beam Local Axis](../Rhino2Straus.Grasshopper/Components/AxesOffsets/AlignBeamAxisComponent.cs) |
+| [Align Model Local Axes](../Rhino2Straus.Grasshopper/Components/AxesOffsets/AlignModelAxesComponent.cs) |
+| [Align Plate Axis To Plane](../Rhino2Straus.Grasshopper/Components/AxesOffsets/AlignPlateToPlaneComponent.cs) |
+| [Align Plate Local Axis](../Rhino2Straus.Grasshopper/Components/AxesOffsets/AlignPlateAxisComponent.cs) |
+| [Beam Local Axes](../Rhino2Straus.Grasshopper/Components/AxesOffsets/BeamAxesComponent.cs) |
+| [Beam Offset and Orientation](../Rhino2Straus.Grasshopper/Components/AxesOffsets/BeamOffsetComponent.cs) |
+| [Beam Section Insertion](../Rhino2Straus.Grasshopper/Components/AxesOffsets/SectionInsertionComponent.cs) |
+| [Plate Local Axes](../Rhino2Straus.Grasshopper/Components/AxesOffsets/PlateAxesComponent.cs) |
+| [Plate Offset and Orientation](../Rhino2Straus.Grasshopper/Components/AxesOffsets/PlateOffsetComponent.cs) |
+
+## 07-Casi e combo
+
+Casi di carico, fattori e combinazioni. **3 componenti.**
+
+| Componente |
+|---|
+| [Load case](../Rhino2Straus.Grasshopper/Components/Cases/LoadCaseComponent.cs) |
+| [Load combination](../Rhino2Straus.Grasshopper/Components/Cases/LoadCombinationComponent.cs) |
+| [Load factor](../Rhino2Straus.Grasshopper/Components/Cases/LoadFactorComponent.cs) |
+
+## 08-Carichi
+
+Peso proprio e carichi nodali, su travi, piastre e solidi, inclusi termici e preload. **15 componenti.**
+
+| Componente |
+|---|
+| [Area Load Uniform](../Rhino2Straus.Grasshopper/Components/Loads/LoadAreaUniformComponent.cs) |
+| [Beam Point Force](../Rhino2Straus.Grasshopper/Components/Loads/BeamPointForceComponent.cs) |
+| [Beam Point Moment](../Rhino2Straus.Grasshopper/Components/Loads/BeamPointMomentComponent.cs) |
+| [Beam Preload](../Rhino2Straus.Grasshopper/Components/Loads/BeamPreloadComponent.cs) |
+| [Beam Temperature Gradient](../Rhino2Straus.Grasshopper/Components/Loads/BeamGradientComponent.cs) |
+| [Load frame non-uniform](../Rhino2Straus.Grasshopper/Components/Loads/LoadFrameNonUniComponent.cs) |
+| [Load frame uniform](../Rhino2Straus.Grasshopper/Components/Loads/LoadFrameUniformComponent.cs) |
+| [Load nodal](../Rhino2Straus.Grasshopper/Components/Loads/LoadNodalComponent.cs) |
+| [Node Temperature](../Rhino2Straus.Grasshopper/Components/Loads/NodeTemperatureComponent.cs) |
+| [Plate Edge Pressure](../Rhino2Straus.Grasshopper/Components/Loads/PlateEdgePressureComponent.cs) |
+| [Plate Global Pressure](../Rhino2Straus.Grasshopper/Components/Loads/GlobalPressureComponent.cs) |
+| [Plate Preload](../Rhino2Straus.Grasshopper/Components/Loads/PlatePreloadComponent.cs) |
+| [Plate Temperature Gradient](../Rhino2Straus.Grasshopper/Components/Loads/PlateGradientComponent.cs) |
+| [Self Weight](../Rhino2Straus.Grasshopper/Components/Loads/SelfWeightComponent.cs) |
+| [Solid Face Pressure](../Rhino2Straus.Grasshopper/Components/Loads/SolidPressureComponent.cs) |
+
+## 09-Modello
+
+Unità, Build, Merge, validazione, riepilogo, decomposizione, filtri e gruppi del Model unico. **10 componenti.**
+
+| Componente |
+|---|
+| [Area Filter](../Rhino2Straus.Grasshopper/Components/Model/AreaFilterComponent.cs) |
+| [Build Model](../Rhino2Straus.Grasshopper/Components/Model/BuildModelComponent.cs) |
+| [Decompose Model](../Rhino2Straus.Grasshopper/Components/Model/DecomposeModelComponent.cs) |
+| [Element Group](../Rhino2Straus.Grasshopper/Components/Model/ElementGroupComponent.cs) |
+| [Frame Filter](../Rhino2Straus.Grasshopper/Components/Model/FrameFilterComponent.cs) |
+| [Merge Straus Models](../Rhino2Straus.Grasshopper/Components/Model/MergeModelsComponent.cs) |
+| [Model Summary](../Rhino2Straus.Grasshopper/Components/Model/ModelSummaryComponent.cs) |
+| [Model Units](../Rhino2Straus.Grasshopper/Components/Model/ModelUnitsComponent.cs) |
+| [Node Filter](../Rhino2Straus.Grasshopper/Components/Model/NodeFilterComponent.cs) |
+| [Validate Straus Model](../Rhino2Straus.Grasshopper/Components/Model/ValidateModelComponent.cs) |
+
+È disponibile anche il parametro persistente [Group](../Rhino2Straus.Grasshopper/Parameter/GroupParam.cs), nello stesso pannello.
+
+## 10-File Straus
+
+Esportazione .st7, lettura e bake della geometria da file Straus7. **3 componenti.**
+
+| Componente |
+|---|
+| [Bake Straus Geometry](../Rhino2Straus.Grasshopper/Components/Files/BakeStrausGeometryComponent.cs) |
+| [Read Straus Geometry](../Rhino2Straus.Grasshopper/Components/Files/ReadStrausGeometryComponent.cs) |
+| [Straus7 R3 Export](../Rhino2Straus.Grasshopper/Components/Files/StrausR3ExportComponent.cs) |
+
+## 11-Analisi
+
+Esecuzione di casi e combinazioni, statica lineare/non lineare, modi e buckling. **8 componenti.**
+
+| Componente |
+|---|
+| [Run Linear Buckling](../Rhino2Straus.Grasshopper/Components/Analysis/RunLinearBucklingComponent.cs) |
+| [Run Linear Static](../Rhino2Straus.Grasshopper/Components/Analysis/RunLinearStaticComponent.cs) |
+| [Run Model Cases and Combinations](../Rhino2Straus.Grasshopper/Components/Analysis/RunModelCasesComponent.cs) |
+| [Run Model Linear Buckling](../Rhino2Straus.Grasshopper/Components/Analysis/RunModelBucklingComponent.cs) |
+| [Run Model Natural Frequencies](../Rhino2Straus.Grasshopper/Components/Analysis/RunModelModalComponent.cs) |
+| [Run Model Nonlinear Static](../Rhino2Straus.Grasshopper/Components/Analysis/RunModelNonlinearComponent.cs) |
+| [Run Natural Frequency](../Rhino2Straus.Grasshopper/Components/Analysis/RunNaturalFrequencyComponent.cs) |
+| [Run Nonlinear Static](../Rhino2Straus.Grasshopper/Components/Analysis/RunNonlinearStaticComponent.cs) |
+
+## 12-Ris. modello
+
+Lettura nel Model, casi risultato, estremi, metadati, deformata e dati per il verificatore. **14 componenti.**
+
+| Componente |
+|---|
+| [Buckling Factors](../Rhino2Straus.Grasshopper/Components/ResultsModel/BucklingFactorsComponent.cs) |
+| [Clear Model Results](../Rhino2Straus.Grasshopper/Components/ResultsModel/ClearModelResultsComponent.cs) |
+| [Decompose Native Beam Section](../Rhino2Straus.Grasshopper/Components/ResultsModel/DecomposeNativeSectionComponent.cs) |
+| [Decompose Result Record](../Rhino2Straus.Grasshopper/Components/ResultsModel/DecomposeResultRecordComponent.cs) |
+| [Modal Frequencies](../Rhino2Straus.Grasshopper/Components/ResultsModel/ModalResultsComponent.cs) |
+| [Model Deformed Geometry](../Rhino2Straus.Grasshopper/Components/ResultsModel/ModelDeformedGeometryComponent.cs) |
+| [Model Modal and Buckling Data](../Rhino2Straus.Grasshopper/Components/ResultsModel/ModelModalMetadataComponent.cs) |
+| [Model Native Beam Sections](../Rhino2Straus.Grasshopper/Components/ResultsModel/ModelNativeSectionsComponent.cs) |
+| [Model Result Cases](../Rhino2Straus.Grasshopper/Components/ResultsModel/ModelResultCasesComponent.cs) |
+| [Model Result Extrema](../Rhino2Straus.Grasshopper/Components/ResultsModel/ModelResultEnvelopeComponent.cs) |
+| [Model Verification Data](../Rhino2Straus.Grasshopper/Components/ResultsModel/ModelVerificationDataComponent.cs) |
+| [Read Results Into Model](../Rhino2Straus.Grasshopper/Components/ResultsModel/ReadResultsIntoModelComponent.cs) |
+| [Result Envelope](../Rhino2Straus.Grasshopper/Components/ResultsModel/ResultEnvelopeComponent.cs) |
+| [Straus Result Cases](../Rhino2Straus.Grasshopper/Components/ResultsModel/StrausResultCasesComponent.cs) |
+
+## 13-Ris. nodi
+
+Spostamenti, reazioni e deformata dei nodi; risultati nodali dei link. **7 componenti.**
+
+| Componente |
+|---|
+| [Deformed Nodes](../Rhino2Straus.Grasshopper/Components/ResultsNodes/DeformedNodesComponent.cs) |
+| [Model Link Node Displacement](../Rhino2Straus.Grasshopper/Components/ResultsNodes/ModelLinkNodeDisplacementComponent.cs) |
+| [Model Link Node Reaction](../Rhino2Straus.Grasshopper/Components/ResultsNodes/ModelLinkNodeReactionComponent.cs) |
+| [Model Node Displacement](../Rhino2Straus.Grasshopper/Components/ResultsNodes/ModelNodeDisplacementComponent.cs) |
+| [Model Node Reaction](../Rhino2Straus.Grasshopper/Components/ResultsNodes/ModelNodeReactionComponent.cs) |
+| [Node Displacements](../Rhino2Straus.Grasshopper/Components/ResultsNodes/NodeDisplacementsComponent.cs) |
+| [Node Reactions](../Rhino2Straus.Grasshopper/Components/ResultsNodes/NodeReactionsComponent.cs) |
+
+## 14-Ris. travi
+
+Azioni, tensioni, deformazioni, spostamenti e diagrammi delle travi. **11 componenti.**
+
+| Componente |
+|---|
+| [Beam Displacements](../Rhino2Straus.Grasshopper/Components/ResultsBeams/BeamDisplacementResultsComponent.cs) |
+| [Beam Forces](../Rhino2Straus.Grasshopper/Components/ResultsBeams/BeamForcesComponent.cs) |
+| [Beam Stress](../Rhino2Straus.Grasshopper/Components/ResultsBeams/BeamStressComponent.cs) |
+| [Model Beam Actions N V T M](../Rhino2Straus.Grasshopper/Components/ResultsBeams/ModelBeamActionsComponent.cs) |
+| [Model Beam Displacement](../Rhino2Straus.Grasshopper/Components/ResultsBeams/ModelBeamDisplacementComponent.cs) |
+| [Model Beam Force](../Rhino2Straus.Grasshopper/Components/ResultsBeams/ModelBeamForceComponent.cs) |
+| [Model Beam Force Diagram](../Rhino2Straus.Grasshopper/Components/ResultsBeams/ModelBeamDiagramComponent.cs) |
+| [Model Beam Node Reaction](../Rhino2Straus.Grasshopper/Components/ResultsBeams/ModelBeamNodeReactionComponent.cs) |
+| [Model Beam Strain](../Rhino2Straus.Grasshopper/Components/ResultsBeams/ModelBeamStrainComponent.cs) |
+| [Model Beam Stress](../Rhino2Straus.Grasshopper/Components/ResultsBeams/ModelBeamStressComponent.cs) |
+| [Model Beam Total Strain](../Rhino2Straus.Grasshopper/Components/ResultsBeams/ModelBeamTotalStrainComponent.cs) |
+
+## 15-Ris. piastre
+
+Forze, momenti, tensioni, deformazioni, curvature e risultati nodali delle piastre. **11 componenti.**
+
+| Componente |
+|---|
+| [Model Plate Curvature](../Rhino2Straus.Grasshopper/Components/ResultsPlates/ModelPlateCurvatureComponent.cs) |
+| [Model Plate Force](../Rhino2Straus.Grasshopper/Components/ResultsPlates/ModelPlateForceComponent.cs) |
+| [Model Plate Moment](../Rhino2Straus.Grasshopper/Components/ResultsPlates/ModelPlateMomentComponent.cs) |
+| [Model Plate Node Displacement](../Rhino2Straus.Grasshopper/Components/ResultsPlates/ModelPlateNodeDisplacementComponent.cs) |
+| [Model Plate Node Reaction](../Rhino2Straus.Grasshopper/Components/ResultsPlates/ModelPlateNodeReactionComponent.cs) |
+| [Model Plate Strain](../Rhino2Straus.Grasshopper/Components/ResultsPlates/ModelPlateStrainComponent.cs) |
+| [Model Plate Stress](../Rhino2Straus.Grasshopper/Components/ResultsPlates/ModelPlateStressComponent.cs) |
+| [Model Plate Total Strain](../Rhino2Straus.Grasshopper/Components/ResultsPlates/ModelPlateTotalStrainComponent.cs) |
+| [Plate Forces](../Rhino2Straus.Grasshopper/Components/ResultsPlates/PlateForceResultsComponent.cs) |
+| [Plate Moments](../Rhino2Straus.Grasshopper/Components/ResultsPlates/PlateMomentResultsComponent.cs) |
+| [Plate Stress](../Rhino2Straus.Grasshopper/Components/ResultsPlates/PlateStressResultsComponent.cs) |
+
+## 16-Ris. solidi
+
+Tensioni, deformazioni e risultati nodali dei solidi FEM. **7 componenti.**
+
+| Componente |
+|---|
+| [Model Solid Node Displacement](../Rhino2Straus.Grasshopper/Components/ResultsSolids/ModelSolidNodeDisplacementComponent.cs) |
+| [Model Solid Node Reaction](../Rhino2Straus.Grasshopper/Components/ResultsSolids/ModelSolidNodeReactionComponent.cs) |
+| [Model Solid Strain](../Rhino2Straus.Grasshopper/Components/ResultsSolids/ModelSolidStrainComponent.cs) |
+| [Model Solid Stress](../Rhino2Straus.Grasshopper/Components/ResultsSolids/ModelSolidStressComponent.cs) |
+| [Model Solid Total Strain](../Rhino2Straus.Grasshopper/Components/ResultsSolids/ModelSolidTotalStrainComponent.cs) |
+| [Solid Strain](../Rhino2Straus.Grasshopper/Components/ResultsSolids/SolidStrainResultsComponent.cs) |
+| [Solid Stress](../Rhino2Straus.Grasshopper/Components/ResultsSolids/SolidStressResultsComponent.cs) |
+
+## 17-Preview e bake
+
+Display Manager, impostazioni di visualizzazione, geometrie fisiche, Brep e bake solido. **3 componenti.**
+
+| Componente |
+|---|
+| [Model Physical Geometry](../Rhino2Straus.Grasshopper/Components/Preview/ModelGeometryComponent.cs) |
+| [Rhino2Straus Display Manager](../Rhino2Straus.Grasshopper/Components/Preview/PreviewModelComponent.cs) |
+| [Rhino2Straus Display Settings](../Rhino2Straus.Grasshopper/Components/Preview/DisplaySettingsComponent.cs) |
+
+![Icone per argomento](icons.png)
