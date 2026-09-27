@@ -16,7 +16,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Models
 
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
-            pManager.AddGenericParameter("Node elements", "Node elements", "Node elements", GH_ParamAccess.list);
+            pManager.AddGenericParameter("Frame elements", "Frames", "Frames to filter. With no criteria, all frames pass. Supplied criteria are combined with OR.", GH_ParamAccess.list);
             pManager.AddPointParameter("Start Position", "Start Position", "Start Position", GH_ParamAccess.item);
             pManager.AddPointParameter("End Position", "End Position", "End Position", GH_ParamAccess.item);
             pManager.AddGenericParameter("Frame Properties", "Frame Properties", "Frame Properties", GH_ParamAccess.list);
@@ -25,6 +25,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Models
             pManager[1].Optional = true;
             pManager[2].Optional = true;
             pManager[3].Optional = true;
+            pManager[4].Optional = true;
         }
 
         protected override void RegisterOutputParams(GH_OutputParamManager pManager)
@@ -64,17 +65,17 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Models
 
             for (int i = 0; i < gh_Frames.Count; i++)
             {
-                bool find = false;
+                bool find = groupName.Count==0&&propName.Count==0&&!startNode.IsValid&&!endNode.IsValid;
 
                 Core.Elements.FrameElementModel node = gh_Frames[i].Value;
-                if (!find && groupName.Contains(node.Name))
+                if (!find && node.Groups.Exists(g=>groupName.Contains(g.Name)))
                     find = true;
 
                 if (!find)
                 {
-                    if (gh_Frames[i].Value.NodeStart.Position.DistanceTo(startNode) < tolerance)
+                    if (startNode.IsValid&&gh_Frames[i].Value.NodeStart.Position.DistanceTo(startNode) < tolerance)
                         find = true;
-                    if (gh_Frames[i].Value.NodeEnd.Position.DistanceTo(endNode) < tolerance)
+                    if (endNode.IsValid&&gh_Frames[i].Value.NodeEnd.Position.DistanceTo(endNode) < tolerance)
                         find = true;
                 }
 

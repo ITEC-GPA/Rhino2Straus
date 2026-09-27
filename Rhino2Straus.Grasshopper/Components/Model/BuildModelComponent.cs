@@ -18,7 +18,8 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Models
 
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
-            pManager.AddGenericParameter("Unit", "Unit", "Unit", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Unit", "Unit", "Optional units; default kN, m, kJ, C and tolerance 0.001 m. Connect Units for another system.", GH_ParamAccess.item);
+            pManager[0].Optional = true;
             pManager.AddGenericParameter("Node", "Node", "Node", GH_ParamAccess.list);
             pManager.AddGenericParameter("Frame element", "Frame element", "Frame element", GH_ParamAccess.list);
             pManager.AddGenericParameter("Area element", "Area element", "Area element", GH_ParamAccess.list);
@@ -44,7 +45,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Models
 
         protected override void Solve(IGH_DataAccess DA)
         {
-            GH_Units gH_Units = new GH_Units();
+            GH_Units gH_Units = new GH_Units(new Rhino2Straus.Core.Settings.ModelUnitsModel());
             List<GH_NodeElement> gh_Nodes = new List<GH_NodeElement>();
             List<GH_FrameElement> gh_Frames = new List<GH_FrameElement>();
             List<GH_AreaElement> gH_Areas = new List<GH_AreaElement>();
@@ -52,8 +53,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Models
             List<GH_LoadCombination> gH_LoadCombinations = new List<GH_LoadCombination>();
 
             int count = 0;
-            if (!DA.GetData(count++, ref gH_Units))
-                return;
+            DA.GetData(count++, ref gH_Units);
             DA.GetDataList(count++, gh_Nodes);
             DA.GetDataList(count++, gh_Frames);
             DA.GetDataList(count++, gH_Areas);

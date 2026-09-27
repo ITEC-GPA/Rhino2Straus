@@ -28,7 +28,7 @@ public sealed class SelfWeightComponent : SafeComponent
     protected override void RegisterInputParams(GH_InputParamManager p)
     {
         p.AddGenericParameter("Load case", "Load case", "Load case", GH_ParamAccess.item);
-        p.AddGenericParameter("Units", "Units", "Units", GH_ParamAccess.item);
+        p.AddGenericParameter("Units", "Units", "Optional units; default kN, m, kJ, C. Connect the same Units used by the Model when different.", GH_ParamAccess.item);p[1].Optional=true;
         p.AddIntegerParameter("Axis", "Axis", "0=X, 1=Y, 2=Z", GH_ParamAccess.item, 2);
         p.AddNumberParameter("Factor", "Factor", "Signed acceleration multiplier; -1 is downward on Z", GH_ParamAccess.item, -1.0);
         p.AddBooleanParameter("Structural mass", "Structural mass", "Structural mass", GH_ParamAccess.item, true);
@@ -41,7 +41,7 @@ public sealed class SelfWeightComponent : SafeComponent
     protected override void Solve(IGH_DataAccess da)
     {
 
-        var c = Item<GH_LoadCase>(da,0).Value; var u = Item<GH_Units>(da,1).Value;
+        var c = Item<GH_LoadCase>(da,0).Value;var units=new GH_Units(new ModelUnitsModel());da.GetData(1,ref units);var u=units.Value;
         int axis = Item<int>(da,2); double factor = Item<double>(da,3);
         if (axis < 0 || axis > 2 || !double.IsFinite(factor)) throw new ArgumentException("Invalid gravity axis or factor.");
         da.SetData(0,new GH_SelfWeight(new SelfWeightModel { LoadCase = c,

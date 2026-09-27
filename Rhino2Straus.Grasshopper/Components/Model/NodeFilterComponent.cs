@@ -16,7 +16,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Models
 
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
-            pManager.AddGenericParameter("Node elements", "Node elements", "Node elements", GH_ParamAccess.list);
+            pManager.AddGenericParameter("Node elements", "Node elements", "Nodes to filter. With no criteria, all nodes pass. Supplied criteria are combined with OR.", GH_ParamAccess.list);
             pManager.AddPointParameter("Position", "Position", "Position", GH_ParamAccess.list);
             pManager.AddGenericParameter("Groups", "Groups", "Groups", GH_ParamAccess.list);
             pManager.AddNumberParameter("Tolerance", "Tolerance", "Tolerance", GH_ParamAccess.item, 0.001);
@@ -54,10 +54,10 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Models
 
             for (int i = 0; i < gh_Nodes.Count; i++)
             {
-                bool find = false;
+                bool find = groupName.Count==0&&point3D.Count==0;
 
                 Core.Elements.NodeElementModel node = gh_Nodes[i].Value;
-                if (!find && groupName.Contains(node.Name))
+                if (!find && node.Groups.Exists(g=>groupName.Contains(g.Name)))
                     find = true;
 
                 if (!find)

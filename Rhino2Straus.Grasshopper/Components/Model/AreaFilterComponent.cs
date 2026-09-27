@@ -17,7 +17,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Models
 
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
-            pManager.AddGenericParameter("Area elements", "Area elements", "Area elements", GH_ParamAccess.list);
+            pManager.AddGenericParameter("Area elements", "Area elements", "Plates to filter. With no criteria, all plates pass. Supplied criteria are combined with OR.", GH_ParamAccess.list);
             pManager.AddPointParameter("Position", "Position", "Position", GH_ParamAccess.item);
             pManager.AddGenericParameter("Area Properties", "Area Properties", "Area Properties", GH_ParamAccess.list);
             pManager.AddGenericParameter("Groups", "Groups", "Groups", GH_ParamAccess.list);
@@ -62,7 +62,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Models
 
             for (int i = 0; i < gh_Areas.Count; i++)
             {
-                bool find = false;
+                bool find = groupName.Count==0&&propName.Count==0&&!startNode.IsValid;
 
                 Core.Elements.AreaElementModel area = gh_Areas[i].Value;
                 if (!find)
@@ -75,7 +75,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Models
                 if (!find)
                 {
                     for(int j = 0; j < area.NodeList.Count; j++)
-                        if (find! && area.NodeList[j].Position.DistanceTo(startNode) < tolerance)
+                        if (!find && startNode.IsValid && area.NodeList[j].Position.DistanceTo(startNode) < tolerance)
                             find = true;
                 }
 
