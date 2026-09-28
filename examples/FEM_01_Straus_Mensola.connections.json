@@ -1,0 +1,303 @@
+{
+  "Plugin": "Rhino2Straus",
+  "File": "FEM_01_Straus_Mensola.gh",
+  "PluginComponents": 18,
+  "Objects": 34,
+  "Nodes": 2,
+  "Elements": 1,
+  "PhysicalVolume": 0.18,
+  "RoundTripGh": true,
+  "RoundTripGhx": true,
+  "ParametricLengthChange": true,
+  "SolverExecuted": false,
+  "Connections": [
+    {
+      "FromId": "376b9ca9-d465-4145-95a6-648b9e622e15",
+      "From": "L [m]",
+      "Component": "Number Slider",
+      "Output": "Number Slider",
+      "ToId": "2ec8b3f6-b8da-4d1d-9040-7ba5321b931b",
+      "To": "Construct Point",
+      "Input": "X coordinate"
+    },
+    {
+      "FromId": "853e77a3-1f68-4058-8cb7-41eaa9b34284",
+      "From": "A",
+      "Component": "Construct Point",
+      "Output": "Point",
+      "ToId": "23737dcd-3047-4e40-b34d-8ddda8bae070",
+      "To": "Line",
+      "Input": "Start Point"
+    },
+    {
+      "FromId": "2ec8b3f6-b8da-4d1d-9040-7ba5321b931b",
+      "From": "B",
+      "Component": "Construct Point",
+      "Output": "Point",
+      "ToId": "23737dcd-3047-4e40-b34d-8ddda8bae070",
+      "To": "Line",
+      "Input": "End Point"
+    },
+    {
+      "FromId": "bd0e3527-c2b8-42c3-bb3a-3f654b83cae0",
+      "From": "h [m]",
+      "Component": "Number Slider",
+      "Output": "Number Slider",
+      "ToId": "2395cf51-e5d0-4d72-8ce5-4d2c179007a2",
+      "To": "Frame Section solid rectangular",
+      "Input": "Height"
+    },
+    {
+      "FromId": "e890439e-9b92-4aae-950b-5ab025ec19c0",
+      "From": "b [m]",
+      "Component": "Number Slider",
+      "Output": "Number Slider",
+      "ToId": "2395cf51-e5d0-4d72-8ce5-4d2c179007a2",
+      "To": "Frame Section solid rectangular",
+      "Input": "Width"
+    },
+    {
+      "FromId": "2395cf51-e5d0-4d72-8ce5-4d2c179007a2",
+      "From": "Frame Section solid rectangular",
+      "Component": "Frame Section solid rectangular",
+      "Output": "Frame Section",
+      "ToId": "2bdcd6c1-b16e-4da3-8872-71a2acbd0e1a",
+      "To": "Frame Property",
+      "Input": "Section"
+    },
+    {
+      "FromId": "6096605f-7ade-48ae-8b17-b666f59b6d3b",
+      "From": "Material",
+      "Component": "Material",
+      "Output": "Material",
+      "ToId": "2bdcd6c1-b16e-4da3-8872-71a2acbd0e1a",
+      "To": "Frame Property",
+      "Input": "Material"
+    },
+    {
+      "FromId": "23737dcd-3047-4e40-b34d-8ddda8bae070",
+      "From": "Asse",
+      "Component": "Line",
+      "Output": "Line",
+      "ToId": "2ed6661e-be92-4c90-84dd-b308a1fc3567",
+      "To": "Frame element",
+      "Input": "Frame line"
+    },
+    {
+      "FromId": "2bdcd6c1-b16e-4da3-8872-71a2acbd0e1a",
+      "From": "Frame Property",
+      "Component": "Frame Property",
+      "Output": "Frame Property",
+      "ToId": "2ed6661e-be92-4c90-84dd-b308a1fc3567",
+      "To": "Frame element",
+      "Input": "Frame Property"
+    },
+    {
+      "FromId": "853e77a3-1f68-4058-8cb7-41eaa9b34284",
+      "From": "A",
+      "Component": "Construct Point",
+      "Output": "Point",
+      "ToId": "9942e0a9-1d66-4471-b949-bf06c7a07454",
+      "To": "Node Element",
+      "Input": "Node point"
+    },
+    {
+      "FromId": "2ec8b3f6-b8da-4d1d-9040-7ba5321b931b",
+      "From": "B",
+      "Component": "Construct Point",
+      "Output": "Point",
+      "ToId": "bc60c062-e1b4-4bfc-b3ce-8edbbfd35020",
+      "To": "Node Element",
+      "Input": "Node point"
+    },
+    {
+      "FromId": "9942e0a9-1d66-4471-b949-bf06c7a07454",
+      "From": "Node Element",
+      "Component": "Node Element",
+      "Output": "Node",
+      "ToId": "97aa2219-f95e-4964-996f-45cc04e9f28d",
+      "To": "Support",
+      "Input": "Node"
+    },
+    {
+      "FromId": "52ee09dc-38b3-4b43-b80b-e213cd8d67fd",
+      "From": "Incastro: 6 DOF",
+      "Component": "Boolean Toggle",
+      "Output": "Boolean Toggle",
+      "ToId": "97aa2219-f95e-4964-996f-45cc04e9f28d",
+      "To": "Support",
+      "Input": "Dx"
+    },
+    {
+      "FromId": "52ee09dc-38b3-4b43-b80b-e213cd8d67fd",
+      "From": "Incastro: 6 DOF",
+      "Component": "Boolean Toggle",
+      "Output": "Boolean Toggle",
+      "ToId": "97aa2219-f95e-4964-996f-45cc04e9f28d",
+      "To": "Support",
+      "Input": "Dy"
+    },
+    {
+      "FromId": "52ee09dc-38b3-4b43-b80b-e213cd8d67fd",
+      "From": "Incastro: 6 DOF",
+      "Component": "Boolean Toggle",
+      "Output": "Boolean Toggle",
+      "ToId": "97aa2219-f95e-4964-996f-45cc04e9f28d",
+      "To": "Support",
+      "Input": "Dz"
+    },
+    {
+      "FromId": "52ee09dc-38b3-4b43-b80b-e213cd8d67fd",
+      "From": "Incastro: 6 DOF",
+      "Component": "Boolean Toggle",
+      "Output": "Boolean Toggle",
+      "ToId": "97aa2219-f95e-4964-996f-45cc04e9f28d",
+      "To": "Support",
+      "Input": "Mx"
+    },
+    {
+      "FromId": "52ee09dc-38b3-4b43-b80b-e213cd8d67fd",
+      "From": "Incastro: 6 DOF",
+      "Component": "Boolean Toggle",
+      "Output": "Boolean Toggle",
+      "ToId": "97aa2219-f95e-4964-996f-45cc04e9f28d",
+      "To": "Support",
+      "Input": "My"
+    },
+    {
+      "FromId": "52ee09dc-38b3-4b43-b80b-e213cd8d67fd",
+      "From": "Incastro: 6 DOF",
+      "Component": "Boolean Toggle",
+      "Output": "Boolean Toggle",
+      "ToId": "97aa2219-f95e-4964-996f-45cc04e9f28d",
+      "To": "Support",
+      "Input": "Mz"
+    },
+    {
+      "FromId": "bc60c062-e1b4-4bfc-b3ce-8edbbfd35020",
+      "From": "Node Element",
+      "Component": "Node Element",
+      "Output": "Node",
+      "ToId": "44a0b2c6-8158-47ec-913c-571c9601fa02",
+      "To": "Load nodal",
+      "Input": "Node"
+    },
+    {
+      "FromId": "18a5260b-7c7d-45bc-9b14-0982403110d0",
+      "From": "Load case",
+      "Component": "Load case",
+      "Output": "Load case",
+      "ToId": "44a0b2c6-8158-47ec-913c-571c9601fa02",
+      "To": "Load nodal",
+      "Input": "Load case"
+    },
+    {
+      "FromId": "9a6edcbc-737d-4aee-8a53-47a18dec9a20",
+      "From": "Fz [kN]",
+      "Component": "Number Slider",
+      "Output": "Number Slider",
+      "ToId": "44a0b2c6-8158-47ec-913c-571c9601fa02",
+      "To": "Load nodal",
+      "Input": "Fz"
+    },
+    {
+      "FromId": "c759ac23-b716-4955-9df8-d945bfb3a896",
+      "From": "Model Units",
+      "Component": "Model Units",
+      "Output": "Model Units",
+      "ToId": "e8617f03-54de-489c-a3a4-f87e6f14daef",
+      "To": "Build Model",
+      "Input": "Unit"
+    },
+    {
+      "FromId": "2ed6661e-be92-4c90-84dd-b308a1fc3567",
+      "From": "Frame element",
+      "Component": "Frame element",
+      "Output": "Frame element",
+      "ToId": "e8617f03-54de-489c-a3a4-f87e6f14daef",
+      "To": "Build Model",
+      "Input": "Frame element"
+    },
+    {
+      "FromId": "97aa2219-f95e-4964-996f-45cc04e9f28d",
+      "From": "Support",
+      "Component": "Support",
+      "Output": "Node",
+      "ToId": "e8617f03-54de-489c-a3a4-f87e6f14daef",
+      "To": "Build Model",
+      "Input": "Node"
+    },
+    {
+      "FromId": "44a0b2c6-8158-47ec-913c-571c9601fa02",
+      "From": "Load nodal",
+      "Component": "Load nodal",
+      "Output": "Node",
+      "ToId": "e8617f03-54de-489c-a3a4-f87e6f14daef",
+      "To": "Build Model",
+      "Input": "Node"
+    },
+    {
+      "FromId": "e8617f03-54de-489c-a3a4-f87e6f14daef",
+      "From": "Build Model",
+      "Component": "Build Model",
+      "Output": "Model",
+      "ToId": "cc535d32-ccb3-49e4-9b84-6d71797532a9",
+      "To": "Validate Straus Model",
+      "Input": "Model"
+    },
+    {
+      "FromId": "e8617f03-54de-489c-a3a4-f87e6f14daef",
+      "From": "Build Model",
+      "Component": "Build Model",
+      "Output": "Model",
+      "ToId": "0331f7a3-b900-4efb-ae62-d1280dcf5183",
+      "To": "Model Summary",
+      "Input": "Model"
+    },
+    {
+      "FromId": "e8617f03-54de-489c-a3a4-f87e6f14daef",
+      "From": "Build Model",
+      "Component": "Build Model",
+      "Output": "Model",
+      "ToId": "4261f225-3b0a-4e42-a528-d386ac1e41e6",
+      "To": "Rhino2Straus Display Manager",
+      "Input": "Model"
+    },
+    {
+      "FromId": "850193de-af0c-4057-a936-25e721141c46",
+      "From": "Display Settings",
+      "Component": "Rhino2Straus Display Settings",
+      "Output": "Settings",
+      "ToId": "4261f225-3b0a-4e42-a528-d386ac1e41e6",
+      "To": "Rhino2Straus Display Manager",
+      "Input": "Settings"
+    },
+    {
+      "FromId": "e8617f03-54de-489c-a3a4-f87e6f14daef",
+      "From": "Build Model",
+      "Component": "Build Model",
+      "Output": "Model",
+      "ToId": "8a08c287-b7a0-4713-a35d-f5390a392c79",
+      "To": "Model Physical Geometry",
+      "Input": "Model"
+    },
+    {
+      "FromId": "e8617f03-54de-489c-a3a4-f87e6f14daef",
+      "From": "Build Model",
+      "Component": "Build Model",
+      "Output": "Model",
+      "ToId": "06a91188-cf9b-4b33-99a0-8ade9a548a7f",
+      "To": "Decompose Model",
+      "Input": "Model"
+    },
+    {
+      "FromId": "06a91188-cf9b-4b33-99a0-8ade9a548a7f",
+      "From": "Decompose Model",
+      "Component": "Decompose Model",
+      "Output": "Frame elements",
+      "ToId": "fb34d117-2254-4363-b5a1-d1f6129e7767",
+      "To": "Deconstruct Beam",
+      "Input": "Beam"
+    }
+  ]
+}
