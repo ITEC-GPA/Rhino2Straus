@@ -70,7 +70,7 @@ I valori non collegati sono preimpostati nei socket: tasto destro sull'input per
 Dalla radice del repository, con Rhino 8 installato:
 
 ```powershell
-dotnet build Rhino2Straus.sln -c Release
+./build.ps1
 dotnet run --project tools/Examples -c Release
 ```
 

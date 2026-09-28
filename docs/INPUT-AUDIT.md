@@ -10,4 +10,4 @@
 
 [Inventario completo per componente e ingresso](INPUT-AUDIT.json). I dati indispensabili — geometria, Model, proprietà, nomi/riferimenti e argomenti obbligatori delle API — richiedono ancora un collegamento. I default geometrici sono esempi modificabili nelle unità del Model.
 
-Ripetere dalla cartella Rhino2MidasGen: `dotnet run --project tools/PluginAudit -c Release -- ..`, dopo la build Release dei quattro progetti. Il controllo automatico dei default non avvia i solver strutturali.
+Ripetere dalla cartella Rhino2MidasGen: `dotnet run --project tools/PluginAudit -c Release -- ..`, dopo build.ps1 dei quattro progetti (assembly in bin). Il controllo automatico dei default non avvia i solver strutturali.

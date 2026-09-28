@@ -45,7 +45,7 @@ La **0.4.1** aggiunge l'uscita **Breps** al Display Manager e a Model Physical G
 
 1. Usare Rhino **8.27 o successivo**, in modalità **.NET 8**, su Windows x64.
 2. Eseguire `./build.ps1` da PowerShell con .NET SDK 8 o 9 installato.
-3. Copiare il contenuto di `artifacts/Rhino2Straus` nella cartella `Rhino2Straus` dentro **Grasshopper → File → Special Folders → Components Folder**. Sbloccare i file scaricati dalle proprietà di Windows e riavviare Rhino.
+3. Copiare il contenuto di `bin` nella cartella `Rhino2Straus` dentro **Grasshopper → File → Special Folders → Components Folder**. Sbloccare i file scaricati dalle proprietà di Windows e riavviare Rhino.
 4. Installare Straus7 R3 x64 con licenza API e le licenze solver necessarie. Se non viene rilevato, impostare `STRAUS7_API_PATH` alla cartella `Bin64` oppure al file `St7api.dll`, poi riavviare Rhino.
 
 Il pacchetto distribuisce soltanto gli assembly del progetto: RhinoCommon, Grasshopper, DLL native Straus7 e manuali proprietari rimangono nelle rispettive installazioni. I GUID dei componenti Straus originali sono conservati: disabilitare il vecchio `Rhino2Fem.Grasshopper.Straus.gha` quando si installa questo plugin, per evitare registrazioni duplicate.
@@ -69,7 +69,7 @@ Le funzioni native richiedono una licenza API funzionante. Il codice compila e i
 ## Sviluppo
 
 ```powershell
-dotnet build Rhino2Straus.sln -c Release
+./build.ps1
 dotnet run --project Rhino2Straus.Tests -c Release
 dotnet run --project tools/GeometrySmoke -c Release
 dotnet run --project tools/GeometrySmoke -c Release -- --preview-gallery
@@ -80,3 +80,18 @@ dotnet run --project tools/IconGallery -c Release -- .
 ```
 
 Il test geometrico richiede Rhino installato e usa il resolver ufficiale Rhino.Inside; il test nativo richiede la licenza API Straus7. La CI esegue build e test gestiti. Il binding API proviene dalla parte Straus del progetto iniziale; i diritti dei rispettivi SDK rimangono ai produttori.
+
+## Compilazione e pulizia
+
+`./build.ps1` crea nella directory di questo progetto una sola cartella **`bin`** pronta per Grasshopper: un file `.gha` e le DLL/runtime necessari. Non cambiare i GUID per risolvere caricamenti doppi.
+
+La build elimina i vecchi `bin/obj` intermedi, ricrea il contenuto di `bin`, esegue i test e rimuove di nuovo gli intermedi anche in caso di errore. Conserva in `artifacts` lo ZIP della versione corrente; elimina i vecchi ZIP del plugin e le vecchie distribuzioni estratte. Gli archivi degli esempi restano disponibili. Documentazione ed esempi sono nei sorgenti e nello ZIP, senza duplicati nella cartella `bin`.
+
+- `./clean.ps1 -WhatIf`: mostra cosa verrebbe rimosso.
+- `./clean.ps1`: pulisce gli intermedi e i vecchi pacchetti, conservando `bin`.
+- `./build.ps1 -KeepBuildOutputs`: conserva gli intermedi per debug/sviluppo; al termine usare `./clean.ps1`.
+- `./build.ps1 -SkipTests`: compila e pulisce saltando i test gestiti.
+
+Caricare **solo questa cartella `bin`** tramite GrasshopperDeveloperSettings, oppure copiarne l'intero contenuto in un'unica cartella delle Libraries di Grasshopper. Usare una sola delle due modalità e sostituire l'installazione precedente: caricare contemporaneamente copie installate, `bin` e vecchi pacchetti genera duplicati. Le DLL accanto al `.gha` sono necessarie. Chiudere Rhino prima di ricompilare se i file sono in uso.
+
+Gli strumenti Rhino.Inside di verifica/generazione esempi leggono il plugin da `bin`: eseguire prima `./build.ps1`. Dopo l'uso dei tool, `./clean.ps1` rimuove anche i loro intermedi.

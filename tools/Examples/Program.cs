@@ -32,7 +32,7 @@ internal static class Program
         {
             Console.WriteLine("Starting isolated Rhino / Grasshopper runtime...");
             using var rhino=new RhinoCore(new[]{"/nosplash","/safemode","/notemplate"},WindowStyle.NoWindow);
-            var plugin=Assembly.LoadFrom(Path.GetFullPath("Rhino2Straus.Grasshopper/bin/Release/net8.0-windows/Rhino2Straus.Grasshopper.gha"));
+            var plugin=Assembly.LoadFrom(Path.GetFullPath("bin/Rhino2Straus.Grasshopper.gha"));
             RegisterComponents(plugin);
             GH_Document.EnableSolutions=true;
             string output="examples";Directory.CreateDirectory(output);

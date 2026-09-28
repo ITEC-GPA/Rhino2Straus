@@ -138,7 +138,7 @@ internal static class Program
             directory=directory.Parent;
         }
         if(directory==null)throw new DirectoryNotFoundException("Run from the repository.");
-        string plugin=Path.Combine(directory.FullName,"Rhino2Straus.Grasshopper","bin","Release","net8.0-windows","Rhino2Straus.Grasshopper.gha");
+        string plugin=Path.Combine(directory.FullName,"bin","Rhino2Straus.Grasshopper.gha");
         string pluginFolder=Path.GetDirectoryName(plugin);
         System.Runtime.Loader.AssemblyLoadContext.Default.Resolving+=(context,name)=>{
             string candidate=Path.Combine(pluginFolder,name.Name+".dll");return File.Exists(candidate)?context.LoadFromAssemblyPath(candidate):null;
