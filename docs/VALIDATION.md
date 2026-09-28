@@ -16,3 +16,16 @@ Data: 26 settembre 2026. Ambiente: Windows x64, .NET SDK 9, Rhino 8, Straus7 R31
 - **Test nativo Straus7 non completato**: `St7Init` restituisce errore **-8**, licenza STANDALONE senza hardware lock disponibile. Non sono stati prodotti risultati di solver da usare come validazione. Il relativo test è presente e può essere rilanciato con `--native --solve` quando la licenza è accessibile.
 
 Questi test verificano la libreria e parte dell'integrazione Rhino. Non attestano ancora un collaudo interattivo completo di ogni componente in Grasshopper né la correttezza ingegneristica di un modello dell'utente.
+
+## Esempi Grasshopper — 28 settembre 2026
+
+Tre definizioni complete, in formato `.gh` e `.ghx`, ricalcolate tramite le connessioni reali nel runtime Rhino 8.35 / Grasshopper. Ogni file viene salvato, riletto e ricalcolato: nessun componente mancante, collegamenti preservati, nessun errore di calcolo o preflight. Le verifiche degli esempi sono in [examples/validation.json](../examples/validation.json).
+
+- Mensola: 19 componenti del plugin, 2 nodi, 1 trave, 1 caso; 1 Brep chiuso, volume 0.24 m³.
+- Portale: 35 componenti del plugin e uno Stream Gate standard, 4 nodi, 3 travi, 2 casi, 2 combinazioni; 3 Brep chiusi, volume 0.0816 m³.
+- Piastra: 17 componenti del plugin, 9 nodi, 4 Quad4, 1 caso; 4 Brep chiusi, volume 2.4 m³.
+- Verificato l'interruttore preview tramite il collegamento al gestore: stato OFF, fingerprint del Model invariato e Brep ancora disponibili. I file sono salvati con preview ON, Run e Overwrite OFF.
+- Gli 8 avvisi del portale provengono dai lettori risultati e dai relativi pannelli tenuti senza dati dallo Stream Gate quando Run=false. Negli altri due esempi non ci sono avvisi.
+- Canvas renderizzati con Grasshopper e controllati per disposizione dei gruppi, componenti, note e connessioni. Il rendering 3D interattivo resta soggetto ai limiti già descritti sopra.
+
+Il generatore non invoca il solver nativo: la presenza dei collegamenti ai lettori non costituisce validazione di un'analisi Straus7. I file distribuiti non contengono risultati FEM precalcolati.

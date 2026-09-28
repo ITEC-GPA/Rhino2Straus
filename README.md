@@ -6,6 +6,10 @@ Componenti **Rhino 8 / Grasshopper per Straus7 R3, Windows x64**. Il progetto è
 
 La **0.4.2** separa Materiali, Sezioni, Proprietà, Elementi, Vincoli e link, Assi e offset, Casi e combo, Carichi, Modello, File Straus, Analisi e Preview/bake. I risultati hanno cinque pannelli dedicati: Model, nodi/link, travi, piastre e solidi. Cartelle sorgenti, catalogo e atlante delle icone seguono la stessa suddivisione. I GUID e i collegamenti dei componenti restano invariati. Dopo l'installazione riavviare Rhino/Grasshopper per aggiornare la tab.
 
+## Esempi pronti
+
+La **0.4.3** include tre definizioni Grasshopper con componenti già collegati: **mensola con offset e bake**, **portale con merge, casi/combinazioni e lettori dei risultati**, **piastra da mesh con pressione e assi locali**. Geometrie interne, slider, note in italiano, preview disattivabile e uscite Brep. Il calcolo nativo è inizialmente disattivato. [Apri la guida e scarica i file .gh / .ghx](examples/README.md).
+
 ## Impostazione del modello
 
 ```mermaid

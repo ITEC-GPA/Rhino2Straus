@@ -15,7 +15,8 @@ try {
     foreach($file in $files){Copy-Item -LiteralPath (Join-Path $source $file) -Destination (Join-Path $output $file) -Force}
     Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'README.md') -Destination $output -Force
     Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'docs') -Destination $output -Recurse -Force
-    $archive=Join-Path $PSScriptRoot 'artifacts/Rhino2Straus-0.4.2.zip'
+    Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'examples') -Destination $output -Recurse -Force
+    $archive=Join-Path $PSScriptRoot 'artifacts/Rhino2Straus-0.4.3.zip'
     Compress-Archive -Path (Join-Path $output '*') -DestinationPath $archive -Force
     Get-FileHash -LiteralPath $archive -Algorithm SHA256
     Write-Output "Package: $archive"

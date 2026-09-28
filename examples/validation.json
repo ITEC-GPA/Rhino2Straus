@@ -1,0 +1,112 @@
+{
+  "rhino": "8.35.26251.13001",
+  "plugin": "0.4.3.0",
+  "nativeSolverRun": false,
+  "reports": [
+    {
+      "example": "01_mensola_offset_bake",
+      "components": 19,
+      "pluginComponents": 19,
+      "connections": 34,
+      "validation": {
+        "nodes": 2,
+        "beams": 1,
+        "plates": 0,
+        "loadCases": 1,
+        "combinations": 0,
+        "closedBreps": 1,
+        "volume": 0.24000000000000002,
+        "previewToggleVerified": true,
+        "preflightErrors": [],
+        "preflightWarnings": [],
+        "runtimeErrors": [],
+        "runtimeWarnings": []
+      },
+      "files": [
+        {
+          "file": "01_mensola_offset_bake.gh",
+          "bytes": 12445,
+          "sha256": "58b1bcb729e9cf48c57462936bc5fbfe64cfa6b7bd771ca60842a6baf429c7cb"
+        },
+        {
+          "file": "01_mensola_offset_bake.ghx",
+          "bytes": 392336,
+          "sha256": "044197f156e3b3672930abd3d13dc0aaffaf57f71df298e5e44fb19d55aac2bb"
+        }
+      ]
+    },
+    {
+      "example": "02_portale_casi_combo_risultati",
+      "components": 36,
+      "pluginComponents": 35,
+      "connections": 64,
+      "validation": {
+        "nodes": 4,
+        "beams": 3,
+        "plates": 0,
+        "loadCases": 2,
+        "combinations": 2,
+        "closedBreps": 3,
+        "volume": 0.08160000000000026,
+        "previewToggleVerified": true,
+        "preflightErrors": [],
+        "preflightWarnings": [],
+        "runtimeErrors": [],
+        "runtimeWarnings": [
+          "Model Result Cases: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Casi risolti failed to collect data",
+          "Model Beam Actions N V T M: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Momenti M2 [kN m] failed to collect data",
+          "Model Result Extrema: Input parameter Model failed to collect data",
+          "Model Deformed Geometry: Input parameter Model failed to collect data",
+          "Model Beam Force Diagram: Input parameter Model failed to collect data",
+          "Model Verification Data: Input parameter Model failed to collect data"
+        ]
+      },
+      "files": [
+        {
+          "file": "02_portale_casi_combo_risultati.gh",
+          "bytes": 20292,
+          "sha256": "5d2cfe0f8b0d1150acae092b90a305648f125b83d350d6ca50f51db67eb9a87f"
+        },
+        {
+          "file": "02_portale_casi_combo_risultati.ghx",
+          "bytes": 664245,
+          "sha256": "c058b48e2ec7a2675de2aef1590b2d69176a7034b4e965a570193172c49b5fbd"
+        }
+      ]
+    },
+    {
+      "example": "03_piastra_mesh_pressione",
+      "components": 17,
+      "pluginComponents": 17,
+      "connections": 31,
+      "validation": {
+        "nodes": 9,
+        "beams": 0,
+        "plates": 4,
+        "loadCases": 1,
+        "combinations": 0,
+        "closedBreps": 4,
+        "volume": 2.4000000000000017,
+        "previewToggleVerified": true,
+        "preflightErrors": [],
+        "preflightWarnings": [],
+        "runtimeErrors": [],
+        "runtimeWarnings": []
+      },
+      "files": [
+        {
+          "file": "03_piastra_mesh_pressione.gh",
+          "bytes": 11812,
+          "sha256": "9e6853d6957ee03471861485ac0cba06445dfe398ea8a8a7e6df060fc57018c1"
+        },
+        {
+          "file": "03_piastra_mesh_pressione.ghx",
+          "bytes": 352171,
+          "sha256": "10db7a3433bc147fbe18b6580290ce4ff4fc84a3b3a237278f486d4c42a02cb1"
+        }
+      ]
+    }
+  ]
+}
