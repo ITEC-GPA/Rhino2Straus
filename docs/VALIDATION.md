@@ -1,5 +1,19 @@
 # Stato delle verifiche
 
+## Versione 0.5.0 — 30 settembre 2026
+
+- Build Release senza errori/avvisi; **69 test gestiti** (inclusi import parziale, nodi coincidenti, merge, casi inutilizzati, temperature e stato Run/cache).
+- **74 verifiche geometriche + 71 verifiche dati Grasshopper = 145 controlli** superati; i nuovi controlli coprono filtri con proprietà complete e sezioni/spessori legacy.
+- **164 componenti** istanziati nel runtime GH con GUID unici, icone e pannelli corretti; **166 icone PNG** nell'atlante aggiornato.
+- **23 definizioni**, ciascuna salvata, riaperta e ricalcolata in `.gh` e `.ghx`: zero errori di runtime. **164/164 componenti** usati, nessuno mancante. [Rapporto per file](../examples/validation.json) · [Copertura](../examples/component-coverage.json).
+- I **18 esempi con Model offline** superano preflight, controlli dei conteggi previsti e Brep chiusi; il toggle preview lascia invariati dati FEM e uscite per bake. Gli altri 5 mostrano flussi dipendenti da file/API e sono verificati nello stato di attesa. Gli avvisi di dati mancanti sui rami disattivati sono elencati nel rapporto.
+- Nessuna API Straus invocata durante la generazione degli esempi; i comandi Read/Run/Bake/Overwrite partono False. Risultati sintetici assenti dai file distribuiti.
+- **Prova nativa tentata nuovamente:** St7Init restituisce **-8**, hardware lock STANDALONE non trovato. Il test del nuovo import (confronto byte sorgente, geometria, proprietà e carichi) è presente ma non raggiunto; né roundtrip né solver nativi sono dichiarati collaudati.
+- `Read Straus Model` è descritto con limiti e semantica Complete/Allow partial nella [guida import](MODEL-IMPORT.md). Il sorgente viene letto tramite copia temporanea.
+- La nuova identità include metadati termici: rigenerare export/risultati di versioni precedenti prima della rilettura con la 0.5.
+
+## Verifiche precedenti
+
 Data: 26 settembre 2026. Ambiente: Windows x64, .NET SDK 9, Rhino 8, Straus7 R31.
 
 - Build Release dell'intera soluzione: completata senza errori e senza avvisi.

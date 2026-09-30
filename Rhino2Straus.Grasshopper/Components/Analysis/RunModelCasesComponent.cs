@@ -23,7 +23,7 @@ namespace Rhino2Straus.Grasshopper.Components.Extended;
 
 public sealed class RunModelCasesComponent : SafeComponent
 {
-    private bool wasRun; private ModelModel solved; private string cachedKey="",status="Idle";
+    private readonly TriggeredOperation<ModelModel> operation=new();
     public RunModelCasesComponent() : base("Run Model Cases and Combinations", "Run Model Cases and Combinations", "Export this Model, run selected linear static cases and combinations, and return the Model with results and provenance. Requires a Straus7 API/solver licence.", ComponentTopics.Tab, ComponentTopics.Analysis) { }
     public override Guid ComponentGuid => new Guid("4a573019-35cb-55d7-8580-99ad7613003b");
     protected override void RegisterInputParams(GH_InputParamManager p)
@@ -51,11 +51,11 @@ public sealed class RunModelCasesComponent : SafeComponent
     protected override void Solve(IGH_DataAccess da)
     {
 
-        var input=Item<GH_Model>(da,0).Value;bool run=Item<bool>(da,2);bool fire=run&&!wasRun;wasRun=run;
+        var input=Item<GH_Model>(da,0).Value;bool run=Item<bool>(da,2);
         var cases=new List<string>();var combos=new List<string>();da.GetDataList(4,cases);da.GetDataList(5,combos);
         string key=ModelFingerprint.Compute(input)+System.Text.Json.JsonSerializer.Serialize(new object[]{Item<string>(da,1),cases,combos,Item<bool>(da,6),Item<bool>(da,7),Item<int>(da,8),Item<int>(da,9)});
-        if(key!=cachedKey){solved=null;status="Inputs changed - run required";}
-        if(fire){solved=null;status="Failed";cachedKey=key;solved=ModelAnalysisService.RunStatic(input,Item<string>(da,1),Item<bool>(da,3),cases,combos,Item<bool>(da,6),Item<bool>(da,7),Item<int>(da,8),Item<int>(da,9));status=solved.Results.IsComplete?"Completed":"Completed with unavailable quantities";}
+        var solved=operation.Update(key,run,()=>ModelAnalysisService.RunStatic(input,Item<string>(da,1),Item<bool>(da,3),cases,combos,Item<bool>(da,6),Item<bool>(da,7),Item<int>(da,8),Item<int>(da,9)),value=>value.Results.IsComplete?"Completed":"Completed with unavailable quantities");
+        string status=operation.Status;
         var output=solved??input;da.SetData(0,new GH_Model(output));da.SetData(1,solved?.Results.ResultPath??"");da.SetData(2,status);
         da.SetDataList(3,solved?.Results.Issues.Select(x=>x.ToString())??Array.Empty<string>());Message=status;
         if(solved?.Results.Issues.Count>0)AddRuntimeMessage(GH_RuntimeMessageLevel.Warning,$"{solved.Results.Issues.Count} result quantities unavailable. Inspect Unavailable before verification.");

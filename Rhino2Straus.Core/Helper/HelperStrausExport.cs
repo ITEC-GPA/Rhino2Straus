@@ -294,6 +294,14 @@ namespace Rhino2Straus.Core.Helper
                 }
 
                 int comboNumber = 1;
+                foreach(var loadCase in Model.LoadCases.Values.Where(c=>c.ReferenceTemperature.HasValue))
+                {
+                    var defaults=new double[13];int number=loadCaseNameIdMap[loadCase.Name];
+                    HandleError(St7.St7GetLoadCaseDefaults(modelId,number,defaults));
+                    defaults[St7.ipLoadCaseRefTemp]=loadCase.ReferenceTemperature.Value;
+                    HandleError(St7.St7SetLoadCaseDefaults(modelId,number,defaults));
+                }
+
                 for (int i = 0; i < Model.LoadCombinations.Count; i++)
                 {
                     LoadCombinationModel combo = Model.LoadCombinations.ElementAt(i).Value;

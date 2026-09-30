@@ -1,3 +1,5 @@
+using Grasshopper.Kernel.Types;
+using Rhino2Straus.Core.ElementProperties;
 using Rhino2Straus.Grasshopper;
 using System;
 using System.Collections.Generic;
@@ -35,66 +37,26 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Models
 
         protected override void Solve(IGH_DataAccess DA)
         {
-            List<GH_AreaElement> gh_Areas = new List<GH_AreaElement>();
-            Point3d startNode = Point3d.Unset;
-            List<GH_ElementGroup> gH_ElementGroups = new List<GH_ElementGroup>();
-            List<GH_AreaThickness> gH_AreaProp = new List<GH_AreaThickness>();
-            double tolerance = 0;
-
-            int count = 0;
-            if (!DA.GetDataList (count++, gh_Areas))
-                return;
-            DA.GetData(count++, ref startNode);
-            DA.GetDataList(count++, gH_AreaProp);
-            DA.GetDataList(count++, gH_ElementGroups);
-            DA.GetData(count++, ref tolerance);
-
-            List<GH_AreaElement> matchedAreas = new List<GH_AreaElement>();
-            List<GH_AreaElement> otherAreas = new List<GH_AreaElement>();
-
-
-            List<string> groupName = new List<string>();
-            for (int i = 0; i < gH_ElementGroups.Count; i++)
-                groupName.Add(gH_ElementGroups[i].Value.Name);
-            List<string> propName = new List<string>();
-            for (int i = 0; i < gH_AreaProp.Count; i++)
-                propName.Add(gH_AreaProp[i].Value.Name);
-
-            for (int i = 0; i < gh_Areas.Count; i++)
+            var elements=new List<GH_AreaElement>();if(!DA.GetDataList(0,elements))return;
+            Point3d start=Point3d.Unset;DA.GetData(1,ref start);
+            var properties=new List<IGH_Goo>();DA.GetDataList(2,properties);
+            var groups=new List<GH_ElementGroup>();DA.GetDataList(3,groups);
+            double tolerance=Item<double>(DA,4);
+            if(!double.IsFinite(tolerance)||tolerance<=0)throw new ArgumentException("Tolerance must be finite and positive.");
+            var criteria=properties.Select(x=>x.ScriptVariable()).ToArray();
+            if(criteria.Any(x=>x is not AreaPropertyModel && x is not AreaThicknessModel))throw new ArgumentException("Supply element properties (or legacy section definitions).");
+            var groupNames=groups.Select(g=>g.Value.GroupFullName).ToHashSet();
+            bool all=criteria.Length==0&&groupNames.Count==0&&!start.IsValid;
+            var matched=new List<GH_AreaElement>();var other=new List<GH_AreaElement>();
+            foreach(var item in elements)
             {
-                bool find = groupName.Count==0&&propName.Count==0&&!startNode.IsValid;
-
-                Core.Elements.AreaElementModel area = gh_Areas[i].Value;
-                if (!find)
-                {
-                    for (int j = 0; j < area.Groups.Count; j++)
-                        if (groupName.Contains(area.Groups[j].Name))
-                            find = true;
-                }
-
-                if (!find)
-                {
-                    for(int j = 0; j < area.NodeList.Count; j++)
-                        if (!find && startNode.IsValid && area.NodeList[j].Position.DistanceTo(startNode) < tolerance)
-                            find = true;
-                }
-
-                if (!find)
-                {
-                    if (propName.Contains(area.AreaThickness.Name))
-                        find = true;
-                }
-
-                if (find)
-                    matchedAreas.Add(gh_Areas[i]);
-                else
-                    otherAreas.Add(gh_Areas[i]);
+                var value=item.Value;
+                bool match=all||value.Groups.Any(g=>groupNames.Contains(g.GroupFullName))||start.IsValid&&value.NodeList.Any(n=>n.Position.DistanceTo(start)<=tolerance)
+                    ||criteria.Any(p=>p is AreaPropertyModel property?property.Name==value.AreaProperty.Name:((AreaThicknessModel)p).Name==value.AreaThickness.Name);
+                (match?matched:other).Add(item);
             }
-
-            DA.SetDataList(0, matchedAreas);
-            DA.SetDataList(1, otherAreas);
+            DA.SetDataList(0,matched);DA.SetDataList(1,other);
         }
-
 
         public override Guid ComponentGuid => new Guid("58bbf0d8-9ace-4a27-b67f-0bf5e9bec547");
     }

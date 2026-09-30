@@ -6,7 +6,7 @@ using Grasshopper.Kernel.Parameters;
 using Grasshopper.Kernel.Types;
 using Rhino.Geometry;
 
-internal static class Definitions
+internal static partial class Definitions
 {
     public static ExampleDocument Cantilever(Assembly plugin)
     {

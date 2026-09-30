@@ -48,7 +48,7 @@ internal static class ModelBuilder
             if (source.Id > 0 && byInputId.TryGetValue(source.Id, out target) && target.Position.DistanceTo(source.Position) > tolerance)
                 throw new ArgumentException($"Node ID {source.Id} occurs at different positions.");
             var cell = Cell(source.Position);
-            if (target == null)
+            if (target == null && !(m.PreserveCoincidentNodes && source.Id > 0))
             {
                 var nearby = new List<NodeElementModel>();
                 for (int x = -1; x <= 1; x++) for (int y = -1; y <= 1; y++) for (int z = -1; z <= 1; z++)
@@ -74,7 +74,7 @@ internal static class ModelBuilder
                 }
                 a.Dx |= b.Dx; a.Dy |= b.Dy; a.Dz |= b.Dz; a.Mx |= b.Mx; a.My |= b.My; a.Mz |= b.Mz;
                 target.NodalLoadList.AddRange(source.NodalLoadList.Select(x => new NodalLoadModel(x)));
-                target.Temperatures.AddRange(source.Temperatures.Select(x => new NodeTemperatureModel { LoadCase = x.LoadCase, Temperature = x.Temperature }));
+                target.Temperatures.AddRange(source.Temperatures.Select(x => new NodeTemperatureModel { LoadCase = x.LoadCase, Temperature = x.Temperature, Type=x.Type }));
                 target.TranslationMass += source.TranslationMass; target.RotationMass += source.RotationMass;
                 target.TranslationSpring += source.TranslationSpring; target.RotationSpring += source.RotationSpring;
                 target.Groups = Groups(target.Groups.Concat(source.Groups));
@@ -151,7 +151,7 @@ internal static class ModelBuilder
         {
             if (c == null || string.IsNullOrWhiteSpace(c.Name)) throw new ArgumentException("Every load needs a named load case.");
             if (!m.LoadCases.ContainsKey(c.Name)) m.LoadCases.Add(new LoadCaseModel(c) { Id = m.LoadCases.Count + 1 });
-            else if (m.LoadCases[c.Name].Type != c.Type || m.LoadCases[c.Name].GravityNoStructuralMass != c.GravityNoStructuralMass)
+            else if (m.LoadCases[c.Name].Type != c.Type || m.LoadCases[c.Name].GravityNoStructuralMass != c.GravityNoStructuralMass || m.LoadCases[c.Name].ReferenceTemperature != c.ReferenceTemperature)
                 throw new ArgumentException($"Conflicting settings for load case {c.Name}.");
         }
         if (weight != null) { m.SelfWeight = new SelfWeightModel(weight); Case(weight.LoadCase); }

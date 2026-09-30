@@ -22,7 +22,7 @@
       <chunks count="5">
         <chunk name="DocumentHeader">
           <items count="5">
-            <item name="DocumentID" type_name="gh_guid" type_code="9">d29093c4-3cf0-4b12-aeb7-f5209657d918</item>
+            <item name="DocumentID" type_name="gh_guid" type_code="9">45e71ce3-28f1-411f-b910-2f3bf66ccd7a</item>
             <item name="Preview" type_name="gh_string" type_code="10">Shaded</item>
             <item name="PreviewMeshType" type_name="gh_int32" type_code="3">1</item>
             <item name="PreviewNormal" type_name="gh_drawing_color" type_code="36">
@@ -35,7 +35,7 @@
         </chunk>
         <chunk name="DefinitionProperties">
           <items count="4">
-            <item name="Date" type_name="gh_date" type_code="8">639261784245781750</item>
+            <item name="Date" type_name="gh_date" type_code="8">639263970575322954</item>
             <item name="Description" type_name="gh_string" type_code="10">Esempio autonomo Rhino2Straus. Geometrie interne; metri e kN. Leggere le note sul canvas e examples/README.md.</item>
             <item name="KeepOpen" type_name="gh_bool" type_code="1">false</item>
             <item name="Name" type_name="gh_string" type_code="10"></item>
@@ -77,7 +77,7 @@
                 <item name="Author" type_name="gh_string" type_code="10">Gabriele Pacini</item>
                 <item name="Id" type_name="gh_guid" type_code="9">d352eafe-8ed1-450f-98c9-10c0185b8317</item>
                 <item name="Name" type_name="gh_string" type_code="10">Rhino2Straus</item>
-                <item name="Version" type_name="gh_string" type_code="10">0.4.3.0</item>
+                <item name="Version" type_name="gh_string" type_code="10">0.5.0.0</item>
               </items>
             </chunk>
           </chunks>
@@ -97,7 +97,7 @@
                 <chunk name="Container">
                   <items count="8">
                     <item name="Description" type_name="gh_string" type_code="10">A panel for custom notes and text values</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">5deab711-9d26-49c7-8529-a61ac8ca9a36</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">1f7780e3-e38a-49d9-a04f-6cd4e880e443</item>
                     <item name="Name" type_name="gh_string" type_code="10">Panel</item>
                     <item name="NickName" type_name="gh_string" type_code="10">03 | Piastra / m / kN</item>
                     <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -159,7 +159,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Database Concrete</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">747282fd-22a7-4043-9643-e07fc78c5ad2</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">9578baff-594c-411b-b376-36d0acf4fae3</item>
                     <item name="Name" type_name="gh_string" type_code="10">Database Concrete</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Database Concrete</item>
                   </items>
@@ -181,7 +181,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_input" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">The property type</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">18dcec56-a9e8-42d3-9773-2646944c4632</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b6fe3ead-ac92-4317-8526-7e77ec799ee4</item>
                         <item name="Name" type_name="gh_string" type_code="10">Type</item>
                         <item name="NickName" type_name="gh_string" type_code="10">T</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -223,7 +223,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Concrete Material</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">dc72fa87-67be-4cc9-9719-1288b8f95ccb</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">638a2284-c831-4298-84b1-e0e56b5998cb</item>
                         <item name="Name" type_name="gh_string" type_code="10">Concrete Material</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Concrete Material</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -256,7 +256,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                 <chunk name="Container">
                   <items count="6">
                     <item name="Description" type_name="gh_string" type_code="10">Numeric slider for single values</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">cf8781c2-1b8b-42d9-bf92-55d74a6b2433</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">a07885df-5542-43ee-acc9-bb1a06261869</item>
                     <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Spessore [m]</item>
                     <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -302,7 +302,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Area thickness</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">856bb335-531f-491f-89fd-97c935c49955</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">5edd5191-c532-472d-85a4-0c5226c081e3</item>
                     <item name="Name" type_name="gh_string" type_code="10">Area thickness</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Area thickness</item>
                   </items>
@@ -324,7 +324,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_input" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Name</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">02bfba76-33a1-41fc-a4f4-ccaf367a74b4</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b270ffdd-b49e-49c5-bd49-231e35cc3caf</item>
                         <item name="Name" type_name="gh_string" type_code="10">Name</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Name</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -367,11 +367,11 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_input" index="1">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Thickness</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f0fbd8a4-cbde-48d0-9a8b-3bd1116f3ca5</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">c53184af-96e9-457a-824f-178a2047a847</item>
                         <item name="Name" type_name="gh_string" type_code="10">Thickness</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Thickness</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">cf8781c2-1b8b-42d9-bf92-55d74a6b2433</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">a07885df-5542-43ee-acc9-bb1a06261869</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="2">
@@ -410,7 +410,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Area thickness</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">7d45d210-c447-4993-b685-ff8cbff036f2</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ccde21be-e73e-40b8-87f6-21f33b213acd</item>
                         <item name="Name" type_name="gh_string" type_code="10">Area thickness</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Area thickness</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -443,7 +443,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Area Property</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">2e0ddd29-c6e4-402f-8381-b7f406b93277</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">18fd16d2-fdb2-4be1-8abb-fd2b087c7ab5</item>
                     <item name="Name" type_name="gh_string" type_code="10">Area Property</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Area Property</item>
                   </items>
@@ -465,7 +465,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_input" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Name</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">56f0154b-8a31-4e32-940c-97cc6a499948</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">72b0b475-e0c2-42db-8a85-a717d54dfcbf</item>
                         <item name="Name" type_name="gh_string" type_code="10">Name</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Name</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -508,11 +508,11 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_input" index="1">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Section</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">feed7467-9d4a-4eec-b6f7-a5fde8821ada</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">266bebc0-e888-4ce5-a2f8-b8fbbd90c30b</item>
                         <item name="Name" type_name="gh_string" type_code="10">Section</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Section</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">7d45d210-c447-4993-b685-ff8cbff036f2</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">ccde21be-e73e-40b8-87f6-21f33b213acd</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
@@ -531,11 +531,11 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_input" index="2">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Material</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d6cf06af-c704-49fa-84f9-6be79ac36ddb</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">8dcdcf8f-73d4-4277-b6e7-7a2bfd21f217</item>
                         <item name="Name" type_name="gh_string" type_code="10">Material</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Material</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">dc72fa87-67be-4cc9-9719-1288b8f95ccb</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">638a2284-c831-4298-84b1-e0e56b5998cb</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
@@ -554,7 +554,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_input" index="3">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Native Straus7 plate property type</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">6391bb1d-d191-4788-be58-ebebd2d91958</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">cfb046d1-6f4a-4193-a8cf-1b9d6d4ca2b5</item>
                         <item name="Name" type_name="gh_string" type_code="10">Type</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Type</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -596,7 +596,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Area Property</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">3b9016fc-2155-4806-b62c-2699212aa89a</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d00c1775-385e-4820-8e9d-60affff66571</item>
                         <item name="Name" type_name="gh_string" type_code="10">Area Property</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Area Property</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -633,12 +633,12 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                       <ARGB>65;100;149;237</ARGB>
                     </item>
                     <item name="Description" type_name="gh_string" type_code="10">A group of Grasshopper objects</item>
-                    <item name="ID" index="0" type_name="gh_guid" type_code="9">747282fd-22a7-4043-9643-e07fc78c5ad2</item>
-                    <item name="ID" index="1" type_name="gh_guid" type_code="9">cf8781c2-1b8b-42d9-bf92-55d74a6b2433</item>
-                    <item name="ID" index="2" type_name="gh_guid" type_code="9">856bb335-531f-491f-89fd-97c935c49955</item>
-                    <item name="ID" index="3" type_name="gh_guid" type_code="9">2e0ddd29-c6e4-402f-8381-b7f406b93277</item>
+                    <item name="ID" index="0" type_name="gh_guid" type_code="9">9578baff-594c-411b-b376-36d0acf4fae3</item>
+                    <item name="ID" index="1" type_name="gh_guid" type_code="9">a07885df-5542-43ee-acc9-bb1a06261869</item>
+                    <item name="ID" index="2" type_name="gh_guid" type_code="9">5edd5191-c532-472d-85a4-0c5226c081e3</item>
+                    <item name="ID" index="3" type_name="gh_guid" type_code="9">18fd16d2-fdb2-4be1-8abb-fd2b087c7ab5</item>
                     <item name="ID_Count" type_name="gh_int32" type_code="3">4</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">21be2f05-ce43-428b-a062-77f75824471a</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">a902bfd3-b1b2-4d5b-9898-bc1b92304053</item>
                     <item name="Name" type_name="gh_string" type_code="10">Group</item>
                     <item name="NickName" type_name="gh_string" type_code="10">01 | Materiale e spessore</item>
                   </items>
@@ -659,7 +659,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                   <items count="7">
                     <item name="Description" type_name="gh_string" type_code="10">Contains a collection of polygon meshes</item>
                     <item name="Hidden" type_name="gh_bool" type_code="1">true</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">4045940b-df54-4857-a449-03c59f2b05e3</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">2c8b21bf-3d76-4ec0-bee0-689a1c820c44</item>
                     <item name="Name" type_name="gh_string" type_code="10">Mesh</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Mesh 4 Quad4</item>
                     <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -718,7 +718,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Mesh to Plates</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">9edddf23-c3bc-40df-ad1c-39312764dbb1</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">58804d68-03e9-4be4-8b45-24068189a797</item>
                     <item name="Name" type_name="gh_string" type_code="10">Mesh to Plates</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Mesh to Plates</item>
                   </items>
@@ -740,11 +740,11 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_input" index="0">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Mesh</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">059a8452-18f9-47f2-9ea8-b7ecf5e96a3f</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">23460ddc-0b80-47cb-88fc-c6dfdd4be75b</item>
                         <item name="Name" type_name="gh_string" type_code="10">Mesh</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Mesh</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">4045940b-df54-4857-a449-03c59f2b05e3</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">2c8b21bf-3d76-4ec0-bee0-689a1c820c44</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
@@ -763,11 +763,11 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_input" index="1">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Property</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">929f991b-043a-40ca-a51c-bc173ef1cd84</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">2a5d300e-f064-408e-a7e8-c457dda17981</item>
                         <item name="Name" type_name="gh_string" type_code="10">Property</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Property</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">3b9016fc-2155-4806-b62c-2699212aa89a</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">d00c1775-385e-4820-8e9d-60affff66571</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
@@ -786,7 +786,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_input" index="2">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Positive first ID; -1 lets Build Model assign IDs</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">502fb40a-99a3-4e91-999e-55194b2ef0b4</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">9d9a3a89-139c-4454-ab95-11b70c05892a</item>
                         <item name="Name" type_name="gh_string" type_code="10">First ID</item>
                         <item name="NickName" type_name="gh_string" type_code="10">First ID</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -829,7 +829,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Plates</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">e702b236-2a34-4e6c-8efa-480fd42acb53</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">caa2ad8f-bd80-4531-9124-136c64d14b83</item>
                         <item name="Name" type_name="gh_string" type_code="10">Plates</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Plates</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -862,7 +862,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                 <chunk name="Container">
                   <items count="6">
                     <item name="Description" type_name="gh_string" type_code="10">Numeric slider for single values</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">096633e6-d292-47e6-bf37-b1be467fde92</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">13c92e83-8910-4e42-aa24-88fd28da3538</item>
                     <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Offset [m]</item>
                     <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -908,7 +908,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Plate Offset and Orientation</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">90698bb6-6ad3-44e4-b314-cdcd14e257c6</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">68921439-4765-43cb-9692-7406fc428fe2</item>
                     <item name="Name" type_name="gh_string" type_code="10">Plate Offset and Orientation</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Plate Offset and Orientation</item>
                   </items>
@@ -930,11 +930,11 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_input" index="0">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Plate</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">48d3bc54-59cf-4431-86b1-4b50299f1893</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">8ea818a7-08ed-40b0-b5b6-13708517ac49</item>
                         <item name="Name" type_name="gh_string" type_code="10">Plate</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Plate</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">e702b236-2a34-4e6c-8efa-480fd42acb53</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">caa2ad8f-bd80-4531-9124-136c64d14b83</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
@@ -953,11 +953,11 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_input" index="1">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Signed local normal offset; added to property offset</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f85d2da2-c797-4390-9e43-484c86ad3ae8</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">0ad0c229-51eb-4f12-b82a-f3c81d62f705</item>
                         <item name="Name" type_name="gh_string" type_code="10">Offset</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Offset</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">096633e6-d292-47e6-bf37-b1be467fde92</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">13c92e83-8910-4e42-aa24-88fd28da3538</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
@@ -976,7 +976,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_input" index="2">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Local in-plane angle in degrees</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">107935f4-dc15-4e6f-9fbc-147e61555b08</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ccc301ee-96ef-4251-a3df-ac4fe0529952</item>
                         <item name="Name" type_name="gh_string" type_code="10">Angle</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Angle</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1018,7 +1018,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Plate</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">5e8343e4-5949-4683-aa4b-d1e76fb1a317</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">2252a6c2-1467-4b94-8d66-d3a4782f48d6</item>
                         <item name="Name" type_name="gh_string" type_code="10">Plate</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Plate</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1051,7 +1051,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                 <chunk name="Container">
                   <items count="6">
                     <item name="Description" type_name="gh_string" type_code="10">Contains a collection of three-dimensional vectors</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">4887f041-585e-41a0-ad2e-17c29b4ea465</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">426c8851-e698-4f93-8c80-68761822d91a</item>
                     <item name="Name" type_name="gh_string" type_code="10">Vector</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Direzione asse 1</item>
                     <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1110,7 +1110,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Align a local axis to a projected direction. Local loads and offsets follow the rotated axes. Input stays unchanged.</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">4dba576a-ecdf-4459-a774-697043284fbc</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">823a2f54-4082-4184-9036-cac51bf41e6b</item>
                     <item name="Name" type_name="gh_string" type_code="10">Align Plate Local Axis</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Align Plate Local Axis</item>
                   </items>
@@ -1132,11 +1132,11 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_input" index="0">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Plate</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d57c414e-feb3-48fc-a1b0-eb8896bb8e60</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b130b4fe-868a-4bbc-ba62-35de80b8b9d2</item>
                         <item name="Name" type_name="gh_string" type_code="10">Plate</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Plate</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">5e8343e4-5949-4683-aa4b-d1e76fb1a317</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">2252a6c2-1467-4b94-8d66-d3a4782f48d6</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
@@ -1155,11 +1155,11 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_input" index="1">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Desired direction projected into the transverse beam plane / plate plane</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">e8c284b5-aac7-42ac-b4d9-de4b2c17f81f</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">9e81d4bd-34d5-46c2-bdaf-4856b70179aa</item>
                         <item name="Name" type_name="gh_string" type_code="10">Direction</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Direction</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">4887f041-585e-41a0-ad2e-17c29b4ea465</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">426c8851-e698-4f93-8c80-68761822d91a</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="2">
@@ -1202,7 +1202,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_input" index="2">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Axis 1 or 2</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">93176960-ec9f-4300-a1f9-e97f8103385b</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">32d8233d-5ffa-4004-ad59-af127f6253fc</item>
                         <item name="Name" type_name="gh_string" type_code="10">Axis</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Axis</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1244,7 +1244,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Plate</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">a3f8c8d9-277c-4cd2-912c-0d7b9dcce204</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">5a7cea07-5589-43c3-bd01-18e5537d062a</item>
                         <item name="Name" type_name="gh_string" type_code="10">Plate</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Plate</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1266,7 +1266,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_output" index="1">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Axes</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">8fbd9af9-f056-4338-aadf-cbcb66478f04</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">747b8ea0-f8d6-4668-8903-b187cdb99894</item>
                         <item name="Name" type_name="gh_string" type_code="10">Axes</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Axes</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1288,7 +1288,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                     <chunk name="param_output" index="2">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Final orientation in radians</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">47205cf4-35ef-4a0e-a79e-789ab7db7f02</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">3de7beed-deef-42bd-9920-b44f624919f3</item>
                         <item name="Name" type_name="gh_string" type_code="10">Angle</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Angle</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1321,7 +1321,7 @@ Mesh volutamente grossolana per illustrare i collegamenti; infittire per un'anal
                 <chunk name="Container">
                   <items count="8">
                     <item name="Description" type_name="gh_string" type_code="10">A panel for custom notes and text values</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">d7ccc364-6257-43ec-8e8f-c86169223a80</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">5e2fadca-608b-42d2-b5c3-74a293e82844</item>
                     <item name="Name" type_name="gh_string" type_code="10">Panel</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Normale e quota fisica</item>
                     <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1385,15 +1385,15 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <ARGB>65;147;112;219</ARGB>
                     </item>
                     <item name="Description" type_name="gh_string" type_code="10">A group of Grasshopper objects</item>
-                    <item name="ID" index="0" type_name="gh_guid" type_code="9">4045940b-df54-4857-a449-03c59f2b05e3</item>
-                    <item name="ID" index="1" type_name="gh_guid" type_code="9">9edddf23-c3bc-40df-ad1c-39312764dbb1</item>
-                    <item name="ID" index="2" type_name="gh_guid" type_code="9">096633e6-d292-47e6-bf37-b1be467fde92</item>
-                    <item name="ID" index="3" type_name="gh_guid" type_code="9">90698bb6-6ad3-44e4-b314-cdcd14e257c6</item>
-                    <item name="ID" index="4" type_name="gh_guid" type_code="9">4887f041-585e-41a0-ad2e-17c29b4ea465</item>
-                    <item name="ID" index="5" type_name="gh_guid" type_code="9">4dba576a-ecdf-4459-a774-697043284fbc</item>
-                    <item name="ID" index="6" type_name="gh_guid" type_code="9">d7ccc364-6257-43ec-8e8f-c86169223a80</item>
+                    <item name="ID" index="0" type_name="gh_guid" type_code="9">2c8b21bf-3d76-4ec0-bee0-689a1c820c44</item>
+                    <item name="ID" index="1" type_name="gh_guid" type_code="9">58804d68-03e9-4be4-8b45-24068189a797</item>
+                    <item name="ID" index="2" type_name="gh_guid" type_code="9">13c92e83-8910-4e42-aa24-88fd28da3538</item>
+                    <item name="ID" index="3" type_name="gh_guid" type_code="9">68921439-4765-43cb-9692-7406fc428fe2</item>
+                    <item name="ID" index="4" type_name="gh_guid" type_code="9">426c8851-e698-4f93-8c80-68761822d91a</item>
+                    <item name="ID" index="5" type_name="gh_guid" type_code="9">823a2f54-4082-4184-9036-cac51bf41e6b</item>
+                    <item name="ID" index="6" type_name="gh_guid" type_code="9">5e2fadca-608b-42d2-b5c3-74a293e82844</item>
                     <item name="ID_Count" type_name="gh_int32" type_code="3">7</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">8df54bd6-09bd-4483-87d3-560afe059938</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">595f91e5-4261-4627-ad89-1064e06ec6d2</item>
                     <item name="Name" type_name="gh_string" type_code="10">Group</item>
                     <item name="NickName" type_name="gh_string" type_code="10">02 | Mesh / piastre / offset / assi</item>
                   </items>
@@ -1414,7 +1414,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                   <items count="7">
                     <item name="Description" type_name="gh_string" type_code="10">Contains a collection of three-dimensional points</item>
                     <item name="Hidden" type_name="gh_bool" type_code="1">true</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">157615f2-f3a1-4745-b9df-40145036b126</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">3db2eae5-25b4-4ec6-a51e-4ca2761a972f</item>
                     <item name="Name" type_name="gh_string" type_code="10">Point</item>
                     <item name="NickName" type_name="gh_string" type_code="10">8 nodi al contorno</item>
                     <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1544,7 +1544,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Node Element</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">35de0713-2d82-482a-b040-8bfc77dd6cd0</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">0169063d-da0d-4cbf-b945-2ad614725668</item>
                     <item name="Name" type_name="gh_string" type_code="10">Node Element</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Node Element</item>
                   </items>
@@ -1566,11 +1566,11 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="0">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Node point</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">fd5d4300-d99c-488a-b4c0-f0fbeb591a69</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b2911001-608f-41fa-962f-82b978f5490d</item>
                         <item name="Name" type_name="gh_string" type_code="10">Node point</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Node point</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">157615f2-f3a1-4745-b9df-40145036b126</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">3db2eae5-25b4-4ec6-a51e-4ca2761a972f</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
@@ -1590,7 +1590,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Group</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">8d9439f0-dd18-48d4-8c1f-fe4ce1275c5d</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">38868a64-29a4-44b4-88cc-143c84fc6796</item>
                         <item name="Name" type_name="gh_string" type_code="10">Group</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Group</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">true</item>
@@ -1612,7 +1612,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="2">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Node ID</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">45818a72-a235-43ca-bf79-d3bd0a82014a</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">9cf7ef77-6694-4789-b68f-60d19797cfcd</item>
                         <item name="Name" type_name="gh_string" type_code="10">Node ID</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Node ID</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1654,7 +1654,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Node</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">461e98cc-87fe-4d70-8cb7-6d94c4e5e23e</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">93074197-42c1-46e3-852f-241410a4d436</item>
                         <item name="Name" type_name="gh_string" type_code="10">Node</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Node</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1687,7 +1687,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Support</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">6760eb93-0a7d-4f0c-b529-f123dfaf0fb1</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">007734cf-a57a-4682-845f-298c4cb701a6</item>
                     <item name="Name" type_name="gh_string" type_code="10">Support</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Support</item>
                   </items>
@@ -1709,11 +1709,11 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="0">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Node</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">a915b533-8491-410d-9a3f-019d8b01180d</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">824d5841-93fb-4f0c-b28e-3b1dfb94b848</item>
                         <item name="Name" type_name="gh_string" type_code="10">Node</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Node</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">461e98cc-87fe-4d70-8cb7-6d94c4e5e23e</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">93074197-42c1-46e3-852f-241410a4d436</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
@@ -1732,7 +1732,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="1">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Dx</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f1835b7c-0b64-49f7-90c0-05628b9de500</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">01a53f3a-7825-4d14-b562-56222647c81e</item>
                         <item name="Name" type_name="gh_string" type_code="10">Dx</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Dx</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1774,7 +1774,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="2">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Dy</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">5a9533b6-b057-41ac-b573-2c08bcde7f65</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f0a2e8e6-d0b5-4aea-80a6-19d458b8448f</item>
                         <item name="Name" type_name="gh_string" type_code="10">Dy</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Dy</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1816,7 +1816,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="3">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Dz</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">1559a872-b119-4cb1-a508-cc6ada6686dd</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">09108eb0-b57a-42db-8380-78b569525ee6</item>
                         <item name="Name" type_name="gh_string" type_code="10">Dz</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Dz</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1858,7 +1858,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="4">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Mx</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">df6288ba-1804-41de-898d-4702ccc00ac6</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">dc5828c4-e3c8-4e52-abd8-d9eb18c7a5df</item>
                         <item name="Name" type_name="gh_string" type_code="10">Mx</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Mx</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1900,7 +1900,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="5">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">My</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">da4b2788-a3a8-4a3d-9a47-c60297a7a39b</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">78c6246f-679f-4c30-b3e6-22f435aac2b9</item>
                         <item name="Name" type_name="gh_string" type_code="10">My</item>
                         <item name="NickName" type_name="gh_string" type_code="10">My</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1942,7 +1942,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="6">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Mz</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">fce5b274-4aca-485c-bb1f-c129a8334eba</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">6b8048d8-b827-4921-9ad8-968451393757</item>
                         <item name="Name" type_name="gh_string" type_code="10">Mz</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Mz</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1984,7 +1984,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Node</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">85503770-25a3-40c9-acff-efde6fc1d754</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">e115da8f-191e-4ef9-98f8-ee96d31913fd</item>
                         <item name="Name" type_name="gh_string" type_code="10">Node</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Node</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2017,11 +2017,11 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Load case</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">689ee196-aa4a-4abc-89e3-80a649cad24c</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">5950dfe6-7933-4b92-8bbc-09d34cd1a8a0</item>
                     <item name="Name" type_name="gh_string" type_code="10">Load case</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Load case</item>
                   </items>
-                  <chunks count="4">
+                  <chunks count="5">
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
@@ -2039,7 +2039,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Name</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">6067ae1e-3bba-4139-b1e7-4a01f8a5007d</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ccb8e6d6-0ef3-426e-9691-f2810d5691bc</item>
                         <item name="Name" type_name="gh_string" type_code="10">Name</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Name</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2082,7 +2082,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="1">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Apply gravity to non-structural mass</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">7beb5ec2-da1a-43f4-a22b-517fae62aef0</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">df1dee03-586c-4864-a9e2-151e8eff195f</item>
                         <item name="Name" type_name="gh_string" type_code="10">Gravity NSM</item>
                         <item name="NickName" type_name="gh_string" type_code="10">NSM</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2121,10 +2121,32 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                         </chunk>
                       </chunks>
                     </chunk>
+                    <chunk name="param_input" index="2">
+                      <items count="6">
+                        <item name="Description" type_name="gh_string" type_code="10">Optional absolute reference temperature in Model units; unwired uses Straus default</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">0a14ebba-162b-4365-93a6-ba8ac76f2363</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Reference temperature</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">T ref</item>
+                        <item name="Optional" type_name="gh_bool" type_code="1">true</item>
+                        <item name="SourceCount" type_name="gh_int32" type_code="3">0</item>
+                      </items>
+                      <chunks count="1">
+                        <chunk name="Attributes">
+                          <items count="1">
+                            <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                              <X>0</X>
+                              <Y>0</Y>
+                              <W>150</W>
+                              <H>20</H>
+                            </item>
+                          </items>
+                        </chunk>
+                      </chunks>
+                    </chunk>
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Load case</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">45192ce6-f5c0-4888-8447-49e108a2ead1</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">c3c84b2b-1c2a-40b9-ae2e-fc8eff43d9ec</item>
                         <item name="Name" type_name="gh_string" type_code="10">Load case</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Load case</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2157,7 +2179,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                 <chunk name="Container">
                   <items count="6">
                     <item name="Description" type_name="gh_string" type_code="10">Contains a collection of three-dimensional vectors</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">5477928a-40cd-42c2-a574-fdc1bfa5cd2a</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">e22ebcf9-8d54-4508-b6c1-e4af441b3a71</item>
                     <item name="Name" type_name="gh_string" type_code="10">Vector</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Pressione XYZ [kN/m2]</item>
                     <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2216,7 +2238,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Plate Global Pressure</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">c67a5f7d-e3bd-4f46-bee4-ae3f9a7808de</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">84fb4014-41f0-4247-9f62-28d1b063566a</item>
                     <item name="Name" type_name="gh_string" type_code="10">Plate Global Pressure</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Plate Global Pressure</item>
                   </items>
@@ -2238,11 +2260,11 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="0">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Plate</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">1a898fa1-94da-4eef-81fa-69cd377e002c</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">24a85152-0713-4042-879c-c76bde14eeca</item>
                         <item name="Name" type_name="gh_string" type_code="10">Plate</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Plate</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">a3f8c8d9-277c-4cd2-912c-0d7b9dcce204</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">5a7cea07-5589-43c3-bd01-18e5537d062a</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
@@ -2261,11 +2283,11 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="1">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Load case</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">75feb29a-ff88-4ccc-9589-afdbd8810654</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">67052410-9e2e-493c-9004-b5eeb2a05d87</item>
                         <item name="Name" type_name="gh_string" type_code="10">Load case</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Load case</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">45192ce6-f5c0-4888-8447-49e108a2ead1</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">c3c84b2b-1c2a-40b9-ae2e-fc8eff43d9ec</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
@@ -2284,11 +2306,11 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="2">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Global XYZ pressure, force/length²</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">a3b79cf1-8d6d-4826-ad64-212f724be203</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">c94432b3-22c8-450f-910e-03f1bfb7e688</item>
                         <item name="Name" type_name="gh_string" type_code="10">Pressure</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Pressure</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">5477928a-40cd-42c2-a574-fdc1bfa5cd2a</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">e22ebcf9-8d54-4508-b6c1-e4af441b3a71</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="2">
@@ -2331,7 +2353,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="3">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Top face</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f2a2ba79-4785-4f3f-87d1-f1f22ca682c7</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">cb8602c6-fb0f-44d4-b0e0-9ef612e6454f</item>
                         <item name="Name" type_name="gh_string" type_code="10">Top face</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Top face</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2373,7 +2395,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="4">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Projected</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">1325bcda-4f27-4b2d-a8d1-a5f0a82920e5</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">0cbe37ed-3c15-4a0e-a543-70832840036d</item>
                         <item name="Name" type_name="gh_string" type_code="10">Projected</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Projected</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2415,7 +2437,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Plate</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">a024c184-59ad-4395-b2ab-ba18ed35ed41</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">90e37d83-edfe-4283-a18f-7786de1582d7</item>
                         <item name="Name" type_name="gh_string" type_code="10">Plate</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Plate</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2452,14 +2474,14 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <ARGB>65;244;164;96</ARGB>
                     </item>
                     <item name="Description" type_name="gh_string" type_code="10">A group of Grasshopper objects</item>
-                    <item name="ID" index="0" type_name="gh_guid" type_code="9">157615f2-f3a1-4745-b9df-40145036b126</item>
-                    <item name="ID" index="1" type_name="gh_guid" type_code="9">35de0713-2d82-482a-b040-8bfc77dd6cd0</item>
-                    <item name="ID" index="2" type_name="gh_guid" type_code="9">6760eb93-0a7d-4f0c-b529-f123dfaf0fb1</item>
-                    <item name="ID" index="3" type_name="gh_guid" type_code="9">689ee196-aa4a-4abc-89e3-80a649cad24c</item>
-                    <item name="ID" index="4" type_name="gh_guid" type_code="9">5477928a-40cd-42c2-a574-fdc1bfa5cd2a</item>
-                    <item name="ID" index="5" type_name="gh_guid" type_code="9">c67a5f7d-e3bd-4f46-bee4-ae3f9a7808de</item>
+                    <item name="ID" index="0" type_name="gh_guid" type_code="9">3db2eae5-25b4-4ec6-a51e-4ca2761a972f</item>
+                    <item name="ID" index="1" type_name="gh_guid" type_code="9">0169063d-da0d-4cbf-b945-2ad614725668</item>
+                    <item name="ID" index="2" type_name="gh_guid" type_code="9">007734cf-a57a-4682-845f-298c4cb701a6</item>
+                    <item name="ID" index="3" type_name="gh_guid" type_code="9">5950dfe6-7933-4b92-8bbc-09d34cd1a8a0</item>
+                    <item name="ID" index="4" type_name="gh_guid" type_code="9">e22ebcf9-8d54-4508-b6c1-e4af441b3a71</item>
+                    <item name="ID" index="5" type_name="gh_guid" type_code="9">84fb4014-41f0-4247-9f62-28d1b063566a</item>
                     <item name="ID_Count" type_name="gh_int32" type_code="3">6</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">88582c48-f7c2-4583-b9d7-4e1ecf4fa8bb</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">3fff32bb-28ce-4e4b-a554-0086e47a4a84</item>
                     <item name="Name" type_name="gh_string" type_code="10">Group</item>
                     <item name="NickName" type_name="gh_string" type_code="10">03 | Vincoli di bordo e pressione</item>
                   </items>
@@ -2479,7 +2501,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Model Units</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">b32094b8-250a-47a0-9803-506c4a03b1f7</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">1276cd59-6e4e-4447-be5c-b3e4f689dcd6</item>
                     <item name="Name" type_name="gh_string" type_code="10">Model Units</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Model Units</item>
                   </items>
@@ -2501,7 +2523,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Length</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">3e69ef74-31d3-428c-88b3-709fb0cd5d34</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d2b8d67f-3dad-4994-86d9-a4e0c5a96856</item>
                         <item name="Name" type_name="gh_string" type_code="10">Length</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Length</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2543,7 +2565,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="1">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Force</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">660a9f07-9d63-486d-b515-47a7256d1309</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d8d7353b-e84d-4a8e-81fa-5055e6f1356c</item>
                         <item name="Name" type_name="gh_string" type_code="10">Force</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Force</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2585,7 +2607,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="2">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Temperature</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">1306e7a1-b4f8-4a95-9d70-34a6aeeb05b9</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b07a7d68-6c70-4309-88f0-53dc6ac642e9</item>
                         <item name="Name" type_name="gh_string" type_code="10">Temperature</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Temperature</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2627,7 +2649,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="3">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Heat</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">83ac12af-a316-4e30-b4bd-c865e25287a9</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">c3b8b28e-21e1-4c23-995b-544667195570</item>
                         <item name="Name" type_name="gh_string" type_code="10">Heat</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Heat</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2669,7 +2691,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="4">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Tolerance</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">3e0d715a-bddb-45dd-b46b-75b8a16644bb</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">cc667552-c2ae-4cfb-8491-860511f05fd9</item>
                         <item name="Name" type_name="gh_string" type_code="10">Tolerance</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Tolerance</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2711,7 +2733,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Model Units</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">e435ac82-3301-47fb-9245-2f8d691ade5d</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">bc274e2b-62f8-4c22-b711-89d2e191c273</item>
                         <item name="Name" type_name="gh_string" type_code="10">Model Units</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Model Units</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2744,11 +2766,11 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Build Model</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">bd8e05e8-06c3-46dc-9949-7fd59ee51548</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">55dfcc8e-a3e1-46c4-a777-d73b4106ece3</item>
                     <item name="Name" type_name="gh_string" type_code="10">Build Model</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Build Model</item>
                   </items>
-                  <chunks count="12">
+                  <chunks count="14">
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
@@ -2766,11 +2788,11 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="0">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Optional units; default kN, m, kJ, C and tolerance 0.001 m. Connect Units for another system.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">dc74aed1-5c52-44e6-8d2c-efb45bf45120</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">337328f6-b701-4d1d-9d71-f08667232d8f</item>
                         <item name="Name" type_name="gh_string" type_code="10">Unit</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Unit</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">true</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">e435ac82-3301-47fb-9245-2f8d691ade5d</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">bc274e2b-62f8-4c22-b711-89d2e191c273</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
@@ -2787,14 +2809,15 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       </chunks>
                     </chunk>
                     <chunk name="param_input" index="1">
-                      <items count="8">
+                      <items count="9">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Node</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">34d21311-6e4c-4d6a-b6b0-0ce19decef88</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ca3eb642-defb-4345-8ef1-7e62899d4f09</item>
+                        <item name="Mapping" type_name="gh_int32" type_code="3">1</item>
                         <item name="Name" type_name="gh_string" type_code="10">Node</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Node</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">true</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">85503770-25a3-40c9-acff-efde6fc1d754</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">e115da8f-191e-4ef9-98f8-ee96d31913fd</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
@@ -2811,10 +2834,11 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       </chunks>
                     </chunk>
                     <chunk name="param_input" index="2">
-                      <items count="7">
+                      <items count="8">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Frame element</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">16583288-903a-4eef-b888-0e33c619e291</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">353cc925-186d-4715-8ecb-e07e67f6c5f8</item>
+                        <item name="Mapping" type_name="gh_int32" type_code="3">1</item>
                         <item name="Name" type_name="gh_string" type_code="10">Frame element</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Frame element</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">true</item>
@@ -2834,14 +2858,15 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       </chunks>
                     </chunk>
                     <chunk name="param_input" index="3">
-                      <items count="8">
+                      <items count="9">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Area element</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">87936d5f-2359-436c-a399-5edf1a5e2a13</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">3705219c-7682-492a-ba86-bfe34f9b2e16</item>
+                        <item name="Mapping" type_name="gh_int32" type_code="3">1</item>
                         <item name="Name" type_name="gh_string" type_code="10">Area element</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Area element</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">true</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">a024c184-59ad-4395-b2ab-ba18ed35ed41</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">90e37d83-edfe-4283-a18f-7786de1582d7</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
@@ -2858,10 +2883,11 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       </chunks>
                     </chunk>
                     <chunk name="param_input" index="4">
-                      <items count="7">
+                      <items count="8">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Link element</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">5af51dd2-4e29-438d-b508-960efa204f6a</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">701d4215-b777-42d0-beed-b19d3b11acea</item>
+                        <item name="Mapping" type_name="gh_int32" type_code="3">1</item>
                         <item name="Name" type_name="gh_string" type_code="10">Link element</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Link element</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">true</item>
@@ -2881,10 +2907,11 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       </chunks>
                     </chunk>
                     <chunk name="param_input" index="5">
-                      <items count="7">
+                      <items count="8">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Load combination</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">014aaeba-4aee-46c2-aa4f-35817d72497b</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">0e68b8a1-f972-4118-8e72-8760f921b7b6</item>
+                        <item name="Mapping" type_name="gh_int32" type_code="3">1</item>
                         <item name="Name" type_name="gh_string" type_code="10">Load combination</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Load combination</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">true</item>
@@ -2906,7 +2933,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="6">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Straus7 gravity settings</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">1b5ea31d-7957-461d-8fff-051dff9b5da4</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">20ed89e1-b3a5-46ed-be4d-01736ec1beb6</item>
                         <item name="Name" type_name="gh_string" type_code="10">Self weight</item>
                         <item name="NickName" type_name="gh_string" type_code="10">SW</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">true</item>
@@ -2926,10 +2953,11 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       </chunks>
                     </chunk>
                     <chunk name="param_input" index="7">
-                      <items count="7">
+                      <items count="8">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Optional assembled model parts to union with the new elements; all parts must have matching units</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">0afe727a-416c-47b4-b6ab-badeae236246</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ae60a760-0eaa-474d-b9be-fa00113b83e0</item>
+                        <item name="Mapping" type_name="gh_int32" type_code="3">1</item>
                         <item name="Name" type_name="gh_string" type_code="10">Models</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Models</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">true</item>
@@ -2949,10 +2977,11 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       </chunks>
                     </chunk>
                     <chunk name="param_input" index="8">
-                      <items count="7">
+                      <items count="8">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Tet4, Wedge6 and Hexa8 elements</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">e0891610-4bba-490c-b263-aeb4a84ab2ff</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">c2116ec1-9cc9-4302-aa3d-7d67e50149f2</item>
+                        <item name="Mapping" type_name="gh_int32" type_code="3">1</item>
                         <item name="Name" type_name="gh_string" type_code="10">Solids</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Solids</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">true</item>
@@ -2974,7 +3003,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="9">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Renumber independent model parts when merging</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d51a9583-de49-4500-acb6-f96d5781461a</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">7f9afdf2-3c71-42c8-bb3a-06db793aa842</item>
                         <item name="Name" type_name="gh_string" type_code="10">Renumber models</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Renumber</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3013,10 +3042,76 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                         </chunk>
                       </chunks>
                     </chunk>
+                    <chunk name="param_input" index="10">
+                      <items count="6">
+                        <item name="Description" type_name="gh_string" type_code="10">Keep distinct positive node IDs even at coincident coordinates; use True when rebuilding an imported Model</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f1bc61c0-1e8e-4b4d-aae8-ca0e1cc5999c</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Preserve nodes</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">Keep nodes</item>
+                        <item name="Optional" type_name="gh_bool" type_code="1">false</item>
+                        <item name="SourceCount" type_name="gh_int32" type_code="3">0</item>
+                      </items>
+                      <chunks count="2">
+                        <chunk name="Attributes">
+                          <items count="1">
+                            <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                              <X>0</X>
+                              <Y>0</Y>
+                              <W>150</W>
+                              <H>20</H>
+                            </item>
+                          </items>
+                        </chunk>
+                        <chunk name="PersistentData">
+                          <items count="1">
+                            <item name="Count" type_name="gh_int32" type_code="3">1</item>
+                          </items>
+                          <chunks count="1">
+                            <chunk name="Branch" index="0">
+                              <items count="2">
+                                <item name="Count" type_name="gh_int32" type_code="3">1</item>
+                                <item name="Path" type_name="gh_string" type_code="10">{0}</item>
+                              </items>
+                              <chunks count="1">
+                                <chunk name="Item" index="0">
+                                  <items count="1">
+                                    <item name="boolean" type_name="gh_bool" type_code="1">false</item>
+                                  </items>
+                                </chunk>
+                              </chunks>
+                            </chunk>
+                          </chunks>
+                        </chunk>
+                      </chunks>
+                    </chunk>
+                    <chunk name="param_input" index="11">
+                      <items count="8">
+                        <item name="Access" type_name="gh_int32" type_code="3">1</item>
+                        <item name="Description" type_name="gh_string" type_code="10">Optional unused load cases to retain when rebuilding</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">3babdc92-6086-4059-b52d-f3d591359e1f</item>
+                        <item name="Mapping" type_name="gh_int32" type_code="3">1</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Load cases</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">Cases</item>
+                        <item name="Optional" type_name="gh_bool" type_code="1">true</item>
+                        <item name="SourceCount" type_name="gh_int32" type_code="3">0</item>
+                      </items>
+                      <chunks count="1">
+                        <chunk name="Attributes">
+                          <items count="1">
+                            <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                              <X>0</X>
+                              <Y>0</Y>
+                              <W>150</W>
+                              <H>20</H>
+                            </item>
+                          </items>
+                        </chunk>
+                      </chunks>
+                    </chunk>
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Model</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">8e9a7077-7278-4395-b1c0-ec6cc080f5fe</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">decb2650-cde0-4d8c-810d-e15c4c4f1e95</item>
                         <item name="Name" type_name="gh_string" type_code="10">Model</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Model</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3053,10 +3148,10 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <ARGB>65;70;130;180</ARGB>
                     </item>
                     <item name="Description" type_name="gh_string" type_code="10">A group of Grasshopper objects</item>
-                    <item name="ID" index="0" type_name="gh_guid" type_code="9">b32094b8-250a-47a0-9803-506c4a03b1f7</item>
-                    <item name="ID" index="1" type_name="gh_guid" type_code="9">bd8e05e8-06c3-46dc-9949-7fd59ee51548</item>
+                    <item name="ID" index="0" type_name="gh_guid" type_code="9">1276cd59-6e4e-4447-be5c-b3e4f689dcd6</item>
+                    <item name="ID" index="1" type_name="gh_guid" type_code="9">55dfcc8e-a3e1-46c4-a777-d73b4106ece3</item>
                     <item name="ID_Count" type_name="gh_int32" type_code="3">2</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">8a6f2a49-aca7-4109-9d15-ad3eef989aa4</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">f9b1f03a-04c1-4b00-98b0-8c9aedf665db</item>
                     <item name="Name" type_name="gh_string" type_code="10">Group</item>
                     <item name="NickName" type_name="gh_string" type_code="10">04 | Un solo Model</item>
                   </items>
@@ -3076,7 +3171,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Checks model data and supported Straus7 features before export; does not check structural adequacy</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">85077469-0b7a-4a08-b178-f9837cb43389</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">66f696a8-322b-4ff1-a155-23157617ba09</item>
                     <item name="Name" type_name="gh_string" type_code="10">Validate Straus Model</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Validate Straus Model</item>
                   </items>
@@ -3098,11 +3193,11 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="0">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Model</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ef390eb0-9320-4d9a-b8ea-a249ebad9a2b</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b2bcc5d9-ebd3-4885-9567-027e2f3f87dd</item>
                         <item name="Name" type_name="gh_string" type_code="10">Model</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Model</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">8e9a7077-7278-4395-b1c0-ec6cc080f5fe</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">decb2650-cde0-4d8c-810d-e15c4c4f1e95</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
@@ -3121,7 +3216,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Valid</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">736c553d-0f1a-4462-82fc-b835475dc116</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ecf0c276-4b36-4110-abaa-908a9117c115</item>
                         <item name="Name" type_name="gh_string" type_code="10">Valid</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Valid</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3144,7 +3239,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Errors</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">2aa8c209-ead4-454f-be4d-09dbbe081540</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">2427b79d-a11a-4fd0-8e21-40172c2e5c54</item>
                         <item name="Name" type_name="gh_string" type_code="10">Errors</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Errors</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3167,7 +3262,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Warnings</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">701d15cc-b726-4e72-93b6-57efbe93b649</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">5222c1b4-134f-4854-9897-c41834241c14</item>
                         <item name="Name" type_name="gh_string" type_code="10">Warnings</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Warnings</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3200,12 +3295,12 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                 <chunk name="Container">
                   <items count="9">
                     <item name="Description" type_name="gh_string" type_code="10">A panel for custom notes and text values</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">355b3b4c-f9cb-4f9b-9471-5d8d7049ccbb</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">d4b873c9-99d1-4473-b30e-5908eaf18792</item>
                     <item name="Name" type_name="gh_string" type_code="10">Panel</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Preflight valido</item>
                     <item name="Optional" type_name="gh_bool" type_code="1">false</item>
                     <item name="ScrollRatio" type_name="gh_double" type_code="6">0</item>
-                    <item name="Source" index="0" type_name="gh_guid" type_code="9">736c553d-0f1a-4462-82fc-b835475dc116</item>
+                    <item name="Source" index="0" type_name="gh_guid" type_code="9">ecf0c276-4b36-4110-abaa-908a9117c115</item>
                     <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                     <item name="UserText" type_name="gh_string" type_code="10"></item>
                   </items>
@@ -3259,12 +3354,12 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                 <chunk name="Container">
                   <items count="9">
                     <item name="Description" type_name="gh_string" type_code="10">A panel for custom notes and text values</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">e940c165-91f8-4d81-81e9-bfa575ce8fc1</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">659c5ee3-c1e8-4c7e-ab7d-05f97f94e22c</item>
                     <item name="Name" type_name="gh_string" type_code="10">Panel</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Errori</item>
                     <item name="Optional" type_name="gh_bool" type_code="1">false</item>
                     <item name="ScrollRatio" type_name="gh_double" type_code="6">0</item>
-                    <item name="Source" index="0" type_name="gh_guid" type_code="9">2aa8c209-ead4-454f-be4d-09dbbe081540</item>
+                    <item name="Source" index="0" type_name="gh_guid" type_code="9">2427b79d-a11a-4fd0-8e21-40172c2e5c54</item>
                     <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                     <item name="UserText" type_name="gh_string" type_code="10"></item>
                   </items>
@@ -3318,7 +3413,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Model Summary</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">bef38ee9-0579-4ef4-999e-e9ceb62c041b</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">b2e0970a-19fe-4c44-a539-94ce99bf04e7</item>
                     <item name="Name" type_name="gh_string" type_code="10">Model Summary</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Model Summary</item>
                   </items>
@@ -3340,11 +3435,11 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="0">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Model</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f2a8f614-b342-483f-9bae-99d784a6df77</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">56081f8a-17a8-4f6e-bcdd-77dd48330e40</item>
                         <item name="Name" type_name="gh_string" type_code="10">Model</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Model</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">8e9a7077-7278-4395-b1c0-ec6cc080f5fe</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">decb2650-cde0-4d8c-810d-e15c4c4f1e95</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
@@ -3363,7 +3458,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Nodes</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b10c73dc-ff4e-4820-aa70-38e6b42dc400</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">26513774-346c-4ee4-91c9-e20ff599e13c</item>
                         <item name="Name" type_name="gh_string" type_code="10">Nodes</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Nodes</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3385,7 +3480,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_output" index="1">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Beams</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">c7c63dd7-1d69-45c7-8c20-eadf4303d28e</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">248b5add-92a6-43ab-85f0-bfdd6b18be61</item>
                         <item name="Name" type_name="gh_string" type_code="10">Beams</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Beams</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3407,7 +3502,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_output" index="2">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Plates</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">c1785d52-2af2-4cff-ac92-57b5a414ed99</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">6664c6a6-4040-4ef9-809d-7a94d6605aa3</item>
                         <item name="Name" type_name="gh_string" type_code="10">Plates</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Plates</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3429,7 +3524,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_output" index="3">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Links</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">361b28d6-d2a8-4525-a1ef-0147f58486f0</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">254d84d5-e836-4258-bc6a-f2d6edd4b2fb</item>
                         <item name="Name" type_name="gh_string" type_code="10">Links</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Links</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3452,7 +3547,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Load cases</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">583e7572-30ee-494e-b71a-8f488b6abed3</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">17f971af-9056-4b12-9f74-bb8165d19b67</item>
                         <item name="Name" type_name="gh_string" type_code="10">Load cases</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Load cases</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3475,7 +3570,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Combinations</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">00e53ee0-d063-462f-a53b-1764f84dcc5a</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">8c881e67-0397-4497-bcc6-64ffbf78a394</item>
                         <item name="Name" type_name="gh_string" type_code="10">Combinations</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Combinations</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3498,7 +3593,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Groups</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">40748d3d-05bd-498a-9db0-2657dd25166e</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">382a5348-272f-4a43-8eea-90e6de01d925</item>
                         <item name="Name" type_name="gh_string" type_code="10">Groups</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Groups</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3520,7 +3615,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_output" index="7">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Solid elements</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b2704a86-ea50-4df0-a0c5-04e99ea74c42</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">4bf1b416-1cb2-414a-b336-01b35f6d13dd</item>
                         <item name="Name" type_name="gh_string" type_code="10">Solids</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Solids</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3553,12 +3648,12 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                 <chunk name="Container">
                   <items count="9">
                     <item name="Description" type_name="gh_string" type_code="10">A panel for custom notes and text values</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">17d94667-7440-4256-9345-6a945ac12fb4</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">183f41ac-d292-4477-83ef-b426f895dbf1</item>
                     <item name="Name" type_name="gh_string" type_code="10">Panel</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Numero nodi</item>
                     <item name="Optional" type_name="gh_bool" type_code="1">false</item>
                     <item name="ScrollRatio" type_name="gh_double" type_code="6">0</item>
-                    <item name="Source" index="0" type_name="gh_guid" type_code="9">b10c73dc-ff4e-4820-aa70-38e6b42dc400</item>
+                    <item name="Source" index="0" type_name="gh_guid" type_code="9">26513774-346c-4ee4-91c9-e20ff599e13c</item>
                     <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                     <item name="UserText" type_name="gh_string" type_code="10"></item>
                   </items>
@@ -3612,12 +3707,12 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                 <chunk name="Container">
                   <items count="9">
                     <item name="Description" type_name="gh_string" type_code="10">A panel for custom notes and text values</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">4c2aa291-b72c-4543-a1ec-29da1cbc8658</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">488e6c64-af24-4be7-af63-7d5d17d3221f</item>
                     <item name="Name" type_name="gh_string" type_code="10">Panel</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Travi</item>
                     <item name="Optional" type_name="gh_bool" type_code="1">false</item>
                     <item name="ScrollRatio" type_name="gh_double" type_code="6">0</item>
-                    <item name="Source" index="0" type_name="gh_guid" type_code="9">c7c63dd7-1d69-45c7-8c20-eadf4303d28e</item>
+                    <item name="Source" index="0" type_name="gh_guid" type_code="9">248b5add-92a6-43ab-85f0-bfdd6b18be61</item>
                     <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                     <item name="UserText" type_name="gh_string" type_code="10"></item>
                   </items>
@@ -3671,12 +3766,12 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                 <chunk name="Container">
                   <items count="9">
                     <item name="Description" type_name="gh_string" type_code="10">A panel for custom notes and text values</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">0e87a12c-6a82-4ae0-a9e6-babad7e126e2</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">338757f2-5fbd-4abc-9570-4020ca81ab5d</item>
                     <item name="Name" type_name="gh_string" type_code="10">Panel</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Piastre</item>
                     <item name="Optional" type_name="gh_bool" type_code="1">false</item>
                     <item name="ScrollRatio" type_name="gh_double" type_code="6">0</item>
-                    <item name="Source" index="0" type_name="gh_guid" type_code="9">c1785d52-2af2-4cff-ac92-57b5a414ed99</item>
+                    <item name="Source" index="0" type_name="gh_guid" type_code="9">6664c6a6-4040-4ef9-809d-7a94d6605aa3</item>
                     <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                     <item name="UserText" type_name="gh_string" type_code="10"></item>
                   </items>
@@ -3730,11 +3825,11 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Decompose Model</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">86fd0bd4-b710-44d2-b163-6a149b09def4</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">db184585-4fa7-4c5e-a4ba-e85ff58d7fef</item>
                     <item name="Name" type_name="gh_string" type_code="10">Decompose Model</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Decompose Model</item>
                   </items>
-                  <chunks count="16">
+                  <chunks count="18">
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
@@ -3752,11 +3847,11 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_input" index="0">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Model</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f15bf212-236f-4b2f-9cfd-4f629cc23709</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">a4135f65-58e7-4558-b84a-ad5478b72a46</item>
                         <item name="Name" type_name="gh_string" type_code="10">Model</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Model</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">8e9a7077-7278-4395-b1c0-ec6cc080f5fe</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">decb2650-cde0-4d8c-810d-e15c4c4f1e95</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
@@ -3776,7 +3871,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Node elements</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">c12602b3-5006-48cb-aad8-cea58880ad5a</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">7d75b072-d0d6-411f-929f-26623029652d</item>
                         <item name="Name" type_name="gh_string" type_code="10">Node elements</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Node elements</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3799,7 +3894,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Frame elements</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">c526f956-6bd0-409f-ad0a-0812571813e8</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">2ed2ab7a-1812-472f-977a-05ecb89ce8d0</item>
                         <item name="Name" type_name="gh_string" type_code="10">Frame elements</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Frame elements</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3822,7 +3917,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Area elements</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">e0998bb6-0626-4741-988b-c6c3b3671c74</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">6976e22e-6a12-4694-b7d4-2cdae77afe31</item>
                         <item name="Name" type_name="gh_string" type_code="10">Area elements</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Area elements</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3845,7 +3940,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Link elements</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">59a4284d-02b8-4360-bb7d-d96d3a62c69a</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d6f72492-c7ab-48a9-a458-7ec7c6e17939</item>
                         <item name="Name" type_name="gh_string" type_code="10">Link elements</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Link elements</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3868,7 +3963,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Solid elements</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">821c2141-df98-4238-9733-5277dbab59ff</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">50fa22ad-b1d0-4d07-8b27-3f0bd0f28d8f</item>
                         <item name="Name" type_name="gh_string" type_code="10">Solids</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Solids</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3891,7 +3986,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Materials</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">9f9a3fa9-2520-4161-9b70-0d17d590d5a6</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f07855ad-95ec-46e9-845e-020fb59e337f</item>
                         <item name="Name" type_name="gh_string" type_code="10">Materials</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Materials</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3914,7 +4009,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Beam sections</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f3dd9471-47b4-46e8-a939-42a14cdc7114</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">eb560c3a-3e0a-491d-8a4d-6fa13f378449</item>
                         <item name="Name" type_name="gh_string" type_code="10">Beam sections</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Beam sections</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3937,7 +4032,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Beam properties</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">6e77b234-b480-4155-8f71-ad5149e572be</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">bc2c9626-3ffb-4e23-a5bf-ac798feab32c</item>
                         <item name="Name" type_name="gh_string" type_code="10">Beam properties</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Beam properties</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3960,7 +4055,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Plate properties</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d29bd3f3-5b5d-4471-92ed-65e255ed2194</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">e64b31b5-5a10-4662-9f00-9b22aa407c7f</item>
                         <item name="Name" type_name="gh_string" type_code="10">Plate properties</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Plate properties</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3983,7 +4078,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Load cases</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">2b76de3c-495f-46d3-8d9a-feab98a17281</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d4a220f5-34d5-4f58-961b-612bc2054677</item>
                         <item name="Name" type_name="gh_string" type_code="10">Load cases</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Load cases</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4006,7 +4101,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Combinations</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">82fe6a4f-373b-4558-bf95-071c500e8d3c</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">51b8d428-d86d-4161-a938-c78f1f50eec6</item>
                         <item name="Name" type_name="gh_string" type_code="10">Combinations</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Combinations</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4029,7 +4124,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Groups</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">6283068e-ad05-4c49-b133-3e6b1a952bbb</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">046ceb37-dac1-440f-b971-16fd91efdb40</item>
                         <item name="Name" type_name="gh_string" type_code="10">Groups</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Groups</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4051,7 +4146,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_output" index="12">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Units</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">8d89aeac-8bc5-4e2f-843e-3937e1622917</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">c1f7ec00-5554-4200-b433-3e8843f4fc87</item>
                         <item name="Name" type_name="gh_string" type_code="10">Units</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Units</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4073,9 +4168,53 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                     <chunk name="param_output" index="13">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Results</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">04cd0d4c-6c0e-4ef8-87f3-e1e9fb68af3e</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">5b7b9554-9bd7-42a0-8320-f15d494f19ad</item>
                         <item name="Name" type_name="gh_string" type_code="10">Results</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Results</item>
+                        <item name="Optional" type_name="gh_bool" type_code="1">false</item>
+                        <item name="SourceCount" type_name="gh_int32" type_code="3">0</item>
+                      </items>
+                      <chunks count="1">
+                        <chunk name="Attributes">
+                          <items count="1">
+                            <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                              <X>0</X>
+                              <Y>0</Y>
+                              <W>150</W>
+                              <H>20</H>
+                            </item>
+                          </items>
+                        </chunk>
+                      </chunks>
+                    </chunk>
+                    <chunk name="param_output" index="14">
+                      <items count="6">
+                        <item name="Description" type_name="gh_string" type_code="10">Gravity settings for rebuilding</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">2e16f240-0bbc-4bd1-a0d9-0c85495488c4</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Self weight</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">SW</item>
+                        <item name="Optional" type_name="gh_bool" type_code="1">false</item>
+                        <item name="SourceCount" type_name="gh_int32" type_code="3">0</item>
+                      </items>
+                      <chunks count="1">
+                        <chunk name="Attributes">
+                          <items count="1">
+                            <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                              <X>0</X>
+                              <Y>0</Y>
+                              <W>150</W>
+                              <H>20</H>
+                            </item>
+                          </items>
+                        </chunk>
+                      </chunks>
+                    </chunk>
+                    <chunk name="param_output" index="15">
+                      <items count="6">
+                        <item name="Description" type_name="gh_string" type_code="10">Connect to Build Model when rebuilding imported topology</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">5a655f35-bfec-4420-8dfd-873c5fec35be</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Preserve nodes</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">Keep nodes</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">0</item>
                       </items>
@@ -4110,16 +4249,16 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                       <ARGB>65;70;130;180</ARGB>
                     </item>
                     <item name="Description" type_name="gh_string" type_code="10">A group of Grasshopper objects</item>
-                    <item name="ID" index="0" type_name="gh_guid" type_code="9">85077469-0b7a-4a08-b178-f9837cb43389</item>
-                    <item name="ID" index="1" type_name="gh_guid" type_code="9">355b3b4c-f9cb-4f9b-9471-5d8d7049ccbb</item>
-                    <item name="ID" index="2" type_name="gh_guid" type_code="9">e940c165-91f8-4d81-81e9-bfa575ce8fc1</item>
-                    <item name="ID" index="3" type_name="gh_guid" type_code="9">bef38ee9-0579-4ef4-999e-e9ceb62c041b</item>
-                    <item name="ID" index="4" type_name="gh_guid" type_code="9">17d94667-7440-4256-9345-6a945ac12fb4</item>
-                    <item name="ID" index="5" type_name="gh_guid" type_code="9">4c2aa291-b72c-4543-a1ec-29da1cbc8658</item>
-                    <item name="ID" index="6" type_name="gh_guid" type_code="9">0e87a12c-6a82-4ae0-a9e6-babad7e126e2</item>
-                    <item name="ID" index="7" type_name="gh_guid" type_code="9">86fd0bd4-b710-44d2-b163-6a149b09def4</item>
+                    <item name="ID" index="0" type_name="gh_guid" type_code="9">66f696a8-322b-4ff1-a155-23157617ba09</item>
+                    <item name="ID" index="1" type_name="gh_guid" type_code="9">d4b873c9-99d1-4473-b30e-5908eaf18792</item>
+                    <item name="ID" index="2" type_name="gh_guid" type_code="9">659c5ee3-c1e8-4c7e-ab7d-05f97f94e22c</item>
+                    <item name="ID" index="3" type_name="gh_guid" type_code="9">b2e0970a-19fe-4c44-a539-94ce99bf04e7</item>
+                    <item name="ID" index="4" type_name="gh_guid" type_code="9">183f41ac-d292-4477-83ef-b426f895dbf1</item>
+                    <item name="ID" index="5" type_name="gh_guid" type_code="9">488e6c64-af24-4be7-af63-7d5d17d3221f</item>
+                    <item name="ID" index="6" type_name="gh_guid" type_code="9">338757f2-5fbd-4abc-9570-4020ca81ab5d</item>
+                    <item name="ID" index="7" type_name="gh_guid" type_code="9">db184585-4fa7-4c5e-a4ba-e85ff58d7fef</item>
                     <item name="ID_Count" type_name="gh_int32" type_code="3">8</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">c37ce3a7-99e3-4d4d-a7ca-912928e4d35c</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">4070a78c-9088-4f72-a9c7-c4082e117970</item>
                     <item name="Name" type_name="gh_string" type_code="10">Group</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Controlla e decomponi il Model</item>
                   </items>
@@ -4139,7 +4278,7 @@ Cambiare gli assi locali non cambia la direzione della pressione globale.</item>
                 <chunk name="Container">
                   <items count="8">
                     <item name="Description" type_name="gh_string" type_code="10">A panel for custom notes and text values</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">610df7c3-70ca-4090-a0d8-c0f9b2ef49be</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">258c41d8-9e68-412f-910e-62a522f40a94</item>
                     <item name="Name" type_name="gh_string" type_code="10">Panel</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Preview e bake</item>
                     <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4200,7 +4339,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                 <chunk name="Container">
                   <items count="7">
                     <item name="Description" type_name="gh_string" type_code="10">Boolean (true/false) toggle</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">ea75abba-0a6c-4cc2-81df-f1be9a980113</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">0c39226e-2d6e-42a7-b5cf-cc857358bc9a</item>
                     <item name="Name" type_name="gh_string" type_code="10">Boolean Toggle</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Preview ON/OFF</item>
                     <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4236,7 +4375,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Independent preview categories, scales, transparency and shading. Display only; does not alter Model data.</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">1823c27c-8cfc-431d-bfc7-434aedfee02f</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">57688d41-cabe-43c5-a5ec-da86a7adce36</item>
                     <item name="Name" type_name="gh_string" type_code="10">Rhino2Straus Display Settings</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Display Settings</item>
                   </items>
@@ -4258,11 +4397,11 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="0">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Master visibility</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">159da4d8-a5a9-455b-8324-500f288c7016</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">fefcc3af-9c74-48a4-953d-4f2e711b3474</item>
                         <item name="Name" type_name="gh_string" type_code="10">Enabled</item>
                         <item name="NickName" type_name="gh_string" type_code="10">On</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">ea75abba-0a6c-4cc2-81df-f1be9a980113</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">0c39226e-2d6e-42a7-b5cf-cc857358bc9a</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="2">
@@ -4301,7 +4440,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="1">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Show Nodes</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">4e1f98ce-b099-4c9a-be14-b1f9c7fc0f0b</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">0997bb1e-b088-4ea9-acc5-d95e75600685</item>
                         <item name="Name" type_name="gh_string" type_code="10">Nodes</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Nodes</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4343,7 +4482,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="2">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Show Beams</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">92d7a300-b6a8-4c00-ab77-b7d8a91c0428</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">4971d4a6-2b23-4369-a0f4-e0af2e7e48f9</item>
                         <item name="Name" type_name="gh_string" type_code="10">Beams</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Beams</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4385,7 +4524,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="3">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Show Plates</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">bc9bbae2-79a6-47b4-b97c-38ad984ca081</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">2364aeb1-38fa-4723-ab24-956315d54e87</item>
                         <item name="Name" type_name="gh_string" type_code="10">Plates</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Plates</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4427,7 +4566,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="4">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Show Solids</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f0a3406b-2510-4420-8288-ed6985e4cb89</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">413ec2c7-14d0-44fe-96a9-3057ccb17fd1</item>
                         <item name="Name" type_name="gh_string" type_code="10">Solids</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Solids</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4469,7 +4608,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="5">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Show Links</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">3504e5f9-b50d-4b59-83cb-5de126f3cda4</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">81161b6b-6e6c-4d97-abac-98ba2462ba29</item>
                         <item name="Name" type_name="gh_string" type_code="10">Links</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Links</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4511,7 +4650,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="6">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Show Sections</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">27d12171-22a6-4929-b61d-3a5da7826a2c</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">6b27b402-0f9e-4899-be87-ec82fd13d25f</item>
                         <item name="Name" type_name="gh_string" type_code="10">Sections</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Sections</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4553,7 +4692,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="7">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Show Loads</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">3517c86c-304d-4a4b-892f-8fe5f407d0c1</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">474df3f6-a5e2-4b37-8af7-d3cad7155a3c</item>
                         <item name="Name" type_name="gh_string" type_code="10">Loads</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Loads</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4595,7 +4734,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="8">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Show Supports</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">51c374d4-9b13-4b61-832f-701392f51747</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">bcf59ddd-64ba-4d4e-8886-283d5fe3c7a3</item>
                         <item name="Name" type_name="gh_string" type_code="10">Supports</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Supports</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4637,7 +4776,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="9">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Show Releases</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">42fddcb3-d3ea-4d88-b0f0-4b3411f3c76a</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">420dc4ad-45cf-4c08-bfc1-8b06f12e2f13</item>
                         <item name="Name" type_name="gh_string" type_code="10">Releases</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Releases</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4679,7 +4818,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="10">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Show Springs</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d6c7cc00-477f-4fe0-a907-37abe77c263b</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">fa9a4556-3eb7-47d7-9040-40b0757dff17</item>
                         <item name="Name" type_name="gh_string" type_code="10">Springs</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Springs</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4721,7 +4860,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="11">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Show Masses</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d5004422-07b3-4abe-8c30-689c996308e4</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b2497f1e-3843-4b54-85d9-724a93461197</item>
                         <item name="Name" type_name="gh_string" type_code="10">Masses</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Masses</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4763,7 +4902,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="12">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Show Prescribed</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f02f7043-1e4f-4fa6-99e4-d2186a36c5df</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f3e074d8-364d-4ca8-beba-b8ec2ce68ea0</item>
                         <item name="Name" type_name="gh_string" type_code="10">Prescribed</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Prescribed</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4805,7 +4944,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="13">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Show Offsets</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">e42b0423-3668-4444-b178-03044849e175</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d395ae75-aeda-4e3b-9edd-a339611916a2</item>
                         <item name="Name" type_name="gh_string" type_code="10">Offsets</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Offsets</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4847,7 +4986,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="14">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Show Axes</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f8f1cf63-b037-4fc4-b163-392d01283b16</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">36f97167-3ee7-453e-911d-5b88cbe9d1ab</item>
                         <item name="Name" type_name="gh_string" type_code="10">Axes</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Axes</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4889,7 +5028,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="15">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Show Labels</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">faf4cb1e-e495-455a-86d5-9c015691a6d4</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">22ad5e74-4dfe-4e0a-8afc-91ff0ea44ca0</item>
                         <item name="Name" type_name="gh_string" type_code="10">Labels</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Labels</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4931,7 +5070,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="16">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Show Properties</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">1e8d4933-1a04-4758-97ae-ff1d4793e252</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d661adc7-80a0-4e5e-9b20-8a4fa81733f0</item>
                         <item name="Name" type_name="gh_string" type_code="10">Properties</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Properties</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -4973,7 +5112,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="17">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Values and units for load/attribute symbols</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">7b6129af-358c-4e9e-8898-01dc74fb0470</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b7b45376-0233-42a7-b24d-24c2ed48cfaf</item>
                         <item name="Name" type_name="gh_string" type_code="10">Values</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Values</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5015,7 +5154,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="18">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Show Results</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">285c3ed8-98a6-4c03-990c-6cb6b9902647</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">30f20f97-06a1-4ae2-a9c6-936a4283074e</item>
                         <item name="Name" type_name="gh_string" type_code="10">Results</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Results</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5057,7 +5196,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="19">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Shaded surfaces; false keeps visible wires</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">9d6dfff9-88fa-405b-a2ac-2d0da33f5a01</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">61e3a24f-3693-4816-94ed-0deaed9d63ac</item>
                         <item name="Name" type_name="gh_string" type_code="10">Shaded</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Shaded</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5099,7 +5238,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="20">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Symbol size and axis length in model units</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">56de14e5-2ede-456d-8cdd-49b3c1ddff43</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">4b16cba8-0d89-431a-b205-a75752058197</item>
                         <item name="Name" type_name="gh_string" type_code="10">Symbol scale</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Scale</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5141,7 +5280,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="21">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Load arrow multiplier, capped at six symbol lengths</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">7fd49c5b-f6da-448b-828b-34abf0160006</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">c6e86676-8b5b-4aaf-9c0b-c4088afea17c</item>
                         <item name="Name" type_name="gh_string" type_code="10">Load scale</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Loads</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5183,7 +5322,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="22">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">0=opaque, 1=transparent</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b2f65671-0d85-41e2-ac1f-23b483be8b09</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">e1ea0f9e-3574-4485-b56e-f43bf308105b</item>
                         <item name="Name" type_name="gh_string" type_code="10">Transparency</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Alpha</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5225,7 +5364,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Connect to Rhino2Straus Display Manager</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ab98e217-4b4b-42a3-a6e8-5b50b3a08042</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b82f3d5f-bedc-45bb-b5c3-73703c98e9f9</item>
                         <item name="Name" type_name="gh_string" type_code="10">Settings</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Settings</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5260,7 +5399,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <item name="Description" type_name="gh_string" type_code="10">Central preview controller: sections, loads and attributes. Right-click for visibility categories, About and Guide. Keeps the analysis Model unchanged.</item>
                     <item name="DisplayEnabled" type_name="gh_bool" type_code="1">true</item>
                     <item name="DisplayLayers" type_name="gh_int32" type_code="3">73727</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">3ae9df37-b100-4565-9345-8c72f9e81cd4</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">ffa48a5a-c5f3-468c-adaa-60a27f143418</item>
                     <item name="Name" type_name="gh_string" type_code="10">Rhino2Straus Display Manager</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Rhino2Straus</item>
                   </items>
@@ -5282,11 +5421,11 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="0">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">One assembled Straus7 Model</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">2e46eaf9-801a-42e9-b044-7110ba605ff1</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">a645c920-8ee5-4e50-88b2-78d2453a653a</item>
                         <item name="Name" type_name="gh_string" type_code="10">Model</item>
                         <item name="NickName" type_name="gh_string" type_code="10">M</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">8e9a7077-7278-4395-b1c0-ec6cc080f5fe</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">decb2650-cde0-4d8c-810d-e15c4c4f1e95</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
@@ -5305,7 +5444,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="1">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Physical beam sections and plate thickness</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">29a6e2cf-741e-454c-bbd9-1ed7a820897b</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">656d793c-89a5-42fb-a47d-505f27b35b4a</item>
                         <item name="Name" type_name="gh_string" type_code="10">Solid</item>
                         <item name="NickName" type_name="gh_string" type_code="10">S</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5347,7 +5486,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="2">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Element and node identifiers</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">dc90f370-4bd9-494e-bbf0-745d39115bcf</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">4b7353af-d9cd-4a40-8c84-53046d82ab56</item>
                         <item name="Name" type_name="gh_string" type_code="10">Labels</item>
                         <item name="NickName" type_name="gh_string" type_code="10">L</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5389,7 +5528,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="3">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Local axes: 1 red, 2 green, 3 blue</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">2f59064c-259f-4d77-a7b9-ebc179483809</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">dc8b1419-cab5-4a63-a0f6-d8a44fdc4ac2</item>
                         <item name="Name" type_name="gh_string" type_code="10">Axes</item>
                         <item name="NickName" type_name="gh_string" type_code="10">A</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5431,7 +5570,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="4">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Directional translation and rotation restraints</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">40e21045-4910-4c17-876c-f84647f8d15c</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">775a303b-55ef-407b-b0c2-8c23d2c17532</item>
                         <item name="Name" type_name="gh_string" type_code="10">Supports</item>
                         <item name="NickName" type_name="gh_string" type_code="10">R</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5473,7 +5612,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="5">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Symbol size in model length units</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">8d941cc1-1d65-4f88-856b-9a45d35854f0</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">435ead45-7c93-4006-ad00-0feafeeae07e</item>
                         <item name="Name" type_name="gh_string" type_code="10">Axis scale</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Scale</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5515,7 +5654,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="6">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Geometry color</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b9f3a381-cb83-4de9-8503-66cca7b2728f</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">81802f9e-fc51-4b0a-a162-995884fbe7fd</item>
                         <item name="Name" type_name="gh_string" type_code="10">Color</item>
                         <item name="NickName" type_name="gh_string" type_code="10">C</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5559,11 +5698,11 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="7">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Master visibility switch, including manager-controlled automatic previews</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">7c3ad06f-3ecb-44d6-b4f2-d697214846ee</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">fd724f36-3116-430e-9445-3e84fde21023</item>
                         <item name="Name" type_name="gh_string" type_code="10">Enabled</item>
                         <item name="NickName" type_name="gh_string" type_code="10">On</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">ea75abba-0a6c-4cc2-81df-f1be9a980113</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">0c39226e-2d6e-42a7-b5cf-cc857358bc9a</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="2">
@@ -5602,11 +5741,11 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="8">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Optional Display Settings; overrides legacy Solid/Labels/Axes/Supports/scales inputs</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">e1fec050-adae-45a1-8086-61c1c78ecb94</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ab6200cc-08a0-45f0-8cfb-62e52ed0b33c</item>
                         <item name="Name" type_name="gh_string" type_code="10">Settings</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Settings</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">true</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">ab98e217-4b4b-42a3-a6e8-5b50b3a08042</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">b82f3d5f-bedc-45bb-b5c3-73703c98e9f9</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
@@ -5626,7 +5765,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Exact case names; empty shows all input load cases. Combinations are not summed here.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">1057ca7f-ab2a-48ae-98cb-7bb8d2f76df2</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">69e486d0-73e1-423b-950d-e0524d6d5b4a</item>
                         <item name="Name" type_name="gh_string" type_code="10">Load cases</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Cases</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">true</item>
@@ -5648,7 +5787,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="10">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Visual multiplier; arrows capped at six symbol lengths. Numeric labels retain original values.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b61b97a5-60cb-4b66-b9dd-143f04db41e7</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">2543d158-0950-48a9-9fe0-e0d42b0a7177</item>
                         <item name="Name" type_name="gh_string" type_code="10">Load scale</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Load scale</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5690,7 +5829,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_input" index="11">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Suppress automatic preview of other Rhino2Straus components and FEM parameters in this document</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">985185a8-9bf9-4495-b461-66b4ae2039dc</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">0173184a-0bd2-4126-9ddd-a5fce7a053bc</item>
                         <item name="Name" type_name="gh_string" type_code="10">Manage previews</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Manage</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5732,7 +5871,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Visible scene summary</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ef47db1e-af81-4df0-9089-ab9279eb04e2</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">4654e04a-78b2-468e-8fee-72d7ae4c4240</item>
                         <item name="Name" type_name="gh_string" type_code="10">Status</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Status</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5755,7 +5894,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Names accepted by the case filter</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">71dadc97-bdd5-44c5-aee2-5f471a6ec044</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">2cb011ed-f3cc-4e04-958b-829d8f7ce127</item>
                         <item name="Name" type_name="gh_string" type_code="10">Available cases</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Cases</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5777,7 +5916,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                     <chunk name="param_output" index="2">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Effective display-only settings</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ad8a57da-ee76-4e9b-811d-c4a5430fd476</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">aa5049bc-549d-4a24-8363-9d3ba91da4e0</item>
                         <item name="Name" type_name="gh_string" type_code="10">Settings</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Settings</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5800,7 +5939,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Symbol and color guide</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">8b88cabb-3934-49ae-8d4b-bf52d196c56e</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">af1bf3bb-4be9-4add-b22f-9aa6784b406e</item>
                         <item name="Name" type_name="gh_string" type_code="10">Legend</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Legend</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5824,7 +5963,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                         <item name="Access" type_name="gh_int32" type_code="3">2</item>
                         <item name="Description" type_name="gh_string" type_code="10">Closed physical volumes for native Rhino bake; branches {kind; Model ID}, kind 0=beam, 1=plate, 2=solid. Preserves offsets and thickness. Independent of visibility; no boolean union.</item>
                         <item name="Hidden" type_name="gh_bool" type_code="1">true</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ff72f265-96cb-48e6-820a-122a20321f68</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">67400227-34e5-4f07-8253-bab4b46fe6f8</item>
                         <item name="Name" type_name="gh_string" type_code="10">Breps</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Breps</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5847,7 +5986,7 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Elements omitted from the closed Brep output and why</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">8571419e-cc48-44ce-9790-b3f2e653f210</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">c1ded51a-658e-4dff-aec5-bea174b5fcbf</item>
                         <item name="Name" type_name="gh_string" type_code="10">Brep issues</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Issues</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -5881,11 +6020,11 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                   <items count="8">
                     <item name="Description" type_name="gh_string" type_code="10">Contains a collection of Breps (Boundary REPresentations)</item>
                     <item name="Hidden" type_name="gh_bool" type_code="1">true</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">2a4f5464-cfde-47f3-8473-85649fb0d8d6</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">f33b4cf8-6b67-4319-97a2-9c32400623f2</item>
                     <item name="Name" type_name="gh_string" type_code="10">Brep</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Brep pronti per Bake</item>
                     <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                    <item name="Source" index="0" type_name="gh_guid" type_code="9">ff72f265-96cb-48e6-820a-122a20321f68</item>
+                    <item name="Source" index="0" type_name="gh_guid" type_code="9">67400227-34e5-4f07-8253-bab4b46fe6f8</item>
                     <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                   </items>
                   <chunks count="1">
@@ -5917,12 +6056,12 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                 <chunk name="Container">
                   <items count="9">
                     <item name="Description" type_name="gh_string" type_code="10">A panel for custom notes and text values</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">8a719c6c-9147-4ca8-a2cc-828c09642a9d</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">4f37209b-eead-4808-b39a-769847e8a769</item>
                     <item name="Name" type_name="gh_string" type_code="10">Panel</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Problemi Brep</item>
                     <item name="Optional" type_name="gh_bool" type_code="1">false</item>
                     <item name="ScrollRatio" type_name="gh_double" type_code="6">0</item>
-                    <item name="Source" index="0" type_name="gh_guid" type_code="9">8571419e-cc48-44ce-9790-b3f2e653f210</item>
+                    <item name="Source" index="0" type_name="gh_guid" type_code="9">c1ded51a-658e-4dff-aec5-bea174b5fcbf</item>
                     <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                     <item name="UserText" type_name="gh_string" type_code="10"></item>
                   </items>
@@ -5980,14 +6119,14 @@ Le geometrie FEM e il Model restano disponibili anche con preview OFF.</item>
                       <ARGB>65;60;179;113</ARGB>
                     </item>
                     <item name="Description" type_name="gh_string" type_code="10">A group of Grasshopper objects</item>
-                    <item name="ID" index="0" type_name="gh_guid" type_code="9">610df7c3-70ca-4090-a0d8-c0f9b2ef49be</item>
-                    <item name="ID" index="1" type_name="gh_guid" type_code="9">ea75abba-0a6c-4cc2-81df-f1be9a980113</item>
-                    <item name="ID" index="2" type_name="gh_guid" type_code="9">1823c27c-8cfc-431d-bfc7-434aedfee02f</item>
-                    <item name="ID" index="3" type_name="gh_guid" type_code="9">3ae9df37-b100-4565-9345-8c72f9e81cd4</item>
-                    <item name="ID" index="4" type_name="gh_guid" type_code="9">2a4f5464-cfde-47f3-8473-85649fb0d8d6</item>
-                    <item name="ID" index="5" type_name="gh_guid" type_code="9">8a719c6c-9147-4ca8-a2cc-828c09642a9d</item>
+                    <item name="ID" index="0" type_name="gh_guid" type_code="9">258c41d8-9e68-412f-910e-62a522f40a94</item>
+                    <item name="ID" index="1" type_name="gh_guid" type_code="9">0c39226e-2d6e-42a7-b5cf-cc857358bc9a</item>
+                    <item name="ID" index="2" type_name="gh_guid" type_code="9">57688d41-cabe-43c5-a5ec-da86a7adce36</item>
+                    <item name="ID" index="3" type_name="gh_guid" type_code="9">ffa48a5a-c5f3-468c-adaa-60a27f143418</item>
+                    <item name="ID" index="4" type_name="gh_guid" type_code="9">f33b4cf8-6b67-4319-97a2-9c32400623f2</item>
+                    <item name="ID" index="5" type_name="gh_guid" type_code="9">4f37209b-eead-4808-b39a-769847e8a769</item>
                     <item name="ID_Count" type_name="gh_int32" type_code="3">6</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">220c31d5-e4e1-4e9f-adae-d1b17782d846</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">fbac09fc-e474-42c0-95a8-16d4a41996ad</item>
                     <item name="Name" type_name="gh_string" type_code="10">Group</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Preview / sezioni / carichi / attributi / Brep</item>
                   </items>

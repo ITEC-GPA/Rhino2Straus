@@ -15,6 +15,8 @@ namespace Rhino2Straus.Core.Models
 {
     public class ModelModel : IEquatable<ModelModel>
     {
+        /// <summary>Keep distinct, explicitly numbered coincident nodes when importing or copying native topology.</summary>
+        public bool PreserveCoincidentNodes { get; set; }
         public ModelUnitsModel ModelUnits { get; set; } = new ModelUnitsModel();
         public UniqueIdCollection<MaterialModel> Materials { get; }
         public UniqueNameCollection<LoadCaseModel> LoadCases { get; }
@@ -57,6 +59,7 @@ namespace Rhino2Straus.Core.Models
 
         public ModelModel(ModelModel model) : this()
         {
+            PreserveCoincidentNodes = model.PreserveCoincidentNodes;
             ModelUnits = new ModelUnitsModel(model.ModelUnits);
             BuildModel(model.NodeElements.Values.ToList(), model.FrameElements.Values.ToList(), model.AreaElements.Values.ToList(), model.LinkElements.Values.ToList(), model.LoadCombinations.Values.ToList(), model.SelfWeight, model.SolidElements.Values.ToList());
             // Preserve explicitly named cases and their metadata/order, including unused cases.
@@ -70,7 +73,7 @@ namespace Rhino2Straus.Core.Models
             List<AreaElementModel> inputAreas = null, List<LinkElementModel> inputLinks = null,
             List<LoadCombinationModel> inputcombos = null, SelfWeightModel inputSelfWeight = null, List<SolidElementModel> inputSolids = null)
         {
-            var built = new ModelModel { ModelUnits = new ModelUnitsModel(ModelUnits) };
+            var built = new ModelModel { ModelUnits = new ModelUnitsModel(ModelUnits), PreserveCoincidentNodes = PreserveCoincidentNodes };
             ModelBuilder.Build(built, inputNodes, inputFrames, inputAreas, inputLinks, inputcombos, inputSelfWeight, inputSolids);
             Materials.Clear(); Materials.AddRange(built.Materials.Values);
             FrameSections.Clear(); FrameSections.AddRange(built.FrameSections.Values);

@@ -23,7 +23,7 @@ namespace Rhino2Straus.Grasshopper.Components.Extended;
 
 public sealed class ReadResultsIntoModelComponent : SafeComponent
 {
-    private bool wasRun;private ModelModel solved;private string cachedKey="",status="Idle";
+    private readonly TriggeredOperation<ModelModel> operation=new();
     public ReadResultsIntoModelComponent() : base("Read Results Into Model", "Read Results Into Model", "Read Results Into Model", ComponentTopics.Tab, ComponentTopics.ResultsModel) { }
     public override Guid ComponentGuid => new Guid("ea7fe876-9b0c-5339-a2e4-4bb6c4acfad3");
     protected override void RegisterInputParams(GH_InputParamManager p)
@@ -45,10 +45,10 @@ public sealed class ReadResultsIntoModelComponent : SafeComponent
     protected override void Solve(IGH_DataAccess da)
     {
 
-        var input=Item<GH_Model>(da,0).Value;bool run=Item<bool>(da,3);bool fire=run&&!wasRun;wasRun=run;
+        var input=Item<GH_Model>(da,0).Value;bool run=Item<bool>(da,3);
         string key=ModelFingerprint.Compute(input)+System.Text.Json.JsonSerializer.Serialize(new object[]{Item<string>(da,1),Item<string>(da,2),Item<int>(da,4),Item<int>(da,5),Item<bool>(da,6)});
-        if(key!=cachedKey){solved=null;status="Read required";}
-        if(fire){solved=null;status="Failed";cachedKey=key;solved=ModelAnalysisService.Read(input,Item<string>(da,1),Item<string>(da,2),Item<int>(da,4),Item<int>(da,5),Item<bool>(da,6));status=solved.Results.ProvenanceVerified?"Read verified results":"Read unverified results";}
+        var solved=operation.Update(key,run,()=>ModelAnalysisService.Read(input,Item<string>(da,1),Item<string>(da,2),Item<int>(da,4),Item<int>(da,5),Item<bool>(da,6)),value=>value.Results.ProvenanceVerified?"Read verified results":"Read unverified results");
+        string status=operation.Status;
         da.SetData(0,new GH_Model(solved??input));da.SetData(1,status);da.SetDataList(2,solved?.Results.Issues.Select(x=>x.ToString())??Array.Empty<string>());Message=status;
         if(solved?.Results.ProvenanceVerified==false)AddRuntimeMessage(GH_RuntimeMessageLevel.Warning,"The native input/result file pairing has no verified manifest.");
     }

@@ -69,6 +69,8 @@ namespace Rhino2Straus.Core.ElementProperties
             Steel,
             [Description("CONC")]
             Concrete,
+            [Description("ISOTROPIC")]
+            Isotropic,
         }
 
         public MaterialTypes Type { get; set; }

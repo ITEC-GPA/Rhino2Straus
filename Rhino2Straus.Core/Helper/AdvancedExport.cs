@@ -34,7 +34,10 @@ internal static class AdvancedExport
         if (node.TranslationMass != Vector3d.Zero) Check(St7.St7SetNodeTMass3(id, number, V(node.TranslationMass)));
         if (node.RotationMass != Vector3d.Zero) Check(St7.St7SetNodeRMass3(id, number, 1, V(node.RotationMass)));
         foreach (var temp in node.Temperatures)
+        {
             Check(St7.St7SetNodeTemperature1(id, number, cases[temp.LoadCase.Name], new[] { temp.Temperature }));
+            if(temp.Type.HasValue)Check(St7.St7SetNodeTemperatureType1(id,number,cases[temp.LoadCase.Name],temp.Type.Value));
+        }
     }
 
     public static void FrameAttributes(int id, int number, FrameElementModel beam)

@@ -36,6 +36,8 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Models
             pManager[7].Optional = true;
             pManager.AddGenericParameter("Solids", "Solids", "Tet4, Wedge6 and Hexa8 elements", GH_ParamAccess.list);pManager[8].Optional=true;
             pManager.AddBooleanParameter("Renumber models", "Renumber", "Renumber independent model parts when merging", GH_ParamAccess.item, true);
+            pManager.AddBooleanParameter("Preserve nodes", "Keep nodes", "Keep distinct positive node IDs even at coincident coordinates; use True when rebuilding an imported Model", GH_ParamAccess.item, false);
+            pManager.AddGenericParameter("Load cases","Cases","Optional unused load cases to retain when rebuilding",GH_ParamAccess.list);pManager[11].Optional=true;
         }
 
         protected override void RegisterOutputParams(GH_OutputParamManager pManager)
@@ -60,7 +62,8 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Models
             DA.GetDataList(count++, gH_Links);
             DA.GetDataList(count++, gH_LoadCombinations);
 
-            ModelModel modelModel = new ModelModel { ModelUnits = gH_Units.Value };
+            bool preserveNodes=false; DA.GetData(10,ref preserveNodes);
+            ModelModel modelModel = new ModelModel { ModelUnits = gH_Units.Value, PreserveCoincidentNodes=preserveNodes };
 
             List<NodeElementModel> nodes = new List<NodeElementModel>(gh_Nodes.Count);
             List<FrameElementModel> frames = new List<FrameElementModel>(gh_Frames.Count);
@@ -83,6 +86,13 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Models
             var solids=new List<GH_SolidElement>();DA.GetDataList(8,solids);
             modelModel.BuildModel(nodes, frames, areas, links, combos, sw?.Value, solids.ConvertAll(x=>x.Value));
 
+            var cases=new List<GH_LoadCase>();DA.GetDataList(11,cases);
+            foreach(var lc in cases)
+            {
+                if(!modelModel.LoadCases.TryGetValue(lc.Value.Name,out var existing))modelModel.LoadCases.Add(new LoadCaseModel(lc.Value));
+                else if(existing.Type!=lc.Value.Type||existing.GravityNoStructuralMass!=lc.Value.GravityNoStructuralMass||existing.ReferenceTemperature!=lc.Value.ReferenceTemperature)
+                    throw new ArgumentException($"Conflicting settings for load case {lc.Value.Name}.");
+            }
             var parts = new List<GH_Model>(); DA.GetDataList(7, parts);
             if (parts.Count > 0) {
                 var models = parts.ConvertAll(x => x.Value); models.Insert(0, modelModel);

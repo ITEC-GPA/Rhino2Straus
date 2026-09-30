@@ -30,6 +30,7 @@ public sealed class NodeTemperatureComponent : SafeComponent
         p.AddGenericParameter("Node", "Node", "Node", GH_ParamAccess.item);
         p.AddGenericParameter("Load case", "Load case", "Load case", GH_ParamAccess.item);
         p.AddNumberParameter("Temperature", "Temperature", "Temperature in model C/F units", GH_ParamAccess.item, 0.0);
+        p.AddIntegerParameter("Type","Type","0 reference, 1 fixed, 2 initial; table temperatures are unsupported",GH_ParamAccess.item,1);
     }
     protected override void RegisterOutputParams(GH_OutputParamManager p)
     {
@@ -38,6 +39,7 @@ public sealed class NodeTemperatureComponent : SafeComponent
     protected override void Solve(IGH_DataAccess da)
     {
 
-        var n=new NodeElementModel(Item<GH_NodeElement>(da,0).Value); n.Temperatures.Add(new NodeTemperatureModel { LoadCase=Item<GH_LoadCase>(da,1).Value,Temperature=Item<double>(da,2) }); da.SetData(0,new GH_NodeElement(n));
+        int type=Item<int>(da,3);if(type is <0 or >2)throw new ArgumentException("Choose temperature type 0 reference, 1 fixed or 2 initial.");
+        var n=new NodeElementModel(Item<GH_NodeElement>(da,0).Value); n.Temperatures.Add(new NodeTemperatureModel { LoadCase=Item<GH_LoadCase>(da,1).Value,Temperature=Item<double>(da,2),Type=type }); da.SetData(0,new GH_NodeElement(n));
     }
 }

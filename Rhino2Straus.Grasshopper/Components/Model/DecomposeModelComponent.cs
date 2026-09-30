@@ -35,6 +35,8 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Models
             pManager.AddGenericParameter("Groups","Groups","Groups",GH_ParamAccess.list);
             pManager.AddGenericParameter("Units","Units","Units",GH_ParamAccess.item);
             pManager.AddGenericParameter("Results","Results","Results",GH_ParamAccess.item);
+            pManager.AddGenericParameter("Self weight","SW","Gravity settings for rebuilding",GH_ParamAccess.item);
+            pManager.AddBooleanParameter("Preserve nodes","Keep nodes","Connect to Build Model when rebuilding imported topology",GH_ParamAccess.item);
         }
 
         protected override void Solve(IGH_DataAccess DA)
@@ -72,6 +74,8 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Models
             DA.SetDataList(10,model.LoadCombinations.Values.Select(x=>new GH_LoadCombination(x)));
             DA.SetDataList(11,model.Groups.Values.Select(x=>new GH_ElementGroup(x)));
             DA.SetData(12,new GH_Units(model.ModelUnits));
+            if(model.SelfWeight!=null)DA.SetData(14,new GH_SelfWeight(model.SelfWeight));
+            DA.SetData(15,model.PreserveCoincidentNodes);
             if(model.Results!=null){model.Results.ValidateFor(model);DA.SetData(13,new global::Grasshopper.Kernel.Types.GH_ObjectWrapper(model.Results));}
 
         }

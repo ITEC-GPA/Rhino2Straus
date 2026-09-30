@@ -2,13 +2,15 @@
 
 Componenti **Rhino 8 / Grasshopper per Straus7 R3, Windows x64**. Il progetto è dedicato esclusivamente a Straus7: modellazione, attributi, modello FEM unificato, preview, esportazione `.st7`, analisi e lettura dei risultati.
 
-**163 componenti in 17 pannelli per argomento** nella tab **Rhino2Straus**, con icone a 24 px, più le icone della libreria e del parametro Group. [Mappa dei pannelli](docs/TOPICS.md) · [Catalogo per argomento](docs/COMPONENTS.md) · [Preview e impostazioni](docs/PREVIEW.md) · [Sezioni R31, link e default](docs/SECTIONS-LINKS.md) · [Copertura API e limiti](docs/API-COVERAGE.md) · [Verifiche](docs/VALIDATION.md) · [Model, solver e risultati](docs/MODEL-RESULTS.md).
+**164 componenti in 17 pannelli per argomento** nella tab **Rhino2Straus**, con icone a 24 px, più le icone della libreria e del parametro Group. [Mappa dei pannelli](docs/TOPICS.md) · [Catalogo per argomento](docs/COMPONENTS.md) · [Preview e impostazioni](docs/PREVIEW.md) · [Sezioni R31, link e default](docs/SECTIONS-LINKS.md) · [Copertura API e limiti](docs/API-COVERAGE.md) · [Verifiche](docs/VALIDATION.md) · [Model, solver e risultati](docs/MODEL-RESULTS.md).
 
 La **0.4.2** separa Materiali, Sezioni, Proprietà, Elementi, Vincoli e link, Assi e offset, Casi e combo, Carichi, Modello, File Straus, Analisi e Preview/bake. I risultati hanno cinque pannelli dedicati: Model, nodi/link, travi, piastre e solidi. Cartelle sorgenti, catalogo e atlante delle icone seguono la stessa suddivisione. I GUID e i collegamenti dei componenti restano invariati. Dopo l'installazione riavviare Rhino/Grasshopper per aggiornare la tab.
 
 ## Esempi pronti
 
-La **0.4.3** include tre definizioni Grasshopper con componenti già collegati: **mensola con offset e bake**, **portale con merge, casi/combinazioni e lettori dei risultati**, **piastra da mesh con pressione e assi locali**. Geometrie interne, slider, note in italiano, preview disattivabile e uscite Brep. Il calcolo nativo è inizialmente disattivato. [Apri la guida e scarica i file .gh / .ghx](examples/README.md).
+La **0.5.0** include **23 definizioni `.gh` / `.ghx` collegate**, che utilizzano tutti i **164 componenti**: frame/polilinee, mesh Tri/Quad, solidi, link, materiali/sezioni, assi/offset, carichi, gruppi/filtri, merge e ricostruzione, export/import, quattro solver e lettori risultati. Geometrie interne, note in italiano, preview disattivabile e Brep per bake; le operazioni native sono inizialmente disattivate. [Guida e file](examples/README.md) · [Mappa componente → esempi](examples/COMPONENTS.md).
+
+**Read Straus Model** legge un `.st7` esistente e restituisce il Model Grasshopper con dati strutturali elastici supportati. Mantiene distinti i nodi coincidenti, normalizza le unità e segnala le omissioni; l'import parziale richiede Allow partial=True. [Guida, ambito e limiti](docs/MODEL-IMPORT.md). La gestione Run/cache dei solver è condivisa e i filtri accettano le proprietà complete oltre alle sezioni legacy.
 
 ## Impostazione del modello
 
@@ -24,14 +26,16 @@ flowchart LR
   S --> V[Validate / Preview / Decompose]
   S --> X[Straus7 R3 Export]
   X --> F[File .st7]
-  F --> R[Solver / risultati / import geometrico]
+  F --> R[Solver / lettori risultati su file]
+  F --> I[Read Straus Model]
+  I --> S
   S --> C[Run Model: casi e combinazioni / altri solver]
   C --> RM[Model con risultati incorporati]
   RM --> Q[Sollecitazioni / deformata / diagrammi]
   RM --> K[Dati per futuro verificatore]
 ```
 
-Gli attributi modificano copie degli elementi. `Build Model` salda i nodi entro la tolleranza, unifica i riferimenti e raccoglie proprietà, casi e combinazioni. Accetta anche altri Model. `Merge Straus Models` restituisce sempre un solo Model; `Renumber` permette di unire parti create indipendentemente. Con `Renumber=false`, gli stessi ID di elemento devono avere geometria e proprietà compatibili: i carichi si sommano come contributi e i gruppi si uniscono. Gli input restano invariati. Non collegare due volte lo stesso contributo di carico.
+Gli attributi modificano copie degli elementi. `Preserve nodes=True` conserva i nodi con ID positivi distinti; viene attivato dal nuovo importatore e propagato al merge. Decompose espone anche peso proprio e questa impostazione per la ricostruzione.  `Build Model` salda i nodi entro la tolleranza, unifica i riferimenti e raccoglie proprietà, casi e combinazioni. Accetta anche altri Model. `Merge Straus Models` restituisce sempre un solo Model; `Renumber` permette di unire parti create indipendentemente. Con `Renumber=false`, gli stessi ID di elemento devono avere geometria e proprietà compatibili: i carichi si sommano come contributi e i gruppi si uniscono. Gli input restano invariati. Non collegare due volte lo stesso contributo di carico.
 
 `Rhino2Straus Display Manager` mostra sezioni estruse, spessori, offset, carichi, vincoli, svincoli, molle, masse, spostamenti imposti, proprietà e assi. Collegare il Model assemblato e usare **Enabled** per spegnere tutte le preview gestite; **Display Settings** controlla le singole categorie, i risultati, le scale, l'ombreggiatura e la trasparenza. Il gestore sopprime automaticamente le anteprime del plugin a monte, senza cambiarne i flag Hidden. Il tasto destro offre **About**, **Guide / helper** e controlli di visibilità. `Model Physical Geometry` restituisce anche Brep/mesh Rhino. [Guida completa e limiti](docs/PREVIEW.md).
 
@@ -63,6 +67,8 @@ Il pacchetto distribuisce soltanto gli assembly del progetto: RhinoCommon, Grass
 `Save` oppure il fronte `Run=false → true` avvia l'export; la sola modifica degli input non scrive file. `Overwrite` è disattivato per default. L'export valida il modello, salva un file temporaneo e pubblica il `.st7` soltanto a operazione completa. L'output `Model path` collega l'export ai componenti solver.
 
 Sono presenti statica lineare, frequenze naturali, buckling lineare e statica non lineare incrementale. Il buckling richiede risultati statici iniziali. La non lineare sostituisce la tabella degli incrementi non staged con una rampa del caso selezionato; le leggi materiali devono essere già definite nel file per abilitare la non linearità materiale. I solver sono sincroni e possono occupare Grasshopper durante il calcolo.
+
+Le temperature di riferimento dei casi e i tipi delle temperature nodali entrano ora nell’identità del Model: riesportare e ricalcolare i risultati delle versioni precedenti prima di riassociarli con la 0.5.
 
 Le funzioni native richiedono una licenza API funzionante. Il codice compila e i test gestiti/geometrici sono separati dal collaudo Straus7: consultare [lo stato delle verifiche](docs/VALIDATION.md) prima dell'uso produttivo.
 

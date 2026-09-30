@@ -23,7 +23,7 @@ namespace Rhino2Straus.Grasshopper.Components.Extended;
 
 public sealed class RunModelNonlinearComponent : SafeComponent
 {
-    private bool wasRun;private ModelModel solved;private string cachedKey="",status="Idle";
+    private readonly TriggeredOperation<ModelModel> operation=new();
     public RunModelNonlinearComponent() : base("Run Model Nonlinear Static", "Run Model Nonlinear Static", "Incremental ramp of one named case, elastic material with optional geometric nonlinearity. Results return in the same Model.", ComponentTopics.Tab, ComponentTopics.Analysis) { }
     public override Guid ComponentGuid => new Guid("2ca4d9c4-10f2-5eaa-8cf3-70ea1a7bde38");
     protected override void RegisterInputParams(GH_InputParamManager p)
@@ -47,10 +47,10 @@ public sealed class RunModelNonlinearComponent : SafeComponent
     protected override void Solve(IGH_DataAccess da)
     {
 
-        var input=Item<GH_Model>(da,0).Value;string path=Item<string>(da,1);bool run=Item<bool>(da,2),overwrite=Item<bool>(da,3);bool fire=run&&!wasRun;wasRun=run;
+        var input=Item<GH_Model>(da,0).Value;string path=Item<string>(da,1);bool run=Item<bool>(da,2),overwrite=Item<bool>(da,3);
         string key=ModelFingerprint.Compute(input)+System.Text.Json.JsonSerializer.Serialize(new object[]{path,Item<string>(da,4),Item<int>(da,5),Item<double>(da,6),Item<bool>(da,7)});
-        if(key!=cachedKey){solved=null;status="Run required";}
-        if(fire){solved=null;status="Failed";cachedKey=key;solved=ModelAnalysisService.RunNonlinear(input,path,overwrite,Item<string>(da,4),Item<int>(da,5),Item<double>(da,6),Item<bool>(da,7));status=solved.Results.IsComplete?"Completed":"Completed with unavailable quantities";}
+        var solved=operation.Update(key,run,()=>ModelAnalysisService.RunNonlinear(input,path,overwrite,Item<string>(da,4),Item<int>(da,5),Item<double>(da,6),Item<bool>(da,7)),value=>value.Results.IsComplete?"Completed":"Completed with unavailable quantities");
+        string status=operation.Status;
         da.SetData(0,new GH_Model(solved??input));da.SetData(1,solved?.Results.ResultPath??"");da.SetData(2,status);da.SetDataList(3,solved?.Results.Issues.Select(x=>x.ToString())??Array.Empty<string>());Message=status;
         if(solved?.Results.Issues.Count>0)AddRuntimeMessage(GH_RuntimeMessageLevel.Warning,$"{solved.Results.Issues.Count} result quantities unavailable; inspect Unavailable.");
     }

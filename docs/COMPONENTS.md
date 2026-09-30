@@ -1,6 +1,6 @@
 # Catalogo componenti
 
-163 componenti Grasshopper in **17 pannelli per argomento**, tutti nella tab **Rhino2Straus** e tutti con icona. Il parametro persistente Group e la libreria hanno icone aggiuntive.
+164 componenti Grasshopper in **17 pannelli per argomento**, tutti nella tab **Rhino2Straus** e tutti con icona. Il parametro persistente Group e la libreria hanno icone aggiuntive.
 
 [Organizzazione della tab e mappa degli argomenti](TOPICS.md).
 
@@ -172,12 +172,13 @@ Unità, Build, Merge, validazione, riepilogo, decomposizione, filtri e gruppi de
 
 ## 10-File Straus
 
-Esportazione .st7, lettura e bake della geometria da file Straus7. **3 componenti.**
+Esportazione .st7, lettura e bake della geometria da file Straus7. **4 componenti.**
 
 | Componente |
 |---|
 | [Bake Straus Geometry](../Rhino2Straus.Grasshopper/Components/Files/BakeStrausGeometryComponent.cs) |
 | [Read Straus Geometry](../Rhino2Straus.Grasshopper/Components/Files/ReadStrausGeometryComponent.cs) |
+| [Read Straus Model](../Rhino2Straus.Grasshopper/Components/Files/ReadStrausModelComponent.cs) |
 | [Straus7 R3 Export](../Rhino2Straus.Grasshopper/Components/Files/StrausR3ExportComponent.cs) |
 
 ## 11-Analisi

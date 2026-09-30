@@ -13,6 +13,8 @@ public static class ModelComposer
     {
         var parts=models.ToList();
         if(parts.Count==0 || parts.Any(x=>x==null))throw new ArgumentException("Supply at least one model.");
+        bool preserveNodes=parts.Any(p=>p.PreserveCoincidentNodes);
+        int nextNodeId=0;
         var units=parts[0].ModelUnits;
         if(parts.Any(x=>!SameUnits(units,x.ModelUnits)))throw new ArgumentException("Models have different units. Convert them before merging.");
         var solids=new List<SolidElementModel>(); var nodes=new List<NodeElementModel>();var beams=new List<FrameElementModel>();var plates=new List<AreaElementModel>();var links=new List<LinkElementModel>();var combos=new List<LoadCombinationModel>();
@@ -27,7 +29,7 @@ public static class ModelComposer
             }
             if(renumber)
             {
-                foreach(var s in m.SolidElements.Values)s.Id=-1;foreach(var n in m.NodeElements.Values)n.Id=-1;foreach(var b in m.FrameElements.Values)b.Id=-1;foreach(var p in m.AreaElements.Values)p.Id=-1;foreach(var l in m.LinkElements.Values)l.Id=-1;
+                foreach(var s in m.SolidElements.Values)s.Id=-1;foreach(var n in m.NodeElements.Values)n.Id=preserveNodes?++nextNodeId:-1;foreach(var b in m.FrameElements.Values)b.Id=-1;foreach(var p in m.AreaElements.Values)p.Id=-1;foreach(var l in m.LinkElements.Values)l.Id=-1;
                 foreach(var x in m.Materials.Values)x.Id=-1;foreach(var x in m.FrameProperties.Values)x.Id=-1;foreach(var x in m.FrameSections.Values)x.Id=-1;foreach(var x in m.AreaProperties.Values)x.Id=-1;foreach(var x in m.AreaThicknesses.Values)x.Id=-1;
             }
             solids.AddRange(m.SolidElements.Values);nodes.AddRange(m.NodeElements.Values);beams.AddRange(m.FrameElements.Values);plates.AddRange(m.AreaElements.Values);links.AddRange(m.LinkElements.Values);
@@ -38,7 +40,14 @@ public static class ModelComposer
                 else if(existing.Type!=c.Type || !existing.LoadFactorList.Select(x=>(x.LoadCase.Name,x.Factor)).OrderBy(x=>x.Name).SequenceEqual(c.LoadFactorList.Select(x=>(x.LoadCase.Name,x.Factor)).OrderBy(x=>x.Name)))throw new ArgumentException($"Conflicting load combination {c.Name}.");
             }
         }
-        var result=new ModelModel {ModelUnits=new ModelUnitsModel(units)};result.BuildModel(nodes,beams,plates,links,combos,weight,solids);return result;
+        var result=new ModelModel {ModelUnits=new ModelUnitsModel(units),PreserveCoincidentNodes=preserveNodes};result.BuildModel(nodes,beams,plates,links,combos,weight,solids);
+        foreach(var lc in parts.SelectMany(p=>p.LoadCases.Values))
+        {
+            if(!result.LoadCases.TryGetValue(lc.Name,out var existing))result.LoadCases.Add(new LoadCaseModel(lc));
+            else if(existing.Type!=lc.Type||existing.GravityNoStructuralMass!=lc.GravityNoStructuralMass||existing.ReferenceTemperature!=lc.ReferenceTemperature)
+                throw new ArgumentException($"Conflicting settings for load case {lc.Name}.");
+        }
+        return result;
     }
     public static bool SameUnits(ModelUnitsModel a,ModelUnitsModel b)=>a!=null&&b!=null&&a.LengthUnit==b.LengthUnit&&a.ForceUnit==b.ForceUnit&&a.HeatUnit==b.HeatUnit&&a.TemperatureUnit==b.TemperatureUnit;
 }

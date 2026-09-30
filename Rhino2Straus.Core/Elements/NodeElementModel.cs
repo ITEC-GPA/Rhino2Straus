@@ -60,7 +60,7 @@ namespace Rhino2Straus.Core.Elements
         public NodeElementModel(NodeElementModel nodeModel)
             : base(nodeModel)
         {
-            Temperatures = nodeModel.Temperatures.ConvertAll(t => new NodeTemperatureModel { LoadCase = t.LoadCase, Temperature = t.Temperature });
+            Temperatures = nodeModel.Temperatures.ConvertAll(t => new NodeTemperatureModel { LoadCase = t.LoadCase, Temperature = t.Temperature, Type=t.Type });
             PrescribedDisplacement = (double[])nodeModel.PrescribedDisplacement.Clone();
             TranslationSpring = nodeModel.TranslationSpring;
             RotationSpring = nodeModel.RotationSpring;

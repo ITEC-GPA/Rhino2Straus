@@ -1,3 +1,6 @@
+using Grasshopper.Kernel.Types;
+using Rhino2Straus.Core.ElementProperties;
+using System.Linq;
 using Rhino2Straus.Grasshopper;
 using System;
 using System.Collections.Generic;
@@ -36,65 +39,27 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Models
 
         protected override void Solve(IGH_DataAccess DA)
         {
-            List<GH_FrameElement> gh_Frames = new List<GH_FrameElement>();
-            Point3d startNode = Point3d.Unset;
-            Point3d endNode = Point3d.Unset;
-            List<GH_ElementGroup> gH_ElementGroups = new List<GH_ElementGroup>();
-            List<GH_FrameSection> gH_FrameProperties = new List<GH_FrameSection>();
-            double tolerance = 0;
-
-            int count = 0;
-            if (!DA.GetDataList(count++, gh_Frames))
-                return;
-            DA.GetData(count++, ref startNode);
-            DA.GetData(count++, ref endNode);
-            DA.GetDataList(count++, gH_FrameProperties);
-            DA.GetDataList(count++, gH_ElementGroups);
-            DA.GetData(count++, ref tolerance);
-
-            List<GH_FrameElement> matchedFrames = new List<GH_FrameElement>();
-            List<GH_FrameElement> otherFrames = new List<GH_FrameElement>();
-
-
-            List<string> groupName = new List<string>();
-            for (int i = 0; i < gH_ElementGroups.Count; i++)
-                groupName.Add(gH_ElementGroups[i].Value.Name);
-            List<string> propName = new List<string>();
-            for (int i = 0; i < gH_FrameProperties.Count; i++)
-                propName.Add(gH_FrameProperties[i].Value.Name);
-
-            for (int i = 0; i < gh_Frames.Count; i++)
+            var elements=new List<GH_FrameElement>();if(!DA.GetDataList(0,elements))return;
+            Point3d start=Point3d.Unset;DA.GetData(1,ref start);
+            Point3d end=Point3d.Unset;DA.GetData(2,ref end);
+            var properties=new List<IGH_Goo>();DA.GetDataList(3,properties);
+            var groups=new List<GH_ElementGroup>();DA.GetDataList(4,groups);
+            double tolerance=Item<double>(DA,5);
+            if(!double.IsFinite(tolerance)||tolerance<=0)throw new ArgumentException("Tolerance must be finite and positive.");
+            var criteria=properties.Select(x=>x.ScriptVariable()).ToArray();
+            if(criteria.Any(x=>x is not FramePropertyModel && x is not FrameSectionModel))throw new ArgumentException("Supply element properties (or legacy section definitions).");
+            var groupNames=groups.Select(g=>g.Value.GroupFullName).ToHashSet();
+            bool all=criteria.Length==0&&groupNames.Count==0&&!start.IsValid&&!end.IsValid;
+            var matched=new List<GH_FrameElement>();var other=new List<GH_FrameElement>();
+            foreach(var item in elements)
             {
-                bool find = groupName.Count==0&&propName.Count==0&&!startNode.IsValid&&!endNode.IsValid;
-
-                Core.Elements.FrameElementModel node = gh_Frames[i].Value;
-                if (!find && node.Groups.Exists(g=>groupName.Contains(g.Name)))
-                    find = true;
-
-                if (!find)
-                {
-                    if (startNode.IsValid&&gh_Frames[i].Value.NodeStart.Position.DistanceTo(startNode) < tolerance)
-                        find = true;
-                    if (endNode.IsValid&&gh_Frames[i].Value.NodeEnd.Position.DistanceTo(endNode) < tolerance)
-                        find = true;
-                }
-
-                if (!find)
-                {
-                    if (propName.Contains(gh_Frames[i].Value.FrameSection.Name))
-                        find = true;
-                }
-
-                if (find)
-                    matchedFrames.Add(gh_Frames[i]);
-                else
-                    otherFrames.Add(gh_Frames[i]);
+                var value=item.Value;
+                bool match=all||value.Groups.Any(g=>groupNames.Contains(g.GroupFullName))||(start.IsValid&&value.NodeStart.Position.DistanceTo(start)<=tolerance)||(end.IsValid&&value.NodeEnd.Position.DistanceTo(end)<=tolerance)
+                    ||criteria.Any(p=>p is FramePropertyModel property?property.Name==value.FrameProperty.Name:((FrameSectionModel)p).Name==value.FrameSection.Name);
+                (match?matched:other).Add(item);
             }
-
-            DA.SetDataList(0, matchedFrames);
-            DA.SetDataList(1, otherFrames);
+            DA.SetDataList(0,matched);DA.SetDataList(1,other);
         }
-
 
         public override Guid ComponentGuid => new Guid("38a772ad-451e-4af6-bead-52f530028b8b");
     }

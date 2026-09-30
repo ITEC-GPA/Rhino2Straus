@@ -9,14 +9,17 @@ using Grasshopper.Kernel.Special;
 using Grasshopper.Kernel.Types;
 using Rhino.Geometry;
 
-internal sealed class ExampleDocument : IDisposable
+internal sealed partial class ExampleDocument : IDisposable
 {
     private readonly Assembly plugin;
     public GH_Document Document { get; } = new();
     public string FileName { get; }
     public GH_Component FinalModel { get; set; }
+    public string Description { get; set; } = "";
+    public int? ExpectedSolids { get; set; }
+    public int? ExpectedLinks { get; set; }
     public int[] ExpectedCounts { get; set; }
-    public double ExpectedVolume { get; set; }
+    public double? ExpectedVolume { get; set; }
     public ExampleDocument(Assembly assembly, string fileName)
     {
         plugin=assembly; FileName=fileName;
@@ -43,6 +46,11 @@ internal sealed class ExampleDocument : IDisposable
         var p=Input(c,input);
         switch(p)
         {
+            case Param_Number n when value is double[] values: n.PersistentData.Clear(); n.SetPersistentData(values.Select(v=>new GH_Number(v))); break;
+            case Param_Boolean b when value is bool[] values: b.PersistentData.Clear(); b.SetPersistentData(values.Select(v=>new GH_Boolean(v))); break;
+            case Param_Point point: point.PersistentData.Clear(); point.SetPersistentData(new GH_Point((Point3d)value)); break;
+            case Param_Plane plane: plane.PersistentData.Clear(); plane.SetPersistentData(new GH_Plane((Plane)value)); break;
+            case Param_Brep brep: brep.PersistentData.Clear(); brep.SetPersistentData(new GH_Brep((Brep)value)); break;
             case Param_Number n: n.PersistentData.Clear(); n.SetPersistentData(new GH_Number(Convert.ToDouble(value))); break;
             case Param_Integer n: n.PersistentData.Clear(); n.SetPersistentData(new GH_Integer(Convert.ToInt32(value))); break;
             case Param_Boolean b: b.PersistentData.Clear(); b.SetPersistentData(new GH_Boolean((bool)value)); break;

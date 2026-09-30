@@ -1,0 +1,774 @@
+{
+  "covered": 164,
+  "missing": [],
+  "components": {
+    "AlignBeamAxisComponent": [
+      "01_mensola_offset_bake",
+      "02_portale_casi_combo_risultati"
+    ],
+    "AlignBeamToPointComponent": [
+      "04_frame_polilinea_assi_svincoli"
+    ],
+    "AlignModelAxesComponent": [
+      "13_modello_gruppi_filtri_ricostruzione"
+    ],
+    "AlignPlateAxisComponent": [
+      "03_piastra_mesh_pressione"
+    ],
+    "AlignPlateToPlaneComponent": [
+      "07_mesh_tri_quad_proprieta_assi"
+    ],
+    "AreaElementComponent": [
+      "07_mesh_tri_quad_proprieta_assi",
+      "15_carichi_piastre_termici_precarico",
+      "21_risultati_piastre_solidi"
+    ],
+    "AreaFilterComponent": [
+      "15_carichi_piastre_termici_precarico"
+    ],
+    "AreaPropertyComponent": [
+      "03_piastra_mesh_pressione",
+      "07_mesh_tri_quad_proprieta_assi",
+      "15_carichi_piastre_termici_precarico",
+      "21_risultati_piastre_solidi"
+    ],
+    "AreaThicknessComponent": [
+      "03_piastra_mesh_pressione",
+      "07_mesh_tri_quad_proprieta_assi",
+      "15_carichi_piastre_termici_precarico",
+      "21_risultati_piastre_solidi"
+    ],
+    "BakeStrausGeometryComponent": [
+      "16_export_import_model_esistente"
+    ],
+    "BeamAssignPropertyComponent": [
+      "04_frame_polilinea_assi_svincoli"
+    ],
+    "BeamAxesComponent": [
+      "04_frame_polilinea_assi_svincoli"
+    ],
+    "BeamBehaviourComponent": [
+      "04_frame_polilinea_assi_svincoli"
+    ],
+    "BeamDisplacementResultsComponent": [
+      "22_file_esistenti_solver_risultati"
+    ],
+    "BeamForcesComponent": [
+      "22_file_esistenti_solver_risultati"
+    ],
+    "BeamGradientComponent": [
+      "14_carichi_travi_peso_proprio"
+    ],
+    "BeamInfoComponent": [
+      "04_frame_polilinea_assi_svincoli"
+    ],
+    "BeamOffsetComponent": [
+      "01_mensola_offset_bake"
+    ],
+    "BeamPointForceComponent": [
+      "14_carichi_travi_peso_proprio"
+    ],
+    "BeamPointMomentComponent": [
+      "14_carichi_travi_peso_proprio"
+    ],
+    "BeamPreloadComponent": [
+      "14_carichi_travi_peso_proprio"
+    ],
+    "BeamReleasesComponent": [
+      "04_frame_polilinea_assi_svincoli"
+    ],
+    "BeamStressComponent": [
+      "22_file_esistenti_solver_risultati"
+    ],
+    "BucklingFactorsComponent": [
+      "22_file_esistenti_solver_risultati"
+    ],
+    "BuildModelComponent": [
+      "01_mensola_offset_bake",
+      "02_portale_casi_combo_risultati",
+      "03_piastra_mesh_pressione",
+      "04_frame_polilinea_assi_svincoli",
+      "05_nodi_vincoli_molle_masse_temperatura",
+      "06_link_rigidi_elastici_master_slave",
+      "07_mesh_tri_quad_proprieta_assi",
+      "08_solidi_tet_wedge_hexa_pressione",
+      "09_materiali_sezioni_base_generica",
+      "10_sezioni_native_standard",
+      "11_sezioni_native_bgl",
+      "12_sezione_bxs_profilo_bake",
+      "13_modello_gruppi_filtri_ricostruzione",
+      "14_carichi_travi_peso_proprio",
+      "15_carichi_piastre_termici_precarico",
+      "16_export_import_model_esistente",
+      "17_analisi_modale",
+      "18_analisi_buckling",
+      "19_analisi_non_lineare",
+      "20_risultati_nodi_travi_link",
+      "21_risultati_piastre_solidi",
+      "23_rilettura_risultati_nel_model"
+    ],
+    "BxsSectionComponent": [
+      "12_sezione_bxs_profilo_bake"
+    ],
+    "ClearModelResultsComponent": [
+      "10_sezioni_native_standard",
+      "11_sezioni_native_bgl",
+      "12_sezione_bxs_profilo_bake",
+      "13_modello_gruppi_filtri_ricostruzione"
+    ],
+    "DatabaseConcreteMaterialComponent": [
+      "03_piastra_mesh_pressione",
+      "07_mesh_tri_quad_proprieta_assi",
+      "08_solidi_tet_wedge_hexa_pressione",
+      "15_carichi_piastre_termici_precarico",
+      "21_risultati_piastre_solidi"
+    ],
+    "DatabaseSteelMaterialComponent": [
+      "01_mensola_offset_bake",
+      "02_portale_casi_combo_risultati",
+      "04_frame_polilinea_assi_svincoli",
+      "05_nodi_vincoli_molle_masse_temperatura",
+      "10_sezioni_native_standard",
+      "11_sezioni_native_bgl",
+      "12_sezione_bxs_profilo_bake",
+      "13_modello_gruppi_filtri_ricostruzione",
+      "14_carichi_travi_peso_proprio",
+      "16_export_import_model_esistente",
+      "17_analisi_modale",
+      "18_analisi_buckling",
+      "19_analisi_non_lineare",
+      "20_risultati_nodi_travi_link",
+      "23_rilettura_risultati_nel_model"
+    ],
+    "DecomposeModelComponent": [
+      "01_mensola_offset_bake",
+      "02_portale_casi_combo_risultati",
+      "03_piastra_mesh_pressione",
+      "04_frame_polilinea_assi_svincoli",
+      "05_nodi_vincoli_molle_masse_temperatura",
+      "06_link_rigidi_elastici_master_slave",
+      "07_mesh_tri_quad_proprieta_assi",
+      "08_solidi_tet_wedge_hexa_pressione",
+      "09_materiali_sezioni_base_generica",
+      "10_sezioni_native_standard",
+      "11_sezioni_native_bgl",
+      "12_sezione_bxs_profilo_bake",
+      "13_modello_gruppi_filtri_ricostruzione",
+      "14_carichi_travi_peso_proprio",
+      "15_carichi_piastre_termici_precarico",
+      "16_export_import_model_esistente",
+      "17_analisi_modale",
+      "18_analisi_buckling",
+      "19_analisi_non_lineare",
+      "20_risultati_nodi_travi_link",
+      "21_risultati_piastre_solidi",
+      "23_rilettura_risultati_nel_model"
+    ],
+    "DecomposeNativeSectionComponent": [
+      "20_risultati_nodi_travi_link"
+    ],
+    "DecomposeResultRecordComponent": [
+      "20_risultati_nodi_travi_link",
+      "21_risultati_piastre_solidi"
+    ],
+    "DeformedNodesComponent": [
+      "22_file_esistenti_solver_risultati"
+    ],
+    "DisplaySettingsComponent": [
+      "01_mensola_offset_bake",
+      "02_portale_casi_combo_risultati",
+      "03_piastra_mesh_pressione",
+      "04_frame_polilinea_assi_svincoli",
+      "05_nodi_vincoli_molle_masse_temperatura",
+      "06_link_rigidi_elastici_master_slave",
+      "07_mesh_tri_quad_proprieta_assi",
+      "08_solidi_tet_wedge_hexa_pressione",
+      "09_materiali_sezioni_base_generica",
+      "10_sezioni_native_standard",
+      "11_sezioni_native_bgl",
+      "12_sezione_bxs_profilo_bake",
+      "13_modello_gruppi_filtri_ricostruzione",
+      "14_carichi_travi_peso_proprio",
+      "15_carichi_piastre_termici_precarico",
+      "16_export_import_model_esistente",
+      "17_analisi_modale",
+      "18_analisi_buckling",
+      "19_analisi_non_lineare",
+      "20_risultati_nodi_travi_link",
+      "21_risultati_piastre_solidi",
+      "23_rilettura_risultati_nel_model"
+    ],
+    "ElasticLinkPropertyComponent": [
+      "06_link_rigidi_elastici_master_slave"
+    ],
+    "ElementGroupComponent": [
+      "13_modello_gruppi_filtri_ricostruzione"
+    ],
+    "FrameElementComponent": [
+      "01_mensola_offset_bake",
+      "02_portale_casi_combo_risultati",
+      "05_nodi_vincoli_molle_masse_temperatura",
+      "09_materiali_sezioni_base_generica",
+      "10_sezioni_native_standard",
+      "11_sezioni_native_bgl",
+      "12_sezione_bxs_profilo_bake",
+      "13_modello_gruppi_filtri_ricostruzione",
+      "14_carichi_travi_peso_proprio",
+      "16_export_import_model_esistente",
+      "17_analisi_modale",
+      "18_analisi_buckling",
+      "19_analisi_non_lineare",
+      "20_risultati_nodi_travi_link",
+      "23_rilettura_risultati_nel_model"
+    ],
+    "FrameFilterComponent": [
+      "13_modello_gruppi_filtri_ricostruzione"
+    ],
+    "FramePropertyComponent": [
+      "01_mensola_offset_bake",
+      "02_portale_casi_combo_risultati",
+      "04_frame_polilinea_assi_svincoli",
+      "05_nodi_vincoli_molle_masse_temperatura",
+      "09_materiali_sezioni_base_generica",
+      "10_sezioni_native_standard",
+      "11_sezioni_native_bgl",
+      "12_sezione_bxs_profilo_bake",
+      "13_modello_gruppi_filtri_ricostruzione",
+      "14_carichi_travi_peso_proprio",
+      "16_export_import_model_esistente",
+      "17_analisi_modale",
+      "18_analisi_buckling",
+      "19_analisi_non_lineare",
+      "20_risultati_nodi_travi_link",
+      "23_rilettura_risultati_nel_model"
+    ],
+    "FrameSectionAngleComponent": [
+      "09_materiali_sezioni_base_generica"
+    ],
+    "FrameSectionBoxComponent": [
+      "09_materiali_sezioni_base_generica"
+    ],
+    "FrameSectionChannelComponent": [
+      "09_materiali_sezioni_base_generica"
+    ],
+    "FrameSectionCircleComponent": [
+      "09_materiali_sezioni_base_generica"
+    ],
+    "FrameSectionGenericComponent": [
+      "09_materiali_sezioni_base_generica"
+    ],
+    "FrameSectionIComponent": [
+      "02_portale_casi_combo_risultati",
+      "09_materiali_sezioni_base_generica"
+    ],
+    "FrameSectionPipeComponent": [
+      "09_materiali_sezioni_base_generica"
+    ],
+    "FrameSectionRectangularComponent": [
+      "01_mensola_offset_bake",
+      "04_frame_polilinea_assi_svincoli",
+      "05_nodi_vincoli_molle_masse_temperatura",
+      "09_materiali_sezioni_base_generica",
+      "13_modello_gruppi_filtri_ricostruzione",
+      "14_carichi_travi_peso_proprio",
+      "16_export_import_model_esistente",
+      "17_analisi_modale",
+      "18_analisi_buckling",
+      "19_analisi_non_lineare",
+      "20_risultati_nodi_travi_link",
+      "23_rilettura_risultati_nel_model"
+    ],
+    "FrameSectionTeeComponent": [
+      "09_materiali_sezioni_base_generica"
+    ],
+    "GlobalPressureComponent": [
+      "03_piastra_mesh_pressione",
+      "15_carichi_piastre_termici_precarico",
+      "21_risultati_piastre_solidi"
+    ],
+    "LinkConstraintOptionsComponent": [
+      "06_link_rigidi_elastici_master_slave"
+    ],
+    "LinkElementComponent": [
+      "06_link_rigidi_elastici_master_slave",
+      "20_risultati_nodi_travi_link"
+    ],
+    "LinkPropertyComponent": [
+      "06_link_rigidi_elastici_master_slave"
+    ],
+    "LoadAreaUniformComponent": [
+      "15_carichi_piastre_termici_precarico"
+    ],
+    "LoadCaseComponent": [
+      "01_mensola_offset_bake",
+      "02_portale_casi_combo_risultati",
+      "03_piastra_mesh_pressione",
+      "05_nodi_vincoli_molle_masse_temperatura",
+      "08_solidi_tet_wedge_hexa_pressione",
+      "13_modello_gruppi_filtri_ricostruzione",
+      "14_carichi_travi_peso_proprio",
+      "15_carichi_piastre_termici_precarico",
+      "16_export_import_model_esistente",
+      "17_analisi_modale",
+      "18_analisi_buckling",
+      "19_analisi_non_lineare",
+      "20_risultati_nodi_travi_link",
+      "21_risultati_piastre_solidi",
+      "23_rilettura_risultati_nel_model"
+    ],
+    "LoadCombinationComponent": [
+      "02_portale_casi_combo_risultati"
+    ],
+    "LoadFactorComponent": [
+      "02_portale_casi_combo_risultati"
+    ],
+    "LoadFrameNonUniComponent": [
+      "14_carichi_travi_peso_proprio"
+    ],
+    "LoadFrameUniformComponent": [
+      "02_portale_casi_combo_risultati"
+    ],
+    "LoadNodalComponent": [
+      "01_mensola_offset_bake",
+      "13_modello_gruppi_filtri_ricostruzione",
+      "14_carichi_travi_peso_proprio",
+      "16_export_import_model_esistente",
+      "17_analisi_modale",
+      "18_analisi_buckling",
+      "19_analisi_non_lineare",
+      "20_risultati_nodi_travi_link",
+      "23_rilettura_risultati_nel_model"
+    ],
+    "MasterSlaveLinkPropertyComponent": [
+      "06_link_rigidi_elastici_master_slave"
+    ],
+    "MaterialComponent": [
+      "09_materiali_sezioni_base_generica"
+    ],
+    "MaterialInfoComponent": [
+      "09_materiali_sezioni_base_generica"
+    ],
+    "MaterialStrengthsComponent": [
+      "09_materiali_sezioni_base_generica"
+    ],
+    "MergeModelsComponent": [
+      "02_portale_casi_combo_risultati"
+    ],
+    "MeshPlatesComponent": [
+      "03_piastra_mesh_pressione",
+      "07_mesh_tri_quad_proprieta_assi"
+    ],
+    "ModalResultsComponent": [
+      "22_file_esistenti_solver_risultati"
+    ],
+    "ModelBeamActionsComponent": [
+      "02_portale_casi_combo_risultati",
+      "19_analisi_non_lineare"
+    ],
+    "ModelBeamDiagramComponent": [
+      "02_portale_casi_combo_risultati"
+    ],
+    "ModelBeamDisplacementComponent": [
+      "20_risultati_nodi_travi_link"
+    ],
+    "ModelBeamForceComponent": [
+      "20_risultati_nodi_travi_link"
+    ],
+    "ModelBeamNodeReactionComponent": [
+      "20_risultati_nodi_travi_link"
+    ],
+    "ModelBeamStrainComponent": [
+      "20_risultati_nodi_travi_link"
+    ],
+    "ModelBeamStressComponent": [
+      "20_risultati_nodi_travi_link"
+    ],
+    "ModelBeamTotalStrainComponent": [
+      "20_risultati_nodi_travi_link"
+    ],
+    "ModelDeformedGeometryComponent": [
+      "02_portale_casi_combo_risultati",
+      "17_analisi_modale",
+      "18_analisi_buckling"
+    ],
+    "ModelGeometryComponent": [
+      "01_mensola_offset_bake"
+    ],
+    "ModelLinkNodeDisplacementComponent": [
+      "20_risultati_nodi_travi_link"
+    ],
+    "ModelLinkNodeReactionComponent": [
+      "20_risultati_nodi_travi_link"
+    ],
+    "ModelModalMetadataComponent": [
+      "17_analisi_modale",
+      "18_analisi_buckling"
+    ],
+    "ModelNativeSectionsComponent": [
+      "20_risultati_nodi_travi_link"
+    ],
+    "ModelNodeDisplacementComponent": [
+      "20_risultati_nodi_travi_link"
+    ],
+    "ModelNodeReactionComponent": [
+      "20_risultati_nodi_travi_link"
+    ],
+    "ModelPlateCurvatureComponent": [
+      "21_risultati_piastre_solidi"
+    ],
+    "ModelPlateForceComponent": [
+      "21_risultati_piastre_solidi"
+    ],
+    "ModelPlateMomentComponent": [
+      "21_risultati_piastre_solidi"
+    ],
+    "ModelPlateNodeDisplacementComponent": [
+      "21_risultati_piastre_solidi"
+    ],
+    "ModelPlateNodeReactionComponent": [
+      "21_risultati_piastre_solidi"
+    ],
+    "ModelPlateStrainComponent": [
+      "21_risultati_piastre_solidi"
+    ],
+    "ModelPlateStressComponent": [
+      "21_risultati_piastre_solidi"
+    ],
+    "ModelPlateTotalStrainComponent": [
+      "21_risultati_piastre_solidi"
+    ],
+    "ModelResultCasesComponent": [
+      "02_portale_casi_combo_risultati",
+      "19_analisi_non_lineare",
+      "23_rilettura_risultati_nel_model"
+    ],
+    "ModelResultEnvelopeComponent": [
+      "02_portale_casi_combo_risultati"
+    ],
+    "ModelSolidNodeDisplacementComponent": [
+      "21_risultati_piastre_solidi"
+    ],
+    "ModelSolidNodeReactionComponent": [
+      "21_risultati_piastre_solidi"
+    ],
+    "ModelSolidStrainComponent": [
+      "21_risultati_piastre_solidi"
+    ],
+    "ModelSolidStressComponent": [
+      "21_risultati_piastre_solidi"
+    ],
+    "ModelSolidTotalStrainComponent": [
+      "21_risultati_piastre_solidi"
+    ],
+    "ModelSummaryComponent": [
+      "01_mensola_offset_bake",
+      "02_portale_casi_combo_risultati",
+      "03_piastra_mesh_pressione",
+      "04_frame_polilinea_assi_svincoli",
+      "05_nodi_vincoli_molle_masse_temperatura",
+      "06_link_rigidi_elastici_master_slave",
+      "07_mesh_tri_quad_proprieta_assi",
+      "08_solidi_tet_wedge_hexa_pressione",
+      "09_materiali_sezioni_base_generica",
+      "10_sezioni_native_standard",
+      "11_sezioni_native_bgl",
+      "12_sezione_bxs_profilo_bake",
+      "13_modello_gruppi_filtri_ricostruzione",
+      "14_carichi_travi_peso_proprio",
+      "15_carichi_piastre_termici_precarico",
+      "16_export_import_model_esistente",
+      "17_analisi_modale",
+      "18_analisi_buckling",
+      "19_analisi_non_lineare",
+      "20_risultati_nodi_travi_link",
+      "21_risultati_piastre_solidi",
+      "23_rilettura_risultati_nel_model"
+    ],
+    "ModelUnitsComponent": [
+      "01_mensola_offset_bake",
+      "02_portale_casi_combo_risultati",
+      "03_piastra_mesh_pressione"
+    ],
+    "ModelVerificationDataComponent": [
+      "02_portale_casi_combo_risultati",
+      "20_risultati_nodi_travi_link",
+      "23_rilettura_risultati_nel_model"
+    ],
+    "NativeSectionBglAngleComponent": [
+      "11_sezioni_native_bgl"
+    ],
+    "NativeSectionBglBulbComponent": [
+      "11_sezioni_native_bgl"
+    ],
+    "NativeSectionBglChannelComponent": [
+      "11_sezioni_native_bgl"
+    ],
+    "NativeSectionBglIComponent": [
+      "11_sezioni_native_bgl"
+    ],
+    "NativeSectionBglRhsComponent": [
+      "11_sezioni_native_bgl"
+    ],
+    "NativeSectionBglTeeComponent": [
+      "11_sezioni_native_bgl"
+    ],
+    "NativeSectionCruciformComponent": [
+      "10_sezioni_native_standard"
+    ],
+    "NativeSectionLipChannelComponent": [
+      "10_sezioni_native_standard"
+    ],
+    "NativeSectionOptionsComponent": [
+      "10_sezioni_native_standard",
+      "11_sezioni_native_bgl"
+    ],
+    "NativeSectionTeeLippedComponent": [
+      "10_sezioni_native_standard"
+    ],
+    "NativeSectionTopHatComponent": [
+      "10_sezioni_native_standard"
+    ],
+    "NativeSectionTrapezoidHollowComponent": [
+      "10_sezioni_native_standard"
+    ],
+    "NativeSectionTrapezoidSolidComponent": [
+      "10_sezioni_native_standard"
+    ],
+    "NativeSectionTriangleHollowComponent": [
+      "10_sezioni_native_standard"
+    ],
+    "NativeSectionTriangleSolidComponent": [
+      "10_sezioni_native_standard"
+    ],
+    "NativeSectionZComponent": [
+      "10_sezioni_native_standard"
+    ],
+    "NodeDisplacementsComponent": [
+      "22_file_esistenti_solver_risultati"
+    ],
+    "NodeElementComponent": [
+      "01_mensola_offset_bake",
+      "02_portale_casi_combo_risultati",
+      "03_piastra_mesh_pressione",
+      "04_frame_polilinea_assi_svincoli",
+      "05_nodi_vincoli_molle_masse_temperatura",
+      "06_link_rigidi_elastici_master_slave",
+      "08_solidi_tet_wedge_hexa_pressione",
+      "13_modello_gruppi_filtri_ricostruzione",
+      "14_carichi_travi_peso_proprio",
+      "15_carichi_piastre_termici_precarico",
+      "16_export_import_model_esistente",
+      "17_analisi_modale",
+      "18_analisi_buckling",
+      "19_analisi_non_lineare",
+      "20_risultati_nodi_travi_link",
+      "21_risultati_piastre_solidi",
+      "23_rilettura_risultati_nel_model"
+    ],
+    "NodeFilterComponent": [
+      "13_modello_gruppi_filtri_ricostruzione"
+    ],
+    "NodeInfoComponent": [
+      "05_nodi_vincoli_molle_masse_temperatura"
+    ],
+    "NodeMassComponent": [
+      "05_nodi_vincoli_molle_masse_temperatura"
+    ],
+    "NodeReactionsComponent": [
+      "22_file_esistenti_solver_risultati"
+    ],
+    "NodeSpringComponent": [
+      "05_nodi_vincoli_molle_masse_temperatura"
+    ],
+    "NodeSupportComponent": [
+      "01_mensola_offset_bake",
+      "02_portale_casi_combo_risultati",
+      "03_piastra_mesh_pressione",
+      "04_frame_polilinea_assi_svincoli",
+      "06_link_rigidi_elastici_master_slave",
+      "08_solidi_tet_wedge_hexa_pressione",
+      "13_modello_gruppi_filtri_ricostruzione",
+      "14_carichi_travi_peso_proprio",
+      "15_carichi_piastre_termici_precarico",
+      "16_export_import_model_esistente",
+      "17_analisi_modale",
+      "18_analisi_buckling",
+      "19_analisi_non_lineare",
+      "20_risultati_nodi_travi_link",
+      "21_risultati_piastre_solidi",
+      "23_rilettura_risultati_nel_model"
+    ],
+    "NodeTemperatureComponent": [
+      "05_nodi_vincoli_molle_masse_temperatura"
+    ],
+    "PinnedLinkPropertyComponent": [
+      "06_link_rigidi_elastici_master_slave"
+    ],
+    "PlateAssignPropertyComponent": [
+      "07_mesh_tri_quad_proprieta_assi"
+    ],
+    "PlateAxesComponent": [
+      "07_mesh_tri_quad_proprieta_assi"
+    ],
+    "PlateEdgePressureComponent": [
+      "15_carichi_piastre_termici_precarico"
+    ],
+    "PlateForceResultsComponent": [
+      "22_file_esistenti_solver_risultati"
+    ],
+    "PlateGradientComponent": [
+      "15_carichi_piastre_termici_precarico"
+    ],
+    "PlateInfoComponent": [
+      "07_mesh_tri_quad_proprieta_assi"
+    ],
+    "PlateMomentResultsComponent": [
+      "22_file_esistenti_solver_risultati"
+    ],
+    "PlateOffsetComponent": [
+      "03_piastra_mesh_pressione"
+    ],
+    "PlatePreloadComponent": [
+      "15_carichi_piastre_termici_precarico"
+    ],
+    "PlateStressResultsComponent": [
+      "22_file_esistenti_solver_risultati"
+    ],
+    "PolylineBeamsComponent": [
+      "04_frame_polilinea_assi_svincoli"
+    ],
+    "PrescribedDisplacementComponent": [
+      "05_nodi_vincoli_molle_masse_temperatura"
+    ],
+    "PreviewModelComponent": [
+      "01_mensola_offset_bake",
+      "02_portale_casi_combo_risultati",
+      "03_piastra_mesh_pressione",
+      "04_frame_polilinea_assi_svincoli",
+      "05_nodi_vincoli_molle_masse_temperatura",
+      "06_link_rigidi_elastici_master_slave",
+      "07_mesh_tri_quad_proprieta_assi",
+      "08_solidi_tet_wedge_hexa_pressione",
+      "09_materiali_sezioni_base_generica",
+      "10_sezioni_native_standard",
+      "11_sezioni_native_bgl",
+      "12_sezione_bxs_profilo_bake",
+      "13_modello_gruppi_filtri_ricostruzione",
+      "14_carichi_travi_peso_proprio",
+      "15_carichi_piastre_termici_precarico",
+      "16_export_import_model_esistente",
+      "17_analisi_modale",
+      "18_analisi_buckling",
+      "19_analisi_non_lineare",
+      "20_risultati_nodi_travi_link",
+      "21_risultati_piastre_solidi",
+      "23_rilettura_risultati_nel_model"
+    ],
+    "ReadResultsIntoModelComponent": [
+      "23_rilettura_risultati_nel_model"
+    ],
+    "ReadStrausGeometryComponent": [
+      "16_export_import_model_esistente",
+      "22_file_esistenti_solver_risultati"
+    ],
+    "ReadStrausModelComponent": [
+      "16_export_import_model_esistente"
+    ],
+    "ResultEnvelopeComponent": [
+      "22_file_esistenti_solver_risultati"
+    ],
+    "RigidLinkPropertyComponent": [
+      "06_link_rigidi_elastici_master_slave"
+    ],
+    "RunLinearBucklingComponent": [
+      "22_file_esistenti_solver_risultati"
+    ],
+    "RunLinearStaticComponent": [
+      "22_file_esistenti_solver_risultati"
+    ],
+    "RunModelBucklingComponent": [
+      "18_analisi_buckling"
+    ],
+    "RunModelCasesComponent": [
+      "02_portale_casi_combo_risultati",
+      "18_analisi_buckling",
+      "20_risultati_nodi_travi_link",
+      "21_risultati_piastre_solidi",
+      "23_rilettura_risultati_nel_model"
+    ],
+    "RunModelModalComponent": [
+      "17_analisi_modale"
+    ],
+    "RunModelNonlinearComponent": [
+      "19_analisi_non_lineare"
+    ],
+    "RunNaturalFrequencyComponent": [
+      "22_file_esistenti_solver_risultati"
+    ],
+    "RunNonlinearStaticComponent": [
+      "22_file_esistenti_solver_risultati"
+    ],
+    "SectionInfoComponent": [
+      "09_materiali_sezioni_base_generica",
+      "10_sezioni_native_standard",
+      "11_sezioni_native_bgl",
+      "12_sezione_bxs_profilo_bake"
+    ],
+    "SectionInsertionComponent": [
+      "04_frame_polilinea_assi_svincoli"
+    ],
+    "SectorSymmetryLinkPropertyComponent": [
+      "06_link_rigidi_elastici_master_slave"
+    ],
+    "SelfWeightComponent": [
+      "14_carichi_travi_peso_proprio"
+    ],
+    "SolidElementComponent": [
+      "08_solidi_tet_wedge_hexa_pressione",
+      "21_risultati_piastre_solidi"
+    ],
+    "SolidInfoComponent": [
+      "08_solidi_tet_wedge_hexa_pressione"
+    ],
+    "SolidPressureComponent": [
+      "08_solidi_tet_wedge_hexa_pressione",
+      "21_risultati_piastre_solidi"
+    ],
+    "SolidStrainResultsComponent": [
+      "22_file_esistenti_solver_risultati"
+    ],
+    "SolidStressResultsComponent": [
+      "22_file_esistenti_solver_risultati"
+    ],
+    "StrausR3ExportComponent": [
+      "16_export_import_model_esistente"
+    ],
+    "StrausResultCasesComponent": [
+      "22_file_esistenti_solver_risultati"
+    ],
+    "ValidateModelComponent": [
+      "01_mensola_offset_bake",
+      "02_portale_casi_combo_risultati",
+      "03_piastra_mesh_pressione",
+      "04_frame_polilinea_assi_svincoli",
+      "05_nodi_vincoli_molle_masse_temperatura",
+      "06_link_rigidi_elastici_master_slave",
+      "07_mesh_tri_quad_proprieta_assi",
+      "08_solidi_tet_wedge_hexa_pressione",
+      "09_materiali_sezioni_base_generica",
+      "10_sezioni_native_standard",
+      "11_sezioni_native_bgl",
+      "12_sezione_bxs_profilo_bake",
+      "13_modello_gruppi_filtri_ricostruzione",
+      "14_carichi_travi_peso_proprio",
+      "15_carichi_piastre_termici_precarico",
+      "16_export_import_model_esistente",
+      "17_analisi_modale",
+      "18_analisi_buckling",
+      "19_analisi_non_lineare",
+      "20_risultati_nodi_travi_link",
+      "21_risultati_piastre_solidi",
+      "23_rilettura_risultati_nel_model"
+    ]
+  }
+}

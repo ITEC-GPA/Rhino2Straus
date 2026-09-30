@@ -44,4 +44,6 @@ public sealed class NodeTemperatureModel
 {
     public LoadCaseModel LoadCase { get; set; }
     public double Temperature { get; set; }
+    /// <summary>Native type: 0 reference, 1 fixed, 2 initial. Null retains native default; table temperatures are unsupported.</summary>
+    public int? Type { get; set; }
 }

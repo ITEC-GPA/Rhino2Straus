@@ -808,6 +808,14 @@
     "File": "Rhino2Straus.Grasshopper/Components/Files/ReadStrausGeometryComponent.cs"
   },
   {
+    "Class": "ReadStrausModelComponent",
+    "Name": "Read Straus Model",
+    "Category": "10-File Straus",
+    "Topic": "Files",
+    "Guid": "bd763938-69ba-4f07-87e7-b61948629344",
+    "File": "Rhino2Straus.Grasshopper/Components/Files/ReadStrausModelComponent.cs"
+  },
+  {
     "Class": "StrausR3ExportComponent",
     "Name": "Straus7 R3 Export",
     "Category": "10-File Straus",

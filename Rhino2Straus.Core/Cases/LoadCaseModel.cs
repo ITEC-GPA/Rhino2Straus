@@ -44,6 +44,8 @@ namespace Rhino2Straus.Core.Cases
         }
 
         public LoadCaseTypes Type { get; set; }
+        /// <summary>Absolute reference temperature in Model temperature units; null uses the native default.</summary>
+        public double? ReferenceTemperature { get; set; }
         public bool GravityNoStructuralMass { get; set; }
 
         public LoadCaseModel(string name, LoadCaseTypes type = LoadCaseTypes.USER, string description = "", bool gravityNSM = false)
@@ -65,6 +67,7 @@ namespace Rhino2Straus.Core.Cases
             Type = loadCaseModel.Type;
             Id = loadCaseModel.Id;
             GravityNoStructuralMass = loadCaseModel.GravityNoStructuralMass;
+            ReferenceTemperature = loadCaseModel.ReferenceTemperature;
         }
     }
 }

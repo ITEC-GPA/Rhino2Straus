@@ -40,9 +40,10 @@ public static class ModelValidator
             foreach (var load in node.NodalLoadList)
                 Error(load.LoadCase == null || new[] { load.FX, load.FY, load.FZ, load.MX, load.MY, load.MZ }.Any(Bad), $"Node {node.Id}: invalid nodal load.");
             Error(node.PrescribedDisplacement?.Length != 6 || node.PrescribedDisplacement.Any(Bad), $"Node {node.Id}: six finite imposed displacement values are required.");
-            foreach (var load in node.Temperatures) Error(load.LoadCase == null || Bad(load.Temperature), $"Node {node.Id}: invalid temperature.");
+            foreach (var load in node.Temperatures) Error(load.LoadCase == null || Bad(load.Temperature) || load.Type is <0 or >2, $"Node {node.Id}: invalid temperature.");
             Error(node.Temperatures.GroupBy(x => x.LoadCase?.Name).Any(x => x.Count() > 1), $"Node {node.Id}: more than one temperature in the same load case.");
         }
+        foreach(var lc in model.LoadCases.Values)Error(lc.ReferenceTemperature.HasValue&&Bad(lc.ReferenceTemperature.Value),$"Case {lc.Name}: invalid reference temperature.");
         foreach (var mat in model.Materials.Values)
         {
             Error(Bad(mat.ModulusElasticity) || mat.ModulusElasticity <= 0, $"Material {mat.Name}: E must be positive (kPa).");

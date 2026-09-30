@@ -208,6 +208,26 @@ internal static class Program
         });
         Check(defaultLink.Params.Output[0].VolatileData.AllData(true).First().ScriptVariable() is LinkElementModel dl&&dl.LinkProperty.Type==LinkPropertyModel.LinkPropertyTypes.RIGID,"Link element defaults to a rigid connection");
 
+        var frameFilter=SolveDefaults("FrameFilterComponent",c=>{
+            ((Param_GenericObject)c.Params.Input[0]).PersistentData.Append(new GH_FrameElement(displayBeam));
+            ((Param_GenericObject)c.Params.Input[3]).PersistentData.Append(new GH_FrameProperty(displayBeam.FrameProperty));
+        });
+        Check(frameFilter.Params.Output[0].VolatileDataCount==1,"Frame filter accepts the full property from Beam Info");
+        var legacyFrameFilter=SolveDefaults("FrameFilterComponent",c=>{
+            ((Param_GenericObject)c.Params.Input[0]).PersistentData.Append(new GH_FrameElement(displayBeam));
+            ((Param_GenericObject)c.Params.Input[3]).PersistentData.Append(new GH_FrameSection(displayBeam.FrameSection));
+        });
+        Check(legacyFrameFilter.Params.Output[0].VolatileDataCount==1,"Frame filter retains legacy section input compatibility");
+        var areaFilter=SolveDefaults("AreaFilterComponent",c=>{
+            ((Param_GenericObject)c.Params.Input[0]).PersistentData.Append(new GH_AreaElement(displayPlate));
+            ((Param_GenericObject)c.Params.Input[2]).PersistentData.Append(new GH_AreaProperty(displayPlate.AreaProperty));
+        });
+        Check(areaFilter.Params.Output[0].VolatileDataCount==1,"Area filter accepts full plate properties");
+        var legacyAreaFilter=SolveDefaults("AreaFilterComponent",c=>{
+            ((Param_GenericObject)c.Params.Input[0]).PersistentData.Append(new GH_AreaElement(displayPlate));
+            ((Param_GenericObject)c.Params.Input[2]).PersistentData.Append(new GH_AreaThickness(displayPlate.AreaThickness));
+        });
+        Check(legacyAreaFilter.Params.Output[0].VolatileDataCount==1,"Area filter retains legacy thickness input compatibility");
         var displaySettingsComponent=SolveDefaults("DisplaySettingsComponent");
         var displayManager=SolveDefaults("PreviewModelComponent",c=>{
             ((Param_GenericObject)c.Params.Input[0]).PersistentData.Append(new GH_Model(displayModel));

@@ -13,7 +13,7 @@ I pannelli della tab Grasshopper sono ordinati per fase di lavoro. I risultati s
 | [07-Casi e combo](../Rhino2Straus.Grasshopper/Components/Cases) | Casi di carico, fattori e combinazioni. | 3 |
 | [08-Carichi](../Rhino2Straus.Grasshopper/Components/Loads) | Peso proprio e carichi nodali, su travi, piastre e solidi, inclusi termici e preload. | 15 |
 | [09-Modello](../Rhino2Straus.Grasshopper/Components/Model) | Unità, Build, Merge, validazione, riepilogo, decomposizione, filtri e gruppi del Model unico. | 10 |
-| [10-File Straus](../Rhino2Straus.Grasshopper/Components/Files) | Esportazione .st7, lettura e bake della geometria da file Straus7. | 3 |
+| [10-File Straus](../Rhino2Straus.Grasshopper/Components/Files) | Esportazione .st7, lettura e bake della geometria da file Straus7. | 4 |
 | [11-Analisi](../Rhino2Straus.Grasshopper/Components/Analysis) | Esecuzione di casi e combinazioni, statica lineare/non lineare, modi e buckling. | 8 |
 | [12-Ris. modello](../Rhino2Straus.Grasshopper/Components/ResultsModel) | Lettura nel Model, casi risultato, estremi, metadati, deformata e dati per il verificatore. | 14 |
 | [13-Ris. nodi](../Rhino2Straus.Grasshopper/Components/ResultsNodes) | Spostamenti, reazioni e deformata dei nodi; risultati nodali dei link. | 7 |

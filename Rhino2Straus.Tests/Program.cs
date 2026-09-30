@@ -208,6 +208,52 @@ Test("Three-point and trapezoidal load diagrams retain native endpoint values",(
     var points=BeamLoadDistribution.Knots(load);Assert(points.Select(p=>p.Position).SequenceEqual(new[]{0d,.2,.8,1}));Assert(points.Select(p=>p.Value).SequenceEqual(new[]{1d,3,4,2}));Near(BeamLoadDistribution.NativeValues(load)[5],.8);
     load.LoadSchema=FrameLoadStrausModel.LoadSchemas.Triangular;Assert(BeamLoadDistribution.Knots(load).Count==3);
 });
+
+Test("Imported coincident nodes retain topology, attributes and identity through copy",()=>{
+    var a=new NodeElementModel(0,0,0){Id=1,TranslationMass=new(1,0,0)};
+    var b=new NodeElementModel(0,0,0){Id=2,TranslationMass=new(2,0,0)};
+    var c=new NodeElementModel(1,0,0){Id=3};a.Support.Dx=true;
+    var source=new ModelImportData();source.Nodes.AddRange(new[]{a,b,c});source.Beams.Add(Beam(a,c));
+    source.Links.Add(new LinkElementModel(a,b,new LinkPropertyModel(LinkPropertyModel.LinkPropertyTypes.GEN,100,100,100)));
+    var result=source.Assemble(.001,false);Assert(result.Complete && result.Model!=null);
+    var copy=new ModelModel(result.Model);Assert(copy.PreserveCoincidentNodes&&copy.NodeElements.Count==3);
+    Near(copy.NodeElements[1].TranslationMass.X,1);Near(copy.NodeElements[2].TranslationMass.X,2);
+    Assert(copy.LinkElements.Values.Single().NodeStart.Id!=copy.LinkElements.Values.Single().NodeEnd.Id);
+    Assert(ReferenceEquals(copy.FrameElements.Values.Single().NodeStart,copy.NodeElements[1]));
+    var merged=ModelComposer.Merge(new[]{copy,copy},true);Assert(merged.NodeElements.Count==6&&merged.PreserveCoincidentNodes);
+});
+Test("Partial import is explicit and repeated assembly does not accumulate issues",()=>{
+    var source=new ModelImportData();source.Nodes.Add(new(0,0,0){Id=7});source.Issues.Add(new("Plate 8","Tri6 unsupported"));
+    var strict=source.Assemble(.001,false);Assert(!strict.Complete&&strict.Model==null);
+    var partial=source.Assemble(.001,true);Assert(!partial.Complete&&partial.Model.NodeElements.ContainsKey(7));
+    Assert(source.Assemble(.001,true).Issues.Length==partial.Issues.Length);Throws(()=>source.Assemble(0,true));
+});
+Test("Import keeps unused case numbers and unknown material strengths",()=>{
+    var source=new ModelImportData();source.Nodes.Add(new(0,0,0){Id=2});source.Cases.Add(new("Unused"){Id=9});
+    var model=source.Assemble(.001,true).Model;Assert(model.LoadCases["Unused"].Id==9);Assert(new ModelModel(model).LoadCases["Unused"].Id==9);
+    Assert(ModelComposer.Merge(new[]{model},false).LoadCases.ContainsKey("Unused"));
+    var material=new MaterialModel{Type=MaterialModel.MaterialTypes.Isotropic};Near(material.TensileYeld,0);Near(material.CompressiveStrength,0);
+});
+Test("Triggered work runs once, invalidates on input changes and retains failure until rearmed",()=>{
+    var operation=new TriggeredOperation<string>();int calls=0;
+    string Work(){calls++;return "result";}
+    operation.Update("a",false,Work,_=>"OK");Assert(calls==0);
+    operation.Update("a",true,Work,_=>"OK");operation.Update("a",true,Work,_=>"OK");Assert(calls==1&&operation.Value=="result");
+    operation.Update("b",true,Work,_=>"OK");Assert(calls==1&&operation.Value==null);
+    operation.Update("b",false,Work,_=>"OK");Throws(()=>operation.Update("b",true,()=>throw new Exception("failure"),_=>"OK"));
+    operation.Update("b",true,Work,_=>"OK");Assert(operation.Status=="Failed"&&operation.Value==null&&calls==1);
+    operation.Update("b",false,Work,_=>"OK");operation.Update("b",true,Work,_=>"OK");Assert(calls==2);
+});
+
+Test("Thermal import metadata survives Model copies and invalidates results",()=>{
+    var m=Cantilever();var lc=m.LoadCases.Values.Single();lc.ReferenceTemperature=20;
+    m.NodeElements[50].Temperatures.Add(new(){LoadCase=lc,Temperature=35,Type=1});
+    var copy=new ModelModel(m);Near(copy.LoadCases.Values.Single().ReferenceTemperature.Value,20);Assert(copy.NodeElements[50].Temperatures.Single().Type==1);
+    string fingerprint=ModelFingerprint.Compute(copy);copy.LoadCases.Values.Single().ReferenceTemperature=25;Assert(ModelFingerprint.Compute(copy)!=fingerprint);
+    Throws(()=>ModelComposer.Merge(new[]{m,copy},true));
+    Assert(ModelValidator.Validate(copy).IsValid);copy.NodeElements[50].Temperatures[0].Type=3;Assert(!ModelValidator.Validate(copy).IsValid);
+});
+
 if (args.Contains("--native"))
 {
     string folder = Path.Combine(Path.GetTempPath(), "Rhino2Straus-tests-" + Guid.NewGuid().ToString("N"));
@@ -223,6 +269,12 @@ if (args.Contains("--native"))
             var data=new double[9];Check(St7.St7GetBeamMaterialData(s.Id,1,data));Near(data[St7.ipBeamDensity],7.849);
         });
         Test("Native geometry import preserves external labels",()=>{var g=StrausFileService.ReadGeometry(path);Assert(g.Nodes.Length==2&&g.Nodes[1].Id==50&&g.Beams.Length==1);Near(g.Nodes[1].Position.X,2);});
+        Test("Native Model import keeps source bytes and returns editable structural data",()=>{
+            var before=File.ReadAllBytes(path);var imported=StrausModelImport.Read(path);
+            Assert(imported.Complete,string.Join("; ",imported.Issues.Select(i=>i.ToString())));Assert(imported.Model.NodeElements.Count==2&&imported.Model.FrameElements.Count==1);
+            Assert(before.SequenceEqual(File.ReadAllBytes(path)));Assert(imported.Identities.Any(i=>i.Entity=="Node"&&i.NativeLabel==50));
+            Near(imported.Model.NodeElements[2].NodalLoadList.Sum(l=>l.FZ),-1);Near(imported.Model.Materials.Values.Single().ModulusElasticity,2.1e8);
+        });
         Test("Existing files are protected",()=>{var before=File.ReadAllBytes(path);Assert(!Cantilever().CreateModelStraus7R3(path,out _,out _,out _));Assert(File.ReadAllBytes(path).SequenceEqual(before));});
         Test("Native export adds thermal loads, releases, springs and nodal mass",()=>{
             var m=Cantilever();m.NodeElements[50].TranslationMass=new Vector3d(1,2,3);m.NodeElements[10].TranslationSpring=new Vector3d(100,200,300);m.NodeElements[50].Temperatures.Add(new NodeTemperatureModel{LoadCase=loadCase,Temperature=25});m.FrameElements.Values.Single().EndReleases[3]=true;

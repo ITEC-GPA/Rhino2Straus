@@ -1,9 +1,10 @@
 {
   "rhino": "8.35.26251.13001",
-  "plugin": "0.4.3.0",
+  "plugin": "0.5.0.0",
   "nativeSolverRun": false,
   "reports": [
     {
+      "description": "",
       "example": "01_mensola_offset_bake",
       "components": 19,
       "pluginComponents": 19,
@@ -14,6 +15,8 @@
         "plates": 0,
         "loadCases": 1,
         "combinations": 0,
+        "solids": 0,
+        "links": 0,
         "closedBreps": 1,
         "volume": 0.24000000000000002,
         "previewToggleVerified": true,
@@ -25,17 +28,18 @@
       "files": [
         {
           "file": "01_mensola_offset_bake.gh",
-          "bytes": 12445,
-          "sha256": "58b1bcb729e9cf48c57462936bc5fbfe64cfa6b7bd771ca60842a6baf429c7cb"
+          "bytes": 12783,
+          "sha256": "dada4d0d745c6715a034828191b18b522b2d6ab85a9a03608175f0bb0a4eeb96"
         },
         {
           "file": "01_mensola_offset_bake.ghx",
-          "bytes": 392336,
-          "sha256": "044197f156e3b3672930abd3d13dc0aaffaf57f71df298e5e44fb19d55aac2bb"
+          "bytes": 401032,
+          "sha256": "0a60d2b5539194baa6240cfdc4d1db8529547dfab27c58e456ec6e84b91748d0"
         }
       ]
     },
     {
+      "description": "",
       "example": "02_portale_casi_combo_risultati",
       "components": 36,
       "pluginComponents": 35,
@@ -46,6 +50,8 @@
         "plates": 0,
         "loadCases": 2,
         "combinations": 2,
+        "solids": 0,
+        "links": 0,
         "closedBreps": 3,
         "volume": 0.08160000000000026,
         "previewToggleVerified": true,
@@ -66,17 +72,18 @@
       "files": [
         {
           "file": "02_portale_casi_combo_risultati.gh",
-          "bytes": 20292,
-          "sha256": "5d2cfe0f8b0d1150acae092b90a305648f125b83d350d6ca50f51db67eb9a87f"
+          "bytes": 20905,
+          "sha256": "97aa10b344c2ef5321410c686924a49ee36b5c2e5b69e2d332b52b7e50de56f7"
         },
         {
           "file": "02_portale_casi_combo_risultati.ghx",
-          "bytes": 664245,
-          "sha256": "c058b48e2ec7a2675de2aef1590b2d69176a7034b4e965a570193172c49b5fbd"
+          "bytes": 679017,
+          "sha256": "582a02daaac9543791b13f9c3588d10ce6ceb2aacdc6d9ea394885f4b2ee8061"
         }
       ]
     },
     {
+      "description": "",
       "example": "03_piastra_mesh_pressione",
       "components": 17,
       "pluginComponents": 17,
@@ -87,6 +94,8 @@
         "plates": 4,
         "loadCases": 1,
         "combinations": 0,
+        "solids": 0,
+        "links": 0,
         "closedBreps": 4,
         "volume": 2.4000000000000017,
         "previewToggleVerified": true,
@@ -98,13 +107,948 @@
       "files": [
         {
           "file": "03_piastra_mesh_pressione.gh",
-          "bytes": 11812,
-          "sha256": "9e6853d6957ee03471861485ac0cba06445dfe398ea8a8a7e6df060fc57018c1"
+          "bytes": 12145,
+          "sha256": "281d7139e6b3d6ae9603732409740e8e465583b62514acfb98bf62fa7ff9b74b"
         },
         {
           "file": "03_piastra_mesh_pressione.ghx",
-          "bytes": 352171,
-          "sha256": "10db7a3433bc147fbe18b6580290ce4ff4fc84a3b3a237278f486d4c42a02cb1"
+          "bytes": 360866,
+          "sha256": "f7d77f505cfc1a0ccb50d1d7b41f45764b6e771894d29bfb0579a5cac0989d64"
+        }
+      ]
+    },
+    {
+      "description": "Una polilinea genera tre travi. Sezione con punto d\u0027inserimento, asse locale verso un punto, svincolo torsionale finale e cambio proprieta\u0027.\nBeam Behaviour permette Beam / Truss / Cable. Qui rimane Beam: Truss e Cable non sostengono flessione.",
+      "example": "04_frame_polilinea_assi_svincoli",
+      "components": 19,
+      "pluginComponents": 19,
+      "connections": 32,
+      "validation": {
+        "nodes": 4,
+        "beams": 3,
+        "plates": 0,
+        "loadCases": 0,
+        "combinations": 0,
+        "solids": 0,
+        "links": 0,
+        "closedBreps": 3,
+        "volume": 0.47999999999999987,
+        "previewToggleVerified": true,
+        "preflightErrors": [],
+        "preflightWarnings": [],
+        "runtimeErrors": [],
+        "runtimeWarnings": []
+      },
+      "files": [
+        {
+          "file": "04_frame_polilinea_assi_svincoli.gh",
+          "bytes": 11167,
+          "sha256": "ed3929e1d6033d12d4101bf64f073c65889200de9404e6f161e5bbd763e79fd1"
+        },
+        {
+          "file": "04_frame_polilinea_assi_svincoli.ghx",
+          "bytes": 344067,
+          "sha256": "da92d4300d920b720b449caf3b6e310905d56fa97415edb557c4902a5af48f5e"
+        }
+      ]
+    },
+    {
+      "description": "Attributi in sequenza sullo stesso nodo: cedimento imposto, molle, masse, temperatura e forza.\nBuild riceve solo l\u0027ultima copia: collegare copie intermedie sommerebbe nuovamente i contributi. Le rotazioni sono in radianti.",
+      "example": "05_nodi_vincoli_molle_masse_temperatura",
+      "components": 17,
+      "pluginComponents": 17,
+      "connections": 28,
+      "validation": {
+        "nodes": 2,
+        "beams": 1,
+        "plates": 0,
+        "loadCases": 1,
+        "combinations": 0,
+        "solids": 0,
+        "links": 0,
+        "closedBreps": 1,
+        "volume": 0.24000000000000002,
+        "previewToggleVerified": true,
+        "preflightErrors": [],
+        "preflightWarnings": [],
+        "runtimeErrors": [],
+        "runtimeWarnings": []
+      },
+      "files": [
+        {
+          "file": "05_nodi_vincoli_molle_masse_temperatura.gh",
+          "bytes": 10743,
+          "sha256": "6da5a3da4f2ea8a42ef10f2025b626b1078f6242e48a9218e7cd38dab74d0371"
+        },
+        {
+          "file": "05_nodi_vincoli_molle_masse_temperatura.ghx",
+          "bytes": 327000,
+          "sha256": "4df8600eb9f571bda069c4f50d9994f39a9009e693bdccb41e0815099bfdab0b"
+        }
+      ]
+    },
+    {
+      "description": "Confronto dei cinque tipi: rigid, pinned, master-slave, sector symmetry e connessione elastica.\nLe opzioni controllano piano rigido, asse di simmetria e sei relazioni DoF (libero / uguale / opposto).\nLe rigidezze elastiche sono negli assi globali. Ogni coppia ha il primo nodo bloccato. Esempio di assegnazione: non ogni configurazione e\u0027 stabile per ogni solver.",
+      "example": "06_link_rigidi_elastici_master_slave",
+      "components": 21,
+      "pluginComponents": 21,
+      "connections": 34,
+      "validation": {
+        "nodes": 12,
+        "beams": 0,
+        "plates": 0,
+        "loadCases": 0,
+        "combinations": 0,
+        "solids": 0,
+        "links": 6,
+        "closedBreps": 0,
+        "volume": 0,
+        "previewToggleVerified": true,
+        "preflightErrors": [],
+        "preflightWarnings": [],
+        "runtimeErrors": [],
+        "runtimeWarnings": [
+          "Brep: Floating parameter Brep pronti per Bake failed to collect data"
+        ]
+      },
+      "files": [
+        {
+          "file": "06_link_rigidi_elastici_master_slave.gh",
+          "bytes": 11667,
+          "sha256": "df59cd8e0b988db4ec0d14684d0d1b652cf70775ab604f3acb5bc3aad8c5ac5d"
+        },
+        {
+          "file": "06_link_rigidi_elastici_master_slave.ghx",
+          "bytes": 403754,
+          "sha256": "92bcf3b8dfbc0b6391fa203579b6d5ea73fd6902bc5cf2134744661d9412aa27"
+        }
+      ]
+    },
+    {
+      "description": "Una mesh mista produce due Tri3 e un Quad4; un\u0027altra faccia usa Area Element.\nRiassegnazione della proprieta\u0027, allineamento a un piano e lettura degli assi. Invertire l\u0027ordine dei vertici cambia normale e lato dei carichi.",
+      "example": "07_mesh_tri_quad_proprieta_assi",
+      "components": 15,
+      "pluginComponents": 15,
+      "connections": 29,
+      "validation": {
+        "nodes": 12,
+        "beams": 0,
+        "plates": 4,
+        "loadCases": 0,
+        "combinations": 0,
+        "solids": 0,
+        "links": 0,
+        "closedBreps": 4,
+        "volume": 2.3999999999999995,
+        "previewToggleVerified": true,
+        "preflightErrors": [],
+        "preflightWarnings": [
+          "No restraints or translation springs. Check stability before solving."
+        ],
+        "runtimeErrors": [],
+        "runtimeWarnings": []
+      },
+      "files": [
+        {
+          "file": "07_mesh_tri_quad_proprieta_assi.gh",
+          "bytes": 10425,
+          "sha256": "9549fb5a95d3eb67a8c6dfb8f42b69012a0a6d64e1150e75fea92b1218a96170"
+        },
+        {
+          "file": "07_mesh_tri_quad_proprieta_assi.ghx",
+          "bytes": 304947,
+          "sha256": "cde53928a846640a0f9811fabad11c1bbfb1f48545f99f3dc7ec9c5381c9d012"
+        }
+      ]
+    },
+    {
+      "description": "Tet4, Wedge6 e Hexa8 costruiti con nodi ordinati secondo Straus.\nPressione su una faccia, incastro dei nodi a Z=0, controllo dei volumi e Brep chiusi per bake.\nVolumi attesi: 1/6, 1/2 e 1 m3. Numerazione delle facce nativa: controllare la preview prima del calcolo.",
+      "example": "08_solidi_tet_wedge_hexa_pressione",
+      "components": 22,
+      "pluginComponents": 22,
+      "connections": 41,
+      "validation": {
+        "nodes": 18,
+        "beams": 0,
+        "plates": 0,
+        "loadCases": 1,
+        "combinations": 0,
+        "solids": 3,
+        "links": 0,
+        "closedBreps": 3,
+        "volume": 1.6666666666666665,
+        "previewToggleVerified": true,
+        "preflightErrors": [],
+        "preflightWarnings": [],
+        "runtimeErrors": [],
+        "runtimeWarnings": []
+      },
+      "files": [
+        {
+          "file": "08_solidi_tet_wedge_hexa_pressione.gh",
+          "bytes": 11129,
+          "sha256": "afb2ed03f503f66c699550e91c1f1b1df96eb85e5ca7e690010e5c739a8f34b3"
+        },
+        {
+          "file": "08_solidi_tet_wedge_hexa_pressione.ghx",
+          "bytes": 394626,
+          "sha256": "f218604f7c1478fe8a301a9caa1bda633e103e64546707e51ae93d316f811684"
+        }
+      ]
+    },
+    {
+      "description": "Otto tipologie geometriche e una sezione generica con contorno esplicito per la preview.\nMaterial custom con resistenze nominali assegnate separatamente (MPa). Le resistenze non modificano il modulo elastico.\nLa sezione generica e\u0027 un quadrato 0.1 x 0.1 m: i valori numerici e il contorno devono essere coerenti; il profilo non ricalcola la rigidezza.",
+      "example": "09_materiali_sezioni_base_generica",
+      "components": 45,
+      "pluginComponents": 45,
+      "connections": 80,
+      "validation": {
+        "nodes": 18,
+        "beams": 9,
+        "plates": 0,
+        "loadCases": 0,
+        "combinations": 0,
+        "solids": 0,
+        "links": 0,
+        "closedBreps": 9,
+        "volume": 0.22736282721901574,
+        "previewToggleVerified": true,
+        "preflightErrors": [],
+        "preflightWarnings": [
+          "No restraints or translation springs. Check stability before solving."
+        ],
+        "runtimeErrors": [],
+        "runtimeWarnings": []
+      },
+      "files": [
+        {
+          "file": "09_materiali_sezioni_base_generica.gh",
+          "bytes": 21099,
+          "sha256": "405dfd9bfbebf25e251ebd703cf04de2ed6ff4b611e8e71f83137135e30a777b"
+        },
+        {
+          "file": "09_materiali_sezioni_base_generica.ghx",
+          "bytes": 885784,
+          "sha256": "ff5a25e31d1ff93ae45352a151b53cb298a78e5437c05c12891825822fa01a62"
+        }
+      ]
+    },
+    {
+      "description": "Sezioni native Straus: cruciforme, canale labbrato, T labbrato, top-hat, trapezio e triangolo pieni/cavi, Z.\nNative Section Options controlla discretizzazione e taglio. API necessaria: Genera profili e\u0027 False all\u0027apertura.",
+      "example": "10_sezioni_native_standard",
+      "components": 55,
+      "pluginComponents": 45,
+      "connections": 116,
+      "validation": {
+        "nativeOnly": true,
+        "runtimeErrors": [],
+        "runtimeWarnings": [
+          "Beam Section Cruciform: Input parameter Name failed to collect data",
+          "Deconstruct Beam Section: Input parameter Section failed to collect data",
+          "Panel: Floating parameter Area calcolata [m2] failed to collect data",
+          "Frame Property: Input parameter Section failed to collect data",
+          "Frame element: Input parameter Frame Property failed to collect data",
+          "Beam Section Lipped Channel: Input parameter Name failed to collect data",
+          "Deconstruct Beam Section: Input parameter Section failed to collect data",
+          "Panel: Floating parameter Area calcolata [m2] failed to collect data",
+          "Frame Property: Input parameter Section failed to collect data",
+          "Frame element: Input parameter Frame Property failed to collect data",
+          "Beam Section Lipped Tee: Input parameter Name failed to collect data",
+          "Deconstruct Beam Section: Input parameter Section failed to collect data",
+          "Panel: Floating parameter Area calcolata [m2] failed to collect data",
+          "Frame Property: Input parameter Section failed to collect data",
+          "Frame element: Input parameter Frame Property failed to collect data",
+          "Beam Section Top Hat Channel: Input parameter Name failed to collect data",
+          "Deconstruct Beam Section: Input parameter Section failed to collect data",
+          "Panel: Floating parameter Area calcolata [m2] failed to collect data",
+          "Frame Property: Input parameter Section failed to collect data",
+          "Frame element: Input parameter Frame Property failed to collect data",
+          "Beam Section Hollow Trapezoid: Input parameter Name failed to collect data",
+          "Deconstruct Beam Section: Input parameter Section failed to collect data",
+          "Panel: Floating parameter Area calcolata [m2] failed to collect data",
+          "Frame Property: Input parameter Section failed to collect data",
+          "Frame element: Input parameter Frame Property failed to collect data",
+          "Beam Section Solid Trapezoid: Input parameter Name failed to collect data",
+          "Deconstruct Beam Section: Input parameter Section failed to collect data",
+          "Panel: Floating parameter Area calcolata [m2] failed to collect data",
+          "Frame Property: Input parameter Section failed to collect data",
+          "Frame element: Input parameter Frame Property failed to collect data",
+          "Beam Section Hollow Triangle: Input parameter Name failed to collect data",
+          "Deconstruct Beam Section: Input parameter Section failed to collect data",
+          "Panel: Floating parameter Area calcolata [m2] failed to collect data",
+          "Frame Property: Input parameter Section failed to collect data",
+          "Frame element: Input parameter Frame Property failed to collect data",
+          "Beam Section Solid Triangle: Input parameter Name failed to collect data",
+          "Deconstruct Beam Section: Input parameter Section failed to collect data",
+          "Panel: Floating parameter Area calcolata [m2] failed to collect data",
+          "Frame Property: Input parameter Section failed to collect data",
+          "Frame element: Input parameter Frame Property failed to collect data",
+          "Beam Section Z: Input parameter Name failed to collect data",
+          "Deconstruct Beam Section: Input parameter Section failed to collect data",
+          "Panel: Floating parameter Area calcolata [m2] failed to collect data",
+          "Frame Property: Input parameter Section failed to collect data",
+          "Frame element: Input parameter Frame Property failed to collect data",
+          "Clear Model Results: Input parameter Model failed to collect data",
+          "Validate Straus Model: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Preflight valido failed to collect data",
+          "Panel: Floating parameter Errori failed to collect data",
+          "Model Summary: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Numero nodi failed to collect data",
+          "Panel: Floating parameter Travi failed to collect data",
+          "Panel: Floating parameter Piastre failed to collect data",
+          "Decompose Model: Input parameter Model failed to collect data",
+          "Rhino2Straus Display Manager: Input parameter M failed to collect data",
+          "Brep: Floating parameter Brep pronti per Bake failed to collect data",
+          "Panel: Floating parameter Problemi Brep failed to collect data"
+        ]
+      },
+      "files": [
+        {
+          "file": "10_sezioni_native_standard.gh",
+          "bytes": 23683,
+          "sha256": "9adff26b7c25d1056f44e235c48c4999bf2496b63737d83946acfff19d733b43"
+        },
+        {
+          "file": "10_sezioni_native_standard.ghx",
+          "bytes": 1054252,
+          "sha256": "1f52b408b2c7948fc183d0fb909492b8a0158f42fa41622392d3c5355235b392"
+        }
+      ]
+    },
+    {
+      "description": "Sezioni BGL: angolare, bulb, canale, I, RHS e T. Le dimensioni sono negli input del componente.\nRichiede API Straus: abilita Genera profili per calcolare rigidezze e contorni. Ogni sezione alimenta una trave e un solo Model.",
+      "example": "11_sezioni_native_bgl",
+      "components": 40,
+      "pluginComponents": 33,
+      "connections": 83,
+      "validation": {
+        "nativeOnly": true,
+        "runtimeErrors": [],
+        "runtimeWarnings": [
+          "Beam Section BGL Angle: Input parameter Name failed to collect data",
+          "Deconstruct Beam Section: Input parameter Section failed to collect data",
+          "Panel: Floating parameter Area calcolata [m2] failed to collect data",
+          "Frame Property: Input parameter Section failed to collect data",
+          "Frame element: Input parameter Frame Property failed to collect data",
+          "Beam Section BGL Bulb Flat: Input parameter Name failed to collect data",
+          "Deconstruct Beam Section: Input parameter Section failed to collect data",
+          "Panel: Floating parameter Area calcolata [m2] failed to collect data",
+          "Frame Property: Input parameter Section failed to collect data",
+          "Frame element: Input parameter Frame Property failed to collect data",
+          "Beam Section BGL Channel: Input parameter Name failed to collect data",
+          "Deconstruct Beam Section: Input parameter Section failed to collect data",
+          "Panel: Floating parameter Area calcolata [m2] failed to collect data",
+          "Frame Property: Input parameter Section failed to collect data",
+          "Frame element: Input parameter Frame Property failed to collect data",
+          "Beam Section BGL I: Input parameter Name failed to collect data",
+          "Deconstruct Beam Section: Input parameter Section failed to collect data",
+          "Panel: Floating parameter Area calcolata [m2] failed to collect data",
+          "Frame Property: Input parameter Section failed to collect data",
+          "Frame element: Input parameter Frame Property failed to collect data",
+          "Beam Section BGL Rectangular Hollow: Input parameter Name failed to collect data",
+          "Deconstruct Beam Section: Input parameter Section failed to collect data",
+          "Panel: Floating parameter Area calcolata [m2] failed to collect data",
+          "Frame Property: Input parameter Section failed to collect data",
+          "Frame element: Input parameter Frame Property failed to collect data",
+          "Beam Section BGL Tee: Input parameter Name failed to collect data",
+          "Deconstruct Beam Section: Input parameter Section failed to collect data",
+          "Panel: Floating parameter Area calcolata [m2] failed to collect data",
+          "Frame Property: Input parameter Section failed to collect data",
+          "Frame element: Input parameter Frame Property failed to collect data",
+          "Clear Model Results: Input parameter Model failed to collect data",
+          "Validate Straus Model: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Preflight valido failed to collect data",
+          "Panel: Floating parameter Errori failed to collect data",
+          "Model Summary: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Numero nodi failed to collect data",
+          "Panel: Floating parameter Travi failed to collect data",
+          "Panel: Floating parameter Piastre failed to collect data",
+          "Decompose Model: Input parameter Model failed to collect data",
+          "Rhino2Straus Display Manager: Input parameter M failed to collect data",
+          "Brep: Floating parameter Brep pronti per Bake failed to collect data",
+          "Panel: Floating parameter Problemi Brep failed to collect data"
+        ]
+      },
+      "files": [
+        {
+          "file": "11_sezioni_native_bgl.gh",
+          "bytes": 20562,
+          "sha256": "f09d75b5454dd2aa11acafb3edba6574c2bda453a9e1a42ebcdcb97e72b0c37b"
+        },
+        {
+          "file": "11_sezioni_native_bgl.ghx",
+          "bytes": 878312,
+          "sha256": "ed879827f182747b1654e81cf5111b544887931b2c1c340df1f1d4ecea7ad328"
+        }
+      ]
+    },
+    {
+      "description": "Importazione di una sezione .bxs esistente. Imposta il percorso, poi Leggi BXS=True.\nIl componente conserva i dati BXS nel Model per l\u0027export. Section Info espone contorno e proprieta\u0027.\nIl profilo viene estruso lungo una trave; Display Manager espone Breps per bake manuale.",
+      "example": "12_sezione_bxs_profilo_bake",
+      "components": 14,
+      "pluginComponents": 12,
+      "connections": 27,
+      "validation": {
+        "nativeOnly": true,
+        "runtimeErrors": [],
+        "runtimeWarnings": [
+          "Beam Section BXS: Input parameter BXS file failed to collect data",
+          "Frame Property: Input parameter Section failed to collect data",
+          "Deconstruct Beam Section: Input parameter Section failed to collect data",
+          "Panel: Floating parameter Tipo sezione failed to collect data",
+          "Frame element: Input parameter Frame Property failed to collect data",
+          "Clear Model Results: Input parameter Model failed to collect data",
+          "Validate Straus Model: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Preflight valido failed to collect data",
+          "Panel: Floating parameter Errori failed to collect data",
+          "Model Summary: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Numero nodi failed to collect data",
+          "Panel: Floating parameter Travi failed to collect data",
+          "Panel: Floating parameter Piastre failed to collect data",
+          "Decompose Model: Input parameter Model failed to collect data",
+          "Rhino2Straus Display Manager: Input parameter M failed to collect data",
+          "Brep: Floating parameter Brep pronti per Bake failed to collect data",
+          "Panel: Floating parameter Problemi Brep failed to collect data"
+        ]
+      },
+      "files": [
+        {
+          "file": "12_sezione_bxs_profilo_bake.gh",
+          "bytes": 10554,
+          "sha256": "2fe67e0e71631a769b11f5103f23bd24cf8424150a4d03b7f684cf789993af9d"
+        },
+        {
+          "file": "12_sezione_bxs_profilo_bake.ghx",
+          "bytes": 304123,
+          "sha256": "ab5dd7ff27d5646c70a1941ac34e88b5cddd39a5a8374a0fe8368d8f9bc8ffd3"
+        }
+      ]
+    },
+    {
+      "description": "Gruppi gerarchici, filtri per posizione/proprieta\u0027/gruppo, decomposizione e ricostruzione.\nI filtri combinano i criteri con OR. Un solo Model finale. Per un import collegare anche Preserve nodes e Self weight.\nMerge salda le parti create; se una parte viene da import, conserva i nodi distinti.",
+      "example": "13_modello_gruppi_filtri_ricostruzione",
+      "components": 23,
+      "pluginComponents": 23,
+      "connections": 43,
+      "validation": {
+        "nodes": 2,
+        "beams": 1,
+        "plates": 0,
+        "loadCases": 1,
+        "combinations": 0,
+        "solids": 0,
+        "links": 0,
+        "closedBreps": 1,
+        "volume": 0.24000000000000002,
+        "previewToggleVerified": true,
+        "preflightErrors": [],
+        "preflightWarnings": [],
+        "runtimeErrors": [],
+        "runtimeWarnings": []
+      },
+      "files": [
+        {
+          "file": "13_modello_gruppi_filtri_ricostruzione.gh",
+          "bytes": 12833,
+          "sha256": "047f29390c5b2faa75a58d334dc40cd9af3fd6f4a74f1f022e6bb2c3a919c67a"
+        },
+        {
+          "file": "13_modello_gruppi_filtri_ricostruzione.ghx",
+          "bytes": 430192,
+          "sha256": "602cf4d951ea808c506dce8ed82c970fee2d9cbf6f5ab948a97b2303bd054854"
+        }
+      ]
+    },
+    {
+      "description": "Carichi concatenati: forza e momento concentrati, distribuzione lineare parziale, gradiente termico e pretensione.\nPosizioni relative da nodo 1: 0..1. Carichi locali lungo assi principali; carichi globali indipendenti dalla rotazione della sezione.\nPeso proprio G separato dai carichi Q. Tutti gli attributi rimangono nel Model unico.",
+      "example": "14_carichi_travi_peso_proprio",
+      "components": 22,
+      "pluginComponents": 22,
+      "connections": 38,
+      "validation": {
+        "nodes": 2,
+        "beams": 1,
+        "plates": 0,
+        "loadCases": 2,
+        "combinations": 0,
+        "solids": 0,
+        "links": 0,
+        "closedBreps": 1,
+        "volume": 0.24000000000000002,
+        "previewToggleVerified": true,
+        "preflightErrors": [],
+        "preflightWarnings": [],
+        "runtimeErrors": [],
+        "runtimeWarnings": []
+      },
+      "files": [
+        {
+          "file": "14_carichi_travi_peso_proprio.gh",
+          "bytes": 12721,
+          "sha256": "902335f74a5cfe6e6f7606e130e71c759c3a0ab52225bb00710e73c8a4ea0370"
+        },
+        {
+          "file": "14_carichi_travi_peso_proprio.ghx",
+          "bytes": 420103,
+          "sha256": "f365ab919424bc70f5f8d7c22e3f12bad85c7543efb0af6ed377773aa1001ece"
+        }
+      ]
+    },
+    {
+      "description": "Carico normale alla piastra, pressione globale, pressione su bordo, gradiente termico e predeformazione nel piano.\nI carichi vengono applicati in sequenza sulla stessa piastra. Il filtro finale mostra la selezione per proprieta\u0027.\nNormal pressure e Global pressure sono attributi diversi: qui vengono sommati intenzionalmente per illustrare il flusso.",
+      "example": "15_carichi_piastre_termici_precarico",
+      "components": 19,
+      "pluginComponents": 19,
+      "connections": 34,
+      "validation": {
+        "nodes": 4,
+        "beams": 0,
+        "plates": 1,
+        "loadCases": 1,
+        "combinations": 0,
+        "solids": 0,
+        "links": 0,
+        "closedBreps": 1,
+        "volume": 0.8000000000000002,
+        "previewToggleVerified": true,
+        "preflightErrors": [],
+        "preflightWarnings": [],
+        "runtimeErrors": [],
+        "runtimeWarnings": []
+      },
+      "files": [
+        {
+          "file": "15_carichi_piastre_termici_precarico.gh",
+          "bytes": 11856,
+          "sha256": "f585443cb7a9deea3fb7121435f8b5e09c9113d58c8f3fcf0402e56259b0e715"
+        },
+        {
+          "file": "15_carichi_piastre_termici_precarico.ghx",
+          "bytes": 360721,
+          "sha256": "d4731b74acd1090f78f202c15769a5322660d4a6b88973c5cc49d6a6d1fca5b3"
+        }
+      ]
+    },
+    {
+      "description": "1. Il modello dimostrativo puo\u0027 essere esportato con Run. 2. Read Straus Model legge quel file o un altro .st7.\n3. Controlla Complete, Report e Identity map: il Model contiene geometrie, proprieta\u0027, carichi e attributi supportati.\nIl file sorgente non viene salvato. L\u0027import normalizza in metri e kN; Allow partial=False blocca il Model in presenza di omissioni.\nLa lettura geometrica e il bake diretto dal file sono alternative. Ogni azione ha un interruttore indipendente.",
+      "example": "16_export_import_model_esistente",
+      "components": 23,
+      "pluginComponents": 22,
+      "connections": 56,
+      "validation": {
+        "nativeOnly": true,
+        "runtimeErrors": [],
+        "runtimeWarnings": [
+          "Decompose Model: Input parameter Model failed to collect data",
+          "Build Model: Input parameter Keep nodes failed to collect data",
+          "Straus7 R3 Export: Input parameter M failed to collect data",
+          "Rhino2Straus Display Manager: Input parameter M failed to collect data",
+          "Brep: Floating parameter Brep pronti per Bake failed to collect data",
+          "Panel: Floating parameter Problemi Brep failed to collect data",
+          "Validate Straus Model: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Preflight valido failed to collect data",
+          "Panel: Floating parameter Errori failed to collect data",
+          "Model Summary: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Numero nodi failed to collect data",
+          "Panel: Floating parameter Travi failed to collect data",
+          "Panel: Floating parameter Piastre failed to collect data",
+          "Decompose Model: Input parameter Model failed to collect data",
+          "Read Straus Geometry: Input parameter Model path failed to collect data",
+          "Panel: Floating parameter Label file originale failed to collect data"
+        ]
+      },
+      "files": [
+        {
+          "file": "16_export_import_model_esistente.gh",
+          "bytes": 15513,
+          "sha256": "0e881c9328bed3618a7095d7cbd27429b9f3e22be7e7156ed5922829fa9dd2da"
+        },
+        {
+          "file": "16_export_import_model_esistente.ghx",
+          "bytes": 501368,
+          "sha256": "49fa0b7e1162ab81ee37d2c0b0131e88259c59d018f9603b597eb2c42ebb2e9e"
+        }
+      ]
+    },
+    {
+      "description": "Mensola con massa strutturale: Run Model Natural Frequencies esporta, esegue e incorpora i risultati.\nImposta percorso e numero modi. Le ampiezze modali dipendono dalla normalizzazione Straus: non sono spostamenti sotto Q.\nIl Model contiene frequenze, masse modali, casi e forme deformate; tutti i comandi sono inizialmente False.",
+      "example": "17_analisi_modale",
+      "components": 19,
+      "pluginComponents": 18,
+      "connections": 35,
+      "validation": {
+        "nodes": 2,
+        "beams": 1,
+        "plates": 0,
+        "loadCases": 1,
+        "combinations": 0,
+        "solids": 0,
+        "links": 0,
+        "closedBreps": 1,
+        "volume": 0.24000000000000002,
+        "previewToggleVerified": true,
+        "preflightErrors": [],
+        "preflightWarnings": [],
+        "runtimeErrors": [],
+        "runtimeWarnings": [
+          "Model Modal and Buckling Data: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Frequenze [Hz] failed to collect data",
+          "Model Deformed Geometry: Input parameter Model failed to collect data"
+        ]
+      },
+      "files": [
+        {
+          "file": "17_analisi_modale.gh",
+          "bytes": 12419,
+          "sha256": "a748fc77c6ae29335c4bfafea76b4ded2081b79d8ac1554f4d44a4843fb48490"
+        },
+        {
+          "file": "17_analisi_modale.ghx",
+          "bytes": 385579,
+          "sha256": "a9ab8e1e0e6156c46f7ca55dc0398bcd0045d5c30a476a6ce8825ab2067579a5"
+        }
+      ]
+    },
+    {
+      "description": "Mensola compressa. Prima esegui statica; poi abilita il solver buckling che riceve Initial LSA dalla statica.\nVariable result case=1, Fixed result case=0. Il fattore critico moltiplica il carico di riferimento.\nUsa lo stesso modello di input nei due solver. Il cambio dei dati richiede una nuova statica. Le forme sono autovettori normalizzati.",
+      "example": "18_analisi_buckling",
+      "components": 21,
+      "pluginComponents": 19,
+      "connections": 41,
+      "validation": {
+        "nodes": 2,
+        "beams": 1,
+        "plates": 0,
+        "loadCases": 1,
+        "combinations": 0,
+        "solids": 0,
+        "links": 0,
+        "closedBreps": 1,
+        "volume": 0.24000000000000002,
+        "previewToggleVerified": true,
+        "preflightErrors": [],
+        "preflightWarnings": [],
+        "runtimeErrors": [],
+        "runtimeWarnings": [
+          "Run Model Linear Buckling: Input parameter Model failed to collect data",
+          "Stream Gate: Input parameter S failed to collect data",
+          "Model Modal and Buckling Data: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Fattori critici failed to collect data",
+          "Model Deformed Geometry: Input parameter Model failed to collect data"
+        ]
+      },
+      "files": [
+        {
+          "file": "18_analisi_buckling.gh",
+          "bytes": 13452,
+          "sha256": "5b8d6e9ef79ea4e19d39712857e6d83af501bb6ca29432b1a4da5c7a8a296897"
+        },
+        {
+          "file": "18_analisi_buckling.ghx",
+          "bytes": 435044,
+          "sha256": "27f9697c801a5af854a6b99a41727352bd20f95eecfb3ae65e298e0e5d22edda"
+        }
+      ]
+    },
+    {
+      "description": "Analisi statica con non linearita\u0027 geometrica della mensola; Q viene applicato in dieci incrementi.\nNonlinear geometry=True, materiale elastico. Non e\u0027 una legge plastica del materiale.\nModel Result Cases espone gli incrementi disponibili; leggere valori e diagrammi per il caso desiderato.",
+      "example": "19_analisi_non_lineare",
+      "components": 19,
+      "pluginComponents": 18,
+      "connections": 35,
+      "validation": {
+        "nodes": 2,
+        "beams": 1,
+        "plates": 0,
+        "loadCases": 1,
+        "combinations": 0,
+        "solids": 0,
+        "links": 0,
+        "closedBreps": 1,
+        "volume": 0.24000000000000002,
+        "previewToggleVerified": true,
+        "preflightErrors": [],
+        "preflightWarnings": [],
+        "runtimeErrors": [],
+        "runtimeWarnings": [
+          "Model Result Cases: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Incrementi risolti failed to collect data",
+          "Model Beam Actions N V T M: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Momenti M2 failed to collect data"
+        ]
+      },
+      "files": [
+        {
+          "file": "19_analisi_non_lineare.gh",
+          "bytes": 12653,
+          "sha256": "c55bd01a11089fbdbae563f852ceed43c54220624a3c8ac4f4dbd28e55847e89"
+        },
+        {
+          "file": "19_analisi_non_lineare.ghx",
+          "bytes": 398605,
+          "sha256": "f67977411e084191b166c58c1197644f6b3e2f7ba006ba3c1c92910773f65e68"
+        }
+      ]
+    },
+    {
+      "description": "Tutti i lettori Model per nodi, travi e link. Prima avvia la statica.\nCase=0 legge tutti i casi; IDs vuoto legge tutti gli elementi. Records conserva caso, ID, numero nativo, assi, colonne e campionamento.\nValues usa rami per caso/elemento/superficie. Controlla Columns e Unavailable: una quantita\u0027 non disponibile non equivale a zero.",
+      "example": "20_risultati_nodi_travi_link",
+      "components": 32,
+      "pluginComponents": 31,
+      "connections": 70,
+      "validation": {
+        "nodes": 3,
+        "beams": 1,
+        "plates": 0,
+        "loadCases": 1,
+        "combinations": 0,
+        "solids": 0,
+        "links": 1,
+        "closedBreps": 1,
+        "volume": 0.24000000000000002,
+        "previewToggleVerified": true,
+        "preflightErrors": [],
+        "preflightWarnings": [],
+        "runtimeErrors": [],
+        "runtimeWarnings": [
+          "Model Node Displacement: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Node Displacement failed to collect data",
+          "Panel: Floating parameter Valori / Model Node Displacement failed to collect data",
+          "Decompose Result Record: Input parameter Record failed to collect data",
+          "Panel: Floating parameter ID nel Model failed to collect data",
+          "Model Node Reaction: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Node Reaction failed to collect data",
+          "Panel: Floating parameter Valori / Model Node Reaction failed to collect data",
+          "Model Link Node Displacement: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Link Node Displacement failed to collect data",
+          "Panel: Floating parameter Valori / Model Link Node Displacement failed to collect data",
+          "Model Link Node Reaction: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Link Node Reaction failed to collect data",
+          "Panel: Floating parameter Valori / Model Link Node Reaction failed to collect data",
+          "Model Beam Displacement: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Beam Displacement failed to collect data",
+          "Panel: Floating parameter Valori / Model Beam Displacement failed to collect data",
+          "Model Beam Force: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Beam Force failed to collect data",
+          "Panel: Floating parameter Valori / Model Beam Force failed to collect data",
+          "Model Beam Node Reaction: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Beam Node Reaction failed to collect data",
+          "Panel: Floating parameter Valori / Model Beam Node Reaction failed to collect data",
+          "Model Beam Strain: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Beam Strain failed to collect data",
+          "Panel: Floating parameter Valori / Model Beam Strain failed to collect data",
+          "Model Beam Stress: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Beam Stress failed to collect data",
+          "Panel: Floating parameter Valori / Model Beam Stress failed to collect data",
+          "Model Beam Total Strain: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Beam Total Strain failed to collect data",
+          "Panel: Floating parameter Valori / Model Beam Total Strain failed to collect data",
+          "Model Native Beam Sections: Input parameter Model failed to collect data",
+          "Decompose Native Beam Section: Input parameter Section failed to collect data",
+          "Panel: Floating parameter Area effettivamente usata dal solver failed to collect data",
+          "Model Verification Data: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Dati mancanti per verifica failed to collect data"
+        ]
+      },
+      "files": [
+        {
+          "file": "20_risultati_nodi_travi_link.gh",
+          "bytes": 18857,
+          "sha256": "9d5f9cff932426a095eb2185f0497a90cabd936bef5584bea9f185100aef1afe"
+        },
+        {
+          "file": "20_risultati_nodi_travi_link.ghx",
+          "bytes": 691427,
+          "sha256": "a5851cb86afb96cee12b8003d3d7e07432c60df5dbf03468f4bbd8f6483667b7"
+        }
+      ]
+    },
+    {
+      "description": "Model misto: una piastra Quad4 e un Hexa8 con appoggi e pressione.\nLettura di forze, momenti, curvature, tensioni, deformazioni, reazioni e spostamenti nodali per elemento.\nLe famiglie di risultati seguono i campionamenti e gli assi dichiarati nei Records. Controlla il lato/superficie delle piastre.",
+      "example": "21_risultati_piastre_solidi",
+      "components": 34,
+      "pluginComponents": 33,
+      "connections": 77,
+      "validation": {
+        "nodes": 12,
+        "beams": 0,
+        "plates": 1,
+        "loadCases": 1,
+        "combinations": 0,
+        "solids": 1,
+        "links": 0,
+        "closedBreps": 2,
+        "volume": 1.7999999999999998,
+        "previewToggleVerified": true,
+        "preflightErrors": [],
+        "preflightWarnings": [],
+        "runtimeErrors": [],
+        "runtimeWarnings": [
+          "Model Plate Curvature: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Plate Curvature failed to collect data",
+          "Panel: Floating parameter Valori / Model Plate Curvature failed to collect data",
+          "Decompose Result Record: Input parameter Record failed to collect data",
+          "Panel: Floating parameter ID nel Model failed to collect data",
+          "Model Plate Force: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Plate Force failed to collect data",
+          "Panel: Floating parameter Valori / Model Plate Force failed to collect data",
+          "Model Plate Moment: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Plate Moment failed to collect data",
+          "Panel: Floating parameter Valori / Model Plate Moment failed to collect data",
+          "Model Plate Node Displacement: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Plate Node Displacement failed to collect data",
+          "Panel: Floating parameter Valori / Model Plate Node Displacement failed to collect data",
+          "Model Plate Node Reaction: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Plate Node Reaction failed to collect data",
+          "Panel: Floating parameter Valori / Model Plate Node Reaction failed to collect data",
+          "Model Plate Strain: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Plate Strain failed to collect data",
+          "Panel: Floating parameter Valori / Model Plate Strain failed to collect data",
+          "Model Plate Stress: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Plate Stress failed to collect data",
+          "Panel: Floating parameter Valori / Model Plate Stress failed to collect data",
+          "Model Plate Total Strain: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Plate Total Strain failed to collect data",
+          "Panel: Floating parameter Valori / Model Plate Total Strain failed to collect data",
+          "Model Solid Node Displacement: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Solid Node Displacement failed to collect data",
+          "Panel: Floating parameter Valori / Model Solid Node Displacement failed to collect data",
+          "Model Solid Node Reaction: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Solid Node Reaction failed to collect data",
+          "Panel: Floating parameter Valori / Model Solid Node Reaction failed to collect data",
+          "Model Solid Strain: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Solid Strain failed to collect data",
+          "Panel: Floating parameter Valori / Model Solid Strain failed to collect data",
+          "Model Solid Stress: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Solid Stress failed to collect data",
+          "Panel: Floating parameter Valori / Model Solid Stress failed to collect data",
+          "Model Solid Total Strain: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Colonne / Model Solid Total Strain failed to collect data",
+          "Panel: Floating parameter Valori / Model Solid Total Strain failed to collect data"
+        ]
+      },
+      "files": [
+        {
+          "file": "21_risultati_piastre_solidi.gh",
+          "bytes": 18772,
+          "sha256": "25c2152e5300ac80fb79e57c3ae2046d3837b882e610f66c7b263c21d6045978"
+        },
+        {
+          "file": "21_risultati_piastre_solidi.ghx",
+          "bytes": 727374,
+          "sha256": "453a2f95c4e150577f688af9381f65a6a8c9190c90fc0348a3257d872222b3be"
+        }
+      ]
+    },
+    {
+      "description": "Lettori diretti di file Straus: .st7 e risultati gia\u0027 calcolati (.LSA / .NFA / .LBA / .NLA).\nScegli file corrispondenti e numeri nativi degli elementi, non le label. Leggi=True apre i lettori; non avvia un solver.\nLa zona inferiore mostra i solver su file esistente, con pulsanti separati. Non sovrascrivere un file di produzione per provare l\u0027esempio.\nLa geometria deformata usa punti e spostamenti con la stessa sequenza di numeri nodo.",
+      "example": "22_file_esistenti_solver_risultati",
+      "components": 24,
+      "pluginComponents": 20,
+      "connections": 70,
+      "validation": {
+        "nativeOnly": true,
+        "runtimeErrors": [],
+        "runtimeWarnings": [
+          "Straus Result Cases: Input parameter Model path failed to collect data",
+          "Straus Result Cases: Input parameter Result path failed to collect data",
+          "Panel: Floating parameter Valori / Straus Result Cases failed to collect data",
+          "Node Displacements: Input parameter Model path failed to collect data",
+          "Node Displacements: Input parameter Result path failed to collect data",
+          "Node Displacements: Input parameter Node numbers failed to collect data",
+          "Panel: Floating parameter Valori / Node Displacements failed to collect data",
+          "Node Reactions: Input parameter Model path failed to collect data",
+          "Node Reactions: Input parameter Result path failed to collect data",
+          "Panel: Floating parameter Valori / Node Reactions failed to collect data",
+          "Beam Forces: Input parameter Model path failed to collect data",
+          "Beam Forces: Input parameter Result path failed to collect data",
+          "Panel: Floating parameter Valori / Beam Forces failed to collect data",
+          "Result Envelope: Input parameter Cases failed to collect data",
+          "Panel: Floating parameter Inviluppo dei rami M2 failed to collect data",
+          "Beam Stress: Input parameter Model path failed to collect data",
+          "Beam Stress: Input parameter Result path failed to collect data",
+          "Panel: Floating parameter Valori / Beam Stress failed to collect data",
+          "Beam Displacements: Input parameter Model path failed to collect data",
+          "Beam Displacements: Input parameter Result path failed to collect data",
+          "Panel: Floating parameter Valori / Beam Displacements failed to collect data",
+          "Plate Forces: Input parameter Model path failed to collect data",
+          "Plate Forces: Input parameter Result path failed to collect data",
+          "Panel: Floating parameter Valori / Plate Forces failed to collect data",
+          "Plate Moments: Input parameter Model path failed to collect data",
+          "Plate Moments: Input parameter Result path failed to collect data",
+          "Panel: Floating parameter Valori / Plate Moments failed to collect data",
+          "Plate Stress: Input parameter Model path failed to collect data",
+          "Plate Stress: Input parameter Result path failed to collect data",
+          "Panel: Floating parameter Valori / Plate Stress failed to collect data",
+          "Solid Strain: Input parameter Model path failed to collect data",
+          "Solid Strain: Input parameter Result path failed to collect data",
+          "Panel: Floating parameter Valori / Solid Strain failed to collect data",
+          "Solid Stress: Input parameter Model path failed to collect data",
+          "Solid Stress: Input parameter Result path failed to collect data",
+          "Panel: Floating parameter Valori / Solid Stress failed to collect data",
+          "Read Straus Geometry: Input parameter Model path failed to collect data",
+          "Deformed Nodes: Input parameter Points failed to collect data",
+          "Deformed Nodes: Input parameter Displacements failed to collect data",
+          "Modal Frequencies: Input parameter Model path failed to collect data",
+          "Modal Frequencies: Input parameter Result path failed to collect data",
+          "Modal Frequencies: Input parameter Modes failed to collect data",
+          "Panel: Floating parameter Frequenze failed to collect data",
+          "Buckling Factors: Input parameter Model path failed to collect data",
+          "Buckling Factors: Input parameter Result path failed to collect data",
+          "Buckling Factors: Input parameter Modes failed to collect data",
+          "Panel: Floating parameter Fattori failed to collect data"
+        ]
+      },
+      "files": [
+        {
+          "file": "22_file_esistenti_solver_risultati.gh",
+          "bytes": 11400,
+          "sha256": "47685696968fb336c217ef38217156c9d74a7babf1af0714be494791d83bd8ae"
+        },
+        {
+          "file": "22_file_esistenti_solver_risultati.ghx",
+          "bytes": 449743,
+          "sha256": "6d7a51c464ed7567522820def34fc3718de532a8c72b5dd09eea22429d7cc5c7"
+        }
+      ]
+    },
+    {
+      "description": "Read Results Into Model ricollega un file risultati al suo Model di input.\nLa statica di questo esempio crea .st7, .LSA e manifest; Read li rilegge verificando identita\u0027 e provenienza.\nPer file esterni creati senza Rhino2Straus usare l\u0027esempio 22; il nuovo import strutturale richiede riesportazione e ricalcolo per ottenere questa provenienza.\nIl risultato rimane nel Model per il futuro verificatore; una modifica strutturale invalida i vecchi risultati.",
+      "example": "23_rilettura_risultati_nel_model",
+      "components": 20,
+      "pluginComponents": 19,
+      "connections": 39,
+      "validation": {
+        "nodes": 2,
+        "beams": 1,
+        "plates": 0,
+        "loadCases": 1,
+        "combinations": 0,
+        "solids": 0,
+        "links": 0,
+        "closedBreps": 1,
+        "volume": 0.24000000000000002,
+        "previewToggleVerified": true,
+        "preflightErrors": [],
+        "preflightWarnings": [],
+        "runtimeErrors": [],
+        "runtimeWarnings": [
+          "Model Result Cases: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Provenienza verificata failed to collect data",
+          "Model Verification Data: Input parameter Model failed to collect data",
+          "Panel: Floating parameter Dati da integrare failed to collect data"
+        ]
+      },
+      "files": [
+        {
+          "file": "23_rilettura_risultati_nel_model.gh",
+          "bytes": 13539,
+          "sha256": "36a68376dcd14367a0e73c90def584e6709389fc9e8b20abe6da5394d10067c2"
+        },
+        {
+          "file": "23_rilettura_risultati_nel_model.ghx",
+          "bytes": 427567,
+          "sha256": "3eaa060f6ab9e1e4bc6e5dbb740d0d5ab4ad228f89888e784225e14009aec4cc"
         }
       ]
     }

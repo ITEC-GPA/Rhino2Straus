@@ -17,6 +17,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Cases
         {
             pManager.AddTextParameter("Name", "Name", "Name", GH_ParamAccess.item, "LC1");
             pManager.AddBooleanParameter("Gravity NSM", "NSM", "Apply gravity to non-structural mass", GH_ParamAccess.item, false);
+            pManager.AddNumberParameter("Reference temperature","T ref","Optional absolute reference temperature in Model units; unwired uses Straus default",GH_ParamAccess.item);pManager[2].Optional=true;
         }
 
         protected override void RegisterOutputParams(GH_OutputParamManager pManager)
@@ -32,6 +33,7 @@ namespace Rhino2Straus.Grasshopper.Straus.Components.Cases
             if (DA.GetData(0, ref name) && DA.GetData(1, ref nsm))
             {
                 LoadCaseModel loadCase = new LoadCaseModel(name, LoadCaseModel.LoadCaseTypes.USER, "", nsm);
+                double reference=0;if(DA.GetData(2,ref reference))loadCase.ReferenceTemperature=reference;
                 DA.SetData(0, new GH_LoadCase(loadCase));
             }
         }

@@ -4,7 +4,7 @@ La copertura riguarda il flusso FEM strutturale fondamentale. Il binding contien
 
 | Area | Implementazione |
 |---|---|
-| Sessioni e file | Caricamento DLL x64, sessioni serializzate e chiuse, errori API, export atomico, import geometrico |
+| Sessioni e file | Caricamento DLL x64, sessioni serializzate e chiuse, errori API, export atomico, import geometrico e import strutturale in Model con rapporto di copertura |
 | Modello | Unità, saldatura nodi, ID, raccolta casi/proprietà, merge di Model, validazione |
 | Nodi | Coordinate, vincoli 6 DOF, spostamenti imposti, forze/momenti, molle, masse, temperatura |
 | Travi | Beam/Truss/Cable, sezioni tutte le tipologie standard R31, sei famiglie BGL, generiche numeriche e BXS, angolo, offset, inserimento, svincoli agli estremi |
@@ -23,18 +23,18 @@ La copertura riguarda il flusso FEM strutturale fondamentale. Il binding contien
 
 ## Limiti espliciti
 
-- Import `.st7` di **geometria e identificativi**: non è un roundtrip completo di proprietà, vincoli e carichi. Gli elementi quadratici non vengono convertiti in elementi lineari in modo implicito.
+- `Read Straus Model` ricostruisce i dati strutturali elastici supportati da un `.st7`, con unità normalizzate e rapporto delle omissioni; non ricostruisce tutte le impostazioni native. `Read Straus Geometry` resta la lettura di sola geometria. [Ambito dettagliato del nuovo import](MODEL-IMPORT.md). Gli elementi quadratici non vengono linearizzati implicitamente.
 - La preview offline delle sezioni standard calcola area e inerzie geometriche. J e aree di taglio vengono calcolati da Straus7 durante l'export; per leggerli prima si può usare una sezione BXS. La sezione generica può ricevere un profilo XY destinato alla preview, con rigidezze esplicitamente fornite.
 - I tipi standard C e RHS dell'API richiedono flange simmetriche. Gli input asimmetrici non vengono esportati come una sezione differente: usare BXS oppure proprietà generiche calibrate. Per i raccordi sono disponibili i componenti BGL oppure BXS.
-- Un solo freedom case, numero 1. Le molle, gli spostamenti imposti e i link fanno riferimento a questo caso. Coordinate dei vincoli e delle connection globali; UCS arbitrari non esposti.
-- La saldatura per tolleranza unisce i nodi coincidenti: collegamenti a lunghezza zero con nodi volutamente duplicati non sono supportati in Build Model.
+- Un solo freedom case nel Model, esportato come numero 1; il lettore permette di scegliere quale importare. Le molle, gli spostamenti imposti e i link fanno riferimento a questo caso. Coordinate dei vincoli e delle connection globali; UCS arbitrari non esposti.
+- Build salda per tolleranza salvo Preserve nodes=True. I Model importati conservano nodi coincidenti distinti anche nella copia e nel merge; Decompose espone l’impostazione per ricostruirli.
 - Una sola definizione di peso proprio per Model. I Model con definizioni incompatibili non si uniscono automaticamente.
 - Un gruppo nativo per elemento: con più gruppi, l'export assegna il primo. I gruppi rimangono tutti nel Model per filtri e organizzazione.
 - Le pressioni sulle facce dei solidi e i carichi nodali dello stesso caso vengono sommati. Attributi piastra duplicati dello stesso tipo/caso/faccia, temperature o preload duplicati vengono segnalati: combinare esplicitamente il contributo prima dell'export.
 - Quad4 non complanari oltre tolleranza, geometrie degeneri, unità incompatibili e offset assiali non supportati vengono rifiutati. La validazione geometrica dei solidi controlla connettività e volume orientato; non sostituisce un controllo completo dei Jacobiani di integrazione.
 - Solver non lineare: rampa di un caso e geometria non lineare; configurazione di leggi plastiche, tabelle costitutive e costruzione staged non esposta. La casella di non linearità materiale usa le leggi già presenti nel file.
 - Non esposti: transienti, risposta spettrale/armonica, contatto avanzato, fluidi/termica come solver, laminati, materiali ortotropi/anisotropi, automeshing e l'intera API di visualizzazione Straus7.
-- I risultati non disponibili sono elencati in `Issues`. La lettura di proprietà/carichi da un file `.st7` esterno rimane parziale; `Read Results Into Model` associa risultati a un Model Rhino2Straus già definito, non ricostruisce un Model completo da un file arbitrario.
+- I risultati non disponibili sono elencati in `Issues`. L’import di proprietà/carichi da un file `.st7` esterno segue l’ambito documentato; `Read Results Into Model` associa risultati a un Model Rhino2Straus già definito, non ricostruisce un Model completo da un file arbitrario.
 - Il confronto finale tra preview e orientamento delle sezioni native, nonché il collaudo completo di tutti i solver, richiede una licenza API operativa. Lo stato di verifica è separato dalla copertura implementata.
 
 ## Numerazione facce dei solidi

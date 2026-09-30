@@ -28,7 +28,7 @@ public sealed class MergeModelsComponent : SafeComponent
     protected override void RegisterInputParams(GH_InputParamManager p)
     {
         p.AddGenericParameter("Models", "Models", "Models", GH_ParamAccess.list);
-        p.AddBooleanParameter("Renumber", "Renumber", "Renumber independent model parts before joining; equal-position nodes are still merged", GH_ParamAccess.item, false);
+        p.AddBooleanParameter("Renumber", "Renumber", "Renumber independent parts. Nodes are welded for created models; importing a Model preserves distinct numbered nodes throughout the merge", GH_ParamAccess.item, false);
     }
     protected override void RegisterOutputParams(GH_OutputParamManager p)
     {
