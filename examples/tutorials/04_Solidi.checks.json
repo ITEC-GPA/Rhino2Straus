@@ -1,0 +1,142 @@
+{
+  "Project": "Rhino2Straus",
+  "File": "04_Solidi.gh",
+  "Title": "Solidi Hexa8",
+  "Description": "Un cubo di lato 1 m, otto vertici ordinati, materiale elastico e base incastrata. Il Brep fisico deve essere chiuso. La connettivita conta: non riordinare casualmente i vertici.",
+  "Topics": [
+    "Solidi Hexa8"
+  ],
+  "Instructions": [],
+  "Fingerprints": [
+    "42FDA59FC981CD2931C3B8D103A847EC5BB1A1C367D4179D85270466F1712006"
+  ],
+  "PluginComponents": [
+    {
+      "Class": "MaterialComponent",
+      "Name": "Material",
+      "ComponentGuid": "1f804995-873c-44a5-b4b2-59e9f6966592"
+    },
+    {
+      "Class": "NodeElementComponent",
+      "Name": "Node Element",
+      "ComponentGuid": "1ea612a7-69e3-4993-8970-1efcb142fbe9"
+    },
+    {
+      "Class": "NodeElementComponent",
+      "Name": "Node Element",
+      "ComponentGuid": "1ea612a7-69e3-4993-8970-1efcb142fbe9"
+    },
+    {
+      "Class": "NodeSupportComponent",
+      "Name": "Support",
+      "ComponentGuid": "3ed0cf37-cc66-4e44-97ed-e6c77b11b662"
+    },
+    {
+      "Class": "SolidElementComponent",
+      "Name": "Solid Element",
+      "ComponentGuid": "f7fcbe06-f2a8-549b-9872-e14da102ec5b"
+    },
+    {
+      "Class": "BuildModelComponent",
+      "Name": "Build Model",
+      "ComponentGuid": "e95664b0-8ee6-4db9-a001-517e57bdab93"
+    },
+    {
+      "Class": "ValidateModelComponent",
+      "Name": "Validate Straus Model",
+      "ComponentGuid": "595409be-4738-594a-b57d-39bc2437d0a6"
+    },
+    {
+      "Class": "ModelSummaryComponent",
+      "Name": "Model Summary",
+      "ComponentGuid": "53689eef-1768-56b4-ad15-d4b22653b7ef"
+    },
+    {
+      "Class": "PreviewModelComponent",
+      "Name": "Rhino2Straus Display Manager",
+      "ComponentGuid": "5b506764-d527-4b1c-81da-910a202b9603"
+    },
+    {
+      "Class": "DecomposeModelComponent",
+      "Name": "Decompose Model",
+      "ComponentGuid": "db47b5d0-3d45-48a6-82f4-cea65426e9a6"
+    },
+    {
+      "Class": "ModelGeometryComponent",
+      "Name": "Model Physical Geometry",
+      "ComponentGuid": "e42dd5d1-840b-5ce6-96dd-49ba371fdc07"
+    }
+  ],
+  "Objects": 20,
+  "Wires": 12,
+  "ModelChecks": 1,
+  "PhysicalChecks": 1,
+  "ReopenedGh": true,
+  "ReopenedGhx": true,
+  "SliderVolumeChangeChecked": false,
+  "SolverExecuted": false,
+  "ExternalFilesWritten": false,
+  "Messages": [],
+  "Connections": [
+    {
+      "From": "Node Element",
+      "Output": "Node",
+      "To": "Support",
+      "Input": "Node"
+    },
+    {
+      "From": "Node Element",
+      "Output": "Node",
+      "To": "Solid Element",
+      "Input": "Nodes"
+    },
+    {
+      "From": "Material",
+      "Output": "Material",
+      "To": "Solid Element",
+      "Input": "Material"
+    },
+    {
+      "From": "Support",
+      "Output": "Node",
+      "To": "Build Model",
+      "Input": "Node"
+    },
+    {
+      "From": "Solid Element",
+      "Output": "Solid",
+      "To": "Build Model",
+      "Input": "Solids"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Validate Straus Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Model Summary",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Rhino2Straus Display Manager",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Decompose Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Model Physical Geometry",
+      "Input": "Model"
+    }
+  ]
+}

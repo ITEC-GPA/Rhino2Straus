@@ -1,0 +1,321 @@
+{
+  "Project": "Rhino2Straus",
+  "File": "13_Analisi_mesh.gh",
+  "Title": "Analisi e risultati delle piastre",
+  "Description": "Piastra Quad4 con pressione: Model -\u003E solver -\u003E azioni di piastra, spostamenti e reazioni. Nessun risultato e simulato.",
+  "Topics": [
+    "Analisi e risultati delle piastre"
+  ],
+  "Instructions": [
+    "Controllare Validate, scegliere Path e usare false -\u003E true per avviare l\u0027operazione."
+  ],
+  "Fingerprints": [
+    "CF956F5959ACDBFD3012EDEB58CB5E5A34E530DDE6EC3E753063AE10A036DFAD"
+  ],
+  "PluginComponents": [
+    {
+      "Class": "MaterialComponent",
+      "Name": "Material",
+      "ComponentGuid": "1f804995-873c-44a5-b4b2-59e9f6966592"
+    },
+    {
+      "Class": "AreaThicknessComponent",
+      "Name": "Area thickness",
+      "ComponentGuid": "fe66f2e0-1381-4c73-a206-f9f7e46346bc"
+    },
+    {
+      "Class": "AreaPropertyComponent",
+      "Name": "Area Property",
+      "ComponentGuid": "3edcae0b-6f75-48b9-94b2-538d8e714262"
+    },
+    {
+      "Class": "MeshPlatesComponent",
+      "Name": "Mesh to Plates",
+      "ComponentGuid": "24b5c060-c59b-536b-bad7-5ea1bba7a24e"
+    },
+    {
+      "Class": "NodeElementComponent",
+      "Name": "Node Element",
+      "ComponentGuid": "1ea612a7-69e3-4993-8970-1efcb142fbe9"
+    },
+    {
+      "Class": "NodeSupportComponent",
+      "Name": "Support",
+      "ComponentGuid": "3ed0cf37-cc66-4e44-97ed-e6c77b11b662"
+    },
+    {
+      "Class": "LoadCaseComponent",
+      "Name": "Load case",
+      "ComponentGuid": "65f6274a-354a-4965-a40e-73af273912fc"
+    },
+    {
+      "Class": "GlobalPressureComponent",
+      "Name": "Plate Global Pressure",
+      "ComponentGuid": "a94608dd-cbf9-5588-a5dd-e09c157e9bbe"
+    },
+    {
+      "Class": "BuildModelComponent",
+      "Name": "Build Model",
+      "ComponentGuid": "e95664b0-8ee6-4db9-a001-517e57bdab93"
+    },
+    {
+      "Class": "ValidateModelComponent",
+      "Name": "Validate Straus Model",
+      "ComponentGuid": "595409be-4738-594a-b57d-39bc2437d0a6"
+    },
+    {
+      "Class": "ModelSummaryComponent",
+      "Name": "Model Summary",
+      "ComponentGuid": "53689eef-1768-56b4-ad15-d4b22653b7ef"
+    },
+    {
+      "Class": "PreviewModelComponent",
+      "Name": "Rhino2Straus Display Manager",
+      "ComponentGuid": "5b506764-d527-4b1c-81da-910a202b9603"
+    },
+    {
+      "Class": "DecomposeModelComponent",
+      "Name": "Decompose Model",
+      "ComponentGuid": "db47b5d0-3d45-48a6-82f4-cea65426e9a6"
+    },
+    {
+      "Class": "ModelGeometryComponent",
+      "Name": "Model Physical Geometry",
+      "ComponentGuid": "e42dd5d1-840b-5ce6-96dd-49ba371fdc07"
+    },
+    {
+      "Class": "RunModelCasesComponent",
+      "Name": "Run Model Cases and Combinations",
+      "ComponentGuid": "4a573019-35cb-55d7-8580-99ad7613003b"
+    },
+    {
+      "Class": "ModelResultCasesComponent",
+      "Name": "Model Result Cases",
+      "ComponentGuid": "11b2087e-d038-52db-9a57-3a662d981647"
+    },
+    {
+      "Class": "DecomposeModelComponent",
+      "Name": "Decompose Model",
+      "ComponentGuid": "db47b5d0-3d45-48a6-82f4-cea65426e9a6"
+    },
+    {
+      "Class": "ModelPlateForceComponent",
+      "Name": "Model Plate Force",
+      "ComponentGuid": "a961dfae-9eda-5f5a-b7c4-15e780fa7d1d"
+    },
+    {
+      "Class": "ModelDeformedGeometryComponent",
+      "Name": "Model Deformed Geometry",
+      "ComponentGuid": "483b39d4-e09b-550a-9ce7-2007051badc9"
+    },
+    {
+      "Class": "ModelNodeReactionComponent",
+      "Name": "Model Node Reaction",
+      "ComponentGuid": "b7778228-ba02-5ad8-8c57-57b8d8c5c817"
+    },
+    {
+      "Class": "ModelPlateMomentComponent",
+      "Name": "Model Plate Moment",
+      "ComponentGuid": "c368540b-b1a6-5b98-81e0-3b5acf6ceb3d"
+    }
+  ],
+  "Objects": 44,
+  "Wires": 34,
+  "ModelChecks": 1,
+  "PhysicalChecks": 1,
+  "ReopenedGh": true,
+  "ReopenedGhx": true,
+  "SliderVolumeChangeChecked": true,
+  "SolverExecuted": false,
+  "ExternalFilesWritten": false,
+  "Messages": [
+    {
+      "Component": "Model Result Cases",
+      "Warning": "Input parameter Model failed to collect data"
+    },
+    {
+      "Component": "Decompose Model",
+      "Warning": "Input parameter Model failed to collect data"
+    },
+    {
+      "Component": "Model Plate Force",
+      "Warning": "Input parameter Model failed to collect data"
+    },
+    {
+      "Component": "Model Deformed Geometry",
+      "Warning": "Input parameter Model failed to collect data"
+    },
+    {
+      "Component": "Model Node Reaction",
+      "Warning": "Input parameter Model failed to collect data"
+    },
+    {
+      "Component": "Model Plate Moment",
+      "Warning": "Input parameter Model failed to collect data"
+    }
+  ],
+  "Connections": [
+    {
+      "From": "Spessore t [m]",
+      "Output": "Number Slider",
+      "To": "Area thickness",
+      "Input": "Thickness"
+    },
+    {
+      "From": "Area thickness",
+      "Output": "Area thickness",
+      "To": "Area Property",
+      "Input": "Section"
+    },
+    {
+      "From": "Material",
+      "Output": "Material",
+      "To": "Area Property",
+      "Input": "Material"
+    },
+    {
+      "From": "Mesh incorporata",
+      "Output": "Mesh",
+      "To": "Mesh to Plates",
+      "Input": "Mesh"
+    },
+    {
+      "From": "Area Property",
+      "Output": "Area Property",
+      "To": "Mesh to Plates",
+      "Input": "Property"
+    },
+    {
+      "From": "Node Element",
+      "Output": "Node",
+      "To": "Support",
+      "Input": "Node"
+    },
+    {
+      "From": "Mesh to Plates",
+      "Output": "Plates",
+      "To": "Plate Global Pressure",
+      "Input": "Plate"
+    },
+    {
+      "From": "Load case",
+      "Output": "Load case",
+      "To": "Plate Global Pressure",
+      "Input": "Load case"
+    },
+    {
+      "From": "Support",
+      "Output": "Node",
+      "To": "Build Model",
+      "Input": "Node"
+    },
+    {
+      "From": "Plate Global Pressure",
+      "Output": "Plate",
+      "To": "Build Model",
+      "Input": "Area element"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Validate Straus Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Model Summary",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Rhino2Straus Display Manager",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Decompose Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Model Physical Geometry",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Run Model Cases and Combinations",
+      "Input": "Model"
+    },
+    {
+      "From": "PATH: percorso locale modificabile",
+      "Output": "Panel",
+      "To": "Run Model Cases and Combinations",
+      "Input": "Model path"
+    },
+    {
+      "From": "RUN ANALISI",
+      "Output": "Boolean Toggle",
+      "To": "Run Model Cases and Combinations",
+      "Input": "Run"
+    },
+    {
+      "From": "OVERWRITE: sostituisci file",
+      "Output": "Boolean Toggle",
+      "To": "Run Model Cases and Combinations",
+      "Input": "Overwrite"
+    },
+    {
+      "From": "Run Model Cases and Combinations",
+      "Output": "Model",
+      "To": "Stream Gate",
+      "Input": "Stream"
+    },
+    {
+      "From": "RUN ANALISI",
+      "Output": "Boolean Toggle",
+      "To": "Stream Gate",
+      "Input": "Gate"
+    },
+    {
+      "From": "Gate",
+      "Output": "Target 1",
+      "To": "Model Result Cases",
+      "Input": "Model"
+    },
+    {
+      "From": "Gate",
+      "Output": "Target 1",
+      "To": "Decompose Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Gate",
+      "Output": "Target 1",
+      "To": "Model Plate Force",
+      "Input": "Model"
+    },
+    {
+      "From": "Gate",
+      "Output": "Target 1",
+      "To": "Model Deformed Geometry",
+      "Input": "Model"
+    },
+    {
+      "From": "Gate",
+      "Output": "Target 1",
+      "To": "Model Node Reaction",
+      "Input": "Model"
+    },
+    {
+      "From": "Gate",
+      "Output": "Target 1",
+      "To": "Model Plate Moment",
+      "Input": "Model"
+    }
+  ]
+}

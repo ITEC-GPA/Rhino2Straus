@@ -1,0 +1,243 @@
+{
+  "Project": "Rhino2Straus",
+  "File": "15_Preview_bake.gh",
+  "Title": "Preview, impostazioni e bake",
+  "Description": "Confronta assi e solidi fisici. La preview e temporanea; il bake crea oggetti nel documento Rhino. BAKE parte spento.",
+  "Topics": [
+    "Preview, impostazioni e bake"
+  ],
+  "Instructions": [],
+  "Fingerprints": [
+    "7C7607B70D6244094002D7A3FBB3F8576F2219E3C1E33B5E11EB2F612AF37477"
+  ],
+  "PluginComponents": [
+    {
+      "Class": "MaterialComponent",
+      "Name": "Material",
+      "ComponentGuid": "1f804995-873c-44a5-b4b2-59e9f6966592"
+    },
+    {
+      "Class": "FrameSectionRectangularComponent",
+      "Name": "Frame Section solid rectangular",
+      "ComponentGuid": "c2eec84d-a85b-4596-b79f-44b8bad510bf"
+    },
+    {
+      "Class": "FramePropertyComponent",
+      "Name": "Frame Property",
+      "ComponentGuid": "7e49f69a-f7d7-446f-8fd0-76b9b4263890"
+    },
+    {
+      "Class": "FrameElementComponent",
+      "Name": "Frame element",
+      "ComponentGuid": "07d14640-7b14-4515-ad1d-99f508fa19d3"
+    },
+    {
+      "Class": "NodeElementComponent",
+      "Name": "Node Element",
+      "ComponentGuid": "1ea612a7-69e3-4993-8970-1efcb142fbe9"
+    },
+    {
+      "Class": "NodeElementComponent",
+      "Name": "Node Element",
+      "ComponentGuid": "1ea612a7-69e3-4993-8970-1efcb142fbe9"
+    },
+    {
+      "Class": "NodeSupportComponent",
+      "Name": "Support",
+      "ComponentGuid": "3ed0cf37-cc66-4e44-97ed-e6c77b11b662"
+    },
+    {
+      "Class": "LoadCaseComponent",
+      "Name": "Load case",
+      "ComponentGuid": "65f6274a-354a-4965-a40e-73af273912fc"
+    },
+    {
+      "Class": "LoadNodalComponent",
+      "Name": "Load nodal",
+      "ComponentGuid": "cf708797-8d98-4bbe-a746-11baf38ea456"
+    },
+    {
+      "Class": "BuildModelComponent",
+      "Name": "Build Model",
+      "ComponentGuid": "e95664b0-8ee6-4db9-a001-517e57bdab93"
+    },
+    {
+      "Class": "ValidateModelComponent",
+      "Name": "Validate Straus Model",
+      "ComponentGuid": "595409be-4738-594a-b57d-39bc2437d0a6"
+    },
+    {
+      "Class": "ModelSummaryComponent",
+      "Name": "Model Summary",
+      "ComponentGuid": "53689eef-1768-56b4-ad15-d4b22653b7ef"
+    },
+    {
+      "Class": "PreviewModelComponent",
+      "Name": "Rhino2Straus Display Manager",
+      "ComponentGuid": "5b506764-d527-4b1c-81da-910a202b9603"
+    },
+    {
+      "Class": "DecomposeModelComponent",
+      "Name": "Decompose Model",
+      "ComponentGuid": "db47b5d0-3d45-48a6-82f4-cea65426e9a6"
+    },
+    {
+      "Class": "ModelGeometryComponent",
+      "Name": "Model Physical Geometry",
+      "ComponentGuid": "e42dd5d1-840b-5ce6-96dd-49ba371fdc07"
+    },
+    {
+      "Class": "DisplaySettingsComponent",
+      "Name": "Rhino2Straus Display Settings",
+      "ComponentGuid": "aa5719cc-51c8-55ba-b181-86e95c723238"
+    },
+    {
+      "Class": "PreviewModelComponent",
+      "Name": "Rhino2Straus Display Manager",
+      "ComponentGuid": "5b506764-d527-4b1c-81da-910a202b9603"
+    },
+    {
+      "Class": "ModelGeometryComponent",
+      "Name": "Model Physical Geometry",
+      "ComponentGuid": "e42dd5d1-840b-5ce6-96dd-49ba371fdc07"
+    }
+  ],
+  "Objects": 33,
+  "Wires": 23,
+  "ModelChecks": 1,
+  "PhysicalChecks": 1,
+  "ReopenedGh": true,
+  "ReopenedGhx": true,
+  "SliderVolumeChangeChecked": true,
+  "SolverExecuted": false,
+  "ExternalFilesWritten": false,
+  "Messages": [],
+  "Connections": [
+    {
+      "From": "h [m]",
+      "Output": "Number Slider",
+      "To": "Frame Section solid rectangular",
+      "Input": "Height"
+    },
+    {
+      "From": "b [m]",
+      "Output": "Number Slider",
+      "To": "Frame Section solid rectangular",
+      "Input": "Width"
+    },
+    {
+      "From": "Frame Section solid rectangular",
+      "Output": "Frame Section",
+      "To": "Frame Property",
+      "Input": "Section"
+    },
+    {
+      "From": "Material",
+      "Output": "Material",
+      "To": "Frame Property",
+      "Input": "Material"
+    },
+    {
+      "From": "Asse trave",
+      "Output": "Curve",
+      "To": "Frame element",
+      "Input": "Frame line"
+    },
+    {
+      "From": "Frame Property",
+      "Output": "Frame Property",
+      "To": "Frame element",
+      "Input": "Frame Property"
+    },
+    {
+      "From": "Node Element",
+      "Output": "Node",
+      "To": "Support",
+      "Input": "Node"
+    },
+    {
+      "From": "Node Element",
+      "Output": "Node",
+      "To": "Load nodal",
+      "Input": "Node"
+    },
+    {
+      "From": "Load case",
+      "Output": "Load case",
+      "To": "Load nodal",
+      "Input": "Load case"
+    },
+    {
+      "From": "Support",
+      "Output": "Node",
+      "To": "Build Model",
+      "Input": "Node"
+    },
+    {
+      "From": "Load nodal",
+      "Output": "Node",
+      "To": "Build Model",
+      "Input": "Node"
+    },
+    {
+      "From": "Frame element",
+      "Output": "Frame element",
+      "To": "Build Model",
+      "Input": "Frame element"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Validate Straus Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Model Summary",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Rhino2Straus Display Manager",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Decompose Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Model Physical Geometry",
+      "Input": "Model"
+    },
+    {
+      "From": "Etichette",
+      "Output": "Boolean Toggle",
+      "To": "Rhino2Straus Display Settings",
+      "Input": "Labels"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Rhino2Straus Display Manager",
+      "Input": "Model"
+    },
+    {
+      "From": "Display Settings",
+      "Output": "Settings",
+      "To": "Rhino2Straus Display Manager",
+      "Input": "Settings"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Model Physical Geometry",
+      "Input": "Model"
+    }
+  ]
+}

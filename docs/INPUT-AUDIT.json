@@ -1217,6 +1217,26 @@
         "Optional": false,
         "DefaultCount": 1,
         "RequiresConnection": false
+      },
+      {
+        "Index": 10,
+        "Name": "Preserve nodes",
+        "Description": "Keep distinct positive node IDs even at coincident coordinates; use True when rebuilding an imported Model",
+        "Type": "Boolean",
+        "Access": "item",
+        "Optional": false,
+        "DefaultCount": 1,
+        "RequiresConnection": false
+      },
+      {
+        "Index": 11,
+        "Name": "Load cases",
+        "Description": "Optional unused load cases to retain when rebuilding",
+        "Type": "Generic Data",
+        "Access": "list",
+        "Optional": true,
+        "DefaultCount": 0,
+        "RequiresConnection": false
       }
     ],
     "DefaultSolve": true,
@@ -2966,6 +2986,16 @@
         "Optional": false,
         "DefaultCount": 1,
         "RequiresConnection": false
+      },
+      {
+        "Index": 2,
+        "Name": "Reference temperature",
+        "Description": "Optional absolute reference temperature in Model units; unwired uses Straus default",
+        "Type": "Number",
+        "Access": "item",
+        "Optional": true,
+        "DefaultCount": 0,
+        "RequiresConnection": false
       }
     ],
     "DefaultSolve": true,
@@ -3520,7 +3550,7 @@
       {
         "Index": 1,
         "Name": "Renumber",
-        "Description": "Renumber independent model parts before joining; equal-position nodes are still merged",
+        "Description": "Renumber independent parts. Nodes are welded for created models; importing a Model preserves distinct numbered nodes throughout the merge",
         "Type": "Boolean",
         "Access": "item",
         "Optional": false,
@@ -7347,6 +7377,16 @@
         "Optional": false,
         "DefaultCount": 1,
         "RequiresConnection": false
+      },
+      {
+        "Index": 3,
+        "Name": "Type",
+        "Description": "0 reference, 1 fixed, 2 initial; table temperatures are unsupported",
+        "Type": "Integer",
+        "Access": "item",
+        "Optional": false,
+        "DefaultCount": 1,
+        "RequiresConnection": false
       }
     ],
     "DefaultSolve": false,
@@ -8153,6 +8193,67 @@
         "Optional": false,
         "DefaultCount": 0,
         "RequiresConnection": true
+      }
+    ],
+    "DefaultSolve": false,
+    "DefaultSolveErrors": [],
+    "DefaultOutputCount": 0,
+    "SkipReason": null
+  },
+  {
+    "Class": "Rhino2Straus.Grasshopper.Components.Extended.ReadStrausModelComponent",
+    "Name": "Read Straus Model",
+    "Guid": "bd763938-69ba-4f07-87e7-b61948629344",
+    "Inputs": [
+      {
+        "Index": 0,
+        "Name": "Model path",
+        "Description": "Existing .st7 file; the source is never saved or overwritten",
+        "Type": "Text",
+        "Access": "item",
+        "Optional": false,
+        "DefaultCount": 0,
+        "RequiresConnection": true
+      },
+      {
+        "Index": 1,
+        "Name": "Read",
+        "Description": "False-to-true transition. Repeat to refresh the file",
+        "Type": "Boolean",
+        "Access": "item",
+        "Optional": false,
+        "DefaultCount": 1,
+        "RequiresConnection": false
+      },
+      {
+        "Index": 2,
+        "Name": "Freedom case",
+        "Description": "Restraint case to import",
+        "Type": "Integer",
+        "Access": "item",
+        "Optional": false,
+        "DefaultCount": 1,
+        "RequiresConnection": false
+      },
+      {
+        "Index": 3,
+        "Name": "Allow partial",
+        "Description": "False withholds Model when unsupported structural data is found. True explicitly accepts omissions listed in Report",
+        "Type": "Boolean",
+        "Access": "item",
+        "Optional": false,
+        "DefaultCount": 1,
+        "RequiresConnection": false
+      },
+      {
+        "Index": 4,
+        "Name": "Tolerance",
+        "Description": "Geometric validation tolerance in metres; distinct native nodes remain distinct",
+        "Type": "Number",
+        "Access": "item",
+        "Optional": false,
+        "DefaultCount": 1,
+        "RequiresConnection": false
       }
     ],
     "DefaultSolve": false,

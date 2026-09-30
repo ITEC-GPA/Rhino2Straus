@@ -1,0 +1,134 @@
+{
+  "Project": "Rhino2Straus",
+  "File": "11_Import_model.gh",
+  "Title": "Modello esistente verso Grasshopper",
+  "Description": "Leggi il modello nativo e ottieni il Model associato. Controlla Issues per conoscere dati importati e limiti.",
+  "Topics": [
+    "Modello esistente verso Grasshopper"
+  ],
+  "Instructions": [],
+  "Fingerprints": [],
+  "PluginComponents": [
+    {
+      "Class": "ReadStrausModelComponent",
+      "Name": "Read Straus Model",
+      "ComponentGuid": "bd763938-69ba-4f07-87e7-b61948629344"
+    },
+    {
+      "Class": "ValidateModelComponent",
+      "Name": "Validate Straus Model",
+      "ComponentGuid": "595409be-4738-594a-b57d-39bc2437d0a6"
+    },
+    {
+      "Class": "ModelSummaryComponent",
+      "Name": "Model Summary",
+      "ComponentGuid": "53689eef-1768-56b4-ad15-d4b22653b7ef"
+    },
+    {
+      "Class": "PreviewModelComponent",
+      "Name": "Rhino2Straus Display Manager",
+      "ComponentGuid": "5b506764-d527-4b1c-81da-910a202b9603"
+    },
+    {
+      "Class": "DecomposeModelComponent",
+      "Name": "Decompose Model",
+      "ComponentGuid": "db47b5d0-3d45-48a6-82f4-cea65426e9a6"
+    },
+    {
+      "Class": "ModelGeometryComponent",
+      "Name": "Model Physical Geometry",
+      "ComponentGuid": "e42dd5d1-840b-5ce6-96dd-49ba371fdc07"
+    }
+  ],
+  "Objects": 20,
+  "Wires": 13,
+  "ModelChecks": 0,
+  "PhysicalChecks": 0,
+  "ReopenedGh": true,
+  "ReopenedGhx": true,
+  "SliderVolumeChangeChecked": false,
+  "SolverExecuted": false,
+  "ExternalFilesWritten": false,
+  "Messages": [
+    {
+      "Component": "Stream Gate",
+      "Warning": "Input parameter S failed to collect data"
+    },
+    {
+      "Component": "Validate Straus Model",
+      "Warning": "Input parameter Model failed to collect data"
+    },
+    {
+      "Component": "Model Summary",
+      "Warning": "Input parameter Model failed to collect data"
+    },
+    {
+      "Component": "Rhino2Straus Display Manager",
+      "Warning": "Input parameter M failed to collect data"
+    },
+    {
+      "Component": "Decompose Model",
+      "Warning": "Input parameter Model failed to collect data"
+    },
+    {
+      "Component": "Model Physical Geometry",
+      "Warning": "Input parameter Model failed to collect data"
+    }
+  ],
+  "Connections": [
+    {
+      "From": "PATH: percorso locale modificabile",
+      "Output": "Panel",
+      "To": "Read Straus Model",
+      "Input": "Model path"
+    },
+    {
+      "From": "READ MODEL",
+      "Output": "Boolean Toggle",
+      "To": "Read Straus Model",
+      "Input": "Read"
+    },
+    {
+      "From": "Read ST7 Model",
+      "Output": "Model",
+      "To": "Stream Gate",
+      "Input": "Stream"
+    },
+    {
+      "From": "READ MODEL",
+      "Output": "Boolean Toggle",
+      "To": "Stream Gate",
+      "Input": "Gate"
+    },
+    {
+      "From": "Gate",
+      "Output": "Target 1",
+      "To": "Validate Straus Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Gate",
+      "Output": "Target 1",
+      "To": "Model Summary",
+      "Input": "Model"
+    },
+    {
+      "From": "Gate",
+      "Output": "Target 1",
+      "To": "Rhino2Straus Display Manager",
+      "Input": "Model"
+    },
+    {
+      "From": "Gate",
+      "Output": "Target 1",
+      "To": "Decompose Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Gate",
+      "Output": "Target 1",
+      "To": "Model Physical Geometry",
+      "Input": "Model"
+    }
+  ]
+}

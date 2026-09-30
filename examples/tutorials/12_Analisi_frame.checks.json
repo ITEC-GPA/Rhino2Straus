@@ -1,0 +1,338 @@
+{
+  "Project": "Rhino2Straus",
+  "File": "12_Analisi_frame.gh",
+  "Title": "Analisi e risultati delle travi",
+  "Description": "Model -\u003E analisi -\u003E Model con risultati -\u003E casi, azioni, deformata e diagramma. I lettori attendono risultati reali del solver.",
+  "Topics": [
+    "Analisi e risultati delle travi"
+  ],
+  "Instructions": [
+    "Controllare Validate, scegliere Path e usare false -\u003E true per avviare l\u0027operazione."
+  ],
+  "Fingerprints": [
+    "7C7607B70D6244094002D7A3FBB3F8576F2219E3C1E33B5E11EB2F612AF37477"
+  ],
+  "PluginComponents": [
+    {
+      "Class": "MaterialComponent",
+      "Name": "Material",
+      "ComponentGuid": "1f804995-873c-44a5-b4b2-59e9f6966592"
+    },
+    {
+      "Class": "FrameSectionRectangularComponent",
+      "Name": "Frame Section solid rectangular",
+      "ComponentGuid": "c2eec84d-a85b-4596-b79f-44b8bad510bf"
+    },
+    {
+      "Class": "FramePropertyComponent",
+      "Name": "Frame Property",
+      "ComponentGuid": "7e49f69a-f7d7-446f-8fd0-76b9b4263890"
+    },
+    {
+      "Class": "FrameElementComponent",
+      "Name": "Frame element",
+      "ComponentGuid": "07d14640-7b14-4515-ad1d-99f508fa19d3"
+    },
+    {
+      "Class": "NodeElementComponent",
+      "Name": "Node Element",
+      "ComponentGuid": "1ea612a7-69e3-4993-8970-1efcb142fbe9"
+    },
+    {
+      "Class": "NodeElementComponent",
+      "Name": "Node Element",
+      "ComponentGuid": "1ea612a7-69e3-4993-8970-1efcb142fbe9"
+    },
+    {
+      "Class": "NodeSupportComponent",
+      "Name": "Support",
+      "ComponentGuid": "3ed0cf37-cc66-4e44-97ed-e6c77b11b662"
+    },
+    {
+      "Class": "LoadCaseComponent",
+      "Name": "Load case",
+      "ComponentGuid": "65f6274a-354a-4965-a40e-73af273912fc"
+    },
+    {
+      "Class": "LoadNodalComponent",
+      "Name": "Load nodal",
+      "ComponentGuid": "cf708797-8d98-4bbe-a746-11baf38ea456"
+    },
+    {
+      "Class": "BuildModelComponent",
+      "Name": "Build Model",
+      "ComponentGuid": "e95664b0-8ee6-4db9-a001-517e57bdab93"
+    },
+    {
+      "Class": "ValidateModelComponent",
+      "Name": "Validate Straus Model",
+      "ComponentGuid": "595409be-4738-594a-b57d-39bc2437d0a6"
+    },
+    {
+      "Class": "ModelSummaryComponent",
+      "Name": "Model Summary",
+      "ComponentGuid": "53689eef-1768-56b4-ad15-d4b22653b7ef"
+    },
+    {
+      "Class": "PreviewModelComponent",
+      "Name": "Rhino2Straus Display Manager",
+      "ComponentGuid": "5b506764-d527-4b1c-81da-910a202b9603"
+    },
+    {
+      "Class": "DecomposeModelComponent",
+      "Name": "Decompose Model",
+      "ComponentGuid": "db47b5d0-3d45-48a6-82f4-cea65426e9a6"
+    },
+    {
+      "Class": "ModelGeometryComponent",
+      "Name": "Model Physical Geometry",
+      "ComponentGuid": "e42dd5d1-840b-5ce6-96dd-49ba371fdc07"
+    },
+    {
+      "Class": "RunModelCasesComponent",
+      "Name": "Run Model Cases and Combinations",
+      "ComponentGuid": "4a573019-35cb-55d7-8580-99ad7613003b"
+    },
+    {
+      "Class": "ModelResultCasesComponent",
+      "Name": "Model Result Cases",
+      "ComponentGuid": "11b2087e-d038-52db-9a57-3a662d981647"
+    },
+    {
+      "Class": "DecomposeModelComponent",
+      "Name": "Decompose Model",
+      "ComponentGuid": "db47b5d0-3d45-48a6-82f4-cea65426e9a6"
+    },
+    {
+      "Class": "ModelBeamActionsComponent",
+      "Name": "Model Beam Actions N V T M",
+      "ComponentGuid": "dc675280-e907-5e4e-8fe1-fcdeff747e66"
+    },
+    {
+      "Class": "ModelDeformedGeometryComponent",
+      "Name": "Model Deformed Geometry",
+      "ComponentGuid": "483b39d4-e09b-550a-9ce7-2007051badc9"
+    },
+    {
+      "Class": "ModelNodeReactionComponent",
+      "Name": "Model Node Reaction",
+      "ComponentGuid": "b7778228-ba02-5ad8-8c57-57b8d8c5c817"
+    },
+    {
+      "Class": "ModelBeamDiagramComponent",
+      "Name": "Model Beam Force Diagram",
+      "ComponentGuid": "98ea7e29-bea7-5aa2-8dec-f05e46c51cd8"
+    }
+  ],
+  "Objects": 45,
+  "Wires": 35,
+  "ModelChecks": 1,
+  "PhysicalChecks": 1,
+  "ReopenedGh": true,
+  "ReopenedGhx": true,
+  "SliderVolumeChangeChecked": true,
+  "SolverExecuted": false,
+  "ExternalFilesWritten": false,
+  "Messages": [
+    {
+      "Component": "Model Result Cases",
+      "Warning": "Input parameter Model failed to collect data"
+    },
+    {
+      "Component": "Decompose Model",
+      "Warning": "Input parameter Model failed to collect data"
+    },
+    {
+      "Component": "Model Beam Actions N V T M",
+      "Warning": "Input parameter Model failed to collect data"
+    },
+    {
+      "Component": "Model Deformed Geometry",
+      "Warning": "Input parameter Model failed to collect data"
+    },
+    {
+      "Component": "Model Node Reaction",
+      "Warning": "Input parameter Model failed to collect data"
+    },
+    {
+      "Component": "Model Beam Force Diagram",
+      "Warning": "Input parameter Model failed to collect data"
+    }
+  ],
+  "Connections": [
+    {
+      "From": "h [m]",
+      "Output": "Number Slider",
+      "To": "Frame Section solid rectangular",
+      "Input": "Height"
+    },
+    {
+      "From": "b [m]",
+      "Output": "Number Slider",
+      "To": "Frame Section solid rectangular",
+      "Input": "Width"
+    },
+    {
+      "From": "Frame Section solid rectangular",
+      "Output": "Frame Section",
+      "To": "Frame Property",
+      "Input": "Section"
+    },
+    {
+      "From": "Material",
+      "Output": "Material",
+      "To": "Frame Property",
+      "Input": "Material"
+    },
+    {
+      "From": "Asse trave",
+      "Output": "Curve",
+      "To": "Frame element",
+      "Input": "Frame line"
+    },
+    {
+      "From": "Frame Property",
+      "Output": "Frame Property",
+      "To": "Frame element",
+      "Input": "Frame Property"
+    },
+    {
+      "From": "Node Element",
+      "Output": "Node",
+      "To": "Support",
+      "Input": "Node"
+    },
+    {
+      "From": "Node Element",
+      "Output": "Node",
+      "To": "Load nodal",
+      "Input": "Node"
+    },
+    {
+      "From": "Load case",
+      "Output": "Load case",
+      "To": "Load nodal",
+      "Input": "Load case"
+    },
+    {
+      "From": "Support",
+      "Output": "Node",
+      "To": "Build Model",
+      "Input": "Node"
+    },
+    {
+      "From": "Load nodal",
+      "Output": "Node",
+      "To": "Build Model",
+      "Input": "Node"
+    },
+    {
+      "From": "Frame element",
+      "Output": "Frame element",
+      "To": "Build Model",
+      "Input": "Frame element"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Validate Straus Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Model Summary",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Rhino2Straus Display Manager",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Decompose Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Model Physical Geometry",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Run Model Cases and Combinations",
+      "Input": "Model"
+    },
+    {
+      "From": "PATH: percorso locale modificabile",
+      "Output": "Panel",
+      "To": "Run Model Cases and Combinations",
+      "Input": "Model path"
+    },
+    {
+      "From": "RUN ANALISI",
+      "Output": "Boolean Toggle",
+      "To": "Run Model Cases and Combinations",
+      "Input": "Run"
+    },
+    {
+      "From": "OVERWRITE: sostituisci file",
+      "Output": "Boolean Toggle",
+      "To": "Run Model Cases and Combinations",
+      "Input": "Overwrite"
+    },
+    {
+      "From": "Run Model Cases and Combinations",
+      "Output": "Model",
+      "To": "Stream Gate",
+      "Input": "Stream"
+    },
+    {
+      "From": "RUN ANALISI",
+      "Output": "Boolean Toggle",
+      "To": "Stream Gate",
+      "Input": "Gate"
+    },
+    {
+      "From": "Gate",
+      "Output": "Target 1",
+      "To": "Model Result Cases",
+      "Input": "Model"
+    },
+    {
+      "From": "Gate",
+      "Output": "Target 1",
+      "To": "Decompose Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Gate",
+      "Output": "Target 1",
+      "To": "Model Beam Actions N V T M",
+      "Input": "Model"
+    },
+    {
+      "From": "Gate",
+      "Output": "Target 1",
+      "To": "Model Deformed Geometry",
+      "Input": "Model"
+    },
+    {
+      "From": "Gate",
+      "Output": "Target 1",
+      "To": "Model Node Reaction",
+      "Input": "Model"
+    },
+    {
+      "From": "Gate",
+      "Output": "Target 1",
+      "To": "Model Beam Force Diagram",
+      "Input": "Model"
+    }
+  ]
+}

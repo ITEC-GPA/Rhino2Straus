@@ -1,0 +1,215 @@
+{
+  "Project": "Rhino2Straus",
+  "File": "07_Assi_offset_svincoli.gh",
+  "Title": "Assi locali, offset e svincoli",
+  "Description": "Una catena modifica lo stesso elemento: orientamento, eccentricita, rilascio terminale. Build riceve soltanto l\u0027ultima versione.",
+  "Topics": [
+    "Assi locali, offset e svincoli"
+  ],
+  "Instructions": [],
+  "Fingerprints": [
+    "30549ED9E4D8DFC02600059C8D22379F000838676AB5AAEBB4114A8EF7D5F7F7"
+  ],
+  "PluginComponents": [
+    {
+      "Class": "MaterialComponent",
+      "Name": "Material",
+      "ComponentGuid": "1f804995-873c-44a5-b4b2-59e9f6966592"
+    },
+    {
+      "Class": "FrameSectionRectangularComponent",
+      "Name": "Frame Section solid rectangular",
+      "ComponentGuid": "c2eec84d-a85b-4596-b79f-44b8bad510bf"
+    },
+    {
+      "Class": "FramePropertyComponent",
+      "Name": "Frame Property",
+      "ComponentGuid": "7e49f69a-f7d7-446f-8fd0-76b9b4263890"
+    },
+    {
+      "Class": "FrameElementComponent",
+      "Name": "Frame element",
+      "ComponentGuid": "07d14640-7b14-4515-ad1d-99f508fa19d3"
+    },
+    {
+      "Class": "NodeElementComponent",
+      "Name": "Node Element",
+      "ComponentGuid": "1ea612a7-69e3-4993-8970-1efcb142fbe9"
+    },
+    {
+      "Class": "NodeElementComponent",
+      "Name": "Node Element",
+      "ComponentGuid": "1ea612a7-69e3-4993-8970-1efcb142fbe9"
+    },
+    {
+      "Class": "NodeSupportComponent",
+      "Name": "Support",
+      "ComponentGuid": "3ed0cf37-cc66-4e44-97ed-e6c77b11b662"
+    },
+    {
+      "Class": "BuildModelComponent",
+      "Name": "Build Model",
+      "ComponentGuid": "e95664b0-8ee6-4db9-a001-517e57bdab93"
+    },
+    {
+      "Class": "AlignBeamAxisComponent",
+      "Name": "Align Beam Local Axis",
+      "ComponentGuid": "ae20ccaf-f1e3-599e-bcc2-18e479bcb81f"
+    },
+    {
+      "Class": "BeamOffsetComponent",
+      "Name": "Beam Offset and Orientation",
+      "ComponentGuid": "9a95f5ee-81a4-579c-931f-92ef81279dfc"
+    },
+    {
+      "Class": "BeamReleasesComponent",
+      "Name": "Beam End Releases",
+      "ComponentGuid": "3a5844a8-705f-51ec-99fd-7bfb7d7e7752"
+    },
+    {
+      "Class": "ValidateModelComponent",
+      "Name": "Validate Straus Model",
+      "ComponentGuid": "595409be-4738-594a-b57d-39bc2437d0a6"
+    },
+    {
+      "Class": "ModelSummaryComponent",
+      "Name": "Model Summary",
+      "ComponentGuid": "53689eef-1768-56b4-ad15-d4b22653b7ef"
+    },
+    {
+      "Class": "PreviewModelComponent",
+      "Name": "Rhino2Straus Display Manager",
+      "ComponentGuid": "5b506764-d527-4b1c-81da-910a202b9603"
+    },
+    {
+      "Class": "DecomposeModelComponent",
+      "Name": "Decompose Model",
+      "ComponentGuid": "db47b5d0-3d45-48a6-82f4-cea65426e9a6"
+    },
+    {
+      "Class": "ModelGeometryComponent",
+      "Name": "Model Physical Geometry",
+      "ComponentGuid": "e42dd5d1-840b-5ce6-96dd-49ba371fdc07"
+    }
+  ],
+  "Objects": 29,
+  "Wires": 20,
+  "ModelChecks": 1,
+  "PhysicalChecks": 1,
+  "ReopenedGh": true,
+  "ReopenedGhx": true,
+  "SliderVolumeChangeChecked": true,
+  "SolverExecuted": false,
+  "ExternalFilesWritten": false,
+  "Messages": [],
+  "Connections": [
+    {
+      "From": "h [m]",
+      "Output": "Number Slider",
+      "To": "Frame Section solid rectangular",
+      "Input": "Height"
+    },
+    {
+      "From": "b [m]",
+      "Output": "Number Slider",
+      "To": "Frame Section solid rectangular",
+      "Input": "Width"
+    },
+    {
+      "From": "Frame Section solid rectangular",
+      "Output": "Frame Section",
+      "To": "Frame Property",
+      "Input": "Section"
+    },
+    {
+      "From": "Material",
+      "Output": "Material",
+      "To": "Frame Property",
+      "Input": "Material"
+    },
+    {
+      "From": "Asse trave",
+      "Output": "Curve",
+      "To": "Frame element",
+      "Input": "Frame line"
+    },
+    {
+      "From": "Frame Property",
+      "Output": "Frame Property",
+      "To": "Frame element",
+      "Input": "Frame Property"
+    },
+    {
+      "From": "Node Element",
+      "Output": "Node",
+      "To": "Support",
+      "Input": "Node"
+    },
+    {
+      "From": "Support",
+      "Output": "Node",
+      "To": "Build Model",
+      "Input": "Node"
+    },
+    {
+      "From": "Node Element",
+      "Output": "Node",
+      "To": "Build Model",
+      "Input": "Node"
+    },
+    {
+      "From": "Beam End Releases",
+      "Output": "Beam",
+      "To": "Build Model",
+      "Input": "Frame element"
+    },
+    {
+      "From": "Frame element",
+      "Output": "Frame element",
+      "To": "Align Beam Local Axis",
+      "Input": "Beam"
+    },
+    {
+      "From": "Align Beam Local Axis",
+      "Output": "Beam",
+      "To": "Beam Offset and Orientation",
+      "Input": "Beam"
+    },
+    {
+      "From": "Beam Offset and Orientation",
+      "Output": "Beam",
+      "To": "Beam End Releases",
+      "Input": "Beam"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Validate Straus Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Model Summary",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Rhino2Straus Display Manager",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Decompose Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Model Physical Geometry",
+      "Input": "Model"
+    }
+  ]
+}

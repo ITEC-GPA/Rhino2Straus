@@ -1,0 +1,199 @@
+{
+  "Project": "Rhino2Straus",
+  "File": "01_Frame_polilinea.gh",
+  "Title": "Frame, materiali e sezioni",
+  "Description": "Una polilinea genera tre elementi di un portale 4 x 3 m. Materiale e sezione si propagano agli elementi. Cambia b e h e controlla nodi, elementi e solidi.",
+  "Topics": [
+    "Frame, materiali e sezioni"
+  ],
+  "Instructions": [],
+  "Fingerprints": [
+    "D9B24FCA44561E63020ACCCCFCB7F14506281D56DB127B337EB52D71FEE5D2CC"
+  ],
+  "PluginComponents": [
+    {
+      "Class": "MaterialComponent",
+      "Name": "Material",
+      "ComponentGuid": "1f804995-873c-44a5-b4b2-59e9f6966592"
+    },
+    {
+      "Class": "FrameSectionRectangularComponent",
+      "Name": "Frame Section solid rectangular",
+      "ComponentGuid": "c2eec84d-a85b-4596-b79f-44b8bad510bf"
+    },
+    {
+      "Class": "FramePropertyComponent",
+      "Name": "Frame Property",
+      "ComponentGuid": "7e49f69a-f7d7-446f-8fd0-76b9b4263890"
+    },
+    {
+      "Class": "PolylineBeamsComponent",
+      "Name": "Polyline to Beams",
+      "ComponentGuid": "48953e07-25f6-5e5e-aa5a-60b94abd8f08"
+    },
+    {
+      "Class": "NodeElementComponent",
+      "Name": "Node Element",
+      "ComponentGuid": "1ea612a7-69e3-4993-8970-1efcb142fbe9"
+    },
+    {
+      "Class": "NodeElementComponent",
+      "Name": "Node Element",
+      "ComponentGuid": "1ea612a7-69e3-4993-8970-1efcb142fbe9"
+    },
+    {
+      "Class": "NodeSupportComponent",
+      "Name": "Support",
+      "ComponentGuid": "3ed0cf37-cc66-4e44-97ed-e6c77b11b662"
+    },
+    {
+      "Class": "NodeSupportComponent",
+      "Name": "Support",
+      "ComponentGuid": "3ed0cf37-cc66-4e44-97ed-e6c77b11b662"
+    },
+    {
+      "Class": "BuildModelComponent",
+      "Name": "Build Model",
+      "ComponentGuid": "e95664b0-8ee6-4db9-a001-517e57bdab93"
+    },
+    {
+      "Class": "ValidateModelComponent",
+      "Name": "Validate Straus Model",
+      "ComponentGuid": "595409be-4738-594a-b57d-39bc2437d0a6"
+    },
+    {
+      "Class": "ModelSummaryComponent",
+      "Name": "Model Summary",
+      "ComponentGuid": "53689eef-1768-56b4-ad15-d4b22653b7ef"
+    },
+    {
+      "Class": "PreviewModelComponent",
+      "Name": "Rhino2Straus Display Manager",
+      "ComponentGuid": "5b506764-d527-4b1c-81da-910a202b9603"
+    },
+    {
+      "Class": "DecomposeModelComponent",
+      "Name": "Decompose Model",
+      "ComponentGuid": "db47b5d0-3d45-48a6-82f4-cea65426e9a6"
+    },
+    {
+      "Class": "ModelGeometryComponent",
+      "Name": "Model Physical Geometry",
+      "ComponentGuid": "e42dd5d1-840b-5ce6-96dd-49ba371fdc07"
+    }
+  ],
+  "Objects": 26,
+  "Wires": 19,
+  "ModelChecks": 1,
+  "PhysicalChecks": 1,
+  "ReopenedGh": true,
+  "ReopenedGhx": true,
+  "SliderVolumeChangeChecked": true,
+  "SolverExecuted": false,
+  "ExternalFilesWritten": false,
+  "Messages": [],
+  "Connections": [
+    {
+      "From": "h [m]",
+      "Output": "Number Slider",
+      "To": "Frame Section solid rectangular",
+      "Input": "Height"
+    },
+    {
+      "From": "b [m]",
+      "Output": "Number Slider",
+      "To": "Frame Section solid rectangular",
+      "Input": "Width"
+    },
+    {
+      "From": "Frame Section solid rectangular",
+      "Output": "Frame Section",
+      "To": "Frame Property",
+      "Input": "Section"
+    },
+    {
+      "From": "Material",
+      "Output": "Material",
+      "To": "Frame Property",
+      "Input": "Material"
+    },
+    {
+      "From": "Polilinea portale",
+      "Output": "Curve",
+      "To": "Polyline to Beams",
+      "Input": "Polyline"
+    },
+    {
+      "From": "Frame Property",
+      "Output": "Frame Property",
+      "To": "Polyline to Beams",
+      "Input": "Property"
+    },
+    {
+      "From": "Node Element",
+      "Output": "Node",
+      "To": "Support",
+      "Input": "Node"
+    },
+    {
+      "From": "Node Element",
+      "Output": "Node",
+      "To": "Support",
+      "Input": "Node"
+    },
+    {
+      "From": "Support",
+      "Output": "Node",
+      "To": "Build Model",
+      "Input": "Node"
+    },
+    {
+      "From": "Node Element",
+      "Output": "Node",
+      "To": "Build Model",
+      "Input": "Node"
+    },
+    {
+      "From": "Support",
+      "Output": "Node",
+      "To": "Build Model",
+      "Input": "Node"
+    },
+    {
+      "From": "Polyline to Beams",
+      "Output": "Beams",
+      "To": "Build Model",
+      "Input": "Frame element"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Validate Straus Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Model Summary",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Rhino2Straus Display Manager",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Decompose Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Model Physical Geometry",
+      "Input": "Model"
+    }
+  ]
+}

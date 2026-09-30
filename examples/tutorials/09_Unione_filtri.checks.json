@@ -1,0 +1,271 @@
+{
+  "Project": "Rhino2Straus",
+  "File": "09_Unione_filtri.gh",
+  "Title": "Unione, decomposizione e filtri",
+  "Description": "Due mensole indipendenti, con ID coordinati, confluiscono in un Model. Decomposizione e filtro recuperano un sottoinsieme.",
+  "Topics": [
+    "Unione, decomposizione e filtri"
+  ],
+  "Instructions": [],
+  "Fingerprints": [
+    "36DC95EBC81F4861944D2F0F8F26E97793DEB61E48804E9EACCCF8D8433F35C4"
+  ],
+  "PluginComponents": [
+    {
+      "Class": "MaterialComponent",
+      "Name": "Material",
+      "ComponentGuid": "1f804995-873c-44a5-b4b2-59e9f6966592"
+    },
+    {
+      "Class": "FrameSectionRectangularComponent",
+      "Name": "Frame Section solid rectangular",
+      "ComponentGuid": "c2eec84d-a85b-4596-b79f-44b8bad510bf"
+    },
+    {
+      "Class": "FramePropertyComponent",
+      "Name": "Frame Property",
+      "ComponentGuid": "7e49f69a-f7d7-446f-8fd0-76b9b4263890"
+    },
+    {
+      "Class": "FrameElementComponent",
+      "Name": "Frame element",
+      "ComponentGuid": "07d14640-7b14-4515-ad1d-99f508fa19d3"
+    },
+    {
+      "Class": "NodeElementComponent",
+      "Name": "Node Element",
+      "ComponentGuid": "1ea612a7-69e3-4993-8970-1efcb142fbe9"
+    },
+    {
+      "Class": "NodeElementComponent",
+      "Name": "Node Element",
+      "ComponentGuid": "1ea612a7-69e3-4993-8970-1efcb142fbe9"
+    },
+    {
+      "Class": "NodeSupportComponent",
+      "Name": "Support",
+      "ComponentGuid": "3ed0cf37-cc66-4e44-97ed-e6c77b11b662"
+    },
+    {
+      "Class": "BuildModelComponent",
+      "Name": "Build Model",
+      "ComponentGuid": "e95664b0-8ee6-4db9-a001-517e57bdab93"
+    },
+    {
+      "Class": "FrameElementComponent",
+      "Name": "Frame element",
+      "ComponentGuid": "07d14640-7b14-4515-ad1d-99f508fa19d3"
+    },
+    {
+      "Class": "NodeElementComponent",
+      "Name": "Node Element",
+      "ComponentGuid": "1ea612a7-69e3-4993-8970-1efcb142fbe9"
+    },
+    {
+      "Class": "NodeElementComponent",
+      "Name": "Node Element",
+      "ComponentGuid": "1ea612a7-69e3-4993-8970-1efcb142fbe9"
+    },
+    {
+      "Class": "NodeSupportComponent",
+      "Name": "Support",
+      "ComponentGuid": "3ed0cf37-cc66-4e44-97ed-e6c77b11b662"
+    },
+    {
+      "Class": "BuildModelComponent",
+      "Name": "Build Model",
+      "ComponentGuid": "e95664b0-8ee6-4db9-a001-517e57bdab93"
+    },
+    {
+      "Class": "MergeModelsComponent",
+      "Name": "Merge Straus Models",
+      "ComponentGuid": "356a6055-5867-5789-bdd1-c4e1d16e4a2a"
+    },
+    {
+      "Class": "ValidateModelComponent",
+      "Name": "Validate Straus Model",
+      "ComponentGuid": "595409be-4738-594a-b57d-39bc2437d0a6"
+    },
+    {
+      "Class": "ModelSummaryComponent",
+      "Name": "Model Summary",
+      "ComponentGuid": "53689eef-1768-56b4-ad15-d4b22653b7ef"
+    },
+    {
+      "Class": "PreviewModelComponent",
+      "Name": "Rhino2Straus Display Manager",
+      "ComponentGuid": "5b506764-d527-4b1c-81da-910a202b9603"
+    },
+    {
+      "Class": "DecomposeModelComponent",
+      "Name": "Decompose Model",
+      "ComponentGuid": "db47b5d0-3d45-48a6-82f4-cea65426e9a6"
+    },
+    {
+      "Class": "ModelGeometryComponent",
+      "Name": "Model Physical Geometry",
+      "ComponentGuid": "e42dd5d1-840b-5ce6-96dd-49ba371fdc07"
+    },
+    {
+      "Class": "FrameFilterComponent",
+      "Name": "Frame Filter",
+      "ComponentGuid": "38a772ad-451e-4af6-bead-52f530028b8b"
+    }
+  ],
+  "Objects": 36,
+  "Wires": 27,
+  "ModelChecks": 1,
+  "PhysicalChecks": 1,
+  "ReopenedGh": true,
+  "ReopenedGhx": true,
+  "SliderVolumeChangeChecked": true,
+  "SolverExecuted": false,
+  "ExternalFilesWritten": false,
+  "Messages": [],
+  "Connections": [
+    {
+      "From": "h [m]",
+      "Output": "Number Slider",
+      "To": "Frame Section solid rectangular",
+      "Input": "Height"
+    },
+    {
+      "From": "b [m]",
+      "Output": "Number Slider",
+      "To": "Frame Section solid rectangular",
+      "Input": "Width"
+    },
+    {
+      "From": "Frame Section solid rectangular",
+      "Output": "Frame Section",
+      "To": "Frame Property",
+      "Input": "Section"
+    },
+    {
+      "From": "Material",
+      "Output": "Material",
+      "To": "Frame Property",
+      "Input": "Material"
+    },
+    {
+      "From": "Asse trave",
+      "Output": "Curve",
+      "To": "Frame element",
+      "Input": "Frame line"
+    },
+    {
+      "From": "Frame Property",
+      "Output": "Frame Property",
+      "To": "Frame element",
+      "Input": "Frame Property"
+    },
+    {
+      "From": "Node Element",
+      "Output": "Node",
+      "To": "Support",
+      "Input": "Node"
+    },
+    {
+      "From": "Support",
+      "Output": "Node",
+      "To": "Build Model",
+      "Input": "Node"
+    },
+    {
+      "From": "Node Element",
+      "Output": "Node",
+      "To": "Build Model",
+      "Input": "Node"
+    },
+    {
+      "From": "Frame element",
+      "Output": "Frame element",
+      "To": "Build Model",
+      "Input": "Frame element"
+    },
+    {
+      "From": "Asse trave",
+      "Output": "Curve",
+      "To": "Frame element",
+      "Input": "Frame line"
+    },
+    {
+      "From": "Frame Property",
+      "Output": "Frame Property",
+      "To": "Frame element",
+      "Input": "Frame Property"
+    },
+    {
+      "From": "Node Element",
+      "Output": "Node",
+      "To": "Support",
+      "Input": "Node"
+    },
+    {
+      "From": "Support",
+      "Output": "Node",
+      "To": "Build Model",
+      "Input": "Node"
+    },
+    {
+      "From": "Node Element",
+      "Output": "Node",
+      "To": "Build Model",
+      "Input": "Node"
+    },
+    {
+      "From": "Frame element",
+      "Output": "Frame element",
+      "To": "Build Model",
+      "Input": "Frame element"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Merge Straus Models",
+      "Input": "Models"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Merge Straus Models",
+      "Input": "Models"
+    },
+    {
+      "From": "Merge Straus Models",
+      "Output": "Model",
+      "To": "Validate Straus Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Merge Straus Models",
+      "Output": "Model",
+      "To": "Model Summary",
+      "Input": "Model"
+    },
+    {
+      "From": "Merge Straus Models",
+      "Output": "Model",
+      "To": "Rhino2Straus Display Manager",
+      "Input": "Model"
+    },
+    {
+      "From": "Merge Straus Models",
+      "Output": "Model",
+      "To": "Decompose Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Merge Straus Models",
+      "Output": "Model",
+      "To": "Model Physical Geometry",
+      "Input": "Model"
+    },
+    {
+      "From": "Decompose Model",
+      "Output": "Frame elements",
+      "To": "Frame Filter",
+      "Input": "Frame elements"
+    }
+  ]
+}

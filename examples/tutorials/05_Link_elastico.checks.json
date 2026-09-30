@@ -1,0 +1,131 @@
+{
+  "Project": "Rhino2Straus",
+  "File": "05_Link_elastico.gh",
+  "Title": "Link e rigidezze",
+  "Description": "Due nodi distinti collegati da un link elastico. Il primo e vincolato, il secondo e libero. Le prime tre rigidezze sono kN/m, le ultime tre kN m/rad.",
+  "Topics": [
+    "Link e rigidezze"
+  ],
+  "Instructions": [],
+  "Fingerprints": [
+    "A6EAF85B3097B32AED782EB630A53501836E9AB7F37D1337D816AF791F2E811F"
+  ],
+  "PluginComponents": [
+    {
+      "Class": "NodeElementComponent",
+      "Name": "Node Element",
+      "ComponentGuid": "1ea612a7-69e3-4993-8970-1efcb142fbe9"
+    },
+    {
+      "Class": "NodeElementComponent",
+      "Name": "Node Element",
+      "ComponentGuid": "1ea612a7-69e3-4993-8970-1efcb142fbe9"
+    },
+    {
+      "Class": "NodeSupportComponent",
+      "Name": "Support",
+      "ComponentGuid": "3ed0cf37-cc66-4e44-97ed-e6c77b11b662"
+    },
+    {
+      "Class": "ElasticLinkPropertyComponent",
+      "Name": "Elastic Link Property",
+      "ComponentGuid": "7f392dfa-6c41-514b-8bc1-81963ad79528"
+    },
+    {
+      "Class": "LinkElementComponent",
+      "Name": "Link element",
+      "ComponentGuid": "56b5da2b-0d9f-488c-96bf-2a6e50027414"
+    },
+    {
+      "Class": "BuildModelComponent",
+      "Name": "Build Model",
+      "ComponentGuid": "e95664b0-8ee6-4db9-a001-517e57bdab93"
+    },
+    {
+      "Class": "ValidateModelComponent",
+      "Name": "Validate Straus Model",
+      "ComponentGuid": "595409be-4738-594a-b57d-39bc2437d0a6"
+    },
+    {
+      "Class": "ModelSummaryComponent",
+      "Name": "Model Summary",
+      "ComponentGuid": "53689eef-1768-56b4-ad15-d4b22653b7ef"
+    },
+    {
+      "Class": "PreviewModelComponent",
+      "Name": "Rhino2Straus Display Manager",
+      "ComponentGuid": "5b506764-d527-4b1c-81da-910a202b9603"
+    },
+    {
+      "Class": "DecomposeModelComponent",
+      "Name": "Decompose Model",
+      "ComponentGuid": "db47b5d0-3d45-48a6-82f4-cea65426e9a6"
+    }
+  ],
+  "Objects": 21,
+  "Wires": 11,
+  "ModelChecks": 1,
+  "PhysicalChecks": 0,
+  "ReopenedGh": true,
+  "ReopenedGhx": true,
+  "SliderVolumeChangeChecked": false,
+  "SolverExecuted": false,
+  "ExternalFilesWritten": false,
+  "Messages": [],
+  "Connections": [
+    {
+      "From": "Node Element",
+      "Output": "Node",
+      "To": "Support",
+      "Input": "Node"
+    },
+    {
+      "From": "Elastic Link Property",
+      "Output": "Property",
+      "To": "Link element",
+      "Input": "Link Property"
+    },
+    {
+      "From": "Support",
+      "Output": "Node",
+      "To": "Build Model",
+      "Input": "Node"
+    },
+    {
+      "From": "Node Element",
+      "Output": "Node",
+      "To": "Build Model",
+      "Input": "Node"
+    },
+    {
+      "From": "Link element",
+      "Output": "Link",
+      "To": "Build Model",
+      "Input": "Link element"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Validate Straus Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Model Summary",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Rhino2Straus Display Manager",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Decompose Model",
+      "Input": "Model"
+    }
+  ]
+}

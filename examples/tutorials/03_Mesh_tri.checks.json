@@ -1,0 +1,187 @@
+{
+  "Project": "Rhino2Straus",
+  "File": "03_Mesh_tri.gh",
+  "Title": "Mesh triangolare",
+  "Description": "La stessa piastra usa 8 Tri3 e conserva 9 nodi. Confronta questo file con 02: la scelta della mesh cambia gli elementi, non l\u0027area e lo spessore.",
+  "Topics": [
+    "Mesh triangolare"
+  ],
+  "Instructions": [],
+  "Fingerprints": [
+    "9366F8625272DBA1AC846DC603E3FFBB4A75A7D175E02754E592372E113FEA57"
+  ],
+  "PluginComponents": [
+    {
+      "Class": "MaterialComponent",
+      "Name": "Material",
+      "ComponentGuid": "1f804995-873c-44a5-b4b2-59e9f6966592"
+    },
+    {
+      "Class": "AreaThicknessComponent",
+      "Name": "Area thickness",
+      "ComponentGuid": "fe66f2e0-1381-4c73-a206-f9f7e46346bc"
+    },
+    {
+      "Class": "AreaPropertyComponent",
+      "Name": "Area Property",
+      "ComponentGuid": "3edcae0b-6f75-48b9-94b2-538d8e714262"
+    },
+    {
+      "Class": "MeshPlatesComponent",
+      "Name": "Mesh to Plates",
+      "ComponentGuid": "24b5c060-c59b-536b-bad7-5ea1bba7a24e"
+    },
+    {
+      "Class": "NodeElementComponent",
+      "Name": "Node Element",
+      "ComponentGuid": "1ea612a7-69e3-4993-8970-1efcb142fbe9"
+    },
+    {
+      "Class": "NodeSupportComponent",
+      "Name": "Support",
+      "ComponentGuid": "3ed0cf37-cc66-4e44-97ed-e6c77b11b662"
+    },
+    {
+      "Class": "LoadCaseComponent",
+      "Name": "Load case",
+      "ComponentGuid": "65f6274a-354a-4965-a40e-73af273912fc"
+    },
+    {
+      "Class": "GlobalPressureComponent",
+      "Name": "Plate Global Pressure",
+      "ComponentGuid": "a94608dd-cbf9-5588-a5dd-e09c157e9bbe"
+    },
+    {
+      "Class": "BuildModelComponent",
+      "Name": "Build Model",
+      "ComponentGuid": "e95664b0-8ee6-4db9-a001-517e57bdab93"
+    },
+    {
+      "Class": "ValidateModelComponent",
+      "Name": "Validate Straus Model",
+      "ComponentGuid": "595409be-4738-594a-b57d-39bc2437d0a6"
+    },
+    {
+      "Class": "ModelSummaryComponent",
+      "Name": "Model Summary",
+      "ComponentGuid": "53689eef-1768-56b4-ad15-d4b22653b7ef"
+    },
+    {
+      "Class": "PreviewModelComponent",
+      "Name": "Rhino2Straus Display Manager",
+      "ComponentGuid": "5b506764-d527-4b1c-81da-910a202b9603"
+    },
+    {
+      "Class": "DecomposeModelComponent",
+      "Name": "Decompose Model",
+      "ComponentGuid": "db47b5d0-3d45-48a6-82f4-cea65426e9a6"
+    },
+    {
+      "Class": "ModelGeometryComponent",
+      "Name": "Model Physical Geometry",
+      "ComponentGuid": "e42dd5d1-840b-5ce6-96dd-49ba371fdc07"
+    }
+  ],
+  "Objects": 25,
+  "Wires": 17,
+  "ModelChecks": 1,
+  "PhysicalChecks": 1,
+  "ReopenedGh": true,
+  "ReopenedGhx": true,
+  "SliderVolumeChangeChecked": true,
+  "SolverExecuted": false,
+  "ExternalFilesWritten": false,
+  "Messages": [],
+  "Connections": [
+    {
+      "From": "Spessore t [m]",
+      "Output": "Number Slider",
+      "To": "Area thickness",
+      "Input": "Thickness"
+    },
+    {
+      "From": "Area thickness",
+      "Output": "Area thickness",
+      "To": "Area Property",
+      "Input": "Section"
+    },
+    {
+      "From": "Material",
+      "Output": "Material",
+      "To": "Area Property",
+      "Input": "Material"
+    },
+    {
+      "From": "Mesh incorporata",
+      "Output": "Mesh",
+      "To": "Mesh to Plates",
+      "Input": "Mesh"
+    },
+    {
+      "From": "Area Property",
+      "Output": "Area Property",
+      "To": "Mesh to Plates",
+      "Input": "Property"
+    },
+    {
+      "From": "Node Element",
+      "Output": "Node",
+      "To": "Support",
+      "Input": "Node"
+    },
+    {
+      "From": "Mesh to Plates",
+      "Output": "Plates",
+      "To": "Plate Global Pressure",
+      "Input": "Plate"
+    },
+    {
+      "From": "Load case",
+      "Output": "Load case",
+      "To": "Plate Global Pressure",
+      "Input": "Load case"
+    },
+    {
+      "From": "Support",
+      "Output": "Node",
+      "To": "Build Model",
+      "Input": "Node"
+    },
+    {
+      "From": "Plate Global Pressure",
+      "Output": "Plate",
+      "To": "Build Model",
+      "Input": "Area element"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Validate Straus Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Model Summary",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Rhino2Straus Display Manager",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Decompose Model",
+      "Input": "Model"
+    },
+    {
+      "From": "Build Model",
+      "Output": "Model",
+      "To": "Model Physical Geometry",
+      "Input": "Model"
+    }
+  ]
+}
