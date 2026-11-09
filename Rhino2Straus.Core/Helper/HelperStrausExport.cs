@@ -47,6 +47,8 @@ namespace Rhino2Straus.Core.Helper
                 stagingPath = Path.Combine(Path.GetDirectoryName(outputPath), ".rhino2straus-" + Guid.NewGuid().ToString("N") + ".st7");
                 session = new StrausSession(stagingPath, create: true);
                 modelId = session.Id;
+                // Model contains elastic constants only; do not inherit native nonlinear defaults.
+                HandleError(St7.St7SetSolverNonlinearMaterial(modelId, (byte)St7.btFalse));
                 HandleError(St7.St7SetTitle(modelId, St7.tbReference, "Rhino2Straus:" + ModelFingerprint.Compute(Model)));
                 HandleError(St7.St7SetUnits(modelId, StrausUnits.ToApi(Model.ModelUnits)));
 

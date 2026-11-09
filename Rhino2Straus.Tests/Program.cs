@@ -303,7 +303,7 @@ if (args.Contains("--native"))
             Assert(StrausModelImport.Read(grouped,allowPartial:true).Model.NodeElements.Values.All(n=>n.Groups.Count==0));
         });
         Test("Native units, connectivity, IDs and load accumulation roundtrip",()=>{
-            using var s=new StrausSession(path);var u=new int[6];Check(St7.St7GetUnits(s.Id,u));Assert(u[St7.ipFORCEU]==St7.fuKILONEWTON&&u[St7.ipLENGTHU]==St7.luMETRE);
+            using var s=new StrausSession(path);byte nonlinear=1;Check(St7.St7GetSolverNonlinearMaterial(s.Id,ref nonlinear));Assert(nonlinear==0);var u=new int[6];Check(St7.St7GetUnits(s.Id,u));Assert(u[St7.ipFORCEU]==St7.fuKILONEWTON&&u[St7.ipLENGTHU]==St7.luMETRE);
             var f=new double[3];Check(St7.St7GetNodeForce3(s.Id,2,1,f));Near(f[2],-1);var c=new int[21];Check(St7.St7GetElementConnection(s.Id,St7.tyBEAM,1,c));Assert(c[0]==2&&c[1]==1&&c[2]==2);
             var data=new double[9];Check(St7.St7GetBeamMaterialData(s.Id,1,data));Near(data[St7.ipBeamDensity],7.849);
         });
