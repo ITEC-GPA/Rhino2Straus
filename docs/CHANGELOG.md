@@ -1,5 +1,19 @@
 # Note di versione
 
+## 0.6.0 — 9 novembre 2026
+
+- Tutti gli otto componenti Analysis avviano il solver EXE tramite `St7RunSolverProcess` senza attesa bloccante; le chiamate API e il rilascio delle sessioni rimangono sul thread UI. Export e lettura dei risultati restano sincroni.
+- Coda comune per le analisi; le altre chiamate native falliscono subito con `API busy` durante l'analisi. Stato indipendente per ciascuna iterazione Grasshopper.
+- Copie profonde di coordinate dei carichi e gruppi di carico/vincolo, senza riferimenti mutabili condivisi con gli input.
+- Copia degli input al fronte Run, aggiornamento automatico dell'output al completamento, nessun riavvio con Run mantenuto True.
+- Invalidazione per cambio degli input, sequenza A → B → A, input mancanti, rimozione del componente e chiusura documento. I risultati ricevuti in ingresso non attraversano l'output in attesa.
+- Controllo dei file modificati durante l'attesa e dei file di output sovrascritti; rimane la verifica SHA-256 dei manifest Model.
+- Nuove prove su responsività UI, coda, annullamento, risultati obsoleti e tutti gli otto solver reali. GUID, pannelli e socket invariati.
+
+Verifiche: 84 test gestiti, 96 test nel runner nativo (inclusi 12 benchmark/regressioni native), 221 controlli geometrici/Grasshopper con tutti gli otto solver. Tutti i processi di verifica terminati con codice 0.
+
+Aggiornamento: sostituire l'intera cartella del plugin. Il rilascio del pulsante Run non annulla l'analisi. Un lavoro obsoleto già avviato termina normalmente e può lasciare file sul disco; il suo risultato viene scartato dall'output Grasshopper. Vedere [MODEL-RESULTS](MODEL-RESULTS.md) e [VALIDATION](VALIDATION.md).
+
 ## 0.5.2 — 9 novembre 2026
 
 - CI: versione del pacchetto ricavata dai metadati del progetto; ZIP mancante causa errore. Controllo dei cataloghi con `tools/catalogue.py --check`.

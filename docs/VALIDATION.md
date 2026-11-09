@@ -1,5 +1,30 @@
 # Stato delle verifiche
 
+## Verifica del 9 novembre 2026 — asincronia 0.6.0
+
+Ambiente: Windows x64, SDK 9.0.320, Rhino 8.36.26296.17001, Straus7 R31 con licenza API e solver disponibile.
+
+- **84 test gestiti**: stato Run, scarto generazionale A → B → A, cancellazione in coda, snapshot, affinità del contesto UI, rifiuto delle chiamate native estranee durante l'attesa e invalidazione dei file.
+- **96 test nel runner nativo** (84 gestiti + 12 nativi), con i benchmark numerici descritti sotto: nessun fallimento, processo terminato con codice 0.
+- **221 controlli geometrici/Grasshopper** con `--async-native`: tutti gli otto componenti completano analisi reali; timer UI attivo durante l'attesa, avvio senza attendere il solver, output aggiornati automaticamente e provenienza dei quattro Model verificata.
+- Ripristino input e Lock → Unlock con Run=True: nessun riavvio involontario; un nuovo fronte false → true accetta il lavoro. Copie profonde di coordinate e gruppi verificate anche durante l’attesa in coda.
+- Prova nativa di obsolescenza: Model modificato durante il solver, risultati in uscita eliminati, completamento tardivo scartato, API liberata e nuova analisi riuscita sul Model modificato. Il file del lavoro obsoleto rimane sul disco, come previsto.
+- Chiusura Rhino.Inside dopo rilascio dell'API: **exit code 0**. Il tentativo preliminare di usare l'API da un thread secondario aveva prodotto AV/blocco al teardown ed è stato sostituito: il codice distribuito mantiene le chiamate native sul contesto UI.
+- Catalogo verificato: 164 componenti, 164 GUID unici, 17 pannelli; nessuna variazione dei socket.
+
+Comandi riproducibili:
+
+```powershell
+dotnet run --project Rhino2Straus.Tests -c Release
+dotnet run --project tools/NativeTests -c Release -- --solve
+dotnet run --project tools/GeometrySmoke -c Release -- --async-native
+py -3 tools/catalogue.py --check
+```
+
+Il runner GeometrySmoke legge il plugin dalla cartella `bin`; `RHINO2STRAUS_PLUGIN_PATH` permette di indicare esplicitamente un assembly appena compilato. Rapporti: [regressioni native](validation/2026-11-09-async-native.txt), [Grasshopper asincrono](validation/2026-11-09-async-gh.txt).
+
+Limiti verificati e non verificati: export, preparazione e lettura dei risultati restano sincroni; non sono state misurate le prestazioni su modelli grandi. La prova della UI usa Rhino.Inside con il ciclo messaggi Windows e documenti Grasshopper reali; non è una misura del frame rate del viewport. La coda coordina Rhino2Straus nel processo Rhino, non altre applicazioni o plugin che chiamino direttamente Straus7. Gli input/file modificati non interrompono forzatamente il solver già avviato. Il monitoraggio della cache usa metadati dei file; la verifica SHA-256 resta nel percorso di rilettura Model. Non ripetuta la prova congiunta dei quattro plugin.
+
 ## Verifica del 9 novembre 2026 — correzioni per 0.5.2
 
 Ambiente: Windows x64, SDK 9.0.320, Rhino 8.36.26296.17001, API Straus7 R31. La licenza API e i quattro solver hanno funzionato: l'errore -8 nelle sezioni successive riguarda solo le prove storiche.
@@ -23,7 +48,7 @@ Comando: `dotnet run --project tools/NativeTests -c Release -- --solve`. Il runn
 
 Non costituiscono un collaudo completo dei risultati FEM di piastre, solidi, sezioni native, link o di tutte le opzioni dei solver. Le verifiche geometriche rimangono distinte dalle prove numeriche native.
 
-### Responsività: valutazione e lavoro residuo
+### Responsività storica della 0.5.2 (superata dalla 0.6.0)
 
 Le prove elementari hanno richiesto circa 2–4 secondi per analisi; il buckling con due mesh e due analisi statiche circa 9 secondi. Non sono misure di responsività del viewport o stime per modelli grandi.
 

@@ -1,6 +1,6 @@
 # Rhino2Straus
 
-**Versione 0.5.2 — 9 novembre 2026.** Correzioni export/import e NLA verificate con Straus7, invalidazione cache dei solver su file, diagnostica DLL, packaging e CI. [Note di versione](docs/CHANGELOG.md) · [Verifiche eseguite e limiti](docs/VALIDATION.md).
+**Versione 0.6.0 — 9 novembre 2026.** Solver asincroni, isolamento delle operazioni native e scarto dei risultati obsoleti. [Note di versione](docs/CHANGELOG.md) · [Verifiche eseguite e limiti](docs/VALIDATION.md).
 
 Componenti **Rhino 8 / Grasshopper per Straus7 R3, Windows x64**. Il progetto è dedicato esclusivamente a Straus7: modellazione, attributi, modello FEM unificato, preview, esportazione `.st7`, analisi e lettura dei risultati.
 
@@ -72,7 +72,7 @@ Il pacchetto distribuisce soltanto gli assembly del progetto: RhinoCommon, Grass
 
 `Save` oppure il fronte `Run=false → true` avvia l'export; la sola modifica degli input non scrive file. `Overwrite` è disattivato per default. L'export valida il modello, salva un file temporaneo e pubblica il `.st7` soltanto a operazione completa. L'output `Model path` collega l'export ai componenti solver.
 
-Sono presenti statica lineare, frequenze naturali, buckling lineare e statica non lineare incrementale. Il buckling richiede risultati statici iniziali. La non lineare sostituisce la tabella degli incrementi non staged con una rampa del caso selezionato; le leggi materiali devono essere già definite nel file per abilitare la non linearità materiale. I solver sono sincroni e possono occupare Grasshopper durante il calcolo. I quattro solver su file invalidano la cache quando cambia percorso o parametro di analisi; serve un nuovo fronte Run. Le modifiche esterne dei file mantenendo gli stessi input non sono sorvegliate automaticamente.
+Sono presenti statica lineare, frequenze naturali, buckling lineare e statica non lineare incrementale. Il buckling richiede risultati statici iniziali. La non lineare sostituisce la tabella degli incrementi non staged con una rampa del caso selezionato; le leggi materiali devono essere già definite nel file per abilitare la non linearità materiale. Gli otto componenti solver eseguono il calcolo esterno in modo asincrono: Grasshopper resta utilizzabile durante l'attesa. Export e lettura dei risultati rimangono sincroni. Le operazioni native sono serializzate; un'altra operazione API segnala `API busy` senza bloccare l'interfaccia. Gli input modificati invalidano i risultati e richiedono un nuovo fronte Run; i completamenti obsoleti non vengono pubblicati. Un solver già avviato termina normalmente e può lasciare i propri file su disco. [Stati, invalidazione e limiti](docs/MODEL-RESULTS.md).
 
 Le temperature di riferimento dei casi e i tipi delle temperature nodali entrano ora nell’identità del Model: riesportare e ricalcolare i risultati delle versioni precedenti prima di riassociarli con la 0.5.
 

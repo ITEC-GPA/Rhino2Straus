@@ -1,0 +1,237 @@
+Rhino2Straus 0.6.0 validation
+Command: dotnet run --project tools/GeometrySmoke -c Release -- --async-native
+Exit code: 0
+
+PASS Rectangle cross-sectional area
+PASS Symmetric section product of inertia is zero
+PASS Beam preview is capped solid
+Beam volume=0.1600000000000001; orientation=Outward; centroid=1,0.3,0.39999999999999997
+PASS Beam preview volume
+PASS Beam preview includes principal offsets
+PASS Section insertion contributes to exported offset
+PASS Rigid placement rotates beam connectivity
+PASS Plate preview is watertight
+PASS Plate element and property offsets are combined
+PASS SR section geometry
+PASS SR principal section inertia
+PASS P section geometry
+PASS P principal section inertia
+PASS B section geometry
+PASS B principal section inertia
+PASS H section geometry
+PASS H principal section inertia
+PASS T section geometry
+PASS T principal section inertia
+PASS C section geometry
+PASS C principal section inertia
+PASS L section geometry
+PASS L principal section inertia
+PASS Beam principal alignment 2,0,0
+PASS Beam second axis alignment 2,0,0
+PASS Alignment leaves input beam unchanged 2,0,0
+PASS Beam principal alignment 0,0,2
+PASS Beam second axis alignment 0,0,2
+PASS Alignment leaves input beam unchanged 0,0,2
+PASS Beam principal alignment 0,0,-2
+PASS Beam second axis alignment 0,0,-2
+PASS Alignment leaves input beam unchanged 0,0,-2
+PASS Beam principal alignment 2,3,4
+PASS Beam second axis alignment 2,3,4
+PASS Alignment leaves input beam unchanged 2,3,4
+PASS Plate axis projection preserves normal
+PASS Parallel plate alignment direction is rejected
+PASS Parallel beam alignment direction is rejected
+PASS Geometric section alignment accounts for principal section angle
+PASS Section preview copies do not mutate the original
+PASS Invalid pipe thickness is rejected before geometry construction
+PASS Profile-derived insertion changes invalidate results
+PASS Load preview includes moments and forces
+PASS Attribute preview Supports
+PASS Attribute preview Releases
+PASS Attribute preview Springs
+PASS Attribute preview Masses
+PASS Attribute preview Prescribed
+PASS Attribute preview Offsets
+PASS Attribute preview Axes
+PASS Attribute preview Properties
+PASS Thermal and preload annotations
+PASS Beam point loads use local axes, relative position and physical offset
+PASS Positive plate normal pressure points inward from minus-z face
+PASS Positive plate edge pressure points away from plate
+PASS Native tetrahedron face 1 pressure points into solid
+PASS Case filter hides other loads and preserves attributes
+PASS Loads can be disabled independently
+PASS Master-off removes geometry, attributes and bounds
+PASS Sections off preserves beam axes and plate midsurfaces
+PASS Preview bounds include symbols without changing analysis identity
+PASS Unknown preview load case fails explicitly
+PASS Model Breps include closed beam, plate and solid volumes only
+PASS Brep geometry retains element kinds and Model IDs
+PASS Closed plate Brep retains physical thickness and combined offsets
+PASS Brep conversion preserves thin geometry at large coordinates
+PASS 4-node solid converts to a closed outward Brep with correct volume
+PASS 6-node solid converts to a closed outward Brep with correct volume
+PASS 8-node solid converts to a closed outward Brep with correct volume
+PASS P Brep preserves the section void instead of filling it
+PASS B Brep preserves the section void instead of filling it
+PASS Multipart sections keep every disconnected face as a separate solid
+PASS Missing section profiles and zero plate thickness produce explicit issues, not open solids
+PASS Downstream Brep edits leave the FEM model and new conversions unchanged
+74 geometry checks passed.
+164 Grasshopper components constructed: GUIDs, icons, outputs and ribbon topics valid; Group is in Model.
+ModelBeamActionsComponent: phase=Computed, output=2
+PASS Grasshopper beam N output follows API column mapping
+PASS Grasshopper beam M2 output follows API column mapping
+ModelResultEnvelopeComponent: phase=Computed, output=2
+PASS Grasshopper extrema preserve signed values
+PASS Grasshopper extrema return governing sample positions
+DecomposeModelComponent: phase=Computed, output=2
+PASS Grasshopper decomposes one Model with results
+ModelNodeDisplacementComponent: phase=Computed, output=12
+PASS Grasshopper nodal result trees retain six components per node
+ModelVerificationDataComponent: phase=Computed, output=3
+PASS Grasshopper verification data joins elements and result tables
+ModelDeformedGeometryComponent: phase=Computed, output=2
+PASS Grasshopper deformed geometry uses Model results
+PASS Grasshopper defaults solve FrameSectionAngleComponent
+PASS Grasshopper defaults solve FrameSectionBoxComponent
+PASS Grasshopper defaults solve FrameSectionChannelComponent
+PASS Grasshopper defaults solve FrameSectionCircleComponent
+PASS Grasshopper defaults solve FrameSectionIComponent
+PASS Grasshopper defaults solve FrameSectionPipeComponent
+PASS Grasshopper defaults solve FrameSectionRectangularComponent
+PASS Grasshopper defaults solve FrameSectionTeeComponent
+PASS Grasshopper defaults solve FrameSectionGenericComponent
+PASS Grasshopper defaults solve MaterialComponent
+PASS Grasshopper defaults solve DatabaseSteelMaterialComponent
+PASS Grasshopper defaults solve DatabaseConcreteMaterialComponent
+PASS Grasshopper defaults solve LoadCaseComponent
+PASS Grasshopper defaults solve AreaThicknessComponent
+PASS Grasshopper defaults solve LinkPropertyComponent
+PASS Grasshopper defaults solve NativeSectionOptionsComponent
+PASS Grasshopper defaults solve RigidLinkPropertyComponent
+PASS Grasshopper defaults solve PinnedLinkPropertyComponent
+PASS Grasshopper defaults solve MasterSlaveLinkPropertyComponent
+PASS Grasshopper defaults solve SectorSymmetryLinkPropertyComponent
+PASS Grasshopper defaults solve ElasticLinkPropertyComponent
+PASS Grasshopper defaults solve LinkConstraintOptionsComponent
+PASS Grasshopper defaults solve RunLinearStaticComponent
+PASS RunLinearStaticComponent retains unchanged cached result
+PASS RunLinearStaticComponent invalidates changed input 0
+PASS Grasshopper defaults solve RunNaturalFrequencyComponent
+PASS RunNaturalFrequencyComponent retains unchanged cached result
+PASS RunNaturalFrequencyComponent invalidates changed input 0
+PASS RunNaturalFrequencyComponent retains unchanged cached result
+PASS RunNaturalFrequencyComponent invalidates changed input 3
+PASS RunNaturalFrequencyComponent retains unchanged cached result
+PASS RunNaturalFrequencyComponent invalidates changed input 4
+PASS Grasshopper defaults solve RunLinearBucklingComponent
+PASS RunLinearBucklingComponent retains unchanged cached result
+PASS RunLinearBucklingComponent invalidates changed input 0
+PASS RunLinearBucklingComponent retains unchanged cached result
+PASS RunLinearBucklingComponent invalidates changed input 3
+PASS RunLinearBucklingComponent retains unchanged cached result
+PASS RunLinearBucklingComponent invalidates changed input 4
+PASS RunLinearBucklingComponent retains unchanged cached result
+PASS RunLinearBucklingComponent invalidates changed input 5
+PASS RunLinearBucklingComponent retains unchanged cached result
+PASS RunLinearBucklingComponent invalidates changed input 6
+PASS RunLinearBucklingComponent retains unchanged cached result
+PASS RunLinearBucklingComponent invalidates changed input 7
+PASS Grasshopper defaults solve RunNonlinearStaticComponent
+PASS RunNonlinearStaticComponent retains unchanged cached result
+PASS RunNonlinearStaticComponent invalidates changed input 0
+PASS RunNonlinearStaticComponent retains unchanged cached result
+PASS RunNonlinearStaticComponent invalidates changed input 3
+PASS RunNonlinearStaticComponent retains unchanged cached result
+PASS RunNonlinearStaticComponent invalidates changed input 4
+PASS RunNonlinearStaticComponent retains unchanged cached result
+PASS RunNonlinearStaticComponent invalidates changed input 5
+PASS RunNonlinearStaticComponent retains unchanged cached result
+PASS RunNonlinearStaticComponent invalidates changed input 6
+PASS RunNonlinearStaticComponent retains unchanged cached result
+PASS RunNonlinearStaticComponent invalidates changed input 7
+PASS Async GH returns to the message pump while work is pending
+PASS Releasing the Run button does not cancel the job
+PASS Async completion schedules GH outputs without another Run
+PASS Reading an already computed component retains its async state
+PASS Changed GH input clears completed results
+PASS New Run edge starts exactly one replacement job
+PASS GH A-B-A never publishes an obsolete completion
+PASS Removing an async component releases all job owners
+PASS Closing a document invalidates its async state
+PASS Reopening obtains a fresh job lifetime
+PASS Missing required input retires pending async state
+PASS Restoring missing inputs cannot rearm a held Run
+PASS A fresh false-true edge after input restoration accepts a new job
+PASS Unlocking a document cannot rearm a held Run
+Async native files: C:\Users\g.pacini\AppData\Local\Temp\Rhino2Straus-async-66a191130cb34e178217c1ee43dd33c1
+PASS RunLinearStaticComponent starts without waiting for its native solver
+PASS RunLinearStaticComponent completes with UI heartbeats and native results
+PASS RunNaturalFrequencyComponent starts without waiting for its native solver
+PASS RunNaturalFrequencyComponent completes with UI heartbeats and native results
+PASS RunLinearBucklingComponent starts without waiting for its native solver
+PASS RunLinearBucklingComponent completes with UI heartbeats and native results
+PASS RunNonlinearStaticComponent starts without waiting for its native solver
+PASS RunNonlinearStaticComponent completes with UI heartbeats and native results
+PASS RunModelCasesComponent starts without waiting for its native solver
+PASS RunModelCasesComponent completes with UI heartbeats and native results
+PASS RunModelCasesComponent publishes the matching Model snapshot
+PASS RunModelModalComponent starts without waiting for its native solver
+PASS RunModelModalComponent completes with UI heartbeats and native results
+PASS RunModelModalComponent publishes the matching Model snapshot
+PASS RunModelBucklingComponent starts without waiting for its native solver
+PASS RunModelBucklingComponent completes with UI heartbeats and native results
+PASS RunModelBucklingComponent publishes the matching Model snapshot
+PASS RunModelNonlinearComponent starts without waiting for its native solver
+PASS RunModelNonlinearComponent completes with UI heartbeats and native results
+PASS RunModelNonlinearComponent publishes the matching Model snapshot
+PASS Async Model output clears incoming results before a new analysis
+PASS An unrelated native UI request fails fast while the real solver is active
+PASS Changed Model clears pending results without restarting a held Run
+PASS A real obsolete completion is discarded and releases the native owner
+PASS Discarding obsolete output leaves the completed solver file available on disk
+PASS A fresh Run after obsolete work publishes results for the changed Model
+PASS Grasshopper defaults solve LinkConstraintOptionsComponent
+PASS Grasshopper defaults solve MasterSlaveLinkPropertyComponent
+PASS Link options travel through actual Grasshopper connections
+PASS Grasshopper defaults solve LinkElementComponent
+PASS Link element defaults to a rigid connection
+PASS Grasshopper defaults solve FrameFilterComponent
+PASS Frame filter accepts the full property from Beam Info
+PASS Grasshopper defaults solve FrameFilterComponent
+PASS Frame filter retains legacy section input compatibility
+PASS Grasshopper defaults solve AreaFilterComponent
+PASS Area filter accepts full plate properties
+PASS Grasshopper defaults solve AreaFilterComponent
+PASS Area filter retains legacy thickness input compatibility
+PASS Grasshopper defaults solve DisplaySettingsComponent
+PASS Grasshopper defaults solve PreviewModelComponent
+PASS Display manager suppresses automatic plugin previews
+PASS Display manager ownership is document-scoped
+PASS Results category is hidden by default
+PASS Results category enables result geometry components
+PASS Hiding manager hides results and keeps automatic previews suppressed
+PASS Turning manager off keeps upstream previews suppressed
+PASS Master-off also hides result geometry components
+PASS Beam cast uses current offsets instead of a stale preview cache
+PASS Plate casts to a closed GH_Brep
+PASS Solid casts to a closed GH_Brep
+PASS Element casts also support native Rhino Brep values
+PASS Single-object cast refuses to silently discard multipart section volumes
+PASS Actual Brep parameter connection casts all three element types
+PASS Preview Breps retain type and ID branches while the display is OFF
+PASS Brep output does not duplicate the manager preview
+PASS Rhino2Straus Display Manager exposes native Grasshopper Bake
+PASS Native Grasshopper Bake creates only three closed Rhino Breps, without meshes or annotations
+PASS Bake preserves chosen Rhino attributes and element identity
+PASS Grasshopper defaults solve ModelGeometryComponent
+PASS Physical Geometry retains its legacy outputs and adds the complete Brep tree
+PASS Model Physical Geometry exposes native Grasshopper Bake
+PASS Native Grasshopper Bake creates only three closed Rhino Breps, without meshes or annotations
+PASS Bake preserves chosen Rhino attributes and element identity
+PASS Manager exposes About and Guide menus
+PASS Category menu updates the unwired legacy Sections input
+PASS Removing manager restores automatic previews without changing hidden flags
+221 geometry and Grasshopper data checks passed.
+Native API released before Rhino shutdown.

@@ -12,7 +12,15 @@ Le liste vuote selezionano tutti i casi/combinazioni della famiglia abilitata. `
 
 `Run Model Natural Frequencies`, `Run Model Nonlinear Static` e `Run Model Linear Buckling` seguono lo stesso percorso e restituiscono un Model con risultati. La non lineare applica una rampa di un caso con materiale elastico e, opzionalmente, non linearità geometrica. Il buckling richiede risultati LSA verificati dello stesso modello e conserva la selezione delle combinazioni iniziali. Usare percorsi distinti per analisi diverse se si vuole conservare la coppia originale `.st7` / risultati senza invalidarne il manifest.
 
-I solver sono sincroni. Modificare un input non rilancia un'analisi: serve un nuovo fronte di Run. I dati calcolati rimangono nella sessione Grasshopper; per rileggerli dopo la riapertura usare `Read Results Into Model`.
+Gli otto componenti solver sono asincroni durante il calcolo Straus7: il processo solver esterno lavora mentre Grasshopper rimane utilizzabile. Export, preparazione e lettura dei risultati restano sul thread UI e possono richiedere tempo su modelli grandi. I lavori sono serializzati nell'intero processo Rhino; altre operazioni native Rhino2Straus segnalano `API busy` senza attendere. Ripeterle al termine del calcolo. Le operazioni offline non richiedono l'API. Se l'API non riesce a determinare lo stato del processo, un avviso riporta l'errore e l'API rimane riservata finché Straus7 non conferma la terminazione; non si presume concluso un solver non interrogabile.
+
+`Run` accetta un fronte false → true. Rilasciare il pulsante non annulla l'analisi; tenerlo True non genera nuovi lavori. Gli stati sono `Queued`, `Running`, `Completed` (eventualmente con quantità non disponibili), `Failed` e `Run required`. Un nuovo fronte durante un lavoro ancora valido non lo duplica. Input e Model vengono acquisiti prima dell'avvio; il Model viene copiato e i risultati preesistenti eliminati dall'output in attesa.
+
+Una modifica del Model o dei parametri invalida l'operazione: serve un nuovo fronte Run. Il risultato tardivo viene scartato anche nella sequenza A → B → A; la rimozione del componente, gli input mancanti e la chiusura del documento ritirano il relativo lavoro. Dopo il ripristino degli input o lo sblocco/riapertura del documento occorre osservare Run=False e poi Run=True: un toggle rimasto True non rilancia il solver. I lavori in coda vengono annullati; un solver già avviato termina normalmente prima di liberare l'API. **I suoi file possono restare sul disco**, anche se il risultato non viene pubblicato in Grasshopper. Non è prevista l'interruzione forzata del processo solver.
+
+I solver su file verificano esistenza, dimensione e ultima modifica degli input prima di eseguire un lavoro rimasto in coda. Gli output in cache vengono invalidati se cambiano i file associati (controllo periodico di circa un secondo). È un controllo tramite metadati, non un hash continuo: modifiche esterne che conservano sia dimensione sia data non vengono rilevate dalla cache. La rilettura dei risultati Model conserva la verifica SHA-256 del manifest. Usare percorsi distinti per analisi da conservare.
+
+I dati calcolati rimangono nella sessione Grasshopper; per rileggerli dopo la riapertura usare `Read Results Into Model`.
 
 ## Assi e preview
 
