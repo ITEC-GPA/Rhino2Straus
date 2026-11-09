@@ -62,6 +62,10 @@ Per avere risultati incorporati e verificabili nel Model, riesportare/calcolare 
 
 ## Collaudo
 
-Sono verificati assemblaggio, topologia coincidente, copie, merge, casi inutilizzati, temperature, controllo delle importazioni parziali e avvio a fronte. L'esempio 16 è salvato, riletto e ricalcolato in Grasshopper senza chiamare Straus. Il test nativo con confronto dei byte originali è predisposto in Rhino2Straus.Tests (`--native`).
+Sono verificati assemblaggio, topologia coincidente, copie, merge, casi inutilizzati, temperature, controllo delle importazioni parziali e avvio a fronte. L'esempio 16 è salvato, riletto e ricalcolato in Grasshopper senza chiamare Straus. Il test nativo con confronto dei byte originali viene eseguito con `dotnet run --project tools/NativeTests -c Release -- --solve`.
 
-Il 30 settembre 2026 `St7Init` restituisce **-8: hardware lock non trovato**. Il roundtrip del nuovo lettore e le analisi native rimangono quindi **da collaudare con licenza disponibile**. [Stato completo delle verifiche](VALIDATION.md).
+Il 30 settembre 2026 `St7Init` restituisce **-8: hardware lock non trovato**. Questa era la limitazione della prova storica; il 9 novembre 2026 il roundtrip di base e i benchmark dei quattro solver sono stati eseguiti con esito positivo. [Stato completo delle verifiche](VALIDATION.md).
+
+## Gruppi nodali
+
+R31 non ammette nodi in `St7GetEntityGroup`. Il lettore lascia vuoti i gruppi nodali; quelli presenti in Grasshopper non vengono esportati e producono un avviso. Il roundtrip nativo di base è verificato il 9 novembre 2026: vedere [VALIDATION](VALIDATION.md) per ambito e limiti.

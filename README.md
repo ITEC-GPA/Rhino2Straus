@@ -52,6 +52,10 @@ La **0.4.1** aggiunge l'uscita **Breps** al Display Manager e a Model Physical G
 3. Copiare il contenuto di `bin` nella cartella `Rhino2Straus` dentro **Grasshopper → File → Special Folders → Components Folder**. Sbloccare i file scaricati dalle proprietà di Windows e riavviare Rhino.
 4. Installare Straus7 R3 x64 con licenza API e le licenze solver necessarie. Se non viene rilevato, impostare `STRAUS7_API_PATH` alla cartella `Bin64` oppure al file `St7api.dll`, poi riavviare Rhino.
 
+La DLL helper ora è `Rhino2Straus.GrasshopperHelper.dll`: sostituire la precedente installazione del plugin senza lasciare la vecchia `GrasshopperHelper.dll` nella sua cartella.
+
+La ricerca nativa prova `STRAUS7_API_PATH`, cartella dell’assembly, installazioni R31/R3 in Program Files, cartella dell’applicazione e ricerca di sistema. Gli errori elencano i percorsi tentati; una DLL presente può avere architettura incompatibile o dipendenze mancanti.
+
 Il pacchetto distribuisce soltanto gli assembly del progetto: RhinoCommon, Grasshopper, DLL native Straus7 e manuali proprietari rimangono nelle rispettive installazioni. I GUID dei componenti Straus originali sono conservati: disabilitare il vecchio `Rhino2Fem.Grasshopper.Straus.gha` quando si installa questo plugin, per evitare registrazioni duplicate.
 
 ## Convenzioni
@@ -66,7 +70,7 @@ Il pacchetto distribuisce soltanto gli assembly del progetto: RhinoCommon, Grass
 
 `Save` oppure il fronte `Run=false → true` avvia l'export; la sola modifica degli input non scrive file. `Overwrite` è disattivato per default. L'export valida il modello, salva un file temporaneo e pubblica il `.st7` soltanto a operazione completa. L'output `Model path` collega l'export ai componenti solver.
 
-Sono presenti statica lineare, frequenze naturali, buckling lineare e statica non lineare incrementale. Il buckling richiede risultati statici iniziali. La non lineare sostituisce la tabella degli incrementi non staged con una rampa del caso selezionato; le leggi materiali devono essere già definite nel file per abilitare la non linearità materiale. I solver sono sincroni e possono occupare Grasshopper durante il calcolo.
+Sono presenti statica lineare, frequenze naturali, buckling lineare e statica non lineare incrementale. Il buckling richiede risultati statici iniziali. La non lineare sostituisce la tabella degli incrementi non staged con una rampa del caso selezionato; le leggi materiali devono essere già definite nel file per abilitare la non linearità materiale. I solver sono sincroni e possono occupare Grasshopper durante il calcolo. I quattro solver su file invalidano la cache quando cambia percorso o parametro di analisi; serve un nuovo fronte Run. Le modifiche esterne dei file mantenendo gli stessi input non sono sorvegliate automaticamente.
 
 Le temperature di riferimento dei casi e i tipi delle temperature nodali entrano ora nell’identità del Model: riesportare e ricalcolare i risultati delle versioni precedenti prima di riassociarli con la 0.5.
 
@@ -79,11 +83,14 @@ Le funzioni native richiedono una licenza API funzionante. Il codice compila e i
 dotnet run --project Rhino2Straus.Tests -c Release
 dotnet run --project tools/GeometrySmoke -c Release
 dotnet run --project tools/GeometrySmoke -c Release -- --preview-gallery
-dotnet run --project Rhino2Straus.Tests -c Release -- --native --solve
-python tools/import_straus_sdk.py
-python tools/catalogue.py
+dotnet run --project tools/NativeTests -c Release -- --solve
+py -3 tools/import_straus_sdk.py
+py -3 tools/catalogue.py --check
+# Per rigenerare: py -3 tools/catalogue.py
 dotnet run --project tools/IconGallery -c Release -- .
 ```
+
+I tool Python richiedono Python 3; su Windows è disponibile anche `py -3`. L’audit dei quattro plugin dipende dal checkout fratello Rhino2MidasGen: vedere [INPUT-AUDIT](docs/INPUT-AUDIT.md).
 
 Il test geometrico richiede Rhino installato e usa il resolver ufficiale Rhino.Inside; il test nativo richiede la licenza API Straus7. La CI esegue build e test gestiti. Il binding API proviene dalla parte Straus del progetto iniziale; i diritti dei rispettivi SDK rimangono ai produttori.
 

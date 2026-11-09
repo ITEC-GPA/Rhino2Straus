@@ -1,5 +1,40 @@
 # Stato delle verifiche
 
+## Verifica del 9 novembre 2026 — correzioni per 0.5.2
+
+Ambiente: Windows x64, SDK 9.0.320, Rhino 8.36.26296.17001, API Straus7 R31. La licenza API e i quattro solver hanno funzionato: l'errore -8 nelle sezioni successive riguarda solo le prove storiche.
+
+- Build Release: zero errori e avvisi; **69 test gestiti** passati.
+- **181 controlli geometrici e Grasshopper** passati, inclusi 36 nuovi controlli di cache dei solver su file. I 164 componenti sono istanziati e confrontati con GUID, icone e pannelli del catalogo.
+- **12 prove native**, oltre ai test gestiti: export, avvisi gruppi nodali, unità/connettività/ID/carichi, import geometrico e strutturale, protezione file, attributi, statica, modale, non lineare, buckling e combinazioni. **81 passati, 0 falliti**: [rapporto](validation/2026-11-09-native.txt).
+- Catalogo rigenerato senza differenze: 164 componenti, 164 GUID unici, 17 pannelli. Il nuovo `--check` controlla in CI i documenti generati.
+- Helper specifico `Rhino2Straus.GrasshopperHelper.dll` verificato in Grasshopper. Non ripetuta la prova congiunta dei quattro plugin.
+- CI: nome ZIP e presenza del pacchetto verificati localmente; workflow remoto non avviato.
+
+### Benchmark riproducibili
+
+Comando: `dotnet run --project tools/NativeTests -c Release -- --solve`. Il runner inizializza Rhino.Inside senza finestra e il resolver Straus7. `RHINO_SYSTEM_DIRECTORY` può indicare un'altra installazione Rhino. I file rimangono nella cartella temporanea indicata dal runner.
+
+- Mensola: L=2 m, Pz=-1 kN, E=2.1e8 kPa, ν=0.3, I=1e-4 m⁴, As=0.01 m². Con P=1 kN, `uz = -[PL³/(3EI) + PL/(GAs)] = -0.000129460317460317 m`. Tolleranza relativa 1e-6; reazione verticale +1 kN entro 1e-6 kN.
+- Oscillatore assiale: barra senza massa distribuita, L=2 m, A=0.01 m², massa di estremità 1 t, solo traslazione X libera. `f = sqrt(EA/(Lm))/(2π)`, tolleranza relativa 1e-5.
+- Non lineare geometrica: stessa mensola, quattro incrementi; limite dei piccoli spostamenti entro 1e-4 relativo dalla soluzione elastica. Non verifica plasticità né grandi spostamenti.
+- Buckling: mensola snella L=20 m, compressione 1 kN; `Pcr = π²EI/(4L²) = 129.538557764298 kN`. Fattore con 4 elementi 129.514306151800; con 16 elementi 129.509832671829. Scarto da Eulero e variazione fra mesh inferiori a 0.1%, includendo gli effetti di taglio/accorciamento trascurati dal riferimento.
+- Combinazione lineare: fattore 2, spostamento doppio del caso base entro 1e-8 m; manifest verificato e rilettura nel Model.
+
+Non costituiscono un collaudo completo dei risultati FEM di piastre, solidi, sezioni native, link o di tutte le opzioni dei solver. Le verifiche geometriche rimangono distinte dalle prove numeriche native.
+
+### Responsività: valutazione e lavoro residuo
+
+Le prove elementari hanno richiesto circa 2–4 secondi per analisi; il buckling con due mesh e due analisi statiche circa 9 secondi. Non sono misure di responsività del viewport o stime per modelli grandi.
+
+I solver restano **sincroni**. `St7RunSolver(..., btTrue)` attende il processo e `StrausSession` mantiene un Monitor condiviso. Un semplice `Task.Run` lascerebbe altre chiamate native dell'interfaccia in attesa dello stesso lock; il Monitor deve inoltre essere rilasciato dallo stesso thread.
+
+Resta da implementare un worker con isolamento delle chiamate native, snapshot degli input e stati Queued/Running/Completed/Failed/Obsolete. Servono serializzazione dei lavori sullo stesso file, acquisizione input GH sul thread dell'interfaccia, scarto risultati a input modificati e gestione della chiusura di componenti/documenti. Occorrono prove interattive di responsività e arresto: questa versione non dichiara risolto il blocco dell'interfaccia.
+
+## Versione 0.5.1
+
+Aggiunto il controllo di corrispondenza fra assembly e commit e corretto il suo caricamento da worker. Nessun nuovo esito numerico è attribuito retroattivamente a questa versione.
+
 ## Versione 0.5.0 — 30 settembre 2026
 
 - Build Release senza errori/avvisi; **69 test gestiti** (inclusi import parziale, nodi coincidenti, merge, casi inutilizzati, temperature e stato Run/cache).
@@ -27,7 +62,7 @@ Data: 26 settembre 2026. Ambiente: Windows x64, .NET SDK 9, Rhino 8, Straus7 R31
 - SDK R31 importato localmente: 5.741 dichiarazioni confrontate, nessuna mancante o differente.
 - I nuovi profili nativi e le chiamate native dei nuovi link sono implementati sul manuale R31; la loro esecuzione e il confronto con Straus7 rimangono da collaudare con licenza API operativa.
 - La conversione delle posizioni finali dei carichi distribuiti è verificata rispetto ai diagrammi del manuale R3, pagina stampata 1010, e con test gestiti; il roundtrip nativo resta da eseguire. La versione 0.4 invalida la provenienza degli export precedenti: rigenerare esportazioni e risultati.
-- **Test nativo Straus7 non completato**: `St7Init` restituisce errore **-8**, licenza STANDALONE senza hardware lock disponibile. Non sono stati prodotti risultati di solver da usare come validazione. Il relativo test è presente e può essere rilanciato con `--native --solve` quando la licenza è accessibile.
+- **Test nativo Straus7 non completato**: `St7Init` restituisce errore **-8**, licenza STANDALONE senza hardware lock disponibile. Non sono stati prodotti risultati di solver da usare come validazione. Il relativo test è presente e può essere rilanciato oggi con `dotnet run --project tools/NativeTests -c Release -- --solve` quando la licenza è accessibile.
 
 Questi test verificano la libreria e parte dell'integrazione Rhino. Non attestano ancora un collaudo interattivo completo di ogni componente in Grasshopper né la correttezza ingegneristica di un modello dell'utente.
 
