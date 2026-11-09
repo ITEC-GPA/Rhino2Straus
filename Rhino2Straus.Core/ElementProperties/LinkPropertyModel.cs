@@ -61,7 +61,7 @@ namespace Rhino2Straus.Core.ElementProperties
             Rx = framePropertyModel.Rx;
             Ry = framePropertyModel.Ry;
             Rz = framePropertyModel.Rz;
-            BoundaryGroup = framePropertyModel.BoundaryGroup;
+            BoundaryGroup = framePropertyModel.BoundaryGroup == null ? null : new BoundaryGroupModel(framePropertyModel.BoundaryGroup);
         }
     }
 }

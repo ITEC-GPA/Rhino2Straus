@@ -43,7 +43,7 @@ namespace Rhino2Straus.Core.Attributes
             Mx = nodeSupportModel.Mx;
             My = nodeSupportModel.My;
             Mz = nodeSupportModel.Mz;
-            BoundaryGroup = nodeSupportModel.BoundaryGroup;
+            BoundaryGroup = nodeSupportModel.BoundaryGroup == null ? null : new BoundaryGroupModel(nodeSupportModel.BoundaryGroup);
         }
     }
 }

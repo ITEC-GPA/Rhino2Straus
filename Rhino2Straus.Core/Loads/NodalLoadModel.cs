@@ -45,7 +45,7 @@ namespace Rhino2Straus.Core.Loads
             MX = nodalLoadModel.MX;
             MY = nodalLoadModel.MY;
             MZ = nodalLoadModel.MZ;
-            LoadGroup = nodalLoadModel.LoadGroup;
+            LoadGroup = nodalLoadModel.LoadGroup == null ? null : new LoadGroupModel(nodalLoadModel.LoadGroup);
         }
     }
 }

@@ -7,7 +7,10 @@ namespace Rhino2Straus.Core.Loads
     {
         public AreaLoadBaseModel Duplicate()
         {
-            var copy=(AreaLoadBaseModel)MemberwiseClone();copy.LoadCase=LoadCase==null?null:new LoadCaseModel(LoadCase);return copy;
+            var copy = (AreaLoadBaseModel)MemberwiseClone();
+            copy.LoadCase = LoadCase == null ? null : new LoadCaseModel(LoadCase);
+            copy.CoordinateSystem = CoordinateSystem == null ? null : new CoordinateSystemModel(CoordinateSystem);
+            return copy;
         }
         public LoadCaseModel LoadCase { get; set; }
         public CoordinateSystemModel CoordinateSystem { get; set; }
@@ -26,7 +29,7 @@ namespace Rhino2Straus.Core.Loads
         public AreaLoadBaseModel(AreaLoadBaseModel areaLoadModel)
         {
             LoadCase = areaLoadModel.LoadCase;
-            CoordinateSystem = areaLoadModel.CoordinateSystem;
+            CoordinateSystem = areaLoadModel.CoordinateSystem == null ? null : new CoordinateSystemModel(areaLoadModel.CoordinateSystem);
         }
     }
 }

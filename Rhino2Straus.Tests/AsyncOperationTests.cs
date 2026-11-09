@@ -1,8 +1,16 @@
 #nullable enable
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Rhino.Geometry;
+using Rhino2Straus.Core.Attributes;
+using Rhino2Straus.Core.Cases;
+using Rhino2Straus.Core.ElementProperties;
+using Rhino2Straus.Core.Elements;
 using Rhino2Straus.Core.Helper;
+using Rhino2Straus.Core.Loads;
+using Rhino2Straus.Core.Models;
 
 internal static class AsyncOperationTests
 {
@@ -21,6 +29,148 @@ internal static class AsyncOperationTests
 
     public static void Run(Action<string, Action> test, Action<bool, string> assert)
     {
+        test("Load duplicates and copy constructors isolate coordinate systems", () =>
+        {
+            var axes = new CoordinateSystemModel("Axes", new Point3d(1, 2, 3), new Point3d(4, 5, 6), new Point3d(7, 8, 9), 12);
+            var frame = new FrameLoadStrausModel { CoordinateSystem = axes, PA = 17, P2 = 23 };
+            var area = new AreaPressureLoadModel(new LoadCaseModel("Q"), 31) { CoordinateSystem = axes };
+            var frameDuplicate = (FrameLoadStrausModel)frame.Duplicate();
+            var frameCopy = new FrameLoadStrausModel(frame);
+            var areaDuplicate = (AreaPressureLoadModel)area.Duplicate();
+            var areaCopy = new AreaPressureLoadModel(area);
+            var copies = new[] { frameDuplicate.CoordinateSystem, frameCopy.CoordinateSystem,
+                areaDuplicate.CoordinateSystem, areaCopy.CoordinateSystem };
+            foreach (var copy in copies)
+                assert(!ReferenceEquals(copy, axes) && copy == axes, "Coordinate system copy lost values or retained its source.");
+            axes.Id = 99; axes.Name = "Changed";
+            axes.Origin = Point3d.Origin; axes.Point1 = Point3d.Origin; axes.Point2 = Point3d.Origin;
+            foreach (var copy in copies)
+                assert(copy.Id == 12 && copy.Name == "Axes" && copy.Origin == new Point3d(1, 2, 3)
+                    && copy.Point1 == new Point3d(4, 5, 6) && copy.Point2 == new Point3d(7, 8, 9),
+                    "Source edits changed a copied coordinate system.");
+            frameCopy.CoordinateSystem.Name = "Copy only";
+            assert(frameDuplicate.CoordinateSystem.Name == "Axes" && axes.Name == "Changed",
+                "Independent load copies share coordinate systems.");
+            assert(frameDuplicate.PA == 17 && frameCopy.P2 == 23 && areaDuplicate.Value == 31 && areaCopy.Value == 31,
+                "Copying coordinates changed load values or runtime types.");
+        });
+
+        test("Coordinate copies retain Local and Global semantics and optional nulls", () =>
+        {
+            foreach (var axes in new[] { CoordinateSystemModel.Local, CoordinateSystemModel.Global })
+            {
+                var frame = new FrameLoadStrausModel { CoordinateSystem = axes };
+                var area = new AreaPressureLoadModel { CoordinateSystem = axes };
+                foreach (var copy in new[] { frame.Duplicate().CoordinateSystem, new FrameLoadStrausModel(frame).CoordinateSystem,
+                    area.Duplicate().CoordinateSystem, new AreaPressureLoadModel(area).CoordinateSystem })
+                    assert(copy == axes && !ReferenceEquals(copy, axes), "Local/Global equality or isolation changed.");
+            }
+            var emptyFrame = new FrameLoadStrausModel();
+            var emptyArea = new AreaPressureLoadModel();
+            assert(emptyFrame.Duplicate().CoordinateSystem == null && new FrameLoadStrausModel(emptyFrame).CoordinateSystem == null
+                && emptyArea.Duplicate().CoordinateSystem == null && new AreaPressureLoadModel(emptyArea).CoordinateSystem == null,
+                "Absent coordinate systems must remain absent.");
+            assert(new NodeSupportModel(new NodeSupportModel()).BoundaryGroup == null
+                && new LinkPropertyModel(new LinkPropertyModel()).BoundaryGroup == null
+                && new NodalLoadModel(new NodalLoadModel()).LoadGroup == null,
+                "Absent group metadata must remain absent.");
+        });
+
+        test("Support and link copies isolate boundary group identity", () =>
+        {
+            var group = new BoundaryGroupModel("Boundary") { Id = 42 };
+            var support = new NodeSupportModel(true, false, true, false, true, false) { BoundaryGroup = group };
+            var link = new LinkPropertyModel(LinkPropertyModel.LinkPropertyTypes.GEN, 11, 12, 13, 14, 15, 16) { BoundaryGroup = group };
+            var supportCopy = new NodeSupportModel(support);
+            var linkCopy = new LinkPropertyModel(link);
+            assert(!ReferenceEquals(group, supportCopy.BoundaryGroup) && !ReferenceEquals(group, linkCopy.BoundaryGroup),
+                "Boundary group remained shared with the input.");
+            group.Name = "Edited"; group.Id = 77;
+            assert(supportCopy.BoundaryGroup.Name == "Boundary" && supportCopy.BoundaryGroup.Id == 42
+                && linkCopy.BoundaryGroup.Name == "Boundary" && linkCopy.BoundaryGroup.Id == 42,
+                "Source edits changed copied boundary metadata.");
+            supportCopy.BoundaryGroup.Name = "Support only";
+            assert(linkCopy.BoundaryGroup.Name == "Boundary" && group.Name == "Edited", "Copies share boundary metadata.");
+            assert(supportCopy.Dx && !supportCopy.Dy && supportCopy.Dz && !supportCopy.Mx && supportCopy.My && !supportCopy.Mz
+                && linkCopy.Type == link.Type && linkCopy.Kx == 11 && linkCopy.Ky == 12 && linkCopy.Kz == 13
+                && linkCopy.Rx == 14 && linkCopy.Ry == 15 && linkCopy.Rz == 16, "Support or link values changed during copy.");
+        });
+
+        test("Nodal load copies isolate group name ID and suffix", () =>
+        {
+            var group = new LoadGroupModel("Loads", "original") { Id = 24 };
+            var source = new NodalLoadModel(new LoadCaseModel("Q"), 1, 2, 3, 4, 5, 6) { LoadGroup = group };
+            var first = new NodalLoadModel(source);
+            var second = new NodalLoadModel(source);
+            assert(!ReferenceEquals(first.LoadGroup, group), "LoadGroup remained shared with the source.");
+            group.Name = "Changed"; group.Id = 25; group.Suffix = "edited";
+            assert(first.LoadGroup.Name == "Loads" && first.LoadGroup.Id == 24 && first.LoadGroup.Suffix == "original",
+                "Source edits changed copied load group metadata.");
+            first.LoadGroup.Suffix = "copy";
+            assert(second.LoadGroup.Suffix == "original" && group.Suffix == "edited", "Copies share LoadGroup metadata.");
+            assert(first.FX == 1 && first.FY == 2 && first.FZ == 3 && first.MX == 4 && first.MY == 5 && first.MZ == 6,
+                "Nodal load values changed during group copy.");
+        });
+
+        test("Queued Model snapshot retains identity after source metadata edits", () =>
+        {
+            var loadCase = new LoadCaseModel("Q");
+            var n1 = new NodeElementModel(0, 0, 0) { Id = 1 };
+            var n2 = new NodeElementModel(1, 0, 0) { Id = 2 };
+            var n3 = new NodeElementModel(0, 1, 0) { Id = 3 };
+            n1.Support.BoundaryGroup = new BoundaryGroupModel("Support") { Id = 10 };
+            n2.NodalLoadList.Add(new NodalLoadModel(loadCase, 1, 2, 3, 4, 5, 6)
+                { LoadGroup = new LoadGroupModel("Loads", "Q") { Id = 11 } });
+            var section = new FrameSectionModel { Name = "Numerical", SectionGeometryType = FrameSectionModel.SectionGeometryTypes.Generic,
+                SectionArea = 1, I11 = 1, I22 = 1, J = 1, Breps = new() };
+            var beam = new FrameElementModel(n1, n2, new FramePropertyModel("Beam", MaterialModel.S355, section), 0, Vector3d.Zero) { Id = 1 };
+            beam.FrameLoadList.Add(new FrameLoadStrausModel { LoadCase = loadCase, CoordinateSystem = new CoordinateSystemModel(CoordinateSystemModel.Local), PA = 2 });
+            var plate = new AreaElementModel(new() { n1, n2, n3 },
+                new AreaPropertyModel("Plate", MaterialModel.S355, new AreaThicknessModel("t", .2))) { Id = 1 };
+            plate.AreaLoadList.Add(new AreaPressureLoadModel(loadCase, 3) { CoordinateSystem = new CoordinateSystemModel(CoordinateSystemModel.Global) });
+            var link = new LinkElementModel(n1, n3, new LinkPropertyModel(LinkPropertyModel.LinkPropertyTypes.GEN, 100)
+                { BoundaryGroup = new BoundaryGroupModel("Link") { Id = 12 } }) { Id = 1 };
+            var input = new ModelModel();
+            input.BuildModel(inputFrames: new() { beam }, inputAreas: new() { plate }, inputLinks: new() { link });
+            string fingerprint = ModelFingerprint.Compute(input);
+            using var queued = new ManualResetEventSlim();
+            using var release = new ManualResetEventSlim();
+            using var drained = new ManualResetEventSlim();
+            using var operation = new AsyncTriggeredOperation<ModelModel>((work, token) => Task.Run(() =>
+            {
+                try { queued.Set(); Wait(release); return work(token); }
+                finally { drained.Set(); }
+            }));
+            try
+            {
+                operation.UpdatePrepared(fingerprint, true, () =>
+                {
+                    var snapshot = new ModelModel(input);
+                    assert(ModelFingerprint.Compute(snapshot) == fingerprint, "Snapshot changed the initial Model identity.");
+                    return _ => snapshot;
+                }, _ => "Completed");
+                Wait(queued);
+                input.FrameElements.Values.Single().FrameLoadList[0].CoordinateSystem.Origin = new Point3d(4, 5, 6);
+                input.AreaElements.Values.Single().AreaLoadList[0].CoordinateSystem.Name = "Changed axes";
+                input.NodeElements[1].Support.BoundaryGroup.Name = "Changed support";
+                input.NodeElements[2].NodalLoadList[0].LoadGroup.Suffix = "Changed loads";
+                input.LinkElements.Values.Single().LinkProperty.BoundaryGroup.Id = 99;
+                assert(ModelFingerprint.Compute(input) != fingerprint, "Fixture edits did not affect source identity.");
+                release.Set();
+                Until(() => !operation.IsPending);
+                var result = operation.Value;
+                assert(result != null && operation.Status == "Completed", "Queued snapshot did not complete: " + operation.Error);
+                assert(result != null && ModelFingerprint.Compute(result) == fingerprint,
+                    "Queued snapshot inherited source edits through shared metadata.");
+                if (result != null)
+                {
+                    result.NodeElements[2].NodalLoadList[0].LoadGroup.Name = "Snapshot only";
+                    assert(input.NodeElements[2].NodalLoadList[0].LoadGroup.Name == "Loads", "Snapshot edits leaked back to the input.");
+                }
+            }
+            finally { release.Set(); Wait(drained); }
+        });
+
         test("Async update is nonblocking, single-edge and rearmable", () =>
         {
             using var entered = new ManualResetEventSlim();
