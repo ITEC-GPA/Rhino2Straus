@@ -15,6 +15,37 @@ using Rhino2Straus.Core.Settings;
 using Rhino2Straus.Import;
 using St7API;
 
+internal static class Program
+{
+    [STAThread]
+    private static int Main(string[] args)
+    {
+#if NATIVE_TEST_HOST
+        RhinoInside.Resolver.Initialize(Environment.GetEnvironmentVariable("RHINO_SYSTEM_DIRECTORY")
+            ?? @"C:\Program Files\Rhino 8\System");
+        return RunNative(args.Concat(new[] { "--native" }).ToArray());
+#else
+        if (args.Contains("--native"))
+        {
+            Console.Error.WriteLine("Use: dotnet run --project tools/NativeTests -c Release -- --solve");
+            return 2;
+        }
+        return Run(args);
+#endif
+    }
+
+#if NATIVE_TEST_HOST
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]
+    private static int RunNative(string[] args)
+    {
+        using var rhino = new Rhino.Runtime.InProcess.RhinoCore(new[] { "/nosplash" }, Rhino.Runtime.InProcess.WindowStyle.NoWindow);
+        return Run(args);
+    }
+#endif
+
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]
+    private static int Run(string[] args)
+    {
 int failures = 0, passed = 0;
 void Test(string name, Action test)
 {
@@ -256,6 +287,7 @@ Test("Thermal import metadata survives Model copies and invalidates results",()=
 
 if (args.Contains("--native"))
 {
+    StrausRuntime.Configure(); // Install the resolver before the first direct vendor API call.
     string folder = Path.Combine(Path.GetTempPath(), "Rhino2Straus-tests-" + Guid.NewGuid().ToString("N"));
     Directory.CreateDirectory(folder);
     Console.WriteLine("Native test files: " + folder);
@@ -298,3 +330,6 @@ if (args.Contains("--native"))
 }
 Console.WriteLine($"{passed} passed; {failures} failed.");
 return failures == 0 ? 0 : 1;
+
+    }
+}

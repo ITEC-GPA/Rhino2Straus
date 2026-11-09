@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <UseWindowsForms>true</UseWindowsForms>
+    <DefineConstants>$(DefineConstants);NATIVE_TEST_HOST</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../Rhino2Straus.Tests/Program.cs" Link="Program.cs" />
+    <ProjectReference Include="../../Rhino2Straus.Import/Rhino2Straus.Import.csproj" />
+    <PackageReference Include="Rhino.Inside" Version="8.0.7-beta" />
+    <PackageReference Include="RhinoCommon" Version="$(RhinoVersion)" ExcludeAssets="runtime" />
+    <PackageReference Include="Grasshopper" Version="$(RhinoVersion)" ExcludeAssets="runtime" />
+  </ItemGroup>
+</Project>
