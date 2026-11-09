@@ -1,5 +1,7 @@
 # Rhino2Straus
 
+**Versione 0.5.2 — 9 novembre 2026.** Correzioni export/import e NLA verificate con Straus7, invalidazione cache dei solver su file, diagnostica DLL, packaging e CI. [Note di versione](docs/CHANGELOG.md) · [Verifiche eseguite e limiti](docs/VALIDATION.md).
+
 Componenti **Rhino 8 / Grasshopper per Straus7 R3, Windows x64**. Il progetto è dedicato esclusivamente a Straus7: modellazione, attributi, modello FEM unificato, preview, esportazione `.st7`, analisi e lettura dei risultati.
 
 **164 componenti in 17 pannelli per argomento** nella tab **Rhino2Straus**, con icone a 24 px, più le icone della libreria e del parametro Group. [Mappa dei pannelli](docs/TOPICS.md) · [Catalogo per argomento](docs/COMPONENTS.md) · [Preview e impostazioni](docs/PREVIEW.md) · [Sezioni R31, link e default](docs/SECTIONS-LINKS.md) · [Copertura API e limiti](docs/API-COVERAGE.md) · [Verifiche](docs/VALIDATION.md) · [Model, solver e risultati](docs/MODEL-RESULTS.md).
