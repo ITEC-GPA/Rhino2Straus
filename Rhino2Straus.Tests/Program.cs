@@ -287,27 +287,63 @@ Test("Thermal import metadata survives Model copies and invalidates results",()=
     Assert(ModelValidator.Validate(copy).IsValid);copy.NodeElements[50].Temperatures[0].Type=3;Assert(!ModelValidator.Validate(copy).IsValid);
 });
 
-Test("Background native gate never blocks interactive calls and cancels queued work",()=>{
-    using var entered=new System.Threading.ManualResetEventSlim();
-    using var release=new System.Threading.ManualResetEventSlim();
+Test("Async native pipelines preserve UI ownership and cancel queued work",()=>{
+    var previous=System.Threading.SynchronizationContext.Current;
+    var context=new TestUiContext();System.Threading.SynchronizationContext.SetSynchronizationContext(context);
+    var release=new System.Threading.Tasks.TaskCompletionSource<int>(System.Threading.Tasks.TaskCreationOptions.RunContinuationsAsynchronously);
     using var cancelled=new System.Threading.CancellationTokenSource();
-    var first=StrausRuntime.RunBackgroundAsync(_=>{entered.Set();Assert(release.Wait(TimeSpan.FromSeconds(10)));return 1;});
-    Assert(entered.Wait(TimeSpan.FromSeconds(5)));
-    System.Threading.Tasks.Task<int> queued=null;
+    int thread=Environment.CurrentManagedThreadId;
     try
     {
-        var watch=System.Diagnostics.Stopwatch.StartNew();
+        var first=StrausRuntime.RunExclusiveAsync(async _=>{
+            StrausRuntime.Configure();await release.Task;
+            Assert(Environment.CurrentManagedThreadId==thread,"Native continuation must stay on its owner thread");
+            StrausRuntime.Configure();return 1;
+        });
+        Assert(!first.IsCompleted);
         bool busy=false;try{StrausRuntime.Configure();}catch(StrausBusyException){busy=true;}
-        Assert(busy && watch.ElapsedMilliseconds<1000,"Configure must fail fast while a worker owns the API");
+        Assert(busy,"Unrelated UI callback must not reenter a pending native pipeline");
         busy=false;try{using var session=new StrausSession("missing.st7");}catch(StrausBusyException){busy=true;}
-        Assert(busy,"Interactive session must fail fast before touching a native file");
-        queued=StrausRuntime.RunBackgroundAsync<int>(_=>throw new Exception("Cancelled work must not execute"),cancelled.Token);
-        cancelled.Cancel();
+        Assert(busy,"Interactive session must fail before touching files");
+        var queued=StrausRuntime.RunExclusiveAsync<int>(_=>throw new Exception("Cancelled work must not execute"),cancelled.Token);
+        cancelled.Cancel();release.SetResult(1);
+        context.Until(()=>first.IsCompleted && queued.IsCompleted);
+        Assert(first.GetAwaiter().GetResult()==1 && queued.IsCanceled);
+        var next=StrausRuntime.RunExclusiveAsync(_=>System.Threading.Tasks.Task.FromResult(2));
+        context.Until(()=>next.IsCompleted);Assert(next.Result==2);
     }
-    finally {release.Set();}
-    Assert(first.Wait(TimeSpan.FromSeconds(5)) && first.Result==1);
-    Assert(System.Threading.SpinWait.SpinUntil(()=>queued.IsCompleted,TimeSpan.FromSeconds(5)) && queued.IsCanceled);
-    Assert(StrausRuntime.RunBackgroundAsync(_=>2).GetAwaiter().GetResult()==2,"Gate must be released after cancellation");
+    finally{release.TrySetResult(1);System.Threading.SynchronizationContext.SetSynchronizationContext(previous);}
+});
+Test("Async native pipelines reject missing or default host contexts",()=>{
+    var previous=System.Threading.SynchronizationContext.Current;
+    try {
+        System.Threading.SynchronizationContext.SetSynchronizationContext(null);Throws(()=>StrausRuntime.RunExclusiveAsync(_=>System.Threading.Tasks.Task.FromResult(1)).GetAwaiter().GetResult());
+        System.Threading.SynchronizationContext.SetSynchronizationContext(new System.Threading.SynchronizationContext());Throws(()=>StrausRuntime.RunExclusiveAsync(_=>System.Threading.Tasks.Task.FromResult(1)).GetAwaiter().GetResult());
+    }
+    finally {System.Threading.SynchronizationContext.SetSynchronizationContext(previous);}
+});
+Test("Async snapshots are prepared once on the caller and isolate mutable input",()=>{
+    using var release=new System.Threading.ManualResetEventSlim();
+    using var started=new System.Threading.ManualResetEventSlim();
+    using var operation=new AsyncTriggeredOperation<string>((work,token)=>System.Threading.Tasks.Task.Run(()=>work(token)));
+    int preparations=0,owner=Environment.CurrentManagedThreadId;var input=new[]{1};
+    Func<System.Threading.CancellationToken,string> Prepare()
+    {
+        Assert(Environment.CurrentManagedThreadId==owner);preparations++;
+        var copy=(int[])input.Clone();
+        return _=>{started.Set();Assert(release.Wait(TimeSpan.FromSeconds(5)));return copy[0].ToString();};
+    }
+    try
+    {
+        operation.UpdatePrepared("a",true,Prepare,_=>"Completed");
+        Assert(started.Wait(TimeSpan.FromSeconds(5)));input[0]=2;
+        operation.UpdatePrepared("a",false,Prepare,_=>"Completed");
+        operation.UpdatePrepared("a",true,Prepare,_=>"Completed");
+        Assert(preparations==1);release.Set();
+        Assert(System.Threading.SpinWait.SpinUntil(()=>!operation.IsPending,TimeSpan.FromSeconds(5)));
+        Assert(operation.Value=="1");
+    }
+    finally{release.Set();}
 });
 
 if (args.Contains("--native"))
@@ -408,5 +444,20 @@ if (args.Contains("--native"))
 Console.WriteLine($"{passed} passed; {failures} failed.");
 return failures == 0 ? 0 : 1;
 
+    }
+}
+
+internal sealed class TestUiContext : System.Threading.SynchronizationContext
+{
+    private readonly System.Collections.Concurrent.ConcurrentQueue<(System.Threading.SendOrPostCallback Callback,object State)> queue=new();
+    public override void Post(System.Threading.SendOrPostCallback callback,object state)=>queue.Enqueue((callback,state));
+    public void Until(Func<bool> condition)
+    {
+        var watch=System.Diagnostics.Stopwatch.StartNew();
+        while(!condition())
+        {
+            if(watch.Elapsed.TotalSeconds>5)throw new TimeoutException("UI test did not settle");
+            if(queue.TryDequeue(out var item))item.Callback(item.State);else System.Threading.Thread.Sleep(1);
+        }
     }
 }

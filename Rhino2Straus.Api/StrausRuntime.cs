@@ -15,34 +15,56 @@ public static class StrausRuntime
 {
     internal static readonly object Gate = new();
     private static readonly SemaphoreSlim analysisQueue = new(1, 1);
+    private static readonly AsyncLocal<object> operationOwner = new();
+    private static object activeOperation;
+    private static string solverWaitDiagnostic;
+    public static string SolverWaitDiagnostic => Volatile.Read(ref solverWaitDiagnostic);
+    /// <summary>A polling failure retains the native owner until the SDK confirms termination.</summary>
+    public static void ReportSolverWaitProblem(string message) => Volatile.Write(ref solverWaitDiagnostic, message);
 
-    /// <summary>Queued jobs own the native gate on one worker thread for the whole operation.
-    /// Cancellation never interrupts a native call: completed obsolete jobs are discarded by the caller.</summary>
-    public static async Task<T> RunBackgroundAsync<T>(Func<CancellationToken, T> work, CancellationToken cancellation = default)
+    /// <summary>Serializes native pipelines on the calling UI context. Only the external solver
+    /// runs concurrently; all API calls and session disposal stay on their owning thread.</summary>
+    public static async Task<T> RunExclusiveAsync<T>(Func<CancellationToken, Task<T>> work, CancellationToken cancellation = default)
     {
         ArgumentNullException.ThrowIfNull(work);
-        await analysisQueue.WaitAsync(cancellation).ConfigureAwait(false);
+        if (SynchronizationContext.Current == null || SynchronizationContext.Current.GetType() == typeof(SynchronizationContext))
+            throw new InvalidOperationException("Async Straus7 operations require the host UI synchronization context.");
+        if (operationOwner.Value != null && ReferenceEquals(operationOwner.Value, Volatile.Read(ref activeOperation)))
+            return await work(cancellation);
+        await analysisQueue.WaitAsync(cancellation);
+        var owner = new object();
         try
         {
-            return await Task.Run(() =>
-            {
-                while (!Monitor.TryEnter(Gate, 50)) cancellation.ThrowIfCancellationRequested();
-                try
-                {
-                    cancellation.ThrowIfCancellationRequested();
-                    T value = work(cancellation);
-                    cancellation.ThrowIfCancellationRequested();
-                    return value;
-                }
-                finally { Monitor.Exit(Gate); }
-            }).ConfigureAwait(false);
+            // Never wait synchronously for a native session owned by another thread.
+            while (!Monitor.TryEnter(Gate)) await Task.Delay(25, cancellation);
+            try { Volatile.Write(ref activeOperation, owner); operationOwner.Value = owner; }
+            finally { Monitor.Exit(Gate); }
+            cancellation.ThrowIfCancellationRequested();
+            T value = await work(cancellation);
+            cancellation.ThrowIfCancellationRequested();
+            return value;
         }
-        finally { analysisQueue.Release(); }
+        finally
+        {
+            if (ReferenceEquals(Volatile.Read(ref activeOperation), owner)) Volatile.Write(ref activeOperation, null);
+            operationOwner.Value = null;
+            ReportSolverWaitProblem(null);
+            analysisQueue.Release();
+        }
     }
 
     internal static void EnterWithoutWaiting()
     {
+        var owner = Volatile.Read(ref activeOperation);
+        if (owner != null && !ReferenceEquals(operationOwner.Value, owner)) throw new StrausBusyException();
         if (!Monitor.TryEnter(Gate)) throw new StrausBusyException();
+        // The owner can change between the first check and acquisition.
+        owner = Volatile.Read(ref activeOperation);
+        if (owner != null && !ReferenceEquals(operationOwner.Value, owner))
+        {
+            Monitor.Exit(Gate);
+            throw new StrausBusyException();
+        }
     }
 
     private static bool initialized;
@@ -106,6 +128,21 @@ public static class StrausRuntime
                 + "A present DLL may have an incompatible architecture or missing dependencies. Attempts:" + Environment.NewLine
                 + string.Join(Environment.NewLine, diagnostics), error);
         }
+    }
+
+    /// <summary>For an exclusive host shutting down, after all jobs have drained. Not for closing a GH document.</summary>
+    public static void ReleaseForHostShutdown()
+    {
+        EnterWithoutWaiting();
+        try
+        {
+            if (!initialized) return;
+            if (leased.Count != 0) throw new InvalidOperationException("Cannot release Straus7 while sessions are open.");
+            int code = St7.St7Release();
+            if (code != 0) throw new InvalidOperationException($"Release Straus7 API failed ({code}).");
+            initialized = false;
+        }
+        finally { Monitor.Exit(Gate); }
     }
 
     internal static void Initialize()
@@ -216,5 +253,5 @@ public sealed class StrausSession : IDisposable
 /// <summary>Native API is occupied; callers on the UI thread must never wait behind a solver.</summary>
 public sealed class StrausBusyException : InvalidOperationException
 {
-    public StrausBusyException() : base("Straus7 API is busy with a background analysis. Offline Grasshopper operations remain available; retry this native operation when the analysis finishes.") { }
+    public StrausBusyException() : base("Straus7 API is busy with a background analysis. Offline Grasshopper operations remain available; retry this native operation when the analysis finishes." + (StrausRuntime.SolverWaitDiagnostic == null ? "" : " " + StrausRuntime.SolverWaitDiagnostic)) { }
 }

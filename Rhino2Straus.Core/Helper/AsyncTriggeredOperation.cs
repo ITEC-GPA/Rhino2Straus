@@ -9,7 +9,7 @@ namespace Rhino2Straus.Core.Helper;
 public sealed class AsyncTriggeredOperation<T> : IDisposable where T : class
 {
     private readonly object gate = new();
-    private readonly Func<Func<CancellationToken, T>, CancellationToken, Task<T>> executor;
+    private readonly Func<Func<CancellationToken, Task<T>>, CancellationToken, Task<T>> executor;
     private string? previousKey;
     private bool previousRun, disposed;
     private long generation, revision;
@@ -27,8 +27,15 @@ public sealed class AsyncTriggeredOperation<T> : IDisposable where T : class
 
     public AsyncTriggeredOperation(Func<Func<CancellationToken, T>, CancellationToken, Task<T>> executor)
     {
-        this.executor = executor ?? throw new ArgumentNullException(nameof(executor));
+        ArgumentNullException.ThrowIfNull(executor);
+        this.executor = (work, token) => executor(ct => work(ct).GetAwaiter().GetResult(), token);
     }
+
+    private AsyncTriggeredOperation(Func<Func<CancellationToken, Task<T>>, CancellationToken, Task<T>> executor, bool asyncWork)
+        => this.executor = executor ?? throw new ArgumentNullException(nameof(executor));
+
+    public static AsyncTriggeredOperation<T> CreateAsync(Func<Func<CancellationToken, Task<T>>, CancellationToken, Task<T>> executor)
+        => new(executor, true);
 
     public T? Value { get { lock (gate) return value; } }
     public string Status { get { lock (gate) return status; } }
@@ -42,6 +49,10 @@ public sealed class AsyncTriggeredOperation<T> : IDisposable where T : class
 
     /// <summary>Captures the snapshot on the calling thread, only when a new job is accepted.</summary>
     public T? UpdatePrepared(string key, bool run, Func<Func<CancellationToken, T>> prepareWork, Func<T, string> completed)
+
+        => UpdatePreparedAsync(key, run, () => { var work = prepareWork(); return ct => Task.FromResult(work(ct)); }, completed);
+
+    public T? UpdatePreparedAsync(string key, bool run, Func<Func<CancellationToken, Task<T>>> prepareWork, Func<T, string> completed)
     {
         ArgumentNullException.ThrowIfNull(key);
         ArgumentNullException.ThrowIfNull(prepareWork);
@@ -60,7 +71,7 @@ public sealed class AsyncTriggeredOperation<T> : IDisposable where T : class
             {
                 value = null;
                 error = null;
-                Func<CancellationToken, T> work;
+                Func<CancellationToken, Task<T>> work;
                 try { work = prepareWork() ?? throw new InvalidOperationException("Missing analysis work."); }
                 catch (Exception exception)
                 {
@@ -75,6 +86,17 @@ public sealed class AsyncTriggeredOperation<T> : IDisposable where T : class
                 _ = Task.Run(() => ExecuteAsync(execution, work, completed));
             }
             return value;
+        }
+    }
+
+    /// <summary>Lifecycle reset must observe false again before accepting a new Run.</summary>
+    public void RequireRunReset()
+    {
+        lock (gate)
+        {
+            ObjectDisposedException.ThrowIf(disposed, this);
+            Discard();
+            previousRun = true;
         }
     }
 
@@ -106,7 +128,7 @@ public sealed class AsyncTriggeredOperation<T> : IDisposable where T : class
     private bool IsCurrent(Execution execution) =>
         !disposed && generation == execution.Generation && ReferenceEquals(active, execution);
 
-    private async Task ExecuteAsync(Execution execution, Func<CancellationToken, T> work, Func<T, string> completed)
+    private async Task ExecuteAsync(Execution execution, Func<CancellationToken, Task<T>> work, Func<T, string> completed)
     {
         try
         {

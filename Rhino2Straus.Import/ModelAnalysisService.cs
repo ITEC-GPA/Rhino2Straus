@@ -6,6 +6,8 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
+using System.Threading.Tasks;
 using Rhino2Straus.Api;
 using Rhino2Straus.Core.ElementProperties;
 using Rhino2Straus.Core.Models;
@@ -91,6 +93,13 @@ public static class ModelAnalysisService
     public static ModelModel RunBuckling(ModelModel model, string path, bool overwrite, string initialResults, int variableCase, int fixedCase = 0,
         int modes = 10, double shift = 0, int stations = 11, int sample = St7.spGaussPoints)
     {
+        var selection = ValidateBucklingInitial(model, initialResults, variableCase, fixedCase, modes, shift);
+        return RunOther(model, path, ".LBA", overwrite, p => StrausFileService.RunLinearBuckling(p, overwrite, modes, initialResults, variableCase, fixedCase, shift, selection), stations, sample);
+    }
+
+    private static AnalysisSelection ValidateBucklingInitial(ModelModel model, string initialResults, int variableCase,
+        int fixedCase, int modes, double shift)
+    {
         if (variableCase < 1 || fixedCase < 0 || modes < 1 || !double.IsFinite(shift) || !File.Exists(initialResults)) throw new ArgumentException("Supply static results, a positive variable case and mode count, and a finite shift.");
         string manifest = ResultProvenance.ManifestPath(initialResults);
         if (!File.Exists(manifest)) throw new InvalidDataException("Generate initial LSA results with Run Model Cases and Combinations first.");
@@ -99,8 +108,7 @@ public static class ModelAnalysisService
             throw new InvalidDataException("Initial static results do not match this Model.");
         string initialModel = Path.ChangeExtension(initialResults, ".st7");
         if (!ResultProvenance.Verify(initialModel, initialResults, proof.Fingerprint)) throw new InvalidDataException("The native input for the initial static analysis changed. Run the static Model again.");
-        var selection = StrausFileService.ReadStaticSelection(initialModel, initialResults, variableCase, fixedCase);
-        return RunOther(model, path, ".LBA", overwrite, p => StrausFileService.RunLinearBuckling(p, overwrite, modes, initialResults, variableCase, fixedCase, shift, selection), stations, sample);
+        return StrausFileService.ReadStaticSelection(initialModel, initialResults, variableCase, fixedCase);
     }
 
     public static ModelModel RunStatic(ModelModel input, string path, bool overwrite, IEnumerable<string> cases = null,
@@ -116,6 +124,82 @@ public static class ModelAnalysisService
         result = StrausFileService.RunSelectedStatic(path, overwrite, selection);
         ResultProvenance.Save(path, result, ModelFingerprint.Compute(model), "Linear static");
         return Read(model, path, result, stations, sample);
+    }
+
+    /// <summary>UI-context pipeline: native export/read stay on the caller's thread; only the external solver is awaited.
+    /// The caller must supply a stable Model snapshot. Cancellation never kills an executing solver.</summary>
+    public static Task<ModelModel> RunStaticAsync(ModelModel input, string path, bool overwrite, IEnumerable<string> cases = null,
+        IEnumerable<string> combinations = null, bool runCases = true, bool runCombinations = true, int stations = 11,
+        int sample = St7.spGaussPoints, CancellationToken cancellation = default)
+        => StrausRuntime.RunExclusiveAsync(async token =>
+        {
+            token.ThrowIfCancellationRequested();
+            ValidateSampling(stations, sample);
+            var selection = AnalysisSelection.Create(input, cases, combinations, runCases, runCombinations);
+            return await RunOtherAsync(input, path, ".LSA", overwrite,
+                p => StrausFileService.RunSelectedStaticAsync(p, overwrite, selection, token), stations, sample, token, "Linear static");
+        }, cancellation);
+
+    public static Task<ModelModel> RunModalAsync(ModelModel model, string path, bool overwrite, int modes = 10,
+        double shift = 0, int stations = 11, int sample = St7.spGaussPoints, CancellationToken cancellation = default)
+        => StrausRuntime.RunExclusiveAsync(async token =>
+        {
+            token.ThrowIfCancellationRequested();
+            if (modes < 1 || !double.IsFinite(shift)) throw new ArgumentException("Use a positive mode count and a finite shift.");
+            return await RunOtherAsync(model, path, ".NFA", overwrite,
+                p => StrausFileService.RunNaturalFrequencyAsync(p, overwrite, modes, shift, token), stations, sample, token);
+        }, cancellation);
+
+    public static Task<ModelModel> RunNonlinearAsync(ModelModel model, string path, bool overwrite, string caseName,
+        int steps = 10, double factor = 1, bool geometry = true, int stations = 11, int sample = St7.spGaussPoints,
+        CancellationToken cancellation = default)
+        => StrausRuntime.RunExclusiveAsync(async token =>
+        {
+            token.ThrowIfCancellationRequested();
+            int loadCase = model.LoadCases.Keys.ToList().IndexOf(caseName) + 1;
+            if (loadCase < 1 || steps < 1 || steps > 10000 || !double.IsFinite(factor))
+                throw new ArgumentException("Choose an existing load case, 1..10000 increments and finite load factor.");
+            return await RunOtherAsync(model, path, ".NLA", overwrite,
+                p => StrausFileService.RunNonlinearStaticAsync(p, overwrite, loadCase, steps, factor, geometry, false, token),
+                stations, sample, token);
+        }, cancellation);
+
+    public static Task<ModelModel> RunBucklingAsync(ModelModel model, string path, bool overwrite, string initialResults,
+        int variableCase, int fixedCase = 0, int modes = 10, double shift = 0, int stations = 11,
+        int sample = St7.spGaussPoints, CancellationToken cancellation = default)
+        => StrausRuntime.RunExclusiveAsync(async token =>
+        {
+            token.ThrowIfCancellationRequested();
+            ValidateSampling(stations, sample);
+            initialResults = Path.GetFullPath(initialResults);
+            var selection = ValidateBucklingInitial(model, initialResults, variableCase, fixedCase, modes, shift);
+            token.ThrowIfCancellationRequested();
+            return await RunOtherAsync(model, path, ".LBA", overwrite,
+                p => StrausFileService.RunLinearBucklingAsync(p, overwrite, modes, initialResults, variableCase, fixedCase,
+                    shift, selection, token), stations, sample, token);
+        }, cancellation);
+
+    private static async Task<ModelModel> RunOtherAsync(ModelModel input, string path, string extension, bool overwrite,
+        Func<string, Task<string>> solve, int stations, int sample, CancellationToken cancellation, string solverName = null)
+    {
+        cancellation.ThrowIfCancellationRequested();
+        ValidateSampling(stations, sample);
+        var model = new ModelModel(input); model.ClearResults();
+        path = Path.GetFullPath(path);
+        string result = Path.ChangeExtension(path, extension);
+        if (!overwrite && (File.Exists(result) || File.Exists(ResultProvenance.ManifestPath(result))))
+            throw new IOException("Results already exist. Enable Overwrite to replace this analysis.");
+        cancellation.ThrowIfCancellationRequested();
+        if (!model.CreateModelStraus7R3(path, out _, out _, out var errors, overwrite))
+            throw new InvalidOperationException(string.Join(Environment.NewLine, errors));
+        cancellation.ThrowIfCancellationRequested();
+        result = await solve(path);
+        cancellation.ThrowIfCancellationRequested();
+        ResultProvenance.Save(path, result, ModelFingerprint.Compute(model), solverName ?? extension.TrimStart('.'));
+        cancellation.ThrowIfCancellationRequested();
+        var solved = Read(model, path, result, stations, sample);
+        cancellation.ThrowIfCancellationRequested();
+        return solved;
     }
 
     private static void ValidateSampling(int stations, int sample)
@@ -322,6 +406,10 @@ public static partial class StrausFileService
 {
     internal static string RunSelectedStatic(string path, bool overwrite, AnalysisSelection selection)
         => RunAnalysis(path, ".LSA", St7.stLinearStatic, overwrite, id => ConfigureStaticSelection(id, selection));
+
+    internal static Task<string> RunSelectedStaticAsync(string path, bool overwrite, AnalysisSelection selection,
+        CancellationToken cancellation = default)
+        => RunAnalysisAsync(path, ".LSA", St7.stLinearStatic, overwrite, id => ConfigureStaticSelection(id, selection), cancellation);
 
     private static void ConfigureStaticSelection(int id, AnalysisSelection selection)
     {
