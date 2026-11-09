@@ -49,7 +49,7 @@ internal static class Program
 int failures = 0, passed = 0;
 void Test(string name, Action test)
 {
-    try { test(); Console.WriteLine("PASS " + name); passed++; }
+    try { var timer=System.Diagnostics.Stopwatch.StartNew(); test(); Console.WriteLine("PASS " + name + $" ({timer.Elapsed.TotalSeconds:F3} s)"); passed++; }
     catch (Exception e) { failures++; Console.WriteLine("FAIL " + name + ": " + e); }
 }
 void Assert(bool value, string message = "Assertion failed") { if (!value) throw new Exception(message); }
@@ -325,6 +325,48 @@ if (args.Contains("--native"))
                 + 2 / (material.ShearModulus * section.ShearA1));
             Near(d[0][2],expected,Math.Abs(expected)*1e-6);
             var reaction=StrausFileService.NodeResults(path,result,1,new[]{1},true);Near(reaction[0][2],1,1e-6);var b=StrausFileService.BeamResults(path,result,1,1,St7.rtBeamForce,St7.stBeamPrincipal,5);Assert(b.Values.Length>=5);Assert(StrausFileService.ResultCases(path,result).Length>=1);
+        });
+        if (args.Contains("--solve")) Test("Native axial oscillator frequency agrees with sqrt(k/m)",()=>{
+            var m=Cantilever();
+            var tip=m.NodeElements[50];tip.NodalLoadList.Clear();tip.TranslationMass=new Vector3d(1,0,0);
+            tip.Support=new NodeSupportModel(false,true,true,true,true,true);
+            m.Materials.Values.Single().Density=0;
+            var solved=ModelAnalysisService.RunModal(m,Path.Combine(folder,"oscillator.st7"),false,modes:1);
+            double frequency=StrausFileService.ModalResults(solved.Results.ModelPath,solved.Results.ResultPath,new[]{1})[0][St7.ipFrequencyNFA];
+            // k=EA/L in kN/m; mass=1 tonne. Axial mode has exact linear interpolation.
+            double expected=Math.Sqrt(material.ModulusElasticity*section.SectionArea/2)/(2*Math.PI);
+            Near(frequency,expected,expected*1e-5);
+            solved.Results.ValidateFor(solved,requireProvenance:true);
+        });
+        if (args.Contains("--solve")) Test("Native nonlinear small-displacement limit agrees with elastic cantilever",()=>{
+            var m=Cantilever();
+            var solved=ModelAnalysisService.RunNonlinear(m,Path.Combine(folder,"nonlinear.st7"),false,loadCase.Name,steps:4,geometry:true);
+            var cases=StrausFileService.ResultCases(solved.Results.ModelPath,solved.Results.ResultPath);
+            var displacement=StrausFileService.NodeResults(solved.Results.ModelPath,solved.Results.ResultPath,cases.Length,new[]{2},false)[0][2];
+            double expected=-(Math.Pow(2,3)/(3*material.ModulusElasticity*section.I11)+2/(material.ShearModulus*section.ShearA1));
+            Near(displacement,expected,Math.Abs(expected)*1e-4);
+            solved.Results.ValidateFor(solved,requireProvenance:true);
+        });
+        if (args.Contains("--solve")) Test("Native slender cantilever buckling agrees with Euler load and mesh refinement",()=>{
+            double SolveColumn(int divisions)
+            {
+                var columnCase=new LoadCaseModel("Compression");
+                var ns=Enumerable.Range(0,divisions+1).Select(i=>new NodeElementModel(20.0*i/divisions,0,0)).ToList();
+                ns[0].Support=new NodeSupportModel(true,true,true,true,true,true);
+                ns[^1].NodalLoadList.Add(new NodalLoadModel(columnCase,-1,0,0,0,0,0));
+                var beams=Enumerable.Range(0,divisions).Select(i=>Beam(ns[i],ns[i+1])).ToList();
+                var m=new ModelModel();m.BuildModel(inputFrames:beams);
+                var initial=ModelAnalysisService.RunStatic(m,Path.Combine(folder,$"column-{divisions}.st7"),false);
+                var solved=ModelAnalysisService.RunBuckling(m,Path.Combine(folder,$"buckling-{divisions}.st7"),false,initial.Results.ResultPath,1,modes:1);
+                solved.Results.ValidateFor(solved,requireProvenance:true);
+                return StrausFileService.BucklingFactors(solved.Results.ModelPath,solved.Results.ResultPath,new[]{1})[0];
+            }
+            double coarse=SolveColumn(4),fine=SolveColumn(16);
+            // L=20 m: Euler slender limit; neglected shear/axial effects are below 0.1%.
+            double expected=Math.PI*Math.PI*material.ModulusElasticity*section.I11/(4*20*20);
+            Console.WriteLine($"Buckling reference={expected:G17}; 4 elements={coarse:G17}; 16 elements={fine:G17}");
+            Near(fine,expected,expected*.001);
+            Near(fine,coarse,expected*.001);
         });
         if (args.Contains("--solve")) Test("Integrated Model solver generates selected combinations and attaches verified results",()=>{
             var m=Cantilever();var combo=new LoadCombinationModel("Double",new(){new(loadCase,2)},LoadCombinationModel.LoadCombinationTypes.Linear);

@@ -54,7 +54,6 @@ public static partial class StrausFileService
             if (loadCase > count) throw new ArgumentException("Load case is outside the model range.");
             int increments=0; Check(St7.St7GetNumNLAIncrements(id, 0, ref increments), "Read nonlinear increments");
             for (int i=increments;i>=1;i--) Check(St7.St7DeleteNLAIncrement(id,0,i), "Replace nonlinear increment table");
-            for (int i=1;i<=count;i++) Check(i==loadCase?St7.St7EnableNLALoadCase(id,0,i):St7.St7DisableNLALoadCase(id,0,i), "Set nonlinear active load case");
             Check(St7.St7SetSolverDefaultsLogical(id,St7.spNonlinearGeometry,(byte)(geometry?St7.btTrue:St7.btFalse)), "Set nonlinear geometry");
             Check(St7.St7SetSolverDefaultsLogical(id,St7.spNonlinearMaterial,(byte)(material?St7.btTrue:St7.btFalse)), "Set nonlinear material");
             for(int i=1;i<=steps;i++)
@@ -63,6 +62,9 @@ public static partial class StrausFileService
                 Check(St7.St7SetNLALoadIncrementFactor(id,0,i,loadCase,factor*i/steps), "Set increment load factor");
                 Check(St7.St7SetNLAFreedomIncrementFactor(id,0,i,1,1.0), "Set freedom case factor");
             }
+            // R31 needs at least one increment before cases can be enabled.
+            for (int i=1;i<=count;i++) Check(i==loadCase?St7.St7EnableNLALoadCase(id,0,i):St7.St7DisableNLALoadCase(id,0,i), "Set nonlinear active load case");
+            Check(St7.St7EnableNLAFreedomCase(id,0,1), "Enable freedom case 1");
         });
     }
 
