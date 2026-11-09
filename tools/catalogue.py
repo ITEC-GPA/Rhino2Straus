@@ -1,8 +1,13 @@
 """Generate the catalogue and topic guide from the same topics used by the Grasshopper ribbon."""
 from pathlib import Path
+import argparse
 import json
 import re
 
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--check', action='store_true', help='Validate tracked catalogues without rewriting files')
+args = parser.parse_args()
+stale = []
 root = Path(__file__).resolve().parents[1]
 topic_source = (root / 'Rhino2Straus.Grasshopper.Types/UI/ComponentTopics.cs').read_text(encoding='utf-8')
 labels = dict(re.findall(r'public const string (\w+)="([^"]+)";', topic_source))
@@ -29,10 +34,16 @@ for path in (root / 'Rhino2Straus.Grasshopper/Components').rglob('*.cs'):
                       Guid=guid, File=path.relative_to(root).as_posix()))
 items.sort(key=lambda item: (item['Category'], item['Name']))
 docs = root / 'docs'
-docs.mkdir(exist_ok=True)
+if not args.check:
+    docs.mkdir(exist_ok=True)
 
 def write(name, content):
-    (docs / name).write_bytes(content.encode('utf-8'))
+    path = docs / name
+    if args.check:
+        if not path.exists() or path.read_text(encoding='utf-8') != content:
+            stale.append(name)
+    else:
+        path.write_bytes(content.encode('utf-8'))
 
 write('components.json', json.dumps(items, ensure_ascii=False, indent=2) + '\n')
 md = ['# Catalogo componenti',
@@ -63,3 +74,6 @@ guide += [
 write('COMPONENTS.md', '\n'.join(md) + '\n')
 write('TOPICS.md', '\n'.join(guide) + '\n')
 print(f'{len(items)} components; {len(guids)} unique GUIDs; {len(topics)} matching ribbon topics and source folders')
+
+if stale:
+    raise SystemExit("Stale catalogues: " + ", ".join(stale) + ". Run tools/catalogue.py.")

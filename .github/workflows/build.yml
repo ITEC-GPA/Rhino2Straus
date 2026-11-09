@@ -14,6 +14,11 @@ jobs:
           dotnet-version: |
             8.0.x
             9.0.x
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Check component catalogues
+        run: python tools/catalogue.py --check
       - name: Build, managed tests and package
         shell: pwsh
         run: ./build.ps1
