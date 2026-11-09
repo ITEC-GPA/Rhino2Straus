@@ -17,7 +17,18 @@ jobs:
       - name: Build, managed tests and package
         shell: pwsh
         run: ./build.ps1
+      - name: Resolve package version
+        id: package
+        shell: pwsh
+        run: |
+          [xml]$props = Get-Content Directory.Build.props -Raw
+          $name = "Rhino2Straus-$($props.Project.PropertyGroup.Version)"
+          $path = "artifacts/$name.zip"
+          if (-not (Test-Path -LiteralPath $path -PathType Leaf)) { throw "Missing package: $path" }
+          "name=$name" >> $env:GITHUB_OUTPUT
+          "path=$path" >> $env:GITHUB_OUTPUT
       - uses: actions/upload-artifact@v4
         with:
-          name: Rhino2Straus-0.5.0
-          path: artifacts/Rhino2Straus-0.5.0.zip
+          name: ${{ steps.package.outputs.name }}
+          path: ${{ steps.package.outputs.path }}
+          if-no-files-found: error
