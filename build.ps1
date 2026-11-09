@@ -14,7 +14,7 @@ try {
 
     $output = Join-Path $PSScriptRoot 'bin'
     $plugin = Join-Path $PSScriptRoot 'Rhino2Straus.Grasshopper/bin/Release/net8.0-windows'
-    $files = @('Rhino2Straus.Grasshopper.gha', 'Rhino2Straus.Core.dll', 'Rhino2Straus.Api.dll', 'Rhino2Straus.Import.dll', 'Rhino2Straus.Grasshopper.Types.dll', 'GrasshopperHelper.dll')
+    $files = @('Rhino2Straus.Grasshopper.gha', 'Rhino2Straus.Core.dll', 'Rhino2Straus.Api.dll', 'Rhino2Straus.Import.dll', 'Rhino2Straus.Grasshopper.Types.dll', 'Rhino2Straus.GrasshopperHelper.dll')
     # Check all required files before replacing the previous package.
     foreach ($file in $files) {
         if (-not (Test-Path -LiteralPath (Join-Path $plugin $file) -PathType Leaf)) { throw "Missing runtime file: $file" }

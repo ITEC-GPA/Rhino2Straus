@@ -1,5 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup><EnableDynamicLoading>true</EnableDynamicLoading><UseWindowsForms>true</UseWindowsForms></PropertyGroup>
+  <PropertyGroup><AssemblyName>Rhino2Straus.GrasshopperHelper</AssemblyName><EnableDynamicLoading>true</EnableDynamicLoading><UseWindowsForms>true</UseWindowsForms></PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Grasshopper" Version="$(RhinoVersion)" />
     <PackageReference Include="RhinoCommon" Version="$(RhinoVersion)" />
