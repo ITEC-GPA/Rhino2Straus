@@ -295,6 +295,13 @@ if (args.Contains("--native"))
     Test("Native export saves complete model", () => { Check(St7.St7SetLicenceOptions(St7.lmAbort,0,0)); var m=Cantilever();Assert(m.CreateModelStraus7R3(path,out _,out var warnings,out var errors),string.Join("; ",errors));Assert(File.Exists(path)); });
     if (File.Exists(path))
     {
+        Test("Native export reports unsupported node groups without rejecting the model", () => {
+            var m=Cantilever();m.NodeElements[10].Groups.Add(new ElementGroupModel("Node metadata"));
+            string grouped=Path.Combine(folder,"node-groups.st7");
+            Assert(m.CreateModelStraus7R3(grouped,out _,out var warnings,out var errors),string.Join("; ",errors));
+            Assert(warnings.Any(w=>w.Contains("node groups")));
+            Assert(StrausModelImport.Read(grouped,allowPartial:true).Model.NodeElements.Values.All(n=>n.Groups.Count==0));
+        });
         Test("Native units, connectivity, IDs and load accumulation roundtrip",()=>{
             using var s=new StrausSession(path);var u=new int[6];Check(St7.St7GetUnits(s.Id,u));Assert(u[St7.ipFORCEU]==St7.fuKILONEWTON&&u[St7.ipLENGTHU]==St7.luMETRE);
             var f=new double[3];Check(St7.St7GetNodeForce3(s.Id,2,1,f));Near(f[2],-1);var c=new int[21];Check(St7.St7GetElementConnection(s.Id,St7.tyBEAM,1,c));Assert(c[0]==2&&c[1]==1&&c[2]==2);

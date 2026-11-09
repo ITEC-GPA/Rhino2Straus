@@ -377,7 +377,7 @@ namespace Rhino2Straus.Core.Helper
                             HandleError(St7.St7SetNodeMoment3(modelId, nodeNumber, lc, new[] { caseLoads.Sum(x => x.MX), caseLoads.Sum(x => x.MY), caseLoads.Sum(x => x.MZ) }));
                         }
                         AdvancedExport.Node(modelId, nodeNumber, node, loadCaseNameIdMap);
-                        if(node.Groups.Count>0)HandleError(St7.St7SetEntityGroup(modelId,St7.tyNODE,nodeNumber,groupsIds[node.Groups[0]]));
+                        if(node.Groups.Count>0)warnings.Add($"Node {node.Id}: node groups are Grasshopper metadata and cannot be exported as Straus7 entity groups.");
 
                     }
                     catch (Exception ex)

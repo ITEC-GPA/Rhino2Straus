@@ -97,7 +97,7 @@ internal sealed partial class NativeModelReader
         for(int n=1,count=Total(St7.tyNODE);n<=count;n++)
         {
             var xyz=Values(3,v=>St7.St7GetNodeXYZ(id,n,v),"Read node");int label=0;Check(St7.St7GetNodeID(id,n,ref label),"Read node label");
-            var node=new NodeElementModel(xyz[0],xyz[1],xyz[2]){Id=n,Groups=Group(St7.tyNODE,n)};
+            var node=new NodeElementModel(xyz[0],xyz[1],xyz[2]){Id=n};
             nodes[n]=node;data.Nodes.Add(node);Identity("Node",n,label,n);ReadNodeAttributes(n,node);
         }
         for(int n=1,count=Total(St7.tyBEAM);n<=count;n++)
