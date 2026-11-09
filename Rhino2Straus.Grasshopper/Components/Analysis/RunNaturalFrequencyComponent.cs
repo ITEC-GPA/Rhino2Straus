@@ -21,9 +21,8 @@ using St7API;
 
 namespace Rhino2Straus.Grasshopper.Components.Extended;
 
-public sealed class RunNaturalFrequencyComponent : SafeComponent
+public sealed class RunNaturalFrequencyComponent : AsyncSolverComponent<string>
 {
-    private readonly TriggeredOperation<string> operation = new();
     public RunNaturalFrequencyComponent() : base("Run Natural Frequency", "Run Natural Frequency", "Run natural frequency analysis and calculate mass participation", ComponentTopics.Tab, ComponentTopics.Analysis) { }
     public override Guid ComponentGuid => new Guid("69592316-e47a-57a8-b85d-09bc68563540");
     protected override void RegisterInputParams(GH_InputParamManager p)
@@ -42,11 +41,22 @@ public sealed class RunNaturalFrequencyComponent : SafeComponent
     protected override void Solve(IGH_DataAccess da)
     {
 
-        string path = Item<string>(da,0);
-        bool run = Item<bool>(da,1);
-        string key = System.Text.Json.JsonSerializer.Serialize(new object[] { path, Item<int>(da,3), Item<double>(da,4) });
-        string result = operation.Update(key, run,
-            () => StrausFileService.RunNaturalFrequency(path, Item<bool>(da,2), Item<int>(da,3), Item<double>(da,4)), _ => "Completed");
-        da.SetData(0,result ?? "");da.SetData(1,operation.Status);Message=operation.Status;
+        string path = System.IO.Path.GetFullPath(Item<string>(da,0));
+        bool run = Item<bool>(da,1), overwrite = Item<bool>(da,2);
+        int modes = Item<int>(da,3);
+        double shift = Item<double>(da,4);
+        string key = System.Text.Json.JsonSerializer.Serialize(new object[] { path, modes, shift });
+        var operation = Operation(da);
+        string result = operation.UpdatePreparedAsync(key, run,
+            () =>
+            {
+                var source = AnalysisFileState.Capture(path);
+                return cancellation =>
+                {
+                    source.RequireUnchanged();
+                    return StrausFileService.RunNaturalFrequencyAsync(path, overwrite, modes, shift, cancellation: cancellation);
+                };
+            }, _ => "Completed");
+        da.SetData(0,result ?? "");da.SetData(1,operation.Status);Report(operation);
     }
 }

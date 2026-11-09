@@ -21,9 +21,8 @@ using St7API;
 
 namespace Rhino2Straus.Grasshopper.Components.Extended;
 
-public sealed class RunModelBucklingComponent : SafeComponent
+public sealed class RunModelBucklingComponent : AsyncSolverComponent<ModelModel>
 {
-    private readonly TriggeredOperation<ModelModel> operation=new();
     public RunModelBucklingComponent() : base("Run Model Linear Buckling", "Run Model Linear Buckling", "Buckling using verified initial static results from the same Model; modal displacements are normalized mode shapes.", ComponentTopics.Tab, ComponentTopics.Analysis) { }
     public override Guid ComponentGuid => new Guid("323cda05-f8cf-506e-bba6-af56a2d89dde");
     protected override void RegisterInputParams(GH_InputParamManager p)
@@ -48,11 +47,36 @@ public sealed class RunModelBucklingComponent : SafeComponent
     protected override void Solve(IGH_DataAccess da)
     {
 
-        var input=Item<GH_Model>(da,0).Value;string path=Item<string>(da,1);bool run=Item<bool>(da,2),overwrite=Item<bool>(da,3);
-        string key=ModelFingerprint.Compute(input)+System.Text.Json.JsonSerializer.Serialize(new object[]{path,Item<string>(da,4),Item<int>(da,5),Item<int>(da,6),Item<int>(da,7),Item<double>(da,8)});
-        var solved=operation.Update(key,run,()=>ModelAnalysisService.RunBuckling(input,path,overwrite,Item<string>(da,4),Item<int>(da,5),Item<int>(da,6),Item<int>(da,7),Item<double>(da,8)),value=>value.Results.IsComplete?"Completed":"Completed with unavailable quantities");
-        string status=operation.Status;
-        da.SetData(0,new GH_Model(solved??input));da.SetData(1,solved?.Results.ResultPath??"");da.SetData(2,status);da.SetDataList(3,solved?.Results.Issues.Select(x=>x.ToString())??Array.Empty<string>());Message=status;
+        var input = Item<GH_Model>(da,0).Value;
+        string path = System.IO.Path.GetFullPath(Item<string>(da,1));
+        bool run = Item<bool>(da,2), overwrite = Item<bool>(da,3);
+        string initial = Item<string>(da,4);
+        int variable = Item<int>(da,5);
+        int fixedCase = Item<int>(da,6);
+        int modes = Item<int>(da,7);
+        double shift = Item<double>(da,8);
+        string key = ModelFingerprint.Compute(input) + System.Text.Json.JsonSerializer.Serialize(new object[] { path, initial, variable, fixedCase, modes, shift });
+        var operation = Operation(da);
+        var solved = operation.UpdatePreparedAsync(key, run,
+            () =>
+            {
+                var snapshot = new ModelModel(input); snapshot.ClearResults();
+                var initialFile = AnalysisFileState.Capture(initial);
+                var initialModel = AnalysisFileState.Capture(System.IO.Path.ChangeExtension(initial, ".st7"));
+                var manifest = AnalysisFileState.Capture(ResultProvenance.ManifestPath(initial));
+                return cancellation =>
+                {
+                    initialFile.RequireUnchanged(); initialModel.RequireUnchanged(); manifest.RequireUnchanged();
+                    return ModelAnalysisService.RunBucklingAsync(snapshot,path,overwrite,initial, variable, fixedCase, modes, shift, cancellation: cancellation);
+                };
+            },
+            value => value.Results.IsComplete ? "Completed" : "Completed with unavailable quantities");
+        // Never pass old incoming results through while the requested analysis is pending/obsolete.
+        var fallback = input.Results == null ? input : new ModelModel(input);
+        if (!ReferenceEquals(fallback,input)) fallback.ClearResults();
+        da.SetData(0,new GH_Model(solved ?? fallback));da.SetData(1,solved?.Results.ResultPath ?? "");
+        da.SetData(2,operation.Status);da.SetDataList(3,solved?.Results.Issues.Select(x=>x.ToString()) ?? Array.Empty<string>());
+        Report(operation);
         if(solved?.Results.Issues.Count>0)AddRuntimeMessage(GH_RuntimeMessageLevel.Warning,$"{solved.Results.Issues.Count} result quantities unavailable; inspect Unavailable.");
     }
 }

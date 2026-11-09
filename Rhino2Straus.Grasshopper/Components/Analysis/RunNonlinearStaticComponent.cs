@@ -21,9 +21,8 @@ using St7API;
 
 namespace Rhino2Straus.Grasshopper.Components.Extended;
 
-public sealed class RunNonlinearStaticComponent : SafeComponent
+public sealed class RunNonlinearStaticComponent : AsyncSolverComponent<string>
 {
-    private readonly TriggeredOperation<string> operation = new();
     public RunNonlinearStaticComponent() : base("Run Nonlinear Static", "Run Nonlinear Static", "Replaces the unstaged nonlinear increment table with a ramp of one load case. Freedom case 1 is held at factor 1; existing material laws are used", ComponentTopics.Tab, ComponentTopics.Analysis) { }
     public override Guid ComponentGuid => new Guid("410900f3-b729-5c92-9ac8-68f2241a1a07");
     protected override void RegisterInputParams(GH_InputParamManager p)
@@ -45,11 +44,25 @@ public sealed class RunNonlinearStaticComponent : SafeComponent
     protected override void Solve(IGH_DataAccess da)
     {
 
-        string path = Item<string>(da,0);
-        bool run = Item<bool>(da,1);
-        string key = System.Text.Json.JsonSerializer.Serialize(new object[] { path, Item<int>(da,3), Item<int>(da,4), Item<double>(da,5), Item<bool>(da,6), Item<bool>(da,7) });
-        string result = operation.Update(key, run,
-            () => StrausFileService.RunNonlinearStatic(path, Item<bool>(da,2), Item<int>(da,3), Item<int>(da,4), Item<double>(da,5), Item<bool>(da,6), Item<bool>(da,7)), _ => "Completed");
-        da.SetData(0,result ?? "");da.SetData(1,operation.Status);Message=operation.Status;
+        string path = System.IO.Path.GetFullPath(Item<string>(da,0));
+        bool run = Item<bool>(da,1), overwrite = Item<bool>(da,2);
+        int loadCase = Item<int>(da,3);
+        int steps = Item<int>(da,4);
+        double factor = Item<double>(da,5);
+        bool geometry = Item<bool>(da,6);
+        bool material = Item<bool>(da,7);
+        string key = System.Text.Json.JsonSerializer.Serialize(new object[] { path, loadCase, steps, factor, geometry, material });
+        var operation = Operation(da);
+        string result = operation.UpdatePreparedAsync(key, run,
+            () =>
+            {
+                var source = AnalysisFileState.Capture(path);
+                return cancellation =>
+                {
+                    source.RequireUnchanged();
+                    return StrausFileService.RunNonlinearStaticAsync(path, overwrite, loadCase, steps, factor, geometry, material, cancellation: cancellation);
+                };
+            }, _ => "Completed");
+        da.SetData(0,result ?? "");da.SetData(1,operation.Status);Report(operation);
     }
 }

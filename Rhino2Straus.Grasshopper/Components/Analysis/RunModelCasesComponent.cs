@@ -21,9 +21,8 @@ using St7API;
 
 namespace Rhino2Straus.Grasshopper.Components.Extended;
 
-public sealed class RunModelCasesComponent : SafeComponent
+public sealed class RunModelCasesComponent : AsyncSolverComponent<ModelModel>
 {
-    private readonly TriggeredOperation<ModelModel> operation=new();
     public RunModelCasesComponent() : base("Run Model Cases and Combinations", "Run Model Cases and Combinations", "Export this Model, run selected linear static cases and combinations, and return the Model with results and provenance. Requires a Straus7 API/solver licence.", ComponentTopics.Tab, ComponentTopics.Analysis) { }
     public override Guid ComponentGuid => new Guid("4a573019-35cb-55d7-8580-99ad7613003b");
     protected override void RegisterInputParams(GH_InputParamManager p)
@@ -51,13 +50,26 @@ public sealed class RunModelCasesComponent : SafeComponent
     protected override void Solve(IGH_DataAccess da)
     {
 
-        var input=Item<GH_Model>(da,0).Value;bool run=Item<bool>(da,2);
-        var cases=new List<string>();var combos=new List<string>();da.GetDataList(4,cases);da.GetDataList(5,combos);
-        string key=ModelFingerprint.Compute(input)+System.Text.Json.JsonSerializer.Serialize(new object[]{Item<string>(da,1),cases,combos,Item<bool>(da,6),Item<bool>(da,7),Item<int>(da,8),Item<int>(da,9)});
-        var solved=operation.Update(key,run,()=>ModelAnalysisService.RunStatic(input,Item<string>(da,1),Item<bool>(da,3),cases,combos,Item<bool>(da,6),Item<bool>(da,7),Item<int>(da,8),Item<int>(da,9)),value=>value.Results.IsComplete?"Completed":"Completed with unavailable quantities");
-        string status=operation.Status;
-        var output=solved??input;da.SetData(0,new GH_Model(output));da.SetData(1,solved?.Results.ResultPath??"");da.SetData(2,status);
-        da.SetDataList(3,solved?.Results.Issues.Select(x=>x.ToString())??Array.Empty<string>());Message=status;
-        if(solved?.Results.Issues.Count>0)AddRuntimeMessage(GH_RuntimeMessageLevel.Warning,$"{solved.Results.Issues.Count} result quantities unavailable. Inspect Unavailable before verification.");
+        var input = Item<GH_Model>(da,0).Value;
+        string path = System.IO.Path.GetFullPath(Item<string>(da,1));
+        bool run = Item<bool>(da,2), overwrite = Item<bool>(da,3);
+        var cases = new List<string>();var combos = new List<string>();da.GetDataList(4,cases);da.GetDataList(5,combos);
+        bool runCases = Item<bool>(da,6), runCombos = Item<bool>(da,7);
+        int stations = Item<int>(da,8), sample = Item<int>(da,9);
+        string key = ModelFingerprint.Compute(input) + System.Text.Json.JsonSerializer.Serialize(new object[]{path,cases,combos,runCases,runCombos,stations,sample});
+        var operation = Operation(da);
+        var solved = operation.UpdatePreparedAsync(key,run,
+            () =>
+            {
+                var snapshot = new ModelModel(input); snapshot.ClearResults();
+                return cancellation => ModelAnalysisService.RunStaticAsync(snapshot,path,overwrite,cases,combos,runCases,runCombos,stations,sample, cancellation: cancellation);
+            },
+            value=>value.Results.IsComplete ? "Completed" : "Completed with unavailable quantities");
+        var fallback = input.Results == null ? input : new ModelModel(input);
+        if (!ReferenceEquals(fallback,input)) fallback.ClearResults();
+        da.SetData(0,new GH_Model(solved ?? fallback));da.SetData(1,solved?.Results.ResultPath ?? "");
+        da.SetData(2,operation.Status);da.SetDataList(3,solved?.Results.Issues.Select(x=>x.ToString()) ?? Array.Empty<string>());
+        Report(operation);
+        if(solved?.Results.Issues.Count>0)AddRuntimeMessage(GH_RuntimeMessageLevel.Warning,$"{solved.Results.Issues.Count} result quantities unavailable; inspect Unavailable.");
     }
 }

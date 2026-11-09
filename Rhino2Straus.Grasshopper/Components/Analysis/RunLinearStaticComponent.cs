@@ -21,9 +21,8 @@ using St7API;
 
 namespace Rhino2Straus.Grasshopper.Components.Extended;
 
-public sealed class RunLinearStaticComponent : SafeComponent
+public sealed class RunLinearStaticComponent : AsyncSolverComponent<string>
 {
-    private readonly TriggeredOperation<string> operation = new();
     public RunLinearStaticComponent() : base("Run Linear Static", "Run Linear Static", "Run Linear Static", ComponentTopics.Tab, ComponentTopics.Analysis) { }
     public override Guid ComponentGuid => new Guid("d210a91e-8e0e-5b67-ac0c-68ca3a8e2aa4");
     protected override void RegisterInputParams(GH_InputParamManager p)
@@ -40,11 +39,21 @@ public sealed class RunLinearStaticComponent : SafeComponent
     protected override void Solve(IGH_DataAccess da)
     {
 
-        string path = Item<string>(da,0);
-        bool run = Item<bool>(da,1);
+        string path = System.IO.Path.GetFullPath(Item<string>(da,0));
+        bool run = Item<bool>(da,1), overwrite = Item<bool>(da,2);
+
         string key = System.Text.Json.JsonSerializer.Serialize(new object[] { path });
-        string result = operation.Update(key, run,
-            () => StrausFileService.RunLinearStatic(path, Item<bool>(da,2)), _ => "Completed");
-        da.SetData(0,result ?? "");da.SetData(1,operation.Status);Message=operation.Status;
+        var operation = Operation(da);
+        string result = operation.UpdatePreparedAsync(key, run,
+            () =>
+            {
+                var source = AnalysisFileState.Capture(path);
+                return cancellation =>
+                {
+                    source.RequireUnchanged();
+                    return StrausFileService.RunLinearStaticAsync(path, overwrite, cancellation: cancellation);
+                };
+            }, _ => "Completed");
+        da.SetData(0,result ?? "");da.SetData(1,operation.Status);Report(operation);
     }
 }

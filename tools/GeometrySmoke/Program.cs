@@ -24,9 +24,11 @@ using Grasshopper.Kernel.Parameters;
 internal static class Program
 {
     private static bool previewGallery;
+    private static bool nativeAsync;
     [STAThread] static int Main(string[] args)
     {
         previewGallery=args.Contains("--preview-gallery");
+        nativeAsync=args.Contains("--async-native");
         RhinoInside.Resolver.Initialize(args.FirstOrDefault(a=>!a.StartsWith("--"))??@"C:\Program Files\Rhino 8\System");
         return StartRhino();
     }
@@ -35,8 +37,16 @@ internal static class Program
     {
         try
         {
-            using var rhino=new RhinoCore(new[]{"/nosplash"},WindowStyle.NoWindow);
-            Run();return 0;
+            using var rhino=new RhinoCore(new[]{"/nosplash","/safemode","/notemplate"},WindowStyle.NoWindow);
+            try { Run(); return 0; }
+            finally
+            {
+                if(nativeAsync)
+                {
+                    Rhino2Straus.Api.StrausRuntime.ReleaseForHostShutdown();
+                    Console.WriteLine("Native API released before Rhino shutdown.");
+                }
+            }
         }
         catch(Exception e){Console.WriteLine(e);return 1;}
     }
@@ -138,7 +148,7 @@ internal static class Program
             directory=directory.Parent;
         }
         if(directory==null)throw new DirectoryNotFoundException("Run from the repository.");
-        string plugin=Path.Combine(directory.FullName,"bin","Rhino2Straus.Grasshopper.gha");
+        string plugin=Environment.GetEnvironmentVariable("RHINO2STRAUS_PLUGIN_PATH") ?? Path.Combine(directory.FullName,"bin","Rhino2Straus.Grasshopper.gha");
         string pluginFolder=Path.GetDirectoryName(plugin);
         System.Runtime.Loader.AssemblyLoadContext.Default.Resolving+=(context,name)=>{
             string candidate=Path.Combine(pluginFolder,name.Name+".dll");return File.Exists(candidate)?context.LoadFromAssemblyPath(candidate):null;
@@ -204,13 +214,16 @@ internal static class Program
                 ((Param_String)c.Params.Input[0]).PersistentData.Append(new GH_String("old.st7"));
                 if(name=="RunLinearBucklingComponent") ((Param_String)c.Params.Input[4]).PersistentData.Append(new GH_String("initial.LSA"));
             });
-            var operation=(TriggeredOperation<string>)solver.GetType().GetField("operation",BindingFlags.NonPublic|BindingFlags.Instance).GetValue(solver);
+            var operations=(System.Collections.Generic.Dictionary<int,AsyncTriggeredOperation<string>>)solver.GetType().BaseType.GetField("operations",BindingFlags.NonPublic|BindingFlags.Instance).GetValue(solver);
+            var operation=operations[0];
             for(int inputIndex=0;inputIndex<solver.Params.Input.Count;inputIndex++)
             {
                 if(inputIndex is 1 or 2)continue; // Run is a trigger, overwrite is permission, not analysis identity.
-                string key=(string)typeof(TriggeredOperation<string>).GetField("previousKey",BindingFlags.NonPublic|BindingFlags.Instance).GetValue(operation);
-                operation.Update(key,false,()=>"old.LSA",_=>"Completed");
-                operation.Update(key,true,()=>"old.LSA",_=>"Completed");
+                string key=(string)typeof(AsyncTriggeredOperation<string>).GetField("previousKey",BindingFlags.NonPublic|BindingFlags.Instance).GetValue(operation);
+                operation.Update(key,false,_=>"old.LSA",_=>"Completed");
+                operation.Update(key,true,_=>"old.LSA",_=>"Completed");
+                var seedWatch=System.Diagnostics.Stopwatch.StartNew();
+                while(operation.IsPending){if(seedWatch.Elapsed.TotalSeconds>5)throw new Exception("Async cache seed timed out");Application.DoEvents();System.Threading.Thread.Sleep(5);}
                 solver.ExpireSolution(false);solver.CollectData();solver.ComputeData();
                 Check(solver.Params.Output[0].VolatileData.AllData(true).First().ToString()=="old.LSA",name+" retains unchanged cached result");
                 var input=solver.Params.Input[inputIndex];
@@ -222,6 +235,7 @@ internal static class Program
                 Check(solver.RuntimeMessages(GH_RuntimeMessageLevel.Error).Count==0 && operation.Value==null && operation.Status=="Run required",name+" invalidates changed input "+inputIndex);
             }
         }
+        AsyncSolverSmoke.Run(assembly,Check,nativeAsync);
         var constraintOptions=SolveDefaults("LinkConstraintOptionsComponent",c=>{var input=(Param_Integer)c.Params.Input[2];input.PersistentData.Clear();input.PersistentData.Append(new GH_Integer(-1));});
         var master=SolveDefaults("MasterSlaveLinkPropertyComponent",c=>c.Params.Input[0].AddSource(constraintOptions.Params.Output[0]));
         var property=master.Params.Output[0].VolatileData.AllData(true).First().ScriptVariable();

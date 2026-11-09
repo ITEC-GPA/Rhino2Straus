@@ -345,6 +345,21 @@ Test("Async snapshots are prepared once on the caller and isolate mutable input"
     }
     finally{release.Set();}
 });
+Test("Queued file changes and overwritten result paths invalidate tracked artifacts",()=>{
+    string folder=Path.Combine(Path.GetTempPath(),"Rhino2Straus-file-state-"+Guid.NewGuid().ToString("N"));Directory.CreateDirectory(folder);
+    string model=Path.Combine(folder,"model.st7"),results=Path.ChangeExtension(model,".LSA");
+    try
+    {
+        File.WriteAllText(model,"old model");File.WriteAllText(results,"old results");
+        var source=AnalysisFileState.Capture(model);source.RequireUnchanged();
+        var tracked=AnalysisOutputFiles.Track(results);Assert(AnalysisOutputFiles.IsCurrent(tracked));
+        File.WriteAllText(model,"replacement model with different data");
+        Throws(source.RequireUnchanged);Assert(!AnalysisOutputFiles.IsCurrent(tracked));
+        var replacement=new string(results.ToCharArray());AnalysisOutputFiles.Track(replacement);Assert(AnalysisOutputFiles.IsCurrent(replacement));
+        File.Delete(results);Assert(!AnalysisOutputFiles.IsCurrent(replacement));
+    }
+    finally{File.Delete(model);File.Delete(results);Directory.Delete(folder);}
+});
 
 if (args.Contains("--native"))
 {

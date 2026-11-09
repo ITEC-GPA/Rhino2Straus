@@ -21,9 +21,8 @@ using St7API;
 
 namespace Rhino2Straus.Grasshopper.Components.Extended;
 
-public sealed class RunModelNonlinearComponent : SafeComponent
+public sealed class RunModelNonlinearComponent : AsyncSolverComponent<ModelModel>
 {
-    private readonly TriggeredOperation<ModelModel> operation=new();
     public RunModelNonlinearComponent() : base("Run Model Nonlinear Static", "Run Model Nonlinear Static", "Incremental ramp of one named case, elastic material with optional geometric nonlinearity. Results return in the same Model.", ComponentTopics.Tab, ComponentTopics.Analysis) { }
     public override Guid ComponentGuid => new Guid("2ca4d9c4-10f2-5eaa-8cf3-70ea1a7bde38");
     protected override void RegisterInputParams(GH_InputParamManager p)
@@ -47,11 +46,28 @@ public sealed class RunModelNonlinearComponent : SafeComponent
     protected override void Solve(IGH_DataAccess da)
     {
 
-        var input=Item<GH_Model>(da,0).Value;string path=Item<string>(da,1);bool run=Item<bool>(da,2),overwrite=Item<bool>(da,3);
-        string key=ModelFingerprint.Compute(input)+System.Text.Json.JsonSerializer.Serialize(new object[]{path,Item<string>(da,4),Item<int>(da,5),Item<double>(da,6),Item<bool>(da,7)});
-        var solved=operation.Update(key,run,()=>ModelAnalysisService.RunNonlinear(input,path,overwrite,Item<string>(da,4),Item<int>(da,5),Item<double>(da,6),Item<bool>(da,7)),value=>value.Results.IsComplete?"Completed":"Completed with unavailable quantities");
-        string status=operation.Status;
-        da.SetData(0,new GH_Model(solved??input));da.SetData(1,solved?.Results.ResultPath??"");da.SetData(2,status);da.SetDataList(3,solved?.Results.Issues.Select(x=>x.ToString())??Array.Empty<string>());Message=status;
+        var input = Item<GH_Model>(da,0).Value;
+        string path = System.IO.Path.GetFullPath(Item<string>(da,1));
+        bool run = Item<bool>(da,2), overwrite = Item<bool>(da,3);
+        string caseName = Item<string>(da,4);
+        int steps = Item<int>(da,5);
+        double factor = Item<double>(da,6);
+        bool geometry = Item<bool>(da,7);
+        string key = ModelFingerprint.Compute(input) + System.Text.Json.JsonSerializer.Serialize(new object[] { path, caseName, steps, factor, geometry });
+        var operation = Operation(da);
+        var solved = operation.UpdatePreparedAsync(key, run,
+            () =>
+            {
+                var snapshot = new ModelModel(input); snapshot.ClearResults();
+                return cancellation => ModelAnalysisService.RunNonlinearAsync(snapshot,path,overwrite,caseName, steps, factor, geometry, cancellation: cancellation);
+            },
+            value => value.Results.IsComplete ? "Completed" : "Completed with unavailable quantities");
+        // Never pass old incoming results through while the requested analysis is pending/obsolete.
+        var fallback = input.Results == null ? input : new ModelModel(input);
+        if (!ReferenceEquals(fallback,input)) fallback.ClearResults();
+        da.SetData(0,new GH_Model(solved ?? fallback));da.SetData(1,solved?.Results.ResultPath ?? "");
+        da.SetData(2,operation.Status);da.SetDataList(3,solved?.Results.Issues.Select(x=>x.ToString()) ?? Array.Empty<string>());
+        Report(operation);
         if(solved?.Results.Issues.Count>0)AddRuntimeMessage(GH_RuntimeMessageLevel.Warning,$"{solved.Results.Issues.Count} result quantities unavailable; inspect Unavailable.");
     }
 }

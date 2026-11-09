@@ -1,5 +1,6 @@
 using System;
 using Grasshopper.Kernel;
+using Rhino2Straus.Api;
 
 namespace Rhino2Straus.Grasshopper;
 
@@ -21,6 +22,7 @@ public abstract class SafeComponent : GH_Component
     protected sealed override void SolveInstance(IGH_DataAccess DA)
     {
         try { Message = null; Solve(DA); }
+        catch (StrausBusyException error) { Message = "API busy"; AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, error.Message); }
         catch (Exception error) { Message = "Error"; AddRuntimeMessage(GH_RuntimeMessageLevel.Error, error.GetBaseException().Message); }
     }
     protected abstract void Solve(IGH_DataAccess DA);
