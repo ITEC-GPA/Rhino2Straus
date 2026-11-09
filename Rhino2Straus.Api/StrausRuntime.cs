@@ -31,24 +31,54 @@ public static class StrausRuntime
     private static IntPtr Resolve(string name, Assembly assembly, DllImportSearchPath? searchPath)
     {
         if (!name.Equals("St7api.dll", StringComparison.OrdinalIgnoreCase)) return IntPtr.Zero;
+        if (!Environment.Is64BitProcess)
+            throw new PlatformNotSupportedException("Straus7 R3 requires a 64-bit process.");
         var candidates = new List<string>();
+        var diagnostics = new List<string>();
         string custom = Environment.GetEnvironmentVariable("STRAUS7_API_PATH");
-        if (!string.IsNullOrWhiteSpace(custom)) candidates.Add(Directory.Exists(custom) ? Path.Combine(custom, name) : custom);
+        if (!string.IsNullOrWhiteSpace(custom))
+            candidates.Add(Directory.Exists(custom) ? Path.Combine(custom, name) : custom);
+        // Assembly.Location is the plugin folder; AppContext.BaseDirectory is normally Rhino's folder.
+        string assemblyFolder = Path.GetDirectoryName(assembly.Location);
+        if (!string.IsNullOrEmpty(assemblyFolder)) candidates.Add(Path.Combine(assemblyFolder, name));
         string programs = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
         foreach (string folder in new[] { "Straus7 R31", "Strand7 R31", "Straus7 R3", "Strand7 R3" })
             candidates.Add(Path.Combine(programs, folder, "Bin64", name));
         candidates.Add(Path.Combine(AppContext.BaseDirectory, name));
         foreach (string path in candidates)
-            if (File.Exists(path) && NativeLibrary.TryLoad(path, out var handle)) { LoadedLibrary = path; return handle; }
-        if (NativeLibrary.TryLoad(name, assembly, searchPath, out var fallback)) { LoadedLibrary = name; return fallback; }
-        throw new DllNotFoundException("Straus7 R3 x64 API was not found. Set STRAUS7_API_PATH to its Bin64 directory or St7api.dll, then restart Rhino.");
+        {
+            if (!File.Exists(path)) { diagnostics.Add(path + ": file not found"); continue; }
+            try
+            {
+                var handle = NativeLibrary.Load(path);
+                LoadedLibrary = Path.GetFullPath(path);
+                return handle;
+            }
+            catch (Exception error) when (error is DllNotFoundException or BadImageFormatException or FileLoadException)
+            {
+                diagnostics.Add(path + ": " + error.Message);
+            }
+        }
+        try
+        {
+            var fallback = NativeLibrary.Load(name, assembly, searchPath);
+            LoadedLibrary = name;
+            return fallback;
+        }
+        catch (Exception error) when (error is DllNotFoundException or BadImageFormatException or FileLoadException)
+        {
+            diagnostics.Add("System DLL search: " + error.Message);
+            throw new DllNotFoundException("Unable to load Straus7 R3 x64 API. Set STRAUS7_API_PATH to its Bin64 directory or St7api.dll, then restart Rhino. "
+                + "A present DLL may have an incompatible architecture or missing dependencies. Attempts:" + Environment.NewLine
+                + string.Join(Environment.NewLine, diagnostics), error);
+        }
     }
 
     internal static void Initialize()
     {
         Configure();
         if (initialized) return;
-        Check(St7.St7Init(), "Initialize Straus7 API (an API licence is required)");
+        Check(St7.St7Init(), $"Initialize Straus7 API (an API licence is required; loaded library: {LoadedLibrary})");
         initialized = true;
     }
 
