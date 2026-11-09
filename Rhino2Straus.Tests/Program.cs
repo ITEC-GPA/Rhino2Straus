@@ -57,6 +57,8 @@ void Near(double actual, double expected, double tolerance = 1e-10) => Assert(Ma
 void Throws(Action action) { try { action(); } catch { return; } throw new Exception("Expected an exception"); }
 void Check(int error) => StrausRuntime.Check(error, "Integration test");
 
+AsyncOperationTests.Run(Test, Assert);
+
 var loadCase = new LoadCaseModel("Tip load");
 var material = MaterialModel.S355;
 var section = new FrameSectionModel { Name = "Generic", SectionGeometryType = FrameSectionModel.SectionGeometryTypes.Generic, SectionArea = .01, I11 = .0001, I22 = .0001, J = .0002, ShearA1 = .01, ShearA2 = .01, Breps = new() };
@@ -283,6 +285,29 @@ Test("Thermal import metadata survives Model copies and invalidates results",()=
     string fingerprint=ModelFingerprint.Compute(copy);copy.LoadCases.Values.Single().ReferenceTemperature=25;Assert(ModelFingerprint.Compute(copy)!=fingerprint);
     Throws(()=>ModelComposer.Merge(new[]{m,copy},true));
     Assert(ModelValidator.Validate(copy).IsValid);copy.NodeElements[50].Temperatures[0].Type=3;Assert(!ModelValidator.Validate(copy).IsValid);
+});
+
+Test("Background native gate never blocks interactive calls and cancels queued work",()=>{
+    using var entered=new System.Threading.ManualResetEventSlim();
+    using var release=new System.Threading.ManualResetEventSlim();
+    using var cancelled=new System.Threading.CancellationTokenSource();
+    var first=StrausRuntime.RunBackgroundAsync(_=>{entered.Set();Assert(release.Wait(TimeSpan.FromSeconds(10)));return 1;});
+    Assert(entered.Wait(TimeSpan.FromSeconds(5)));
+    System.Threading.Tasks.Task<int> queued=null;
+    try
+    {
+        var watch=System.Diagnostics.Stopwatch.StartNew();
+        bool busy=false;try{StrausRuntime.Configure();}catch(StrausBusyException){busy=true;}
+        Assert(busy && watch.ElapsedMilliseconds<1000,"Configure must fail fast while a worker owns the API");
+        busy=false;try{using var session=new StrausSession("missing.st7");}catch(StrausBusyException){busy=true;}
+        Assert(busy,"Interactive session must fail fast before touching a native file");
+        queued=StrausRuntime.RunBackgroundAsync<int>(_=>throw new Exception("Cancelled work must not execute"),cancelled.Token);
+        cancelled.Cancel();
+    }
+    finally {release.Set();}
+    Assert(first.Wait(TimeSpan.FromSeconds(5)) && first.Result==1);
+    Assert(System.Threading.SpinWait.SpinUntil(()=>queued.IsCompleted,TimeSpan.FromSeconds(5)) && queued.IsCanceled);
+    Assert(StrausRuntime.RunBackgroundAsync(_=>2).GetAwaiter().GetResult()==2,"Gate must be released after cancellation");
 });
 
 if (args.Contains("--native"))

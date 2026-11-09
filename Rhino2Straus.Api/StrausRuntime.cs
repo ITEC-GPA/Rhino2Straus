@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using St7API;
 
 namespace Rhino2Straus.Api;
@@ -13,6 +14,37 @@ namespace Rhino2Straus.Api;
 public static class StrausRuntime
 {
     internal static readonly object Gate = new();
+    private static readonly SemaphoreSlim analysisQueue = new(1, 1);
+
+    /// <summary>Queued jobs own the native gate on one worker thread for the whole operation.
+    /// Cancellation never interrupts a native call: completed obsolete jobs are discarded by the caller.</summary>
+    public static async Task<T> RunBackgroundAsync<T>(Func<CancellationToken, T> work, CancellationToken cancellation = default)
+    {
+        ArgumentNullException.ThrowIfNull(work);
+        await analysisQueue.WaitAsync(cancellation).ConfigureAwait(false);
+        try
+        {
+            return await Task.Run(() =>
+            {
+                while (!Monitor.TryEnter(Gate, 50)) cancellation.ThrowIfCancellationRequested();
+                try
+                {
+                    cancellation.ThrowIfCancellationRequested();
+                    T value = work(cancellation);
+                    cancellation.ThrowIfCancellationRequested();
+                    return value;
+                }
+                finally { Monitor.Exit(Gate); }
+            }).ConfigureAwait(false);
+        }
+        finally { analysisQueue.Release(); }
+    }
+
+    internal static void EnterWithoutWaiting()
+    {
+        if (!Monitor.TryEnter(Gate)) throw new StrausBusyException();
+    }
+
     private static bool initialized;
     private static bool configured;
     private static readonly HashSet<int> leased = new();
@@ -20,12 +52,14 @@ public static class StrausRuntime
 
     public static void Configure()
     {
-        lock (Gate)
+        EnterWithoutWaiting();
+        try
         {
             if (configured) return;
             NativeLibrary.SetDllImportResolver(typeof(St7).Assembly, Resolve);
             configured = true;
         }
+        finally { Monitor.Exit(Gate); }
     }
 
     private static IntPtr Resolve(string name, Assembly assembly, DllImportSearchPath? searchPath)
@@ -102,6 +136,8 @@ public static class StrausRuntime
         var text = new StringBuilder(1024);
         try
         {
+            // Public callers outside a session must not race the native error formatter.
+            if (!Monitor.IsEntered(Gate)) throw new InvalidOperationException("Native gate is not owned");
             if (St7.St7GetAPIErrorString(code, text, text.Capacity) != 0)
                 St7.St7GetSolverErrorString(code, text, text.Capacity);
         }
@@ -119,7 +155,7 @@ public sealed class StrausSession : IDisposable
 
     public StrausSession(string path, bool create = false, bool readOnly = true)
     {
-        Monitor.Enter(StrausRuntime.Gate);
+        StrausRuntime.EnterWithoutWaiting();
         try
         {
             if (!Environment.Is64BitProcess) throw new PlatformNotSupportedException("Straus7 R3 requires a 64-bit process.");
@@ -140,8 +176,16 @@ public sealed class StrausSession : IDisposable
         }
     }
 
+    private void RequireOwner()
+    {
+        ObjectDisposedException.ThrowIf(disposed, this);
+        if (!Monitor.IsEntered(StrausRuntime.Gate))
+            throw new InvalidOperationException("A Straus7 session must be used and disposed on its owning thread.");
+    }
+
     public (int Primary, int Secondary) OpenResults(string path, int combination = -1)
     {
+        RequireOwner();
         if (!File.Exists(path)) throw new FileNotFoundException("Result file does not exist.", path);
         // Always regenerate LSA combinations from this model's factors, never reuse a stale .LSC.
         if (combination < 0) combination = Path.GetExtension(path).Equals(".LSA", StringComparison.OrdinalIgnoreCase) ? St7.kGenerateNewCombinations : St7.kNoCombinations;
@@ -151,10 +195,11 @@ public sealed class StrausSession : IDisposable
         return (primary, secondary);
     }
 
-    public void Save() => StrausRuntime.Check(St7.St7SaveFile(Id), "Save model");
+    public void Save() { RequireOwner(); StrausRuntime.Check(St7.St7SaveFile(Id), "Save model"); }
 
     public void Close()
     {
+        RequireOwner();
         if (ResultsOpen) { StrausRuntime.Check(St7.St7CloseResultFile(Id), "Close results"); ResultsOpen = false; }
         if (open) { StrausRuntime.Check(St7.St7CloseFile(Id), "Close model"); open = false; }
     }
@@ -162,7 +207,14 @@ public sealed class StrausSession : IDisposable
     public void Dispose()
     {
         if (disposed) return;
+        RequireOwner();
         try { Close(); }
         finally { disposed = true; StrausRuntime.Release(Id); Monitor.Exit(StrausRuntime.Gate); }
     }
+}
+
+/// <summary>Native API is occupied; callers on the UI thread must never wait behind a solver.</summary>
+public sealed class StrausBusyException : InvalidOperationException
+{
+    public StrausBusyException() : base("Straus7 API is busy with a background analysis. Offline Grasshopper operations remain available; retry this native operation when the analysis finishes.") { }
 }

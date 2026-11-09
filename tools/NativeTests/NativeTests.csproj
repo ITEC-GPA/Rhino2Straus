@@ -6,6 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="../../Rhino2Straus.Tests/Program.cs" Link="Program.cs" />
+    <Compile Include="../../Rhino2Straus.Tests/AsyncOperationTests.cs" Link="AsyncOperationTests.cs" />
     <ProjectReference Include="../../Rhino2Straus.Import/Rhino2Straus.Import.csproj" />
     <PackageReference Include="Rhino.Inside" Version="8.0.7-beta" />
     <PackageReference Include="RhinoCommon" Version="$(RhinoVersion)" ExcludeAssets="runtime" />
