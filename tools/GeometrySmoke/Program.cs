@@ -198,6 +198,30 @@ internal static class Program
             return component;
         }
         foreach(string className in new[]{"FrameSectionAngleComponent","FrameSectionBoxComponent","FrameSectionChannelComponent","FrameSectionCircleComponent","FrameSectionIComponent","FrameSectionPipeComponent","FrameSectionRectangularComponent","FrameSectionTeeComponent","FrameSectionGenericComponent","MaterialComponent","DatabaseSteelMaterialComponent","DatabaseConcreteMaterialComponent","LoadCaseComponent","AreaThicknessComponent","LinkPropertyComponent","NativeSectionOptionsComponent","RigidLinkPropertyComponent","PinnedLinkPropertyComponent","MasterSlaveLinkPropertyComponent","SectorSymmetryLinkPropertyComponent","ElasticLinkPropertyComponent","LinkConstraintOptionsComponent"})SolveDefaults(className);
+        foreach (string name in new[] { "RunLinearStaticComponent", "RunNaturalFrequencyComponent", "RunLinearBucklingComponent", "RunNonlinearStaticComponent" })
+        {
+            var solver=SolveDefaults(name,c=>{
+                ((Param_String)c.Params.Input[0]).PersistentData.Append(new GH_String("old.st7"));
+                if(name=="RunLinearBucklingComponent") ((Param_String)c.Params.Input[4]).PersistentData.Append(new GH_String("initial.LSA"));
+            });
+            var operation=(TriggeredOperation<string>)solver.GetType().GetField("operation",BindingFlags.NonPublic|BindingFlags.Instance).GetValue(solver);
+            for(int inputIndex=0;inputIndex<solver.Params.Input.Count;inputIndex++)
+            {
+                if(inputIndex is 1 or 2)continue; // Run is a trigger, overwrite is permission, not analysis identity.
+                string key=(string)typeof(TriggeredOperation<string>).GetField("previousKey",BindingFlags.NonPublic|BindingFlags.Instance).GetValue(operation);
+                operation.Update(key,false,()=>"old.LSA",_=>"Completed");
+                operation.Update(key,true,()=>"old.LSA",_=>"Completed");
+                solver.ExpireSolution(false);solver.CollectData();solver.ComputeData();
+                Check(solver.Params.Output[0].VolatileData.AllData(true).First().ToString()=="old.LSA",name+" retains unchanged cached result");
+                var input=solver.Params.Input[inputIndex];
+                if(input is Param_String text){text.PersistentData.Clear();text.PersistentData.Append(new GH_String("changed-"+inputIndex));}
+                else if(input is Param_Integer integer){integer.PersistentData.Clear();integer.PersistentData.Append(new GH_Integer(23));}
+                else if(input is Param_Number number){number.PersistentData.Clear();number.PersistentData.Append(new GH_Number(.123));}
+                else if(input is Param_Boolean boolean){bool old=((GH_Boolean)boolean.PersistentData.AllData(true).First()).Value;boolean.PersistentData.Clear();boolean.PersistentData.Append(new GH_Boolean(!old));}
+                input.ExpireSolution(false);solver.ExpireSolution(false);solver.CollectData();solver.ComputeData();
+                Check(solver.RuntimeMessages(GH_RuntimeMessageLevel.Error).Count==0 && operation.Value==null && operation.Status=="Run required",name+" invalidates changed input "+inputIndex);
+            }
+        }
         var constraintOptions=SolveDefaults("LinkConstraintOptionsComponent",c=>{var input=(Param_Integer)c.Params.Input[2];input.PersistentData.Clear();input.PersistentData.Append(new GH_Integer(-1));});
         var master=SolveDefaults("MasterSlaveLinkPropertyComponent",c=>c.Params.Input[0].AddSource(constraintOptions.Params.Output[0]));
         var property=master.Params.Output[0].VolatileData.AllData(true).First().ScriptVariable();

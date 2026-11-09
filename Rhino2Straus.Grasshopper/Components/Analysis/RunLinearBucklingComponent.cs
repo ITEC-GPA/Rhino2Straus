@@ -23,7 +23,7 @@ namespace Rhino2Straus.Grasshopper.Components.Extended;
 
 public sealed class RunLinearBucklingComponent : SafeComponent
 {
-    private bool wasRun; private string result="",status="Idle";
+    private readonly TriggeredOperation<string> operation = new();
     public RunLinearBucklingComponent() : base("Run Linear Buckling", "Run Linear Buckling", "Run eigenvalue buckling using an existing static stress state", ComponentTopics.Tab, ComponentTopics.Analysis) { }
     public override Guid ComponentGuid => new Guid("913420ec-f794-5996-b036-c5608b34c6ff");
     protected override void RegisterInputParams(GH_InputParamManager p)
@@ -45,8 +45,11 @@ public sealed class RunLinearBucklingComponent : SafeComponent
     protected override void Solve(IGH_DataAccess da)
     {
 
-        bool run=Item<bool>(da,1);bool fire=run&&!wasRun;wasRun=run;
-        if(fire){result="";status="Failed";result=StrausFileService.RunLinearBuckling(Item<string>(da,0),Item<bool>(da,2),Item<int>(da,3),Item<string>(da,4),Item<int>(da,5),Item<int>(da,6),Item<double>(da,7));status="Completed";}
-        da.SetData(0,result);da.SetData(1,status);Message=status;
+        string path = Item<string>(da,0);
+        bool run = Item<bool>(da,1);
+        string key = System.Text.Json.JsonSerializer.Serialize(new object[] { path, Item<int>(da,3), Item<string>(da,4), Item<int>(da,5), Item<int>(da,6), Item<double>(da,7) });
+        string result = operation.Update(key, run,
+            () => StrausFileService.RunLinearBuckling(path, Item<bool>(da,2), Item<int>(da,3), Item<string>(da,4), Item<int>(da,5), Item<int>(da,6), Item<double>(da,7)), _ => "Completed");
+        da.SetData(0,result ?? "");da.SetData(1,operation.Status);Message=operation.Status;
     }
 }
