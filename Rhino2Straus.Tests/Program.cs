@@ -313,7 +313,10 @@ if (args.Contains("--native"))
             string p=Path.Combine(folder,"attributes.st7");Assert(m.CreateModelStraus7R3(p,out _,out _,out var e),string.Join(";",e));using var s=new StrausSession(p);var mass=new double[3];Check(St7.St7GetNodeTMass3(s.Id,2,mass));Near(mass[2],3);var temp=new double[1];Check(St7.St7GetNodeTemperature1(s.Id,2,1,temp));Near(temp[0],25);var status=new int[3];Check(St7.St7GetBeamRRelease3(s.Id,1,2,status,new double[3]));Assert(status[0]==St7.brReleased);
         });
         if (args.Contains("--solve")) Test("Native cantilever solver, displacement, reactions and beam forces",()=>{
-            string result=StrausFileService.RunLinearStatic(path,false);Assert(File.Exists(result));var d=StrausFileService.NodeResults(path,result,1,new[]{2},false);Near(d[0][2],-8.0/(3*2.1e8*.0001),2e-6);
+            string result=StrausFileService.RunLinearStatic(path,false);Assert(File.Exists(result));var d=StrausFileService.NodeResults(path,result,1,new[]{2},false);// Timoshenko cantilever: bending plus shear, P=-1 kN, L=2 m.
+            double expected = -(Math.Pow(2, 3) / (3 * material.ModulusElasticity * section.I11)
+                + 2 / (material.ShearModulus * section.ShearA1));
+            Near(d[0][2],expected,Math.Abs(expected)*1e-6);
             var reaction=StrausFileService.NodeResults(path,result,1,new[]{1},true);Near(reaction[0][2],1,1e-6);var b=StrausFileService.BeamResults(path,result,1,1,St7.rtBeamForce,St7.stBeamPrincipal,5);Assert(b.Values.Length>=5);Assert(StrausFileService.ResultCases(path,result).Length>=1);
         });
         if (args.Contains("--solve")) Test("Integrated Model solver generates selected combinations and attaches verified results",()=>{
